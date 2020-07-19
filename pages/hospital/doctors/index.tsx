@@ -1,10 +1,11 @@
 import React from 'react'
 import Hospital from '../index';
+import {DoctorListing} from '../../../components';
 
 function Doctors() {
     return (
          <Hospital>
-            <h3>Doctors</h3>
+            <DoctorListing/>
         </Hospital>
     )
 }

@@ -1,7 +1,7 @@
 import Navigation from './navigation/navigation';
-import HospitalCard from './hospitalCard/hospitalCard';
+import ProductCard from './productCard/productCard';
 
 export {
     Navigation,
-    HospitalCard
+    ProductCard
 }
