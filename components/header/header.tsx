@@ -1,42 +1,29 @@
 import React from 'react'
+import {Navigation} from '../common';
+import {Navbar, Form, FormControl} from 'react-bootstrap';
 import Link from 'next/link';
+
+const headerNavigation = [
+    {name:'Hospital',route:'/hospital'},
+    {name:'Ayurveda',route:'/ayurveda'},
+    {name:'Cost Estimates',route:'/cost-estimates'},
+    {name:'Patient Story',route:'/patient-story'},
+    {name:'Accreditation',route:'/accreditation'},
+];
 
 const Header =()=> {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link href='/home'><a className="navbar-brand" href="#">Kareval.com</a></Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                        <Link href='/hospital'><a className="nav-link" href="#">Hospital <span className="sr-only">(current)</span></a></Link>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Ayurveda</a>
-                        </li>
-                         
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Cost Estimates</a>
-                        </li>
-                         
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Patient Story</a>
-                        </li>
-                         
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Accreditation</a>
-                        </li>
-                         
-                        </ul>
-                        <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        </form>
-                    </div>
-                </nav>
+             <Navbar bg="light" expand="lg">
+                <Link href="/home"><h1><a href="#">Kareval.com</a></h1></Link>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Navigation navItems={headerNavigation} />
+                    <Form inline>
+                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                    </Form>
+                </Navbar.Collapse>
+                </Navbar>                  
         </div>
     )
 }
