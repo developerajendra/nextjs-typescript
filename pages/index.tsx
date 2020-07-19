@@ -18,10 +18,7 @@ export default function Main({
   }[]
 }) {
   return (
-    <Container fluid> 
        <Home />
-    </Container>
-   
   )
 }
 

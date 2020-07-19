@@ -4,7 +4,7 @@ import {Navbar, Form, FormControl} from 'react-bootstrap';
 import Link from 'next/link';
 
 const headerNavigation = [
-    {name:'Hospital',route:'/hospital'},
+    {name:'Hospital',route:'/hospital/hospitals'},
     {name:'Ayurveda',route:'/ayurveda'},
     {name:'Cost Estimates',route:'/cost-estimates'},
     {name:'Patient Story',route:'/patient-story'},
