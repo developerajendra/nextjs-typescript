@@ -13,12 +13,14 @@ function Navigation(props:any) {
     const {navItems} = props;
     const router = useRouter();
     return (
-        <Nav className="mr-auto">
+        // <Nav>
+            <ul className="mr-auto navbar-nav">
             {navItems.map((nav:routes)=>{
                 const isSelected = router.pathname === nav.route || router.pathname.indexOf(nav.name.toLowerCase())>-1;
-                return <Link href={nav.route}><a className={isSelected ? "nav-link route-selected"  : "nav-link"} href="#">{nav.name} <span className="sr-only">(current)</span></a></Link>
+                return <li><Link href={nav.route}><a className={isSelected ? "nav-link route-selected"  : "nav-link"} href="#">{nav.name} <span className="sr-only">(current)</span></a></Link></li>
             })}
-        </Nav>
+            </ul>
+        // </Nav>
     )
 }
 

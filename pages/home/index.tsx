@@ -5,7 +5,7 @@ import Layout from '../../components/layout'
 function Home() {
     return (
         <Layout>
-            <h5>This is home page</h5>
+            {/* <h5>This is home page</h5> */}
         </Layout>
     )
 }
