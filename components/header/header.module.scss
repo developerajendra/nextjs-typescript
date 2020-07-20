@@ -48,6 +48,10 @@
         padding-left: 32px;
         opacity: 1;
        }
+
+       @media (max-width: 991px){
+        margin-top: 33px;
+       }
    }
    
  }

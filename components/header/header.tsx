@@ -34,7 +34,7 @@ const Header =()=> {
                             </Navbar.Collapse>
                     </Col>
 
-                    <Col className="padding0" xs={12} md={3}>
+                    <Col className="padding0" md={12} lg={3}>
                         <Form inline className="search-wrapper">
                             <i className="icon-search"></i>
                             <FormControl type="text" placeholder="Search Medical, Ayurveda…" className="search mr-sm-2" />

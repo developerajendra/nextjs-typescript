@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Layout from '../../components/layout'
+import {Layout, HealthCarefilter} from '../../components';
 import { Col, Row } from 'react-bootstrap'
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
             <section>
                 <Row>
                 <Col xs={12} md={5}>
-                    <p>sidebar</p>
+                    <HealthCarefilter/>
                 </Col>
                 <Col xs={12}  md={7}>
                     <img src="/images/home-banner.jpg" title="home-banner" alt="home-banner" />
