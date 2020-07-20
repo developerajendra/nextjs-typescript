@@ -1,6 +1,5 @@
 import { AppProps } from 'next/app'
-
-import '../styles/global.css'
+import '../styles/global.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container} from 'react-bootstrap';
 
