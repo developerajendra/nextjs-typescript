@@ -38,10 +38,11 @@ const Header =()=> {
                     </Col>
 
                     <Col className="padding0"  xs={3}>
-                                    <Form inline>
-                                    <FormControl type="text" placeholder="Search Medical, Ayurveda…" className="search mr-sm-2" />
-                                    </Form>
-                                </Col>
+                        <Form inline className="search-wrapper">
+                            <i className="icon-search"></i>
+                            <FormControl type="text" placeholder="Search Medical, Ayurveda…" className="search mr-sm-2" />
+                        </Form>
+                    </Col>
 
                 </Navbar>   
         </div>

@@ -1,0 +1,12 @@
+/* Sprite icon
+-------------------------------*/
+@mixin icon($width, $height, $x:0, $y:0) {
+    background: url("../../public/images/sprite.png") $x $y;
+    width: $width;
+    height: $height;
+    display: inline-block;
+  }
+  
+  .icon-search {
+    @include icon($icon-search-width, $icon-search-height, $icon-search-offset-x, $icon-search-offset-y);
+  }
