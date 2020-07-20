@@ -1,5 +1,5 @@
 import React from 'react'
-import {Layout} from '../../../../components';
+import {Layout, DoctorDetails} from '../../../../components';
 import { useRouter } from 'next/router'
 
 function HospitalDetail(props) {
@@ -10,7 +10,7 @@ function HospitalDetail(props) {
     
     return (
         <Layout>
-            <h5>Doctors details</h5>
+            <DoctorDetails/>
         </Layout>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
-import {Layout} from '../../../../components';
-import { useRouter } from 'next/router'
+import {Layout, HospitalDetails} from '../../../../components';
+import { useRouter } from 'next/router';
+
 
 function HospitalDetail(props) {
     const router = useRouter();
@@ -10,7 +11,7 @@ function HospitalDetail(props) {
     
     return (
         <Layout>
-            <h5>Hospital details</h5>
+            <HospitalDetails/>
         </Layout>
     )
 }
