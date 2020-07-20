@@ -10,3 +10,7 @@
   .icon-search {
     @include icon($icon-search-width, $icon-search-height, $icon-search-offset-x, $icon-search-offset-y);
   }
+
+  .icon-heartbeat {
+    @include icon($icon-heartbeat-width, $icon-heartbeat-height, $icon-heartbeat-offset-x, $icon-heartbeat-offset-y);
+  }

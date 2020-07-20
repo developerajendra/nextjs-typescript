@@ -2,7 +2,6 @@ import React from 'react'
 import {Navigation} from '../common';
 import {Navbar, Form, FormControl, Col} from 'react-bootstrap';
 import Link from 'next/link';
-import styles from './header.module.scss';
 
 
 const headerNavigation = [
@@ -14,9 +13,7 @@ const headerNavigation = [
 ];
 
 const Header =()=> {
-    const {
-        logo
-    } = styles;
+   
     return (
         <div className="main-header">
              <Navbar expand="lg">

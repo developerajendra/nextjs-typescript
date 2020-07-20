@@ -1,17 +1,22 @@
 import React from 'react'
-import {DropDown} from '../common';
+import {DropDown, MedicalButton} from '../common';
+import { Col, Row } from 'react-bootstrap'
 
 function HealthCarefilter() {
     return (
-        <div>
-            <h1>Choose the Right Healthcare.</h1>
-            <div>
-            <DropDown/>
-            <DropDown/> 
-            <DropDown/> 
+        <Col md={8}>
+            <div className="health-care">
+                <h1>Choose the Right Healthcare.<i className="icon-heartbeat"></i></h1>
+                <div>
+                <DropDown/>
+                <DropDown/> 
+                <DropDown/> 
+                <MedicalButton text="SEARCH NOW" type="primary" />
+                </div>
             </div>
-        </div>
+        </Col>
     )
 }
 
 export default HealthCarefilter
+

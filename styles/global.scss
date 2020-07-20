@@ -32,16 +32,18 @@ body .container-fluid{
     padding-left: 40px;
     max-width: 1366px;
 }
-.route-selected{
-  // border-bottom: solid 2px #46B469;
-  color: #284748 !important;
-  opacity: 1;
-}
+
 ul, li{
   list-style: none;
   padding: 0;
   
 }
+
 @import "./common/sprite.scss";
 @import './common/icons.scss';
-@import '../components//header/header.module.scss';
+@import "./common/common-classes.scss";
+
+//Component SASS
+@import '../components/header/header.scss';
+@import '../components/healthCareFilter/healthCare.scss';
+
