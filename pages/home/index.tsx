@@ -1,7 +1,7 @@
 import React from 'react'
-
-import {Layout, HealthCarefilter} from '../../components';
 import { Col, Row } from 'react-bootstrap'
+
+import {Layout, HealthCarefilter, DeseaseList} from '../../components';
 
 function Home() {
     return (
@@ -10,13 +10,16 @@ function Home() {
                 paddingTop:15
             }}>
                 <Row>
-                <Col xs={12} md={5}>
+                <Col md={12} lg={5}>
                     <HealthCarefilter/>
                 </Col>
-                <Col xs={12}  md={7}>
+                <Col md={12}  lg={7}>
                     <img src="/images/home-banner.jpg" title="home-banner" alt="home-banner" />
                 </Col>
                 </Row>
+            </section>
+            <section style={{margin: '100px 0'}}>
+                <DeseaseList/>
             </section>
         </Layout>
     )

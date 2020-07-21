@@ -14,3 +14,42 @@
   .icon-heartbeat {
     @include icon($icon-heartbeat-width, $icon-heartbeat-height, $icon-heartbeat-offset-x, $icon-heartbeat-offset-y);
   }
+
+  .icon-cardiology {
+    @include icon($icon-cardiology-width, $icon-cardiology-height, $icon-cardiology-offset-x, $icon-cardiology-offset-y);
+  }
+
+  .icon-cancer {
+    @include icon($icon-cancer-width, $icon-cancer-height, $icon-cancer-offset-x, $icon-cancer-offset-y);
+  }
+  .icon-transplant {
+    @include icon($icon-transplant-width, $icon-transplant-height, $icon-transplant-offset-x, $icon-transplant-offset-y);
+  }
+  .icon-fertility {
+    @include icon($icon-fertility-width, $icon-fertility-height, $icon-fertility-offset-x, $icon-fertility-offset-y);
+  }
+  .icon-orthopadic {
+    @include icon($icon-orthopadic-width, $icon-orthopadic-height, $icon-orthopadic-offset-x, $icon-orthopadic-offset-y);
+  }
+  .icon-neuro-and-brain {
+    @include icon($icon-neuro-and-brain-width, $icon-neuro-and-brain-height, $icon-neuro-and-brain-offset-x, $icon-neuro-and-brain-offset-y);
+  }
+  .icon-weight-loss {
+    @include icon($icon-weight-loss-width, $icon-weight-loss-height, $icon-weight-loss-offset-x, $icon-weight-loss-offset-y);
+  }
+  .icon-spine {
+    @include icon($icon-spine-width, $icon-spine-height, $icon-spine-offset-x, $icon-spine-offset-y);
+  }
+  .icon-urology {
+    @include icon($icon-urology-width, $icon-urology-height, $icon-urology-offset-x, $icon-urology-offset-y);
+  }
+  .icon-gastroenterlogy {
+    @include icon($icon-gastroenterlogy-width, $icon-gastroenterlogy-height, $icon-gastroenterlogy-offset-x, $icon-gastroenterlogy-offset-y);
+  }
+  .icon-dentistry {
+    @include icon($icon-dentistry-width, $icon-dentistry-height, $icon-dentistry-offset-x, $icon-dentistry-offset-y);
+  }
+  .icon-plastic-surgery {
+    @include icon($icon-plastic-surgery-width, $icon-plastic-surgery-height, $icon-plastic-surgery-offset-x, $icon-plastic-surgery-offset-y);
+  }
+  

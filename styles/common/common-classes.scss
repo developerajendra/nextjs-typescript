@@ -31,12 +31,15 @@ button.button-primary{
     opacity: 1;
   }
 
-  h1,.title,h1.title{
+  h2,h1,.title,h1.title{
     color: #284748;
     font-family: 'Georgia-Bold';
     font-weight: 600 !important;
     font-size: 34px !important;
     letter-spacing: 1px;
+  }
+  h2{
+    font-size: 30px !important;
   }
 
   button,input,.select{

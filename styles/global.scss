@@ -5,9 +5,10 @@ html,
 body {
   padding: 0;
   margin: 0;
- font-family: 'proximanova_regular'  !important;
+ font-family: 'ProximaNova-Regular'  !important;
   line-height: 1.6;
   font-size: 1rem;
+  color: #222 !important;
 }
 
 * {
@@ -18,7 +19,8 @@ a {
   color: #0070f3;
   text-decoration: none;
   font-size: .88rem;
-  font-family: 'ProximaNova-Regular'  !important;;
+  // font-family: 'ProximaNova-Regular'  !important;;
+  font-family: 'ProximaNova-Semibold' !important;
 }
 
 a:hover {
@@ -57,3 +59,4 @@ ul, li{
 @import '../components/common/dropdown/dropdown.scss';
 @import '../components/header/header.scss';
 @import '../components/healthCareFilter/healthCare.scss';
+@import '../components/deseaseList//deseaseList.scss';
