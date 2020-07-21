@@ -1,11 +1,23 @@
     
     .dropdown-wrapper{
         .form-control.select {
+            font-weight: 100;
+            line-height: 1.5;
+            color: #222;
             border: none;
             border-bottom: solid 1px;
             border-radius: 0;
             height: 37px;
             padding: 0;
+
+            &:focus{
+                box-shadow: none;
+            }
+            background: url("data:image/svg+xml;utf8,<svg  width='8' height='4.001'  xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path class='a' d='M714,825.756l.933-.757L718,827.486,721.067,825l.933.757L718,829Z' transform='translate(-714 -824.999)'/></svg>") no-repeat right ;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-position-x: 97%;
+
     }
     .label{
         letter-spacing: 1.2px;
@@ -13,6 +25,6 @@
         font-size: .75rem;
         position: relative;
         top: 8px;
-        margin: 0 0 0 5px;
+        margin: 0;
     }
 }

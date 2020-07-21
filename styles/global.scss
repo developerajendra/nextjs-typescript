@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
- font-family: Proxima Nova !important;
+ font-family: proximanova_regular, sans-serif  !important;
   line-height: 1.6;
   font-size: 1rem;
 }
@@ -14,12 +14,16 @@ body {
 a {
   color: #0070f3;
   text-decoration: none;
-  // font-size: .88rem;
-  font: Semibold .88rem;
+  font-size: .88rem;
+  font-family: proximanova_semibold, sans-serif  !important;;
 }
 
 a:hover {
   text-decoration: underline;
+}
+label{
+  font-family: proximanova_thin, sans-serif  !important;;
+  font-weight: 100;
 }
 
 img {
