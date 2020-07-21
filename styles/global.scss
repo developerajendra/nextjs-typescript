@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
- font-family: 'Proxima Nova';
+ font-family: Proxima Nova !important;
   line-height: 1.6;
   font-size: 1rem;
 }
@@ -44,6 +44,6 @@ ul, li{
 @import "./common/common-classes.scss";
 
 //Component SASS
+@import '../components/common/dropdown/dropdown.scss';
 @import '../components/header/header.scss';
 @import '../components/healthCareFilter/healthCare.scss';
-

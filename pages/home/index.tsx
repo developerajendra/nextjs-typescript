@@ -6,7 +6,9 @@ import { Col, Row } from 'react-bootstrap'
 function Home() {
     return (
         <Layout>
-            <section>
+            <section style={{
+                paddingTop:15
+            }}>
                 <Row>
                 <Col xs={12} md={5}>
                     <HealthCarefilter/>

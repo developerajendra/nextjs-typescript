@@ -1,14 +1,14 @@
 import React from 'react'
 import {Form} from 'react-bootstrap'
 
-function DropDown() {
+function DropDown({label}) {
     return (
-        <div>
+        <div className="dropdown-wrapper">
             <Form>
                 <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Example select</Form.Label>
-                    <Form.Control as="select">
-                    <option>1</option>
+                    <Form.Label  className="label">{label}</Form.Label>
+                    <Form.Control as="select" className="select">
+                    <option>Select</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
@@ -17,6 +17,7 @@ function DropDown() {
                 </Form.Group>
                  
                 </Form>
+                 
         </div>
     )
 }

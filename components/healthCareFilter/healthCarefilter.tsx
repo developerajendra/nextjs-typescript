@@ -8,10 +8,10 @@ function HealthCarefilter() {
             <div className="health-care">
                 <h1>Choose the Right Healthcare.<i className="icon-heartbeat"></i></h1>
                 <div>
-                <DropDown/>
-                <DropDown/> 
-                <DropDown/> 
-                <MedicalButton text="SEARCH NOW" type="primary" />
+                    <DropDown label="COUNTRY OF ORIGIN"/>
+                    <DropDown label="TREATMENT TYPE"/> 
+                    <DropDown label="COUNTRY OF TREATMNET"/> 
+                    <MedicalButton text="SEARCH NOW" type="primary" />
                 </div>
             </div>
         </Col>
