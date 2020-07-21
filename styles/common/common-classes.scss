@@ -33,6 +33,13 @@ button.button-primary{
 
   h1,.title,h1.title{
     color: #284748;
-    font-size: 2.123rem;
-    font-family: Georgia;
+    font-family: 'Georgia-Bold';
+    font-weight: 600 !important;
+    font-size: 34px !important;
+    letter-spacing: 1px;
   }
+
+  button,input,.select{
+    font-family: 'ProximaNova-Regular' !important;
+  }
+   

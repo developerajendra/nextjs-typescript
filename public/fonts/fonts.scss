@@ -1,100 +1,72 @@
-// Georgia fonts
+
+//https://www.web-font-generator.com/results?dir=1bfe2e5ecb873711307bcb374364ba60
+
 @font-face {
-    font-family: 'georgia_regular';
-    src: url('./georgia/georgia_regular.ttf') format('ttf');
-  }
-
-  @font-face {
-    font-family: 'georgiai_regular_italic';
-    src: url('./georgia/georgiai_regular_italic.ttf') format('ttf');
-  }
-
-  @font-face {
-    font-family: 'georgia_bold';
-    src: url('./georgia/georgia_bold.ttf') format('ttf');
-  }
-
-  @font-face {
-    font-family: 'georgia_bold_italic';
-    src: url('./georgia/georgia_bold_italic.ttf') format('ttf');
-  }
- 
+  font-family: 'Georgia-Regular';
+  src: url('Georgia.eot?#iefix') format('embedded-opentype'),  url('Georgia.woff') format('woff'), url('Georgia.ttf')  format('truetype'), url('Georgia.svg#Georgia') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 
-// Proximanova fonts
+@font-face {
+  font-family: 'Georgia-Bold';
+  src: url('Georgia-Bold.eot?#iefix') format('embedded-opentype'),  url('Georgia-Bold.woff') format('woff'), url('Georgia-Bold.ttf')  format('truetype'), url('Georgia-Bold.svg#Georgia-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
-  @font-face {
-    font-family: 'proximanova__semibold_italic';
-    src: url('./proximanovafonts/proximanova__semibold_italic.otf') format('otf');
-  }
 
- 
-  @font-face {
-    font-family: 'proximanova_condensed_semibold';
-    src: url('./proximanovafonts/proximanova_condensed_semibold.otf') format('otf');
-  }
+@font-face {
+  font-family: 'Georgia-BoldItalic';
+  src: url('Georgia-BoldItalic.eot?#iefix') format('embedded-opentype'),  url('Georgia-BoldItalic.woff') format('woff'), url('Georgia-BoldItalic.ttf')  format('truetype'), url('Georgia-BoldItalic.svg#Georgia-BoldItalic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
- 
-  @font-face {
-    font-family: 'proximanova_condensed_thin_italic';
-    src: url('./proximanovafonts/proximanova_condensed_thin_italic.otf') format('otf');
-  }
 
- 
-  @font-face {
-    font-family: 'proximanova_extra_condensed_semibold';
-    src: url('./proximanovafonts/proximanova_extra_condensed_semibold.otf') format('otf');
-  }
 
- 
-  @font-face {
-    font-family: proximanova_extrabold;
-    src: url('./proximanovafonts/proximanova_extrabold.otf') format('otf');
-  }
+
+
+
+
+
+
+
+@font-face {
+  font-family: 'ProximaNova-Regular';
+  src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),  url('ProximaNova-Regular.otf')  format('opentype'),
+	     url('ProximaNova-Regular.woff') format('woff'), url('ProximaNova-Regular.ttf')  format('truetype'), url('ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'ProximaNovaS-Light';
+  src: url('ProximaNovaS-Light.eot?#iefix') format('embedded-opentype'),  url('ProximaNovaS-Light.otf')  format('opentype'),
+	     url('ProximaNovaS-Light.woff') format('woff'), url('ProximaNovaS-Light.ttf')  format('truetype'), url('ProximaNovaS-Light.svg#ProximaNovaS-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
  
-  @font-face {
-    font-family: 'proximanova_extrabold_italic';
-    src: url('./proximanovafonts/proximanova_extrabold_italic.otf') format('otf');
-  }
+@font-face {
+  font-family: 'ProximaNova-Semibold';
+  src: url('ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'),  url('ProximaNova-Semibold.otf')  format('opentype'),
+	     url('ProximaNova-Semibold.woff') format('woff'), url('ProximaNova-Semibold.ttf')  format('truetype'), url('ProximaNova-Semibold.svg#ProximaNova-Semibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
- 
-  @font-face {
-    font-family: 'proximanova_light';
-    src: url('./proximanovafonts/proximanova_light.otf') format('otf');
-  }
 
- 
-  @font-face {
-    font-family: 'proximanova_light_italic';
-    src: url('./proximanovafonts/proximanova_light_italic.otf') format('otf');
-  }
 
- 
-  @font-face {
-    font-family: proximanova_regular;
-    src: url('./proximanovafonts/proximanova_regular.otf') format('otf');
-  }
-
- 
-  @font-face {
-    font-family: proximanova_semibold;
-    src: url('./proximanovafonts/proximanova_semibold.otf') format('otf');
-  }
-
- 
- 
-  @font-face {
-    font-family: 'proximanova_thin';
-    src: url('./proximanovafonts/proximanova_thin.otf') format('otf');
-  }
-
- 
-  @font-face {
-    font-family: 'proximanova_thin_italic';
-    src: url('./proximanovafonts/proximanova_thin_italic.otf') format('otf');
-  }
-
- 
-   
- 
+@font-face {
+  font-family: 'ProximaNovaT-Thin';
+  src: url('ProximaNovaT-Thin.eot?#iefix') format('embedded-opentype'),  url('ProximaNovaT-Thin.otf')  format('opentype'),
+	     url('ProximaNovaT-Thin.woff') format('woff'), url('ProximaNovaT-Thin.ttf')  format('truetype'), url('ProximaNovaT-Thin.svg#ProximaNovaT-Thin') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,8 +1,11 @@
+
+
+
 html,
 body {
   padding: 0;
   margin: 0;
- font-family: proximanova_regular, sans-serif  !important;
+ font-family: 'proximanova_regular'  !important;
   line-height: 1.6;
   font-size: 1rem;
 }
@@ -15,14 +18,14 @@ a {
   color: #0070f3;
   text-decoration: none;
   font-size: .88rem;
-  font-family: proximanova_semibold, sans-serif  !important;;
+  font-family: 'ProximaNova-Regular'  !important;;
 }
 
 a:hover {
   text-decoration: underline;
 }
 label{
-  font-family: proximanova_thin, sans-serif  !important;;
+  font-family: 'ProximaNovaS-Light', sans-serif  !important;;
   font-weight: 100;
 }
 
@@ -43,6 +46,9 @@ ul, li{
   
 }
 
+
+
+@import "../public/fonts/fonts.scss";
 @import "./common/sprite.scss";
 @import './common/icons.scss';
 @import "./common/common-classes.scss";
