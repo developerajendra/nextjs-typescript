@@ -1,17 +1,24 @@
 import React from 'react'
+import Link from 'next/link';
 
 interface cardIterface{
     iconClass: string;
     text:string;
-    isActive?:string;
+    route?:string;
 }
 
-function DeseaseCard({iconClass, text, isActive}:cardIterface) {
+function DeseaseCard({iconClass, text, route}:cardIterface) {
     return (
+        route ? <Link href={route}>
+            <div className="desease-card-wrapper">
+              <i className={iconClass}></i>
+              <span>{text}</span>
+            </div>
+        </Link> : 
         <div className="desease-card-wrapper">
-          <i className={iconClass}></i>
-          <span>{text}</span>
-        </div>
+        <i className={iconClass}></i>
+        <span>{text}</span>
+      </div>
     )
 }
 
