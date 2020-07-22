@@ -1,7 +1,12 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 
-import {Layout, HealthCarefilter, DeseaseList} from '../../components';
+import {
+    Layout,
+    HealthCarefilter,
+    DeseaseList,
+    CompareDestinationList
+} from '../../components';
 
 function Home() {
     return (
@@ -18,8 +23,11 @@ function Home() {
                 </Col>
                 </Row>
             </section>
-            <section style={{margin: '100px 0'}}>
+            <section style={{margin: '70px 0'}}>
                 <DeseaseList/>
+            </section>
+            <section style={{marginBottom: '70px'}}>
+                <CompareDestinationList/>
             </section>
         </Layout>
     )

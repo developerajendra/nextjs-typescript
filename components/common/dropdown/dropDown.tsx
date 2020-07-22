@@ -1,14 +1,19 @@
 import React from 'react'
 import {Form} from 'react-bootstrap'
 
-function DropDown({label}) {
+interface dropdown{
+    label?:string;
+    defaultSelectText?:string;
+    styleTypeDefault?:boolean;
+}
+function DropDown({label, defaultSelectText, styleTypeDefault }:dropdown) {
     return (
-        <div className="dropdown-wrapper">
+        <div className={styleTypeDefault ? "dropdown-wrapper-default" :"dropdown-wrapper"}>
             <Form>
                 <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  className="label">{label}</Form.Label>
+                    {label && <Form.Label  className="label">{label}</Form.Label>}
                     <Form.Control as="select" className="select">
-                    <option>Select</option>
+                   {defaultSelectText ? <option>{defaultSelectText}</option> : <option>Select</option>}
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>

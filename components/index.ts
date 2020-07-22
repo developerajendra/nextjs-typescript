@@ -6,6 +6,7 @@ import HospitalDetails from './hospitalDetail/hospitalDetails';
 import DoctorDetails from './doctorDetails/doctorDetails';
 import HealthCarefilter from './healthCareFilter/healthCarefilter';
 import DeseaseList from './deseaseList/deseaseList';
+import CompareDestinationList from './compareDestinationList/compareDestinationList';
 
 export {
     Header,
@@ -15,5 +16,6 @@ export {
     HospitalDetails,
     DoctorDetails,
     HealthCarefilter,
-    DeseaseList
+    DeseaseList,
+    CompareDestinationList
 }

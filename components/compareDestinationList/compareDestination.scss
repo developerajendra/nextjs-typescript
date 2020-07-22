@@ -1,0 +1,41 @@
+.destination-compare-wrapper{
+    .destination-cards{
+        border-top: 1px solid #e7eaea;
+        padding-top: 33px;
+        margin-top: 33px;   
+
+        .row{
+            margin: auto;
+            justify-content: space-between;
+            .col-lg-3{
+                flex: 0;
+                padding: 0;
+                @media (max-width: 991px){
+                    flex: 0 0 100%;
+                    margin: 0 auto 39px auto;
+                }
+            }
+        }
+
+        .button-wrapper{
+            display: flex;
+            justify-content: space-around;
+            margin: 33px auto;
+            max-width: 464px;
+            button{
+                width: 200px;
+            }
+        }
+    }
+
+    .card{
+        border: 1px solid #BBC4C7;
+        height: 100%;
+        @media (min-width: 992px) and (max-width: 1250px){
+            width: 14rem !important;
+        }
+        @media (max-width: 991px){
+            margin: auto;
+        }
+    }
+}

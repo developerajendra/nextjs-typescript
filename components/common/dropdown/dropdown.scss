@@ -1,5 +1,6 @@
     
     .dropdown-wrapper{
+        
         .form-control.select {
             font-weight: 100;
             line-height: 1.5;
@@ -27,4 +28,29 @@
         top: 8px;
         margin: 0;
     }
+}
+
+
+ 
+.dropdown-wrapper-default{
+    .form-control.select {
+        font-weight: 100;
+        line-height: 1.5;
+        color: #222;
+        height: 46px;
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='8.001'><path class='a' d='M711,822.756l.933-.757L718,828.486,724.067,822l.933.757L718,830Z' transform='translate(-711 -821.999)'/></svg>") no-repeat right ;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-position-x: 99%;
+        font-family: 'ProximaNova-Regular' !important;
+
+}
+.label{
+    letter-spacing: 1.2px;
+    color: #222;
+    font-size: .75rem;
+    position: relative;
+    top: 8px;
+    margin: 0;
+}
 }
