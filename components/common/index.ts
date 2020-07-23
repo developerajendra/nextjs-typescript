@@ -4,6 +4,7 @@ import DropDown from './dropdown/dropDown';
 import MedicalButton from './medicalButton/medicalButton';
 import DeseaseCard from './deseaseCard/deseaseCard';
 import CompareDestinationCard from './compareDestinationCard/compareDestinationCard';
+import FeaturedHospital from './featuredHospital/featuredHospital';
 
 export {
     Navigation,
@@ -11,5 +12,6 @@ export {
     DropDown,
     MedicalButton,
     DeseaseCard,
-    CompareDestinationCard
+    CompareDestinationCard,
+    FeaturedHospital
 }

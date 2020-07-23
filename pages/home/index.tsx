@@ -7,7 +7,8 @@ import {
     DeseaseList,
     CompareDestinationList,
     TestimonialCarousel,
-    MedicalLifeCycle
+    MedicalLifeCycle,
+    FeaturedHospitals
 } from '../../components';
 
 function Home() {
@@ -35,7 +36,9 @@ function Home() {
             <section className="home-section">
                 <MedicalLifeCycle/>
             </section>
-            <section className="home-section background"></section>
+            <section className="home-section background">
+                <FeaturedHospitals/>
+            </section>
             <section className="home-section"></section>
 
         </Layout>
