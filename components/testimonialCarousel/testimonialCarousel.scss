@@ -1,0 +1,26 @@
+.testimonial-carousel-wrapper{
+    // background: #F8F8F8;
+    // padding: 70px;
+
+    .carousel-image{
+        position: relative;
+        margin-right: 27%;
+        float: right;
+        top: 7%;
+    }
+
+    .quotes-top{
+        position: absolute;
+        right: 22px;
+    }
+    .quotes-bottom{
+        transform: rotateY(180deg);
+        margin: 33px;
+        position: absolute;
+        bottom: -40px;
+        left: -120px;
+    }
+    .carousel-indicators{
+        display: none;
+    }
+}

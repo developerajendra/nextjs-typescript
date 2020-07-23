@@ -8,7 +8,7 @@ interface destinationCard{
 
 function CompareDestinationCard({image}:destinationCard) {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '17rem' }}>
             { image ?  <Card.Img variant="top" src={`/images/${image}.jpg`} /> :
             <div className="add-destination">
                 <span className="icon">+</span>

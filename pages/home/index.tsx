@@ -5,30 +5,36 @@ import {
     Layout,
     HealthCarefilter,
     DeseaseList,
-    CompareDestinationList
+    CompareDestinationList,
+    TestimonialCarousel
 } from '../../components';
 
 function Home() {
     return (
         <Layout>
-            <section style={{
-                paddingTop:15
-            }}>
+            <section className="home-section">
                 <Row>
-                <Col md={12} lg={5}>
+                <Col style={{padding:0}} md={12} lg={5}>
                     <HealthCarefilter/>
                 </Col>
-                <Col md={12}  lg={7}>
+                <Col   md={12}  lg={7}>
                     <img src="/images/home-banner.jpg" title="home-banner" alt="home-banner" />
                 </Col>
                 </Row>
             </section>
-            <section style={{margin: '70px 0'}}>
+            <section  className="home-section background">
                 <DeseaseList/>
             </section>
-            <section style={{marginBottom: '70px'}}>
+            <section  className="home-section ">
                 <CompareDestinationList/>
             </section>
+            <section  className="home-section background">
+                <TestimonialCarousel />
+            </section>
+            <section className="home-section"></section>
+            <section className="home-section background"></section>
+            <section className="home-section"></section>
+
         </Layout>
     )
 }
