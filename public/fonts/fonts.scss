@@ -1,5 +1,5 @@
 
-//https://www.web-font-generator.com/results?dir=1bfe2e5ecb873711307bcb374364ba60
+// https://www.web-font-generator.com/
 
 @font-face {
   font-family: 'Georgia-Regular';
@@ -67,6 +67,16 @@
   font-family: 'ProximaNovaT-Thin';
   src: url('ProximaNovaT-Thin.eot?#iefix') format('embedded-opentype'),  url('ProximaNovaT-Thin.otf')  format('opentype'),
 	     url('ProximaNovaT-Thin.woff') format('woff'), url('ProximaNovaT-Thin.ttf')  format('truetype'), url('ProximaNovaT-Thin.svg#ProximaNovaT-Thin') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'ProximaNovaS-Extrabld';
+  src: url('ProximaNovaS-Extrabld.eot?#iefix') format('embedded-opentype'),  url('ProximaNovaS-Extrabld.otf')  format('opentype'),
+	     url('ProximaNovaS-Extrabld.woff') format('woff'), url('ProximaNovaS-Extrabld.ttf')  format('truetype'), url('ProximaNovaS-Extrabld.svg#ProximaNovaS-Extrabld') format('svg');
   font-weight: normal;
   font-style: normal;
 }

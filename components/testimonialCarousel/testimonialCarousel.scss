@@ -33,4 +33,46 @@
         top: 431px;
         opacity: 1;
     }
+
+
+    //Select section
+    .select-wrapper{
+        padding: 0 0 30px;
+
+        h3{
+            font-family: 'ProximaNova-Semibold';
+            font-size: 1.5rem;
+            margin-bottom:0;
+        }
+        address{
+            text-transform: uppercase;
+            font-family: 'ProximaNovaS-Light', sans-serif !important;
+            font-weight: 100;
+            font-size: 0.875rem;
+        }
+        article{
+            font-size:1rem;
+            font-family: 'ProximaNova-Semibold';
+        }
+    }
+    .testimonials{
+        ul {
+            display: flex;
+            li {
+                padding: 0 6px 0 0;
+                &.not-rated{
+                    -webkit-filter: grayscale(1);
+                    filter: grayscale(1);
+                }
+            }
+        }
+         
+    }
+    .list-header{
+        padding: 0;
+        text-align: left;
+        h2{
+            padding: 0 0 10px;
+        }
+    }
 }

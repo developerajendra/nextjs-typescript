@@ -56,6 +56,9 @@
   .icon-carousel-quotes {
     @include icon($icon-carousel-quotes-width, $icon-carousel-quotes-height, $icon-carousel-quotes-offset-x, $icon-carousel-quotes-offset-y);
   }
+  .icon-rated-star {
+    @include icon($icon-rated-star-width, $icon-rated-star-height, $icon-rated-star-offset-x, $icon-rated-star-offset-y);
+  }
 
 
   @mixin iconCarousel($width, $height, $x:0, $y:0) {
@@ -71,3 +74,6 @@
   .carousel-control-prev-icon {
     @include iconCarousel($carousel-control-prev-icon-width, $carousel-control-prev-icon-height, $carousel-control-prev-icon-offset-x, $carousel-control-prev-icon-offset-y);
   }
+
+
+  
