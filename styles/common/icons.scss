@@ -1,5 +1,20 @@
 /* Sprite icon
 -------------------------------*/
+
+@mixin iconCarousel($width, $height, $x:0, $y:0) {
+  background: url("../../public/images/sprite.png") $x $y !important;
+  width: $width !important; 
+  height: $height !important;
+  display: inline-block;
+}
+
+.carousel-control-next-icon {
+  @include iconCarousel($carousel-control-next-icon-width, $carousel-control-next-icon-height, $carousel-control-next-icon-offset-x, $carousel-control-next-icon-offset-y);
+}
+.carousel-control-prev-icon {
+  @include iconCarousel($carousel-control-prev-icon-width, $carousel-control-prev-icon-height, $carousel-control-prev-icon-offset-x, $carousel-control-prev-icon-offset-y);
+}
+
 @mixin icon($width, $height, $x:0, $y:0) {
     background: url("../../public/images/sprite.png") $x $y;
     width: $width;
@@ -61,19 +76,29 @@
   }
 
 
-  @mixin iconCarousel($width, $height, $x:0, $y:0) {
-    background: url("../../public/images/sprite.png") $x $y !important;
-    width: $width !important; 
-    height: $height !important;
-    display: inline-block;
+  .icon-care {
+    @include icon($icon-care-width, $icon-care-height, $icon-care-offset-x, $icon-care-offset-y);
   }
-  
-  .carousel-control-next-icon {
-    @include iconCarousel($carousel-control-next-icon-width, $carousel-control-next-icon-height, $carousel-control-next-icon-offset-x, $carousel-control-next-icon-offset-y);
+
+
+  .icon-professional {
+    @include icon($icon-professional-width, $icon-professional-height, $icon-professional-offset-x, $icon-professional-offset-y);
   }
-  .carousel-control-prev-icon {
-    @include iconCarousel($carousel-control-prev-icon-width, $carousel-control-prev-icon-height, $carousel-control-prev-icon-offset-x, $carousel-control-prev-icon-offset-y);
+
+  .icon-treansparency {
+    @include icon($icon-treansparency-width, $icon-treansparency-height, $icon-treansparency-offset-x, $icon-treansparency-offset-y);
   }
+
+
+  .icon-path {
+    @include icon($icon-path-width, $icon-path-height, $icon-path-offset-x, $icon-path-offset-y);
+  }
+
+  .icon-arrow-filled-next {
+    @include icon($icon-arrow-filled-next-width, $icon-arrow-filled-next-height, $icon-arrow-filled-next-offset-x, $icon-arrow-filled-next-offset-y);
+  }
+
+
 
 
   

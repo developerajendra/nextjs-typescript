@@ -6,7 +6,8 @@ import {
     HealthCarefilter,
     DeseaseList,
     CompareDestinationList,
-    TestimonialCarousel
+    TestimonialCarousel,
+    MedicalLifeCycle
 } from '../../components';
 
 function Home() {
@@ -31,7 +32,9 @@ function Home() {
             <section  className="home-section background testimonial-carousel">
                 <TestimonialCarousel />
             </section>
-            <section className="home-section"></section>
+            <section className="home-section">
+                <MedicalLifeCycle/>
+            </section>
             <section className="home-section background"></section>
             <section className="home-section"></section>
 

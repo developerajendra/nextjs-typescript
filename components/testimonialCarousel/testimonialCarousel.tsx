@@ -28,7 +28,7 @@ function TestimonialCarousel() {
                                         <li> <i className="icon-rated-star"></i></li>
                                         <li className="not-rated"> <i className="icon-rated-star"></i></li>
                                     </ul>
-                                    <article>“ Excellent service during my stay, he also went out of the way to assist me and my wife. I can not suggest any thing better in the service.Excellent work by team, thank you so much “</article>
+                                    <article><p>“ Excellent service during my stay, he also went out of the way to assist me and my wife. I can not suggest any thing better in the service.Excellent work by team, thank you so much “</p></article>
                                 </div>
                             </Col>
                         
