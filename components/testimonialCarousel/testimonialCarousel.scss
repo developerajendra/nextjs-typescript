@@ -2,23 +2,36 @@
     // background: #F8F8F8;
     // padding: 70px;
 
+    .carousel-inner{
+        padding-top: 33px;
+    }
+
+    .carousel-image-wrapper {
+        float: right;
+        margin-right: 5%;
+        margin-top: 34px;
+        position: relative;
+        z-index: 1;
+    }
+
     .carousel-image{
         position: relative;
-        margin-right: 27%;
+        margin-right: 37%;
         float: right;
-        top: 7%;
+        top: 7%;    
+        max-width: 90%;
     }
 
     .quotes-top{
         position: absolute;
-        right: 22px;
+        right: -9%;
+        top: -12%;
     }
     .quotes-bottom{
         transform: rotateY(180deg);
-        margin: 33px;
         position: absolute;
-        bottom: -40px;
-        left: -120px;
+        bottom: 0;
+        left: -72%;
     }
     .carousel-indicators{
         display: none;
@@ -38,6 +51,8 @@
     //Select section
     .select-wrapper{
         padding: 0 0 30px;
+        position: relative;
+        z-index: 2;
 
         h3{
             font-family: 'ProximaNova-Semibold';
@@ -74,5 +89,37 @@
         h2{
             padding: 0 0 10px;
         }
+    }
+}
+
+
+@media (max-width: 900px){
+    .testimonial-carousel-wrapper {
+        .carousel-image-wrapper{
+            margin: 0;
+            width: 100%;
+
+            .carousel-image{
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            
+        }
+        .carousel-control-prev{
+            width: 143px;
+            margin: 13px 0;
+        }
+        .carousel-control-next {
+            width: 143px;
+        }
+
+        .quotes-bottom,.quotes-top{
+            display: none;
+        }
+        
+        
     }
 }

@@ -28,7 +28,7 @@ function Home() {
             <section  className="home-section ">
                 <CompareDestinationList/>
             </section>
-            <section  className="home-section background">
+            <section  className="home-section background testimonial-carousel">
                 <TestimonialCarousel />
             </section>
             <section className="home-section"></section>
