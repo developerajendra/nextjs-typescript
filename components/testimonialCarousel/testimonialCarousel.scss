@@ -23,4 +23,14 @@
     .carousel-indicators{
         display: none;
     }
+    .carousel-control-prev{
+        right: 0;
+        top: 280px;
+        left: auto !important;
+        opacity: 1;
+    }
+    .carousel-control-next{
+        top: 431px;
+        opacity: 1;
+    }
 }

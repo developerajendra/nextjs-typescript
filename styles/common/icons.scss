@@ -56,10 +56,18 @@
   .icon-carousel-quotes {
     @include icon($icon-carousel-quotes-width, $icon-carousel-quotes-height, $icon-carousel-quotes-offset-x, $icon-carousel-quotes-offset-y);
   }
+
+
+  @mixin iconCarousel($width, $height, $x:0, $y:0) {
+    background: url("../../public/images/sprite.png") $x $y !important;
+    width: $width !important; 
+    height: $height !important;
+    display: inline-block;
+  }
   
   .carousel-control-next-icon {
-    @include icon($carousel-control-next-icon-width, $carousel-control-next-icon-height, $carousel-control-next-icon-offset-x, $carousel-control-next-icon-offset-y);
+    @include iconCarousel($carousel-control-next-icon-width, $carousel-control-next-icon-height, $carousel-control-next-icon-offset-x, $carousel-control-next-icon-offset-y);
   }
   .carousel-control-prev-icon {
-    @include icon($carousel-control-prev-icon-width, $carousel-control-prev-icon-height, $carousel-control-prev-icon-offset-x, $carousel-control-prev-icon-offset-y);
+    @include iconCarousel($carousel-control-prev-icon-width, $carousel-control-prev-icon-height, $carousel-control-prev-icon-offset-x, $carousel-control-prev-icon-offset-y);
   }

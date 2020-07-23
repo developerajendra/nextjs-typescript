@@ -114,9 +114,17 @@ button{
   margin-top: 70px;
   padding: 0 65px;
 
+  @media (max-width: 1150px){
+      padding: 0;
+   }
+
   &.background{
     margin-top: 70px;
-    padding: 70px 65px 0 65px;
+    padding: 70px 65px;
     background: #F8F8F8;
+
+    @media (max-width: 1150px){
+      padding: 30px;
+     }
   }
 }
