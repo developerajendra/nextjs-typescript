@@ -43,10 +43,6 @@ function Home() {
             <section className="home-section">
                 <NewsList/>
             </section>
-            <section className="home-section background">
-            </section>
-            <section className="home-section">
-            </section>
         </Layout>
     )
 }

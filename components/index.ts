@@ -11,6 +11,7 @@ import TestimonialCarousel from './testimonialCarousel/testimonialCarousel';
 import MedicalLifeCycle from './medicalLifeCycle/medicalLifeCycle';
 import FeaturedHospitals from './featuredHospitals/featuredHospitals';
 import NewsList from './newsList/newsList';
+import Footer from './footer/footer';
 
 export {
     Header,
@@ -25,5 +26,6 @@ export {
     TestimonialCarousel,
     MedicalLifeCycle,
     FeaturedHospitals,
-    NewsList
+    NewsList,
+    Footer
 }

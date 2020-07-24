@@ -101,8 +101,29 @@
   .icon-read-more {
     @include icon($icon-read-more-width, $icon-read-more-height, $icon-read-more-offset-x, $icon-read-more-offset-y);
   }
-
-
+  .icon-facebook {
+    @include icon($icon-facebook-width, $icon-facebook-height, $icon-facebook-offset-x, $icon-facebook-offset-y);
+  }
+  .icon-twitter {
+    @include icon($icon-twitter-width, $icon-twitter-height, $icon-twitter-offset-x, $icon-twitter-offset-y);
+  }
+  .icon-youtube {
+    @include icon($icon-youtube-width, $icon-youtube-height, $icon-youtube-offset-x, $icon-youtube-offset-y);
+  }
+  .icon-phone-call {
+    @include icon($icon-phone-call-width, $icon-phone-call-height, $icon-phone-call-offset-x, $icon-phone-call-offset-y);
+  }
+  .icon-email {
+    @include icon($icon-email-width, $icon-email-height, $icon-email-offset-x, $icon-email-offset-y);
+  }
+  .icon-footer-bgk-one {
+    @include icon($icon-footer-bgk-one-width, $icon-footer-bgk-one-height, $icon-footer-bgk-one-offset-x, $icon-footer-bgk-one-offset-y);
+  }
+  .icon-footer-bgk-two {
+    @include icon($icon-footer-bgk-two-width, $icon-footer-bgk-two-height, $icon-footer-bgk-two-offset-x, $icon-footer-bgk-two-offset-y);
+  }
+  
+   
 
 
   

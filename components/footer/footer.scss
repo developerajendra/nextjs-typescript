@@ -1,0 +1,102 @@
+.footer-wrapper{
+    margin-top: 70px;
+    .primary-footer{
+        background: #2b4748;
+        padding: 60px 60px 20px;
+        position: relative;
+        overflow: hidden;
+
+        .icon-footer-bgk-one{
+            position: absolute;
+            left: 0;
+            @media (max-width: 991px){
+               bottom: 0;
+            }
+        }
+        .icon-footer-bgk-two{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        h6{
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'ProximaNova-Semibold';
+
+            @media (max-width: 991px){
+                margin-top: 30px;
+            }
+        }
+
+        .content{
+                color: #FFFFFF;
+                border: solid 1px;
+                padding: 12px 12px 0;
+                margin: 20px 0;
+                max-width: 300px;
+
+                h5{
+                    font-size: 0.875rem;
+                }
+                p{
+                    font-size: 0.65rem;
+                }
+            }
+        }
+
+        .navbar-nav .nav-link {
+            padding-right: 0;
+            padding-left: 0;
+            color: rgba(255,255,255,.7);
+            font-size: 0.875rem;
+            font-family: 'ProximaNova-Regular' !important;
+            padding: .3rem;
+        }
+
+        .reach-us{
+            address{
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.875rem;
+                max-width: 144px;
+                span{
+                    position: relative;
+                    right: 12px;
+                    font-family: 'ProximaNovaS-Extrabld';
+                }
+            }
+        }
+
+        .social{
+            display: flex;
+            justify-content: space-between;
+            max-width: 79px;
+            margin-top: 22px;
+        }
+
+        .call, .email {
+           i{
+            margin: 5px 0 0;
+           }
+           span{
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.875rem;
+                padding: 0 12px;
+                top: -7px;
+                position: relative;
+           }
+        }
+
+    
+    .secondary-footer{
+        background: #264041;
+        padding: 15px 0;
+        p{
+            color: rgba(255,255,255,.7);
+            text-align: center;
+            margin: auto;
+            font-size: 0.75rem; 
+        }
+    }
+}
+ 

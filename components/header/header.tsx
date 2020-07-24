@@ -9,7 +9,7 @@ const headerNavigation = [
     {name:'Ayurveda',route:'/ayurveda'},
     {name:'Cost Estimates',route:'/cost-estimates'},
     {name:'Patient Story',route:'/patient-story'},
-    {name:'Knowledges Bank',route:'/accreditation'},
+    {name:'Knowledges Bank',route:'/knowledge-bank'},
 ];
 
 const Header =()=> {

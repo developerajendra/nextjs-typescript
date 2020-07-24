@@ -5,7 +5,7 @@ import Link from 'next/link'
  
  
 
-import {Header} from './';
+import {Header, Footer} from './';
 
 const name = '[Your Name]'
 export const siteTitle = 'Next.js Sample Website'
@@ -37,7 +37,8 @@ export default function Layout({
 
       </Head>
       <Header/>
-      <main>{children}</main>
+        <main>{children}</main>
+      <Footer/>
     </div>
   )
 }
