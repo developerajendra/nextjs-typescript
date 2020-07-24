@@ -98,6 +98,10 @@
     @include icon($icon-arrow-filled-next-width, $icon-arrow-filled-next-height, $icon-arrow-filled-next-offset-x, $icon-arrow-filled-next-offset-y);
   }
 
+  .icon-read-more {
+    @include icon($icon-read-more-width, $icon-read-more-height, $icon-read-more-offset-x, $icon-read-more-offset-y);
+  }
+
 
 
 

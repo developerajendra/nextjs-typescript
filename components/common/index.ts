@@ -5,6 +5,7 @@ import MedicalButton from './medicalButton/medicalButton';
 import DeseaseCard from './deseaseCard/deseaseCard';
 import CompareDestinationCard from './compareDestinationCard/compareDestinationCard';
 import FeaturedHospital from './featuredHospital/featuredHospital';
+import NewsCard from './newsCard/newsCard';
 
 export {
     Navigation,
@@ -13,5 +14,6 @@ export {
     MedicalButton,
     DeseaseCard,
     CompareDestinationCard,
-    FeaturedHospital
+    FeaturedHospital,
+    NewsCard
 }

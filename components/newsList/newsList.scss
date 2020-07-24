@@ -1,0 +1,33 @@
+.news-list-wrapper{
+    .card{
+        box-shadow: 0px 6px 10px #0000000F;
+        border: none;
+        padding-bottom: 20px;
+        @media (min-width: 992px) and (max-width: 1250px){
+            width: 14rem !important;
+        }
+        @media (max-width: 991px){
+            margin: 30px auto auto;
+        }
+    }
+    .date{
+        color: #222;
+        font-family: 'ProximaNovaT-Thin' !important;
+    }
+    .news-title{
+        margin-bottom: 1.25rem;
+        font-family: 'Georgia-Bold';
+        color: #2A4748;
+        text-align: left;
+    }
+    .content{
+        font-family: 'ProximaNova-Regular' !important;
+    }
+    .read-more{
+        i{
+            position: relative;
+            left: 7px;
+            top: 4px;
+        }
+    }
+}

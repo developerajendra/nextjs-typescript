@@ -8,7 +8,8 @@ import {
     CompareDestinationList,
     TestimonialCarousel,
     MedicalLifeCycle,
-    FeaturedHospitals
+    FeaturedHospitals,
+    NewsList
 } from '../../components';
 
 function Home() {
@@ -39,8 +40,13 @@ function Home() {
             <section className="home-section background">
                 <FeaturedHospitals/>
             </section>
-            <section className="home-section"></section>
-
+            <section className="home-section">
+                <NewsList/>
+            </section>
+            <section className="home-section background">
+            </section>
+            <section className="home-section">
+            </section>
         </Layout>
     )
 }
