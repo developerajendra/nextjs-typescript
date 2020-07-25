@@ -7,6 +7,7 @@ import CompareDestinationCard from './compareDestinationCard/compareDestinationC
 import FeaturedHospital from './featuredHospital/featuredHospital';
 import NewsCard from './newsCard/newsCard';
 import CheckBox from './checkbox/checkBox';
+import Breadcrumb from './breadcrumb/breadcrumb';
 
 export {
     Navigation,
@@ -17,5 +18,6 @@ export {
     CompareDestinationCard,
     FeaturedHospital,
     NewsCard,
-    CheckBox
+    CheckBox,
+    Breadcrumb
 }

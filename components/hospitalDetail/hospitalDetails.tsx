@@ -9,15 +9,25 @@ import {
 } from 'react-bootstrap';
 import {
     MedicalButton,
-    DropDown
+    DropDown,
+    Breadcrumb
 } from '../../components/common';
 
+
+
 function HospitalDetails() {
+    const hospitalName = "NARAYANA MULTI SPECIALITY HOSPITAL"
+    const breadCrumbConfig = [
+        {label:'Hospitals', route:'/hospital/hospitals'},
+        {label:hospitalName}
+    ];
+
     return (
         <div className="hospital-detail-wrapper">
             <Row className="product-detail-header">
                 <Col lg={10}>
                     <div>
+                        <Breadcrumb breadcrumbConfig={breadCrumbConfig}/>
                         <h2>Hospitals & Doctors (387)</h2>
                     </div>
                 </Col>
