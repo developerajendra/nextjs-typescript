@@ -1,0 +1,26 @@
+.filter-wrapper{
+    padding: 10px;
+    border: solid 1px #BBC4C7;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    
+    h3{
+        font-size: 1rem;
+        padding: 20px 0;
+        border-top: solid 1px #BBC4C7;
+        margin: 20px 0 0;
+    }
+    .check-boxes{
+        label{
+                font-family: 'ProximaNova-Regular' !important;
+            }
+        ul li{
+            padding: 0 0 10px;
+            label{
+                margin: 0 10px;
+            }
+        }
+    }
+}
+

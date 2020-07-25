@@ -31,7 +31,7 @@ a:hover {
   text-decoration: underline;
 }
 label{
-  font-family: 'ProximaNovaS-Light', sans-serif  !important;;
+  font-family: 'ProximaNovaS-Light' !important;;
   font-weight: 100;
 }
 
@@ -70,3 +70,5 @@ ul, li{
 @import '../components/featuredHospitals/featuredHospitals.scss';
 @import '../components/newsList/newsList.scss';
 @import '../components/footer/footer.scss';
+@import '../components/hospitalAndoctorFilter/hospitalAndoctorFilter.scss';
+@import '../components/hospitalAndoctorFilter/hospitalAndoctorFilterHeader.scss';

@@ -1,0 +1,44 @@
+
+.hospital-secondary-header{
+    padding: 25px 0 0;
+    h2{
+        font-family: 'Georgia-Bold';
+        font-size: 1.25rem !important;
+    }
+    h3{
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    button{
+        float: right;
+        margin: 0 0 10px;
+        box-shadow: none;
+        height: auto;
+        letter-spacing: 0.24px;
+        font-family: 'ProximaNova-Semibold' !important;
+        font-size: .7rem;
+        height: 36px;
+    }
+
+    .secondary-header-row{
+        border-bottom: solid 1px #BBC4C7;
+        align-items: flex-end;
+    }
+
+    ul.mr-auto.navbar-nav{
+        flex-direction: row;
+        li {
+            a{
+                color: #22222299;
+                padding: 0 30px 10px;
+                text-transform: uppercase;
+                
+                &.route-selected{
+                    color: #46B469 !important;
+                    border-bottom: solid 4px
+                }
+            }
+        }  
+    }
+}

@@ -12,6 +12,8 @@ import MedicalLifeCycle from './medicalLifeCycle/medicalLifeCycle';
 import FeaturedHospitals from './featuredHospitals/featuredHospitals';
 import NewsList from './newsList/newsList';
 import Footer from './footer/footer';
+import HospitalAndoctorFilter from './hospitalAndoctorFilter/hospitalAndoctorFilter'
+import HospitalAndoctorFilterHeader from './hospitalAndoctorFilter/hospitalAndoctorFilterHeader';
 
 export {
     Header,
@@ -27,5 +29,7 @@ export {
     MedicalLifeCycle,
     FeaturedHospitals,
     NewsList,
-    Footer
+    Footer,
+    HospitalAndoctorFilter,
+    HospitalAndoctorFilterHeader
 }

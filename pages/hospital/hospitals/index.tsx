@@ -5,7 +5,7 @@ import {HospitalList} from '../../../components';
 function Hospitals() {
     return (
             <Hospital>
-                <h3>Hospitals</h3>
+                {/* <h3>Hospitals</h3> */}
                 <HospitalList/>
             </Hospital>
         
