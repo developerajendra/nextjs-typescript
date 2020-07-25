@@ -1,6 +1,17 @@
 
 .hospital-secondary-header{
-    padding: 25px 0 0;
+    &.sticky{
+        z-index: 1;
+        top: 0;
+    }
+
+    .secondary-header-row{
+        border-bottom: solid 1px #BBC4C7;
+        align-items: flex-end;
+        background: #fff;
+        padding: 25px 0 0;
+    }
+
     h2{
         font-family: 'Georgia-Bold';
         font-size: 1.25rem !important;
@@ -21,10 +32,7 @@
         height: 36px;
     }
 
-    .secondary-header-row{
-        border-bottom: solid 1px #BBC4C7;
-        align-items: flex-end;
-    }
+    
 
     ul.mr-auto.navbar-nav{
         flex-direction: row;

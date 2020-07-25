@@ -14,11 +14,11 @@ function Hospital({children}) {
                 <HospitalAndoctorFilterHeader />
                 <Row>
                 <Col lg={3}>
-                <Row>
-                        <HospitalAndoctorFilter  />
-                        </Row>
+                <Row className="sticky" style={{top: '100px'}}>
+                    <HospitalAndoctorFilter  />
+                </Row>
                     </Col>
-                    <Col lg={9}>
+                    <Col style={{background:'#f8f8f8'}} lg={9}>
                         {children}
                     </Col>
                 </Row>

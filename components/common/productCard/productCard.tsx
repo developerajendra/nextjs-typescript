@@ -6,8 +6,8 @@ import {useRouter} from 'next/router';
 
 function ProductCard({data}) {
     return (
-            <Card style={{  flexDirection:'row', alignItems: 'flex-end',margin: '20px 0' }}>
-                <Card.Img style={{flex:'1', maxWidth: '20%'}} variant="top" src="/images/profile.jpg" />
+            <Card className="product-card-wrapper">
+                <Card.Img variant="top" src="/images/hospital/h1.jpg" />
                 <Card.Body style={{flex:'2'}}>
                     <Card.Title>Card Title</Card.Title>
                     <Card.Text>

@@ -1,0 +1,11 @@
+.product-card-wrapper{
+    &.card{
+        flex-direction: row;
+        align-items: flex-end;
+        margin: 20px 0px;
+
+        img{
+            max-width: 238px;
+        }
+    }
+}

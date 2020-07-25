@@ -14,7 +14,7 @@ const headerNavigation = [
 
 function HospitalAndoctorFilterHeader() {
     return (
-        <div className="hospital-secondary-header">
+        <div className="hospital-secondary-header sticky">
             <Row className="secondary-header-row">
                     <Col lg={3}>
                         <div>
