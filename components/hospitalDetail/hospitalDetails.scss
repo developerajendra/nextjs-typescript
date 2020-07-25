@@ -1,0 +1,138 @@
+.hospital-detail-wrapper{
+    .product-detail-header{
+        // border-bottom: solid 1px #BBC4C7;
+        align-items: flex-end;
+        background: #fff;
+        padding: 25px 0 15px;
+
+        h2{
+            font-family: 'Georgia-Bold';
+            font-size: 1.25rem !important;
+        }
+        h3{
+            font-size: 1rem;
+            padding: 10px 0;
+        }
+
+        button{
+            float: right;
+            box-shadow: none;
+            height: auto;
+            letter-spacing: 0.24px;
+            font-family: 'ProximaNova-Semibold' !important;
+            font-size: .7rem;
+            height: 36px;
+        }
+    }
+
+   
+
+    .detail-wrapper{
+        background:#f8f8f8;
+        padding: 50px 0 40px 0;
+
+        .detail-right-content{
+            @media (max-width: 991px){
+                margin-top: 50px;
+            }
+        }
+
+        address, .call{
+            font-size: 0.875rem;
+            margin: 0;
+        }
+        .visit-website{
+            text-decoration: underline;
+            color: #22222299
+        }
+
+        .card-body {
+            padding: 1.25rem 2rem;
+        }
+
+        .card{
+            max-width: 567px;
+            border: none;
+            box-shadow: 0px 10px 20px #0000001A;
+
+            @media (max-width: 991px){
+                margin: auto;
+                max-width: 100%;
+            }
+
+            .content-row{
+                border-bottom: solid 1px #BBC4C7;
+                
+            }
+            .content-column{
+                border-right: 1px solid #BBC4C7;
+                padding: 20px;
+                @media (max-width: 991px){
+                   border: none;
+                }
+            }
+
+            .no-border{
+                border: none;
+            }
+        }
+
+        .nav-tabs{
+            margin-top: 20px;
+            justify-content: space-between;
+            @media (max-width: 991px){
+                flex-direction: column;
+            }
+
+            .nav-link{
+                border: none;
+                color: #22222299;
+                padding: 0 0 12px 0;
+
+                @media (max-width: 991px){
+                    margin-bottom: 20px;
+                }
+
+                &:focus,&:hover {
+                    outline: none;
+                    border: none;
+                }
+                &.active{
+                        border: none;
+                        background: none;
+                        color: #46B469 !important;
+                        border-bottom: solid #46B469;
+                }
+            }
+           
+        }
+        .tab-content{
+            .active{
+                padding: 20px 0;
+            }
+            .form-control.select{
+                background-position-x: 97%;
+                background-color: #fff;
+            }
+
+            .card{
+                max-width: 100%;
+                .card-text{
+                    border-top: solid 1px #BBC4C7;
+                    padding: 10px 0;
+                    margin: 20px 0;
+                }
+                ul,li{
+                    padding-left: 16px;
+                    list-style: disc;
+                }
+                button{
+                    font-size: .7rem;
+                    height: 36px;
+                }
+            }
+        }
+        
+    }
+   
+}

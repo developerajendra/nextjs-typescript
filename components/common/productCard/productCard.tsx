@@ -15,7 +15,7 @@ function ProductCard({data}) {
                     Some quick example text to build on the card title and make up the bulk of
                     the card's content.
                     </Card.Text>
-                    <Link href={`${data.routes}/[id]`} as={`${data.routes}/${data.routesID}`}><a href="#">{data.buttonText}</a></Link>
+                    <Link href={`${data.routes}/[id]`} as={`${data.routes}/${data.routesID}`}><a style={{color:' #22222299'}} href="#">{data.buttonText}</a></Link>
                     
                 </Card.Body>
             </Card>

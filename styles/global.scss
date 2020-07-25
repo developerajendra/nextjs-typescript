@@ -15,8 +15,8 @@ body {
   box-sizing: border-box;
 }
 
-a {
-  color: #0070f3;
+a,a:hover,a:focus {
+  color: #22222299;
   text-decoration: none;
   font-size: .88rem;
   // font-family: 'ProximaNova-Regular'  !important;;
@@ -73,3 +73,4 @@ ul, li{
 @import '../components/hospitalAndoctorFilter/hospitalAndoctorFilter.scss';
 @import '../components/hospitalAndoctorFilter/hospitalAndoctorFilterHeader.scss';
 @import '../components/common/productCard/productCard.scss';
+@import '../components/hospitalDetail/hospitalDetails.scss';
