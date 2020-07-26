@@ -1,0 +1,52 @@
+ 
+.home-section.background.knowledge-bank{
+    padding-top: 30px;
+    margin-top: 20px;
+    border-top: solid 1px #bbc4c7;
+}
+
+.knowledge-bank-wrapper{ 
+    .card{
+        width: 100% !important;
+        flex-direction: row;
+        margin: 20px 0;
+        background: transparent;
+        border: none;
+        @media (max-width: 991px){
+            flex-direction: column;
+        }
+
+        .card-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-title {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        .card-text{
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            font-family: 'ProximaNova-Regular' !important;
+            color: #2B2D33;
+        }
+        .read-more{
+            color: #46B469;
+            font-size: 1rem;
+            text-transform: uppercase;
+
+             i {
+                left: 9px;
+                top: 2px;
+            }
+        }
+        img{
+            max-width: 50%;
+            @media (max-width: 991px){
+                max-width: 100%;
+               }
+        }
+    }
+}

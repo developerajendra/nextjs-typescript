@@ -15,6 +15,7 @@ import Footer from './footer/footer';
 import HospitalAndoctorFilter from './hospitalAndoctorFilter/hospitalAndoctorFilter'
 import HospitalAndoctorFilterHeader from './hospitalAndoctorFilter/hospitalAndoctorFilterHeader';
 import CostEstimate from './costEstimate/costEstimate';
+import KnowledgeBank from './knowledgeBank/knowledgeBank';
 
 export {
     Header,
@@ -33,5 +34,6 @@ export {
     Footer,
     HospitalAndoctorFilter,
     HospitalAndoctorFilterHeader,
-    CostEstimate
+    CostEstimate,
+    KnowledgeBank
 }

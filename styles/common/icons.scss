@@ -123,6 +123,10 @@
     @include icon($icon-footer-bgk-two-width, $icon-footer-bgk-two-height, $icon-footer-bgk-two-offset-x, $icon-footer-bgk-two-offset-y);
   }
   
+  .icon-arrow {
+    @include icon($icon-arrow-width, $icon-arrow-height, $icon-arrow-offset-x, $icon-arrow-offset-y);
+  }
+  
    
 
 
