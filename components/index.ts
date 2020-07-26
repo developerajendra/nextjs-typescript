@@ -14,6 +14,7 @@ import NewsList from './newsList/newsList';
 import Footer from './footer/footer';
 import HospitalAndoctorFilter from './hospitalAndoctorFilter/hospitalAndoctorFilter'
 import HospitalAndoctorFilterHeader from './hospitalAndoctorFilter/hospitalAndoctorFilterHeader';
+import CostEstimate from './costEstimate/costEstimate';
 
 export {
     Header,
@@ -31,5 +32,6 @@ export {
     NewsList,
     Footer,
     HospitalAndoctorFilter,
-    HospitalAndoctorFilterHeader
+    HospitalAndoctorFilterHeader,
+    CostEstimate
 }
