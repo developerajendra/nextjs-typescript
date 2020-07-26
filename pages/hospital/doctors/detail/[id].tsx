@@ -10,7 +10,7 @@ function HospitalDetail(props) {
     
     return (
         <Layout>
-            <DoctorDetails/>
+            <DoctorDetails />
         </Layout>
     )
 }

@@ -1,0 +1,139 @@
+.doctor-detail-wrapper{
+    .product-detail-header{
+        // border-bottom: solid 1px #BBC4C7;
+        align-items: flex-end;
+        background: #fff;
+        padding: 25px 0 15px;
+
+        h2{
+            font-family: 'Georgia-Bold';
+            font-size: 1.25rem !important;
+        }
+        h3{
+            font-size: 1rem;
+            padding: 10px 0;
+        }
+
+        button{
+            float: right;
+            box-shadow: none;
+            height: auto;
+            letter-spacing: 0.24px;
+            font-family: 'ProximaNova-Semibold' !important;
+            font-size: .7rem;
+            height: 36px;
+        }
+    }
+
+   
+
+    .detail-wrapper{
+        background:#f8f8f8;
+        padding: 50px 0 40px 0;
+
+        ul,li{
+            padding-left: 16px;
+            list-style: disc;
+        }
+
+        .detail-right-content{
+            @media (max-width: 991px){
+                margin-top: 50px;
+            }
+        }
+
+        
+
+        
+
+        .card{
+            max-width: 567px;
+            border: none;
+            box-shadow: 0px 10px 20px #0000001A;
+
+            @media (max-width: 991px){
+                margin: auto;
+                max-width: 100%;
+            }
+
+            .card-body {
+                padding: 10px 0 5px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .rating{
+                display: flex;
+                padding: 0;
+                transform: scale(0.8);
+                margin: 0;
+
+                    li {
+                        list-style: none;
+                        padding: 0 6px 0 0;
+                        &.not-rated{
+                            -webkit-filter: grayscale(1);
+                            filter: grayscale(1);
+                        }
+                    }
+                }
+                 
+        }
+        .card-column{
+            text-align: center;
+
+            button{
+                margin: 20px 0;
+                width: 100%;
+                
+            }
+        }
+
+       
+
+        .nav-tabs{
+            margin-top: 30px;
+
+            @media (max-width: 991px){
+                flex-direction: column;
+            }
+
+            .nav-link{
+                border: none;
+                color: #22222299;
+                padding:0 70px 12px 0;
+
+                @media (max-width: 991px){
+                    margin-bottom: 20px;
+                }
+
+                &:focus,&:hover {
+                    outline: none;
+                    border: none;
+                }
+                &.active{
+                        border: none;
+                        background: none;
+                        color: #46B469 !important;
+                        border-bottom: solid #46B469;
+                }
+            }
+           
+        }
+        .tab-content{
+            .active{
+                padding: 20px 0;
+            }
+            .form-control.select{
+                background-position-x: 97%;
+                background-color: #fff;
+            }
+
+            
+
+        }
+        
+        
+    }
+   
+}

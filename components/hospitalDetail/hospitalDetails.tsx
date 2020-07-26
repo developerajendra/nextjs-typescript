@@ -32,7 +32,7 @@ function HospitalDetails() {
                     </div>
                 </Col>
                 <Col lg={2}>
-                    <MedicalButton text="Compare Now" type="outline" />
+                    <MedicalButton text="WRITE A REVIEW" type="outline" />
                 </Col>
             </Row>
             <Row className="detail-wrapper">
