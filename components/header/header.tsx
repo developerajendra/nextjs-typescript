@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 const headerNavigation = [
     {name:'Hospital',route:'/hospital/hospitals'},
-    {name:'Ayurveda',route:'/ayurveda'},
+    {name:'Ayurveda',route:'/'},
     {name:'Cost Estimates',route:'/costEstimates'},
-    {name:'Patient Story',route:'/patient-story'},
+    {name:'Patient Story',route:'/'},
     {name:'Knowledges Bank',route:'/knowledgeBank'},
 ];
 

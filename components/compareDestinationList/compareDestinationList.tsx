@@ -1,6 +1,8 @@
 import React from 'react'
-import {CompareDestinationCard, DropDown, MedicalButton} from '../common';
 import {Row, Col} from 'react-bootstrap';
+
+import {CompareDestinationCard, DropDown, MedicalButton} from '../common';
+
 
 function CompareDestinationList() {
     return (
@@ -28,8 +30,8 @@ function CompareDestinationList() {
                         </Col>
                 </Row> 
                 <Row className="button-wrapper">
-                    <MedicalButton text="Clear Inputs" type="outline" />
-                    <MedicalButton text="COMPARE NOW" type="primary" />
+                        <MedicalButton text="Clear Inputs" type="outline" />
+                        <MedicalButton text="COMPARE NOW" type="primary" routeLink="/hospital/compareResult" />
                 </Row> 
             </div>
         </div>
