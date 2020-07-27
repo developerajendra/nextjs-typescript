@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap';
 import {
     MedicalButton,
-    DropDown,
+    SelectBox,
     Breadcrumb,
 } from '../../components/common';
 

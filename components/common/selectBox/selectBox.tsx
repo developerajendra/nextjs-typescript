@@ -10,6 +10,7 @@ interface dropdown{
 }
 function SelectBox({label, defaultSelectText, styleTypeDefault, options }:dropdown) {
      const [selectedOption, setSelectedOption] = useState(null);
+     
 
     const handleChange = selectedOption => {
         setSelectedOption( { selectedOption });
