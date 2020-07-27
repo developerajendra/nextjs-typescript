@@ -5,7 +5,7 @@ import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 
 import { GetStaticProps } from 'next'
-import {Container} from 'react-bootstrap';
+
 
 import Home from './home';
 export default function Main({

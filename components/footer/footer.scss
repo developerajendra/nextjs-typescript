@@ -1,23 +1,26 @@
 .footer-wrapper{
     margin-top: 70px;
-    .primary-footer{
-        background: #2b4748;
-        padding: 60px 60px 20px;
-        position: relative;
-        overflow: hidden;
+    position: relative;
+    overflow: hidden;
+    background: #2b4748;
 
-        .icon-footer-bgk-one{
-            position: absolute;
-            left: 0;
-            @media (max-width: 991px){
-               bottom: 0;
-            }
-        }
-        .icon-footer-bgk-two{
-            position: absolute;
-            right: 0;
-            bottom: 0;
-        }
+    .icon-footer-bgk-one{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    .icon-footer-bgk-two{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .primary-footer{
+        
+        padding: 60px 60px 20px;
+       
+
+        
 
         h6{
             color: #fff;
@@ -91,6 +94,8 @@
     .secondary-footer{
         background: #264041;
         padding: 15px 0;
+        position: relative;
+        
         p{
             color: rgba(255,255,255,.7);
             text-align: center;
