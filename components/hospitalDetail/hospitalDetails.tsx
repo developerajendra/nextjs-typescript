@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap';
 import {
     MedicalButton,
-    DropDown,
+    SelectBox,
     Breadcrumb
 } from '../../components/common';
 
@@ -132,7 +132,7 @@ function HospitalDetails() {
                         </Tab>
                         <Tab eventKey="package" title="PACKAGE" >
                         
-                            <DropDown styleTypeDefault={true} defaultSelectText="Select Disease Type"/>
+                            <SelectBox styleTypeDefault={true} defaultSelectText="Select Disease Type"/>
 
                             <Card>
                                 <Card.Body>

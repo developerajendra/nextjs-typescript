@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card} from 'react-bootstrap';
-import {DropDown} from '../';
+import {SelectBox} from '../';
 
 interface destinationCard{ 
     image?:string
@@ -16,8 +16,8 @@ function CompareDestinationCard({image}:destinationCard) {
             </div> }
 
             <Card.Body>
-                <DropDown label="SELECT COUNTRY"/>
-                <DropDown label="SELECT HOSPITAL"/> 
+                <SelectBox label="SELECT COUNTRY"/>
+                <SelectBox label="SELECT HOSPITAL"/> 
             </Card.Body>
         </Card>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap';
 
-import {CompareDestinationCard, DropDown, MedicalButton} from '../common';
+import {CompareDestinationCard, SelectBox, MedicalButton} from '../common';
 
 
 function CompareDestinationList() {
@@ -12,7 +12,7 @@ function CompareDestinationList() {
                 <h2>Compare Best Medical Destination</h2>
             </div>
             <div className="select-desease">
-                <DropDown styleTypeDefault={true} defaultSelectText="Select Disease Type"/>
+                <SelectBox styleTypeDefault={true} defaultSelectText="Select Disease Type"/>
             </div>
             <div className="destination-cards">
                 <Row>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Carousel, Col, Row} from 'react-bootstrap';
-import {DropDown} from '../common';
+import {SelectBox} from '../common';
 
 function TestimonialCarousel() {
     return (
@@ -14,8 +14,8 @@ function TestimonialCarousel() {
                                     <span>Happy to share</span>
                                     <h2>Patient Stories</h2>
                                 </div>
-                                <DropDown label="SELECT COUNTRY"/>
-                                <DropDown label="SELECT STATE"/> 
+                                <SelectBox label="SELECT COUNTRY"/>
+                                <SelectBox label="SELECT STATE"/> 
                             </Col>
                             <Col className="select-wrapper" lg={10}>
                                 <div className="testimonials">
@@ -56,8 +56,8 @@ function TestimonialCarousel() {
                                     <span>Happy to share</span>
                                     <h2>Patient Stories</h2>
                                 </div>
-                                <DropDown label="SELECT COUNTRY"/>
-                                <DropDown label="SELECT STATE"/> 
+                                <SelectBox label="SELECT COUNTRY"/>
+                                <SelectBox label="SELECT STATE"/> 
                             </Col>
                             <Col className="select-wrapper" lg={10}>
                                 <div className="testimonials">
@@ -98,8 +98,8 @@ function TestimonialCarousel() {
                                     <span>Happy to share</span>
                                     <h2>Patient Stories</h2>
                                 </div>
-                                <DropDown label="SELECT COUNTRY"/>
-                                <DropDown label="SELECT STATE"/> 
+                                <SelectBox label="SELECT COUNTRY"/>
+                                <SelectBox label="SELECT STATE"/> 
                             </Col>
                             <Col className="select-wrapper" lg={10}>
                                 <div className="testimonials">

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Table} from 'react-bootstrap';
-import {DropDown} from '../common';
+import {SelectBox} from '../common';
 
 function CostEstimate() {
     return (
@@ -11,7 +11,7 @@ function CostEstimate() {
             </div>
 
             <div className="select-desease">
-                <DropDown styleTypeDefault={true} defaultSelectText="Choose Treatment Name"/>
+                <SelectBox styleTypeDefault={true} defaultSelectText="Choose Treatment Name"/>
             </div>
 
             <section className="treatment-description">

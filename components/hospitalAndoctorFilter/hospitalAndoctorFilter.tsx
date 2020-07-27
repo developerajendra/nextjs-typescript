@@ -1,6 +1,6 @@
 import React from 'react'
 import {Row} from  'react-bootstrap';
-import {DropDown, CheckBox} from '../common';
+import {SelectBox, CheckBox} from '../common';
 
 const filterData = [
     {text:'Ahmadabad',id:1},
@@ -26,8 +26,8 @@ function HospitalAndoctorFilter() {
     return (
         <div className="filter-wrapper">
             <div className="drop-downs">
-                <DropDown label="SELECT DISEASE"/>
-                <DropDown label="SELECT STATE"/> 
+                <SelectBox label="SELECT DISEASE"/>
+                <SelectBox label="SELECT STATE"/> 
             </div>
             <div className="check-boxes">
                 <h3>TOP HOSPITALS BY COUNTRY</h3>

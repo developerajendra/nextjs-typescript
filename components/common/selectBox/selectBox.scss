@@ -1,7 +1,9 @@
     
     .dropdown-wrapper{
-        
-        .form-control.select {
+        .css-2b097c-container span{
+            display: none !important;
+        }
+        .css-yk16xz-control {
             font-weight: 100;
             line-height: 1.5;
             color: #222;
@@ -18,14 +20,31 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             background-position-x: 97%;
+            -webkit-transition: .2s;
 
+             .css-1hb7zxy-IndicatorsContainer{
+                display: none !important;   
+            }
+            .css-tlfecz-indicatorContainer{
+                color: #5a5a5a;
+            }
+            .css-g1d714-ValueContainer{
+                all: unset;
+            }
+
+            .css-1wa3eu0-placeholder{
+                font-weight: 100;
+                line-height: 1.5;
+                color: #222;
+                margin-left: 0;
+            }
     }
     .label{
         letter-spacing: 1.2px;
         color: #222;
         font-size: .75rem;
         position: relative;
-        top: 8px;
+        top: 5px;
         margin: 0;
     }
 }
@@ -33,7 +52,10 @@
 
  
 .dropdown-wrapper-default{
-    .form-control.select {
+    .css-2b097c-container span{
+            display: none !important;
+        }
+    .css-yk16xz-control {
         font-weight: 100;
         line-height: 1.5;
         color: #222;
@@ -41,10 +63,15 @@
         background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='8.001'><path class='a' d='M711,822.756l.933-.757L718,828.486,724.067,822l.933.757L718,830Z' transform='translate(-711 -821.999)'/></svg>") no-repeat right ;
         -webkit-appearance: none;
         -moz-appearance: none;
-        background-position-x: 99%;
         font-family: 'ProximaNova-Regular' !important;
+        background-position-x: 99%;
+        -webkit-transition: .2s;
+        .css-tlfecz-indicatorContainer{
+            color: #5a5a5a;
+        }
 
 }
+ 
 .label{
     letter-spacing: 1.2px;
     color: #222;
