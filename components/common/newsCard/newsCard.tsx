@@ -22,7 +22,7 @@ function NewsCard({ readMoreLink, title, date, image, news, icon}: news) {
                 {news}
                 </Card.Text>
                 <Link href={readMoreLink}><a className="read-more" href="#">Read More
-                 {icon ? <i className={icon}></i>  : <i className="icon-read-mores"></i> }
+                 {icon ? <i className={icon}></i>  : <i className="icon-read-more"></i> }
                  </a></Link>
             </Card.Body>
             </Card>
