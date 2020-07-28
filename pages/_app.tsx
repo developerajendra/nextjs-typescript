@@ -15,4 +15,4 @@ import store from '../store/store';
 const makestore = ()=>store;
 const wrapper = createWrapper(makestore);
 
-export default wrapper.withRedux(App)
+export default App;
