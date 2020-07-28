@@ -3,6 +3,7 @@ import {SelectBox, MedicalButton, Loader} from '../common';
 import { Col, Row } from 'react-bootstrap'
 import useSWR from 'swr';
 // import fetch from 'unfetch';
+import {COUNTRY_LIST} from '../../services/apiURLS';
 
 
 const options = [
@@ -11,7 +12,6 @@ const options = [
     { value: 'vanilla', label: 'Vanilla' },
   ];
 
-const API_URL = 'https://restcountries.eu/rest/v2/all';
    const fetcher = async (URL)=>{
    const response = await fetch(URL);
    const _data = await response.json();
@@ -23,7 +23,7 @@ const API_URL = 'https://restcountries.eu/rest/v2/all';
 
   
 function HealthCarefilter() {
-    const { data, error } = useSWR(API_URL, fetcher);
+    const { data, error } = useSWR(COUNTRY_LIST, fetcher);
 
     if (error) return <div>failed to load</div>;
     if (!data) return  <Loader />;

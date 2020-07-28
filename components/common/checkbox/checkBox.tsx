@@ -1,8 +1,8 @@
 import React from 'react'
 
 interface checkbox {
-    text:string;
-    id:number;
+    text?:string;
+    id?:number;
 }
 function CheckBox({text, id}:checkbox) {
     return (
