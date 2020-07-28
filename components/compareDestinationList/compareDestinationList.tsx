@@ -1,10 +1,16 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap';
+import {useDispatch, useSelector} from "react-redux";
 
 import {CompareDestinationCard, SelectBox, MedicalButton} from '../common';
 
 
 function CompareDestinationList() {
+
+    const {data, countryListLoader} = useSelector(state => state.countryList);
+     
+    
+
     return (
         <div className='destination-compare-wrapper'>
              <div className="list-header">
@@ -17,16 +23,16 @@ function CompareDestinationList() {
             <div className="destination-cards">
                 <Row>
                     <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard image="india"/>
+                        <CompareDestinationCard countryList={data} loader={countryListLoader} image="india"/>
                     </Col>
                     <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard/>
+                        <CompareDestinationCard countryList={data} loader={countryListLoader}  />
                         </Col>
                     <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard/>
+                        <CompareDestinationCard countryList={data} loader={countryListLoader}  />
                         </Col>
                     <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard/>
+                        <CompareDestinationCard countryList={data} loader={countryListLoader}  />
                         </Col>
                 </Row> 
                 <Row className="button-wrapper">

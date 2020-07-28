@@ -1,12 +1,16 @@
 import React from 'react';
 import {Card} from 'react-bootstrap';
 import {SelectBox} from '../';
+import {Loader} from '../../common';
 
 interface destinationCard{ 
-    image?:string
+    image?:string;
+    countryList:[];
+    loader:boolean;
+
 }
 
-function CompareDestinationCard({image}:destinationCard) {
+function CompareDestinationCard({image, countryList, loader}:destinationCard) {
     return (
         <Card style={{ width: '17rem' }}>
             { image ?  <Card.Img variant="top" src={`/images/${image}.jpg`} /> :
@@ -16,7 +20,7 @@ function CompareDestinationCard({image}:destinationCard) {
             </div> }
 
             <Card.Body>
-                <SelectBox label="SELECT COUNTRY"/>
+                {loader ? <Loader/> : <SelectBox options={countryList} label="SELECT COUNTRY"/>}
                 <SelectBox label="SELECT HOSPITAL"/> 
             </Card.Body>
         </Card>
