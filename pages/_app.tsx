@@ -1,9 +1,18 @@
 import { AppProps } from 'next/app'
 import '../styles/global.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container} from 'react-bootstrap';
+import { Provider } from 'react-redux';
+import {createWrapper} from 'next-redux-wrapper';
+import store from '../store/store';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-    
+
+ function App({ Component, pageProps }: AppProps) {
+  return <Provider store={store}>
+      <Component {...pageProps} />
+  </Provider>
 }
+
+const makestore = ()=>store;
+const wrapper = createWrapper(makestore);
+
+export default wrapper.withRedux(App)

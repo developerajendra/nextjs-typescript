@@ -1,0 +1,6 @@
+ 
+
+export const TYPE = {
+    COUNTRY_LIST: 'COUNTRY_LIST',
+    COUNTRY_LIST_LOADER: 'COUNTRY_LIST_LOADER'
+}
