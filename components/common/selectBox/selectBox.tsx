@@ -7,20 +7,21 @@ interface dropdown{
     defaultSelectText?:string;
     styleTypeDefault?:boolean;
     options?:any;
+    onSelect?:Function;
 }
-function SelectBox({label, defaultSelectText, styleTypeDefault, options }:dropdown) {
-     const [selectedOption, setSelectedOption] = useState(null);
+function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect }:dropdown) {
+    //  const [selectedOption, setSelectedOption] = useState(null);
      
 
     const handleChange = selectedOption => {
-        setSelectedOption( { selectedOption });
+        // setSelectedOption( { selectedOption });
+        onSelect(selectedOption);
       };
 
 
       const customStyles = {
         dropdownIndicator:()=>({
           display:'none'
-          // background-mage:"<svg  width='8' height='4.001'  xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path class='a' d='M714,825.756l.933-.757L718,827.486,721.067,825l.933.757L718,829Z' transform='translate(-714 -824.999)'/></svg>"
         })
       }
       

@@ -198,3 +198,12 @@ animation-delay: -0.5s;
   opacity: 0;
 }
 }
+
+
+//DISABLED
+.button-outline.disabled, .btn-primary.disabled, .btn-primary:disabled {
+  color: #fff !important;
+  background-color: #929292 !important;
+  border-color: #9c9c9c !important;
+  pointer-events: none;
+}

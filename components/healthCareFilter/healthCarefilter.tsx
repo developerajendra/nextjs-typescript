@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {SelectBox, MedicalButton, Loader} from '../common';
 import { Col } from 'react-bootstrap'
 import {useDispatch, useSelector} from "react-redux";
@@ -41,20 +41,55 @@ const fetchCountryList = ()=>{
     };
 }
 
+const initialState = {
+    isSelcted:false,
+    countryOfOrigin: null,
+    treatmentType: null,
+    countryOfTreatment: null
+};
+
 const HealthCarefilter = ()=> {
+    const [dropDownValue, setdropDownValue] = useState(initialState);
     const countryList = fetchCountryList();
     const tratmentTypeData = fetchTreatmentTypeData();
+    const loader = countryList.loader || tratmentTypeData.loader;
+
+
+    const onOriginSelect = (selectedValue)=>{
+        setdropDownValue({
+            ...dropDownValue,
+            isSelcted:true,
+            countryOfOrigin: selectedValue.value
+        });
+    };
+    const onTreatMentTypeSelect = (selectedValue)=>{
+        setdropDownValue({
+            ...dropDownValue,
+            isSelcted:true,
+            treatmentType: selectedValue.value
+        });
+    };
+    const onCountryOfTreatmentSelect = (selectedValue)=>{
+        setdropDownValue({
+            ...dropDownValue,
+            isSelcted:true,
+            countryOfTreatment: selectedValue.value
+        });
+    };
+
+     const isOneSelected = dropDownValue.isSelcted;
+     
     
     return (
         <Col lg={8} md={12}>
-            {(countryList.loader || tratmentTypeData.loader) ? <Loader /> : null}
+            {loader ? <Loader /> : null}
             <div className="health-care">
                 <h1>Choose the Right Healthcare.<i className="icon-heartbeat"></i></h1>
                 <div>
-                    {countryList.data && <SelectBox options={countryList.data} label="COUNTRY OF ORIGIN"/>}
-                    {tratmentTypeData.data && <SelectBox options={tratmentTypeData.data} label="TREATMENT TYPE"/> }
-                    {countryList.data && <SelectBox options={countryList.data} label="COUNTRY OF TREATMNET"/> }
-                    <MedicalButton text="SEARCH NOW" type="primary" />
+                    {countryList.data && <SelectBox onSelect={onOriginSelect} options={countryList.data} label="COUNTRY OF ORIGIN"/>}
+                    {tratmentTypeData.data && <SelectBox onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="TREATMENT TYPE"/> }
+                    {countryList.data && <SelectBox onSelect={onCountryOfTreatmentSelect} options={countryList.data} label="COUNTRY OF TREATMNET"/> }
+                    <MedicalButton disabled={loader || !isOneSelected} text="SEARCH NOW" type="primary" routeLink="/hospital/hospitals" />
                 </div>
 
             </div>
