@@ -6,9 +6,7 @@ import useSWR from 'swr'
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchTreatmentTypes} from '../../store/reducers/treatmentType/treatmentType.action';
-import {countryList} from '../../store/reducers/coutntryList/countryList.action';
-
+import {fetchTreatmentTypes, fetchCountryList} from '../../store/reducers/filters/filters.action';
 
 
 /**
@@ -34,12 +32,12 @@ const fetchTreatmentTypesData = ()=>{
  * API data fetching from redux
  * Fetch the country list if it's not exist on redux store
  */
-const fetchCountryList = ()=>{
+const fetchCountryListData = ()=>{
     const dispatch = useDispatch();
     const {countryListData, countryListLoader} = useSelector(state => state.countryList)
 
     useEffect(() => {
-        !countryListData && dispatch(countryList(API.COUNTRY_LIST))
+        !countryListData && dispatch(fetchCountryList(API.COUNTRY_LIST))
     }, []);
     return {
         loader: countryListLoader,
@@ -56,7 +54,7 @@ const initialState = {
 
 const HealthCarefilter = ()=> {
     const [dropDownValue, setdropDownValue] = useState(initialState);
-    const countryList = fetchCountryList();
+    const countryList = fetchCountryListData();
     const tratmentTypeData = fetchTreatmentTypesData();
     const loader = countryList.loader || tratmentTypeData.loader;
 

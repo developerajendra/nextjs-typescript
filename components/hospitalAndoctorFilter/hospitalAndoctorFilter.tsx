@@ -5,27 +5,26 @@ import {useRouter} from 'next/router';
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchTreatmentTypes} from '../../store/reducers/treatmentType/treatmentType.action';
-import {countryList} from '../../store/reducers/coutntryList/countryList.action';
+import {fetchTreatmentTypes, fetchCountryList} from '../../store/reducers/filters/filters.action';
 
 
 const filterData = [
-    {text:'Ahmadabad',id:1},
-    {text:'Aluva',id:2},
-    {text:'Ambattur',id:3},
-    {text:'Amritsar',id:4},
-    {text:'Anand',id:5},
-    {text:'Anekal',id:6},
-    {text:'Ballabgarh',id:7},
-    {text:'Banglore',id:8},
-    {text:'Bhubneswar',id:10},
-    {text:'Chandigarh',id:11},
-    {text:'Chennai',id:12},
-    {text:'Delhi',id:13},
-    {text:'Dehradun',id:14},
-    {text:'Dimapur',id:15},
-    {text:'Dhanbad',id:16}
-]
+    {"name":"Ahmadabad","id":1, "countryCode":"IN"},
+    {"name":"Aluva","id":2, "countryCode":"IN"},
+    {"name":"Ambattur","id":3, "countryCode":"IN"},
+    {"name":"Amritsar","id":4, "countryCode":"IN"},
+    {"name":"Anand","id":5, "countryCode":"IN"},
+    {"name":"Anekal","id":6, "countryCode":"IN"},
+    {"name":"Ballabgarh","id":7, "countryCode":"IN"},
+    {"name":"Banglore","id":8, "countryCode":"IN"},
+    {"name":"Bhubneswar","id":10, "countryCode":"IN"},
+    {"name":"Chandigarh","id":11, "countryCode":"IN"},
+    {"name":"Chennai","id":12, "countryCode":"IN"},
+    {"name":"Delhi","id":13, "countryCode":"IN"},
+    {"name":"Dehradun","id":14, "countryCode":"IN"},
+    {"name":"Dimapur","id":15, "countryCode":"IN"},
+    {"name":"Dhanbad","id":16, "countryCode":"IN"}
+];
  
 const initialState = {
     country: null,
@@ -59,12 +58,12 @@ const fetchTreatmentTypesData = ()=>{
  * API data fetching from redux
  * Fetch the country list if it's not exist on redux store
  */
-const fetchCountryList = ()=>{
+const fetchCountryListData = ()=>{
     const dispatch = useDispatch();
     const {countryListData, countryListLoader} = useSelector(state => state.countryList)
 
     useEffect(() => {
-        !countryListData && dispatch(countryList(API.COUNTRY_LIST))
+        !countryListData && dispatch(fetchCountryList(API.COUNTRY_LIST))
     }, []);
     return {
         loader: countryListLoader,
@@ -88,7 +87,7 @@ const selectedValue = (country:[], treatment:[])=>{
 
 function HospitalAndoctorFilter() {
     const [dropDownValue, setdropDownValue] = useState(initialState);
-    const countryList = fetchCountryList();
+    const countryList = fetchCountryListData();
     const tratmentTypeData = fetchTreatmentTypesData();
     const loader = countryList.loader || tratmentTypeData.loader;
     const selctedValue =  selectedValue(countryList.data, tratmentTypeData.data);
@@ -105,7 +104,7 @@ function HospitalAndoctorFilter() {
             ...dropDownValue,
             country: selectedValue.value
         });
-    };
+    };  
     
     
     return (
