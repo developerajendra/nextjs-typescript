@@ -95,9 +95,7 @@ const selectedValue = (country:[], treatment:[])=>{
         const selectedTreatment = query['treatment-type'];  
         const currentCountry =  country?.find((data:any)=>data.value == selectedCountry);
         const currentTreatment =  treatment?.find((data:any)=>data.value == selectedTreatment);
-        
 
-        
         return {
             country:currentCountry,
             treatment:currentTreatment

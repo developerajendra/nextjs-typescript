@@ -1,5 +1,10 @@
-import React from 'react'
-import {ProductCard} from '../common';
+import React,{useEffect} from 'react'
+import {useSelector, useDispatch} from "react-redux";
+
+//Custom imports
+import {API} from '../../pages/api';
+import {fetchDoctorsList} from '../../store/reducers/productList/productList.action';
+import {ProductCard, Loader} from '../common';
 
 const doctorListData = [{
         routes:'/hospital/doctors/detail',
@@ -68,10 +73,38 @@ const doctorListData = [{
     }
 ];
 
+
+
+
+
+/**
+ * API data treatment types from redux
+ * Fetch the treatment types if it's not exist on redux store
+ */
+const fetchDoctorListData = ()=>{
+    const dispatch = useDispatch();
+    const {doctorListData, doctorListDataLoader} = useSelector(state => state.doctorList)
+
+    useEffect(() => {
+        !doctorListData && dispatch(fetchDoctorsList(API.DOCTORS_LIST))
+    }, []);
+    return {
+        loader: doctorListDataLoader,
+        data:doctorListData
+    };
+}
+
+ 
+
 function DoctorListing() {
+    const tratmentTypeData = fetchDoctorListData();
+    console.log('tratmentTypeData', tratmentTypeData);
+    
+
     return (
-        <div>
-            {doctorListData.map((data)=>{
+        <div style={{position:'relative'}}>
+           {tratmentTypeData?.loader && <Loader/>}
+            {tratmentTypeData?.data?.map((data)=>{
                 return <ProductCard data={data} />
             })}
             

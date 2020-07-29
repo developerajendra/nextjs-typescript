@@ -1,0 +1,6 @@
+ 
+export const TYPE = {
+    DOCTORS_LIST: 'DOCTORS_LIST',
+    DOCTORS_LIST_LOADER: 'DOCTORS_LIST_LOADER'
+}
+

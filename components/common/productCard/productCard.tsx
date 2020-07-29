@@ -5,6 +5,8 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 
 function ProductCard({data}) {
+    console.log('data', data);
+    
     return (
             <Card className="product-card-wrapper">
                 <Card.Img variant="top" src="/images/hospital/h1.jpg" />
