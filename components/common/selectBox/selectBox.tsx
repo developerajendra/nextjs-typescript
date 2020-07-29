@@ -15,7 +15,7 @@ function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelec
 
     const handleChange = selectedOption => {
         // setSelectedOption( { selectedOption });
-        onSelect(selectedOption);
+        onSelect && onSelect(selectedOption);
       };
 
 

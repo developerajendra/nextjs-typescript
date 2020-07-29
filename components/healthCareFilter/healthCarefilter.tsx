@@ -17,7 +17,6 @@ const fetchTreatmentTypeData = ():any =>{
     const { data, error } = useSWR(API.BASE_URL+API.TREATMENT_TYPE, fetchTreatmentTypes)
     if (error) return <div>failed to load</div>
     if (!data) return <Loader /> 
-    
     return {
         loader:!data,
         data
@@ -27,13 +26,14 @@ const fetchTreatmentTypeData = ():any =>{
 
 /**
  * API data fetching from redux
+ * Fetch the country list if it's not exist on redux store
  */
 const fetchCountryList = ()=>{
     const dispatch = useDispatch();
     const {data, countryListLoader} = useSelector(state => state.countryList)
 
     useEffect(() => {
-        dispatch(countryList(API.COUNTRY_LIST))
+        !data && dispatch(countryList(API.COUNTRY_LIST))
     }, []);
     return {
         loader: countryListLoader,
@@ -76,7 +76,6 @@ const HealthCarefilter = ()=> {
             countryOfTreatment: selectedValue.value
         });
     };
-
      const isOneSelected = dropDownValue.isSelcted;
      
     
