@@ -137,7 +137,7 @@ const HospitalAndoctorFilter = () => {
     useEffect(() => {
         const {query} = router;
         const selectedCountry = query['country-of-treatment'];
-          fetchTopHospialsByCountryData(selectedCountry, dispatch);
+         !topHospitalsByCountryData && fetchTopHospialsByCountryData(selectedCountry, dispatch);
     }, []);
 
 
