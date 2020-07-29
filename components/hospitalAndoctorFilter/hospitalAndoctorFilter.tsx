@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import {SelectBox, CheckBox, Loader} from '../common';
 import {useSelector, useDispatch} from "react-redux";
+import {useRouter} from 'next/router';
 
 //Custom imports
 import {API} from '../../pages/api';
@@ -72,11 +73,25 @@ const fetchCountryList = ()=>{
 }
 
 
+const selectedValue = (country:[], treatment:[])=>{
+        const router = useRouter();
+        const {query} = router;
+        const selectedCountry = query['country-of-treatment'];
+        const selectedTreatment = query['treatment-type'];  
+        const currentCountry =  country?.find((data:any)=>data.value == selectedCountry);
+        const currentTreatment =  treatment?.find((data:any)=>data.value == selectedTreatment);
+        return {
+            country:currentCountry,
+            treatment:currentTreatment
+        }
+}
+
 function HospitalAndoctorFilter() {
     const [dropDownValue, setdropDownValue] = useState(initialState);
     const countryList = fetchCountryList();
     const tratmentTypeData = fetchTreatmentTypesData();
     const loader = countryList.loader || tratmentTypeData.loader;
+    const selctedValue =  selectedValue(countryList.data, tratmentTypeData.data);
 
     const onTreatMentTypeSelect = (selectedValue)=>{
         setdropDownValue({
@@ -92,16 +107,13 @@ function HospitalAndoctorFilter() {
         });
     };
     
-    // console.log('filter selected value', countryList);
     
-
-
     return (
         <div className="filter-wrapper">
             <div className="drop-downs">
                  { loader ? <Loader /> : null}
-                 {tratmentTypeData.data && <SelectBox onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
-                 {countryList.data && <SelectBox onSelect={onOriginSelect} options={countryList.data} label="SELECT COUNTRY"/>}
+                 {tratmentTypeData.data && <SelectBox selectedValue={selctedValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
+                 {countryList.data && <SelectBox selectedValue={selctedValue?.country} onSelect={onOriginSelect} options={countryList.data} label="SELECT COUNTRY"/>}
             </div>
             <div className="check-boxes">
                 <h3>TOP HOSPITALS BY COUNTRY</h3>

@@ -84,11 +84,10 @@ const HealthCarefilter = ()=> {
     };
      const isOneSelected = dropDownValue.isSelcted;
      const {
-        countryOfOrigin,
         treatmentType,
         countryOfTreatment
      } = dropDownValue;
-     const routesQuery = `/hospital/hospitals?country-of-origin=${countryOfOrigin}&treatment-type=${treatmentType}&country-of-reatment=${countryOfTreatment}`
+     const routesQuery = `/hospital/hospitals?treatment-type=${treatmentType}&country-of-treatment=${countryOfTreatment}`
      
       
     

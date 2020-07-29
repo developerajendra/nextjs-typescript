@@ -8,23 +8,18 @@ interface dropdown{
     styleTypeDefault?:boolean;
     options?:any;
     onSelect?:Function;
+    selectedValue?: object;
 }
-function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect }:dropdown) {
-    //  const [selectedOption, setSelectedOption] = useState(null);
-     
-
+function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue }:dropdown) {
     const handleChange = selectedOption => {
-        // setSelectedOption( { selectedOption });
         onSelect && onSelect(selectedOption);
       };
-
 
       const customStyles = {
         dropdownIndicator:()=>({
           display:'none'
         })
       }
-      
 
     return (
       <div className={styleTypeDefault ? "dropdown-wrapper-default" :"dropdown-wrapper"}>
@@ -33,6 +28,7 @@ function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelec
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     {label && <Form.Label  className="label">{label}</Form.Label>}
                     <Select
+                      defaultValue={selectedValue}
                       styles={customStyles}
                       // value={selectedOption}
                       onChange={handleChange}
