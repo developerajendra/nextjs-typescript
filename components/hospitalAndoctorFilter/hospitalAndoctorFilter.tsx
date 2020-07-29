@@ -1,6 +1,12 @@
-import React from 'react'
-import {Row} from  'react-bootstrap';
-import {SelectBox, CheckBox} from '../common';
+import React,{useState, useEffect} from 'react'
+import {SelectBox, CheckBox, Loader} from '../common';
+import {useSelector, useDispatch} from "react-redux";
+
+//Custom imports
+import {API} from '../../pages/api';
+import {fetchTreatmentTypes} from '../../store/reducers/treatmentType/treatmentType.action';
+import {countryList} from '../../store/reducers/coutntryList/countryList.action';
+
 
 const filterData = [
     {text:'Ahmadabad',id:1},
@@ -20,14 +26,82 @@ const filterData = [
     {text:'Dhanbad',id:16}
 ]
  
-                
+const initialState = {
+    country: null,
+    treatmentType: null
+};
+
+
+
+
+
+/**
+ * API data treatment types from redux
+ * Fetch the treatment types if it's not exist on redux store
+ */
+const fetchTreatmentTypesData = ()=>{
+    const dispatch = useDispatch();
+    const {treatmentTypeData, treatmentTypesLoader} = useSelector(state => state.treatmentTypes)
+
+    useEffect(() => {
+        !treatmentTypeData && dispatch(fetchTreatmentTypes(API.TREATMENT_TYPE))
+    }, []);
+    return {
+        loader: treatmentTypesLoader,
+        data:treatmentTypeData
+    };
+}
+
+ 
+
+/**
+ * API data fetching from redux
+ * Fetch the country list if it's not exist on redux store
+ */
+const fetchCountryList = ()=>{
+    const dispatch = useDispatch();
+    const {countryListData, countryListLoader} = useSelector(state => state.countryList)
+
+    useEffect(() => {
+        !countryListData && dispatch(countryList(API.COUNTRY_LIST))
+    }, []);
+    return {
+        loader: countryListLoader,
+        data:countryListData
+    };
+}
+
 
 function HospitalAndoctorFilter() {
+    const [dropDownValue, setdropDownValue] = useState(initialState);
+    const countryList = fetchCountryList();
+    const tratmentTypeData = fetchTreatmentTypesData();
+    const loader = countryList.loader || tratmentTypeData.loader;
+
+    const onTreatMentTypeSelect = (selectedValue)=>{
+        setdropDownValue({
+            ...dropDownValue,
+            treatmentType: selectedValue.value
+        });
+    };
+
+    const onOriginSelect = (selectedValue)=>{
+        setdropDownValue({
+            ...dropDownValue,
+            country: selectedValue.value
+        });
+    };
+    
+    // console.log('filter selected value', countryList);
+    
+
+
     return (
         <div className="filter-wrapper">
             <div className="drop-downs">
-                <SelectBox label="SELECT DISEASE"/>
-                <SelectBox label="SELECT STATE"/> 
+                 { loader ? <Loader /> : null}
+                 {tratmentTypeData.data && <SelectBox onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
+                 {countryList.data && <SelectBox onSelect={onOriginSelect} options={countryList.data} label="SELECT COUNTRY"/>}
             </div>
             <div className="check-boxes">
                 <h3>TOP HOSPITALS BY COUNTRY</h3>

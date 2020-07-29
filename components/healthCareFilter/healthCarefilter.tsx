@@ -10,19 +10,6 @@ import {fetchTreatmentTypes} from '../../store/reducers/treatmentType/treatmentT
 import {countryList} from '../../store/reducers/coutntryList/countryList.action';
 
 
-/**
- * Static API data fetching
- */
-// const fetchTreatmentTypeData = ():any =>{
-//     const { data, error } = useSWR(API.BASE_URL+API.TREATMENT_TYPE, fetchTreatmentTypes)
-//     if (error) return <div>failed to load</div>
-//     if (!data) return <Loader /> 
-//     return {
-//         loader:!data,
-//         data
-//     };
-// }
-
 
 /**
  * API data treatment types from redux
@@ -30,14 +17,14 @@ import {countryList} from '../../store/reducers/coutntryList/countryList.action'
  */
 const fetchTreatmentTypesData = ()=>{
     const dispatch = useDispatch();
-    const {data, treatmentTypesLoader} = useSelector(state => state.treatmentTypes)
+    const {treatmentTypeData, treatmentTypesLoader} = useSelector(state => state.treatmentTypes)
 
     useEffect(() => {
-        !data && dispatch(fetchTreatmentTypes(API.TREATMENT_TYPE))
+        !treatmentTypeData && dispatch(fetchTreatmentTypes(API.TREATMENT_TYPE))
     }, []);
     return {
         loader: treatmentTypesLoader,
-        data
+        data:treatmentTypeData
     };
 }
 
@@ -49,14 +36,14 @@ const fetchTreatmentTypesData = ()=>{
  */
 const fetchCountryList = ()=>{
     const dispatch = useDispatch();
-    const {data, countryListLoader} = useSelector(state => state.countryList)
+    const {countryListData, countryListLoader} = useSelector(state => state.countryList)
 
     useEffect(() => {
-        !data && dispatch(countryList(API.COUNTRY_LIST))
+        !countryListData && dispatch(countryList(API.COUNTRY_LIST))
     }, []);
     return {
         loader: countryListLoader,
-        data
+        data:countryListData
     };
 }
 

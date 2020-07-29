@@ -7,7 +7,7 @@ import {CompareDestinationCard, SelectBox, MedicalButton} from '../common';
 
 function CompareDestinationList() {
 
-    const {data, countryListLoader} = useSelector(state => state.countryList);
+    const {countryListData, countryListLoader} = useSelector(state => state.countryList);
      
     
 
@@ -23,16 +23,16 @@ function CompareDestinationList() {
             <div className="destination-cards">
                 <Row>
                     <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard countryList={data} loader={countryListLoader} image="india"/>
+                        <CompareDestinationCard countryList={countryListData} loader={countryListLoader} image="india"/>
                     </Col>
                     <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard countryList={data} loader={countryListLoader}  />
+                        <CompareDestinationCard countryList={countryListData} loader={countryListLoader}  />
                         </Col>
                     <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard countryList={data} loader={countryListLoader}  />
+                        <CompareDestinationCard countryList={countryListData} loader={countryListLoader}  />
                         </Col>
                     <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard countryList={data} loader={countryListLoader}  />
+                        <CompareDestinationCard countryList={countryListData} loader={countryListLoader}  />
                         </Col>
                 </Row> 
                 <Row className="button-wrapper">
