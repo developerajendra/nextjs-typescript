@@ -7,7 +7,7 @@ export const countryList =(API_URL)=> async dispatch=>{
     })
     const response =  await api.get(API_URL);
         const data = response.map((list)=>{
-            return {value:list.name, label:list.name}
+            return {label:list.name, value:list.alpha2Code}
         });
 
         dispatch({

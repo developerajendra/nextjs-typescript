@@ -1,6 +1,9 @@
-import {countryReducer} from './coutntryList/countryList.reducer';
 import { combineReducers } from 'redux';
+import {countryReducer} from './coutntryList/countryList.reducer';
+import {treatTypeReducer} from './treatmentType/tratmentType.reducer';
+
 
 export default combineReducers({
-    countryList: countryReducer
+    countryList: countryReducer,
+    treatmentTypes:treatTypeReducer
 });

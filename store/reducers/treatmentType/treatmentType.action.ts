@@ -1,10 +1,17 @@
 import api from '../../../pages/api/api';
+import {TYPE} from './types';
 
-export const fetchTreatmentTypes = async (API_URL)=>{
-    const response = await api.get(API_URL)
-    const treatmentType = response.map(list=>{
-        return {value:list,label:list}
+export const fetchTreatmentTypes =(API_URL)=> async dispatch=>{
+    dispatch({
+        type:TYPE.TREATMENT_LIST_LOADER
     })
-    
-    return treatmentType;
+    const response =  await api.get(API_URL);
+    const data = response.map((list)=>{
+        return {value:list.id, label:list.name}
+    });
+
+    dispatch({
+        type:TYPE.TREATMENT_LIST,
+        data
+    })
 }
