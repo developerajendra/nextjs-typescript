@@ -1,14 +1,14 @@
 import React from 'react'
 
 interface checkbox {
-    name?:string;
-    id?:number;
+    label?:string;
+    value?:number;
 }
-function CheckBox({name, id}:checkbox) {
+function CheckBox({value, label}:checkbox) {
     return (
         <>
-            <input type="checkbox" id={`checkbox${id}`} name={`checkbox${id}`} value="Bike" />
-            <label htmlFor={`checkbox${id}`} > {name}</label> 
+            <input type="checkbox" id={`checkbox${value}`} name={`checkbox${value}`} value="Bike" />
+            <label htmlFor={`checkbox${value}`} > {label}</label> 
         </>
     )
 }

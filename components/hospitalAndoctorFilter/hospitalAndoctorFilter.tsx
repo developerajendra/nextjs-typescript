@@ -5,7 +5,7 @@ import {useRouter} from 'next/router';
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchTreatmentTypes, fetchCountryList} from '../../store/reducers/filters/filters.action';
+import {fetchTreatmentTypes, fetchCountryList, fetchTopHospialsByCountry} from '../../store/reducers/filters/filters.action';
 
 
 const filterData = [
@@ -72,6 +72,22 @@ const fetchCountryListData = ()=>{
 }
 
 
+
+/**
+ * API data fetching from redux
+ * Fetch the country list if it's not exist on redux store
+ */
+const fetchTopHospialsByCountryData = (selectedCountry:any, dispatch)=>{
+    dispatch(fetchTopHospialsByCountry(API.TOP_HOSPITALS_BY_COUNTRY, selectedCountry))
+}
+
+
+
+/**
+ * placing the default selected valud from homepage to filter
+ * @param country 
+ * @param treatment 
+ */
 const selectedValue = (country:[], treatment:[])=>{
         const router = useRouter();
         const {query} = router;
@@ -79,13 +95,22 @@ const selectedValue = (country:[], treatment:[])=>{
         const selectedTreatment = query['treatment-type'];  
         const currentCountry =  country?.find((data:any)=>data.value == selectedCountry);
         const currentTreatment =  treatment?.find((data:any)=>data.value == selectedTreatment);
+        
+
+        
         return {
             country:currentCountry,
             treatment:currentTreatment
         }
 }
 
-function HospitalAndoctorFilter() {
+
+
+
+const HospitalAndoctorFilter = () => {
+    const dispatch = useDispatch();
+    const router = useRouter();
+    const {topHospitalsByCountryData, topHospitalsByCountryLoader} = useSelector(state => state.topHospitalsByCountry)
     const [dropDownValue, setdropDownValue] = useState(initialState);
     const countryList = fetchCountryListData();
     const tratmentTypeData = fetchTreatmentTypesData();
@@ -104,20 +129,32 @@ function HospitalAndoctorFilter() {
             ...dropDownValue,
             country: selectedValue.value
         });
+
+        //Fetching the top hospitals by country data while changing the country dropdown
+        fetchTopHospialsByCountryData(selectedValue.value, dispatch);
     };  
-    
+
+
+    //Fetching the top hospitals by country data while reloading the page
+    useEffect(() => {
+        const {query} = router;
+        const selectedCountry = query['country-of-treatment'];
+          fetchTopHospialsByCountryData(selectedCountry, dispatch);
+    }, []);
+
+
     
     return (
         <div className="filter-wrapper">
             <div className="drop-downs">
-                 { loader ? <Loader /> : null}
+                 { loader || topHospitalsByCountryLoader ? <Loader /> : null}
                  {tratmentTypeData.data && <SelectBox selectedValue={selctedValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
                  {countryList.data && <SelectBox selectedValue={selctedValue?.country} onSelect={onOriginSelect} options={countryList.data} label="SELECT COUNTRY"/>}
             </div>
             <div className="check-boxes">
                 <h3>TOP HOSPITALS BY COUNTRY</h3>
                 <ul>
-                    {filterData.map((data:object, index:number)=><li key={index}><CheckBox {...data}  /></li>)}
+                    {topHospitalsByCountryData?.map((data:object, index:number)=><li key={index}><CheckBox {...data}  /></li>)}
                 </ul>
             </div>
         </div>

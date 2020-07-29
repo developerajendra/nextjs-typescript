@@ -34,3 +34,21 @@ export const treatTypeReducer = (state = [], action)=>{
     }
     return state;
 }
+
+
+
+/**
+ * treatment type reducer
+ * @param state 
+ * @param action 
+ */
+export const topHospitalsByCountryReducer = (state = [], action)=>{
+    switch(action.type){
+       case TYPE.TOP_HOSPITALS_BY_COUNTRY:
+           return {...state, topHospitalsByCountryData:action.data, topHospitalsByCountryLoader: false};
+
+       case TYPE.TOP_HOSPITALS_BY_COUNTRY_LOADER:
+           return {...state, topHospitalsByCountryLoader: true};
+   }
+   return state;
+}

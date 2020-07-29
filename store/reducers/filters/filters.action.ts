@@ -40,3 +40,27 @@ export const fetchTreatmentTypes =(API_URL)=> async dispatch=>{
         data
     })
 }
+
+
+
+
+/**
+ * treatment type action
+ * @param API_URL 
+ */
+export const fetchTopHospialsByCountry =(API_URL, payload)=> async dispatch=>{
+    console.log('payload', payload);
+    
+    dispatch({
+        type:TYPE.TOP_HOSPITALS_BY_COUNTRY_LOADER
+    })
+    const response =  await api.get(API_URL);
+    const data = response.map((list)=>{
+        return {value:list.id, label:list.name}
+    });
+
+    dispatch({
+        type:TYPE.TOP_HOSPITALS_BY_COUNTRY,
+        data
+    })
+}
