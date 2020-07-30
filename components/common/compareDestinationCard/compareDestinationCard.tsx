@@ -11,9 +11,11 @@ interface destinationCard{
     onDropDownSelect?:Function;
     hospitalListLoader?:object;
     index?:number;
+    clearInputs?:boolean;
+    onHospitalSelect?:Function,
 }
 
-function CompareDestinationCard({image, countryList, loader, onDropDownSelect, hospitalList, index}:destinationCard) {
+function CompareDestinationCard({image, countryList, loader, onDropDownSelect, onHospitalSelect, hospitalList, index, clearInputs}:destinationCard) {
     
      
     return (
@@ -26,8 +28,8 @@ function CompareDestinationCard({image, countryList, loader, onDropDownSelect, h
 
             <Card.Body>
                 {loader &&   <Loader/> }
-                 <SelectBox groupName={index} onSelect={onDropDownSelect} options={countryList} label="SELECT COUNTRY"/>
-                  <SelectBox  options={hospitalList}  onSelect={onDropDownSelect}  label="SELECT HOSPITAL"/> 
+                 <SelectBox clearInputs={clearInputs} groupName={index} onSelect={onDropDownSelect} options={countryList} label="SELECT COUNTRY"/>
+                  <SelectBox clearInputs={clearInputs} groupName={index}  options={hospitalList}  onSelect={onHospitalSelect}  label="SELECT HOSPITAL"/> 
             </Card.Body>
         </Card>
     )

@@ -17,18 +17,40 @@ const fetchTopHospialsByCountryData = (selectedCountry:any, dispatch)=>{
 }
 
  
-const cards = [
+const cardsInitialValue = [
     {index:0, data:[],loader:false},
     {index:1, data:[],loader:false},
     {index:2, data:[],loader:false},
     {index:3, data:[],loader:false}
 ];
 
+
+const hospitalInitialValue = [
+    {index:0, id:null},
+    {index:1, id:null},
+    {index:2, id:null},
+    {index:3, id:null}
+];
+
+/**
+ * Compare product route URL
+ * @param selectedHospital 
+ */
+const generateRouteURL = (selectedHospital)=>{
+    let route = '';
+    selectedHospital.map(hospital=>{
+        hospital.id ? route += `&hospital=${hospital.id}` : '';
+    });
+   return route.lastIndexOf("=")>10 ? `/hospital/compareResult?${route.substring(1)}` : '';
+}
+
+
 function CompareDestinationList() {
     const dispatch = useDispatch();
     const {countryListData, countryListLoader} = useSelector(state => state.countryList);
-    // const {hospitalsByCountryData, hospitalsByCountryLoader} = useSelector(state => state.hospitalsByCountry)
-    const [hospitalList, setHospitalList] = useState(cards);
+    const [hospitalList, setHospitalList] = useState(cardsInitialValue);
+    const [clearInputs, setclearInputs] = useState(false);
+    const [selectedHospital, setselectedHospital] = useState(hospitalInitialValue);
 
     //on country change set hospital list based on selected country
     const onCountrySelect = (selectedValue, card)=>{
@@ -44,7 +66,20 @@ function CompareDestinationList() {
         });
     }
 
-    
+    const onSelectClearInputs = ()=>{
+        setHospitalList(cardsInitialValue);
+    }
+
+
+    const onHospitalSelect = (selectedValue, card)=>{
+        const index = card.name;
+        const array = [...selectedHospital];
+        array[index] = {...array[index], id:selectedValue.value}
+        setselectedHospital(array);
+
+        
+    }
+    const routeURL = generateRouteURL(selectedHospital);
       
     
     return (
@@ -65,10 +100,12 @@ function CompareDestinationList() {
                                     <CompareDestinationCard 
                                     image={index == 0 ? 'india' : ''}
                                     index={index}
+                                    onHospitalSelect={onHospitalSelect}
                                     onDropDownSelect={onCountrySelect} 
                                     countryList={countryListData} 
                                     loader={countryListLoader || card.loader}   
                                     hospitalList={card.data} 
+                                    clearInputs={clearInputs}
                                     />
                                 </Col>
                             )
@@ -76,8 +113,8 @@ function CompareDestinationList() {
                     }
                 </Row> 
                 <Row className="button-wrapper">
-                        <MedicalButton text="Clear Inputs" type="outline" />
-                        <MedicalButton text="COMPARE NOW" type="primary" routeLink="/hospital/compareResult" />
+                        <MedicalButton onButtonOutlineClick={onSelectClearInputs} text="Clear Inputs" type="outline" />
+                        <MedicalButton disabled={!Boolean(routeURL)} text="COMPARE NOW" type="primary" routeLink={routeURL} />
                 </Row> 
             </div>
         </div>

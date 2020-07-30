@@ -11,8 +11,9 @@ interface dropdown{
     selectedValue?: object;
     isDisable?:boolean;
     groupName?:any;
+    clearInputs?:boolean;
 }
-function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue, isDisable, groupName }:dropdown) {
+function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue, isDisable, groupName, clearInputs }:dropdown) {
     const handleChange = (selectedOption, index) => {
         onSelect && onSelect(selectedOption, index);
       };
@@ -23,6 +24,7 @@ function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelec
         })
       }
 
+
     return (
       <div className={styleTypeDefault ? "dropdown-wrapper-default" :"dropdown-wrapper"}>
 
@@ -30,14 +32,13 @@ function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelec
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     {label && <Form.Label  className="label">{label}</Form.Label>}
                     <Select
-                      name={groupName}
-                      defaultValue={selectedValue}
-                      styles={customStyles}
-                      // value={selectedOption}
-                      onChange={handleChange}
-                      options={options}
-                      isDisabled={isDisable}
-                    />
+                    name={groupName}
+                    defaultValue={selectedValue}
+                    styles={customStyles}
+                    onChange={handleChange}
+                    options={options}
+                    isDisabled={isDisable}
+                  />
                 </Form.Group>
                  
                 </Form>
