@@ -9,8 +9,9 @@ interface dropdown{
     options?:any;
     onSelect?:Function;
     selectedValue?: object;
+    isDisable?:boolean
 }
-function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue }:dropdown) {
+function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue, isDisable }:dropdown) {
     const handleChange = selectedOption => {
         onSelect && onSelect(selectedOption);
       };
@@ -33,6 +34,7 @@ function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelec
                       // value={selectedOption}
                       onChange={handleChange}
                       options={options}
+                      isDisabled={isDisable}
                     />
                 </Form.Group>
                  

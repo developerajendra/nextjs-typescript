@@ -52,3 +52,24 @@ export const topHospitalsByCountryReducer = (state = [], action)=>{
    }
    return state;
 }
+
+
+
+
+
+
+/**
+ * hospitals by county
+ * @param state 
+ * @param action 
+ */
+export const hospitalsByCountryReducer = (state = [], action)=>{
+    switch(action.type){
+       case TYPE.HOSPITALS_BY_COUNTRY:
+           return {...state, hospitalsByCountryData:{[action.selectedCountry]:action.data}, hospitalsByCountryLoader: {[action.selectedCountry]:false}};
+
+       case TYPE.HOSPITALS_BY_COUNTRY_LOADER:
+           return {...state, hospitalsByCountryLoader: {[action.selectedCountry]:true}};
+   }
+   return state;
+}
