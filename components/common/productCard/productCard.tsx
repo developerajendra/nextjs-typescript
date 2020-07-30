@@ -1,26 +1,31 @@
 import React from 'react';
-import {Card, Button} from 'react-bootstrap';
+import {Card, Row} from 'react-bootstrap';
 import Link from 'next/link';
 
-import {useRouter} from 'next/router';
+import {MedicalButton} from '../../common';
+import {API} from '../../../pages/api/'
 
-function ProductCard({data}) {
+
+function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute}) {
     console.log('data', data);
     
     return (
-            <Card className="product-card-wrapper">
-                <Card.Img variant="top" src="/images/hospital/h1.jpg" />
+             <Card className="product-card-wrapper">
+                <Card.Img variant="top" src={ API.IMAGE_BASE_URL.DOCTORS + data.image} />
                 <Card.Body style={{flex:'2'}}>
                     <input className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>{data.name}</Card.Title>
+                        <span>{data.location}</span>
                     <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                        {data.qulification}
                     </Card.Text>
-                    <Link href={`${data.routes}/[id]`} as={`${data.routes}/${data.routesID}`}><a style={{color:' #22222299'}} href="#">{data.buttonText}</a></Link>
-                    
+                    <a style={{color:' #22222299'}} href="#">{data.buttonText}</a>
+                    <Row className="button-wrapper">
+                        <MedicalButton text={outlineButtonText} type="outline" routeOutlineLink={`${buttonOutlineRoute}/[id]`} routeOutlineAs={`${buttonOutlineRoute}/${data.productId}`} />
+                        <MedicalButton text={primaryButtonText} type="primary" routeLink="/hospital/compareResult" />
+                    </Row> 
                 </Card.Body>
-            </Card>
+            </Card>  
     )
 }
 

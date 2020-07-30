@@ -5,77 +5,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {API} from '../../pages/api';
 import {fetchDoctorsList} from '../../store/reducers/productList/productList.action';
 import {ProductCard, Loader} from '../common';
-
-const doctorListData = [{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    },{
-        routes:'/hospital/doctors/detail',
-        routesID:'1',
-        buttonText:'LEARN MORE'
-    }
-];
-
-
-
-
+ 
 
 /**
  * API data treatment types from redux
@@ -105,7 +35,7 @@ function DoctorListing() {
         <div style={{position:'relative'}}>
            {tratmentTypeData?.loader && <Loader/>}
             {tratmentTypeData?.data?.map((data)=>{
-                return <ProductCard data={data} />
+                return <ProductCard primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/doctors/detail" data={data} />
             })}
             
         </div>

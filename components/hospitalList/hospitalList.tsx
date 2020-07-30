@@ -1,5 +1,5 @@
 import React from 'react'
-import {ProductCard} from '../common';
+import {HospitalProductCard} from '../common';
 
 const hospitalListData = [{
         routes:'/hospital/hospitals/detail',
@@ -72,7 +72,7 @@ function HospitalList() {
     return (
         <div>
             {hospitalListData.map((data)=>{
-                return <ProductCard data={data} />
+                return <HospitalProductCard data={data} />
             })}
             
         </div>
