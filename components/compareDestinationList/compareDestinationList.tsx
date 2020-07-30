@@ -13,58 +13,38 @@ import {CompareDestinationCard, SelectBox, MedicalButton} from '../common';
  * Fetch the country list if it's not exist on redux store
  */
 const fetchTopHospialsByCountryData = (selectedCountry:any, dispatch)=>{
-    dispatch(fetchHospialsByCountry(API.HOSPITALS_BY_COUNTRY, selectedCountry))
+    return dispatch(fetchHospialsByCountry(API.HOSPITALS_BY_COUNTRY, selectedCountry))
 }
 
-const initialState = {
-    cardOne:'',
-    cardTwo:'',
-    cardThree:'',
-    cardFour:''
-}
  
+const cards = [
+    {index:0, data:[],loader:false},
+    {index:1, data:[],loader:false},
+    {index:2, data:[],loader:false},
+    {index:3, data:[],loader:false}
+];
 
 function CompareDestinationList() {
     const dispatch = useDispatch();
     const {countryListData, countryListLoader} = useSelector(state => state.countryList);
-    const {hospitalsByCountryData, hospitalsByCountryLoader} = useSelector(state => state.hospitalsByCountry)
+    // const {hospitalsByCountryData, hospitalsByCountryLoader} = useSelector(state => state.hospitalsByCountry)
+    const [hospitalList, setHospitalList] = useState(cards);
 
-    const [selectedCountry, setSelectedCountry] = useState(initialState);
+    //on country change set hospital list based on selected country
+    const onCountrySelect = (selectedValue, card)=>{
+        const index = card.name;
+        const array = [...hospitalList];
+        array[index] = {...array[index], loader:true}
+        setHospitalList(array);
 
-
-    const onSecondCardHospitalSelect = (selectedValue)=>{
-        //Fetching the top hospitals by country data while changing the country dropdown
-        fetchTopHospialsByCountryData(selectedValue.value, dispatch);
-        
-     setSelectedCountry({
-            ...selectedCountry,
-            cardTwo:selectedValue.value
+        fetchTopHospialsByCountryData(selectedValue.value, dispatch).then(hospitalData=>{
+            const array = [...hospitalList];
+            array[index] = {...array[index], index:index, data:hospitalData, loader:false}
+            setHospitalList(array);
         });
-    };  
+    }
 
-    const onThirdCardHospitalSelect = (selectedValue)=>{
-        //Fetching the top hospitals by country data while changing the country dropdown
-        fetchTopHospialsByCountryData(selectedValue.value, dispatch);
-        
-        setSelectedCountry({
-            ...selectedCountry,
-            cardThree:selectedValue.value
-        });
-    };  
-
-    const onFourthCardHospitalSelect = (selectedValue)=>{
-        //Fetching the top hospitals by country data while changing the country dropdown
-        fetchTopHospialsByCountryData(selectedValue.value, dispatch);
-        setSelectedCountry({
-            ...selectedCountry,
-            cardFour:selectedValue.value
-        });
-    };  
-
-
-    console.log('selectedCountry', selectedCountry);
     
-     
       
     
     return (
@@ -78,38 +58,22 @@ function CompareDestinationList() {
             </div>
             <div className="destination-cards">
                 <Row>
-                    <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard countryList={countryListData} loader={countryListLoader} image="india"/>
-                    </Col>
-                    <Col lg={3} md={6} xs={12}>
-                        <CompareDestinationCard 
-                        onDropDownSelect={onSecondCardHospitalSelect} 
-                        countryList={countryListData} 
-                        loader={countryListLoader}  
-                        hospitalList={hospitalsByCountryData} 
-                        selectedCountry={selectedCountry.cardTwo}
-                        hospitalListLoader={hospitalsByCountryLoader}
-                        />
-                        </Col>
-                    <Col lg={3} md={6} xs={12}>
-                    <CompareDestinationCard 
-                        onDropDownSelect={onThirdCardHospitalSelect} 
-                        countryList={countryListData} 
-                        loader={countryListLoader}   
-                        hospitalList={hospitalsByCountryData} 
-                        selectedCountry={selectedCountry.cardThree}
-                        />
-                        </Col>
-                    <Col lg={3} md={6} xs={12}>
-                    <CompareDestinationCard 
-                        onDropDownSelect={onFourthCardHospitalSelect} 
-                        countryList={countryListData} 
-                        loader={countryListLoader}  
-                        hospitalList={hospitalsByCountryData} 
-                        selectedCountry={selectedCountry.cardFour}
-                        />
-
-                    </Col>
+                    {
+                        hospitalList.map((card, index)=>{
+                            return (
+                                <Col lg={3} md={6} xs={12}>
+                                    <CompareDestinationCard 
+                                    image={index == 0 ? 'india' : ''}
+                                    index={index}
+                                    onDropDownSelect={onCountrySelect} 
+                                    countryList={countryListData} 
+                                    loader={countryListLoader || card.loader}   
+                                    hospitalList={card.data} 
+                                    />
+                                </Col>
+                            )
+                        })
+                    }
                 </Row> 
                 <Row className="button-wrapper">
                         <MedicalButton text="Clear Inputs" type="outline" />

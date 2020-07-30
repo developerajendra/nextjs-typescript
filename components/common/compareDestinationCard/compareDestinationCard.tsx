@@ -9,17 +9,13 @@ interface destinationCard{
     hospitalList?:any;
     loader?:boolean;
     onDropDownSelect?:Function;
-    selectedCountry?:string;
     hospitalListLoader?:object;
+    index?:number;
 }
 
-function CompareDestinationCard({image, countryList, loader, onDropDownSelect, hospitalList, selectedCountry, hospitalListLoader}:destinationCard) {
+function CompareDestinationCard({image, countryList, loader, onDropDownSelect, hospitalList, index}:destinationCard) {
     
-    const hospitalData = selectedCountry && hospitalList && hospitalList[selectedCountry]
-    const hospitalLoader = hospitalListLoader && hospitalListLoader[selectedCountry];
-    console.log('hospitalLoader', selectedCountry);
-    
-    
+     
     return (
         <Card style={{ width: '17rem' }}>
             { image ?  <Card.Img variant="top" src={`/images/${image}.jpg`} /> :
@@ -29,9 +25,9 @@ function CompareDestinationCard({image, countryList, loader, onDropDownSelect, h
             </div> }
 
             <Card.Body>
-                {(loader || hospitalLoader) &&   <Loader/> }
-                 <SelectBox onSelect={onDropDownSelect} options={countryList} label="SELECT COUNTRY"/>
-                  <SelectBox isDisable={!selectedCountry} options={hospitalData}  onSelect={onDropDownSelect}  label="SELECT HOSPITAL"/> 
+                {loader &&   <Loader/> }
+                 <SelectBox groupName={index} onSelect={onDropDownSelect} options={countryList} label="SELECT COUNTRY"/>
+                  <SelectBox  options={hospitalList}  onSelect={onDropDownSelect}  label="SELECT HOSPITAL"/> 
             </Card.Body>
         </Card>
     )

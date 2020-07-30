@@ -92,4 +92,5 @@ export const fetchHospialsByCountry =(API_URL, selectedCountry)=> async dispatch
         data,
         selectedCountry
     })
+    return data;
 }

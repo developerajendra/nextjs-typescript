@@ -9,11 +9,12 @@ interface dropdown{
     options?:any;
     onSelect?:Function;
     selectedValue?: object;
-    isDisable?:boolean
+    isDisable?:boolean;
+    groupName?:any;
 }
-function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue, isDisable }:dropdown) {
-    const handleChange = selectedOption => {
-        onSelect && onSelect(selectedOption);
+function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue, isDisable, groupName }:dropdown) {
+    const handleChange = (selectedOption, index) => {
+        onSelect && onSelect(selectedOption, index);
       };
 
       const customStyles = {
@@ -29,6 +30,7 @@ function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelec
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     {label && <Form.Label  className="label">{label}</Form.Label>}
                     <Select
+                      name={groupName}
                       defaultValue={selectedValue}
                       styles={customStyles}
                       // value={selectedOption}
