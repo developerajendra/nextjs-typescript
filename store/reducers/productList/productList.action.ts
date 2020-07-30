@@ -1,6 +1,7 @@
 import api from '../../../pages/api/api';
 import {TYPE} from './types';
-
+import {keyMapper} from '../../../pages/api/util';
+import {DOCTOR_LIST_MODEL} from '../../../components/doctorListing/model.doctorList';
 
 /**
  * fetching the doctors list
@@ -11,10 +12,7 @@ export const fetchDoctorsList =(API_URL)=> async dispatch=>{
         type:TYPE.DOCTORS_LIST_LOADER
     })
     const response =  await api.get(API_URL);
-        // const data = response.map((list)=>{
-        //     return {label:list.name, value:list.alpha2Code}
-        // });
-
+        keyMapper(response, DOCTOR_LIST_MODEL);
         dispatch({
             type:TYPE.DOCTORS_LIST,
             data:response
