@@ -61,3 +61,16 @@ export const keyMapper = (data, keyModel, sameReference = true) => {
       return data;
     }
   };
+
+
+  export const ratingUI = (rating:number)=>{
+    const rateValue = Math.floor(rating);
+    const tempArray = [1,2,3,4,5];
+    return (<ul className="rating">
+            {
+             tempArray.map((data, index)=>{
+                return data <= rateValue ? <li> <i className="icon-rated-star"></i> </li>  : <li className="not-rated"> <i className="icon-rated-star"></i> </li> 
+            })  
+        }         
+    </ul>)
+}

@@ -3,20 +3,10 @@ import {Card, Row} from 'react-bootstrap';
 import Link from 'next/link';
 
 import {MedicalButton} from '../../common';
-import {API} from '../../../pages/api/'
+import {API, ratingUI} from '../../../pages/api/'
 
 
-const rating = (rating)=>{
-    const rateValue = Math.floor(rating);
-    const tempArray = [1,2,3,4,5];
-    return (<ul className="rating">
-            {
-             tempArray.map((data, index)=>{
-                return data <= rateValue ? <li> <i className="icon-rated-star"></i> </li>  : <li className="not-rated"> <i className="icon-rated-star"></i> </li> 
-            })  
-        }         
-    </ul>)
-}
+
 
 function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute}) {
     return (
@@ -24,7 +14,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                  <div className="image-wrapper">
                     <Card.Img variant="top" src={ API.IMAGE_BASE_URL.DOCTORS + data.image} />
                     <div className="rating">
-                    {rating(data.rating)}
+                        {ratingUI(data.rating)}
                     </div>
                 </div>
                 <Card.Body style={{flex:'2'}}>
