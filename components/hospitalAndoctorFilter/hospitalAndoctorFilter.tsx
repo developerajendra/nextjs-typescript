@@ -72,7 +72,8 @@ const selectedValue = (country:[], treatment:[])=>{
         const {query} = router;
         
         const selectedCountry = query['country-of-treatment'];
-        const selectedTreatment = query['treatment-type'];  
+        const selectedTreatment = query['treatment-type'] || query.treatmentId;  
+         
         const currentCountry =  country?.find((data:any)=>data.value == selectedCountry);
         const currentTreatment =  treatment?.find((data:any)=>data.value == selectedTreatment);
 

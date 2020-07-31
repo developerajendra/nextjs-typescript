@@ -88,6 +88,8 @@ const HealthCarefilter = ()=> {
      const routesQuery = `/hospital/hospitals?treatment-type=${treatmentType}&country-of-treatment=${countryOfTreatment}`
      
       
+     console.log('dropDownValue', dropDownValue);
+     
     
     return (
         <Col lg={8} md={12}>

@@ -13,69 +13,69 @@ function DeseaseList() {
                 <Row> 
                     <Col className="col" lg={3} xs={6}>
                         <li>
-                            <DeseaseCard route={'/hospital/hospitals?service=cardiology'} iconClass="icon-cardiology" text="Cardiology" />
+                            <DeseaseCard route={'/hospital/hospitals?service=cardiology&treatmentId=37'} iconClass="icon-cardiology" text="Cardiology" />
                         </li>
                     </Col>
                     <Col lg={3} xs={6} className="col">
 
                     <li>
-                        <DeseaseCard  route={'/hospital/hospitals?service=cancer'} iconClass="icon-cancer" text="Cancer" />
+                        <DeseaseCard  route={'/hospital/hospitals?service=cancer&treatmentId=38'} iconClass="icon-cancer" text="Cancer" />
                     </li>
                     </Col>
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=transplant'} iconClass="icon-transplant" text="Transplant" />
+                    <DeseaseCard route={'/hospital/hospitals?service=transplant&treatmentId=39'} iconClass="icon-transplant" text="Transplant" />
                     </li>
                     </Col>
                     
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=fertility'} iconClass="icon-fertility" text="Fertility" />
+                    <DeseaseCard route={'/hospital/hospitals?service=fertility&treatmentId=40'} iconClass="icon-fertility" text="Fertility" />
                     </li>
                     </Col>
                     </Row>
                     <Row> 
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=orthopadic'} iconClass="icon-orthopadic" text="Orthopadic" />
+                    <DeseaseCard route={'/hospital/hospitals?service=orthopadic&treatmentId=41'} iconClass="icon-orthopadic" text="Orthopadic" />
                     </li>
                     </Col>
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=neuro-and-brian'} iconClass="icon-neuro-and-brain" text="Neuro and Brain" />
+                    <DeseaseCard route={'/hospital/hospitals?service=neuro-and-brian&treatmentId=42'} iconClass="icon-neuro-and-brain" text="Neuro and Brain" />
                     </li>
                     </Col>
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=weight-loss'} iconClass="icon-weight-loss" text="Weight Loss" />
+                    <DeseaseCard route={'/hospital/hospitals?service=weight-loss&treatmentId=43'} iconClass="icon-weight-loss" text="Weight Loss" />
                     </li>
                     </Col>
                     
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=spine'} iconClass="icon-spine" text="Spine" />
+                    <DeseaseCard route={'/hospital/hospitals?service=spine&treatmentId=44'} iconClass="icon-spine" text="Spine" />
                     </li>
                     </Col>
                     </Row> 
                     <Row> 
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=urology'} iconClass="icon-urology" text="Urology" />
+                    <DeseaseCard route={'/hospital/hospitals?service=urology&treatmentId=45'} iconClass="icon-urology" text="Urology" />
                     </li>
                     </Col>
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=gstroenterlogy'} iconClass="icon-gastroenterlogy" text="Gastroenterlogy" />
+                    <DeseaseCard route={'/hospital/hospitals?service=gstroenterlogy&treatmentId=46'} iconClass="icon-gastroenterlogy" text="Gastroenterlogy" />
                     </li>
                     </Col>
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=dentistry'} iconClass="icon-dentistry" text="Dentistry" />
+                    <DeseaseCard route={'/hospital/hospitals?service=dentistry&treatmentId=47'} iconClass="icon-dentistry" text="Dentistry" />
                     </li>
                     </Col>
                     <Col className="col" lg={3} xs={6}>
                     <li>
-                    <DeseaseCard route={'/hospital/hospitals?service=plastic-surgery'} iconClass="icon-plastic-surgery" text="Plastic Surgery" />
+                    <DeseaseCard route={'/hospital/hospitals?service=plastic-surgery&treatmentId=48'} iconClass="icon-plastic-surgery" text="Plastic Surgery" />
                     </li>
                     </Col>
                     </Row> 
