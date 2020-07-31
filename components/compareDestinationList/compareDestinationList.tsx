@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 //Custom imports
 import {API} from '../../pages/api';
 import {fetchHospialsByCountry} from '../../store/reducers/filters/filters.action';
-import {CompareDestinationCard, SelectBox, MedicalButton} from '../common';
+import {CompareDestinationCard, SelectBox, MedicalButton, Loader} from '../common';
 
 
 /**
@@ -51,6 +51,7 @@ function CompareDestinationList() {
     const [hospitalList, setHospitalList] = useState(cardsInitialValue);
     const [clearInputs, setclearInputs] = useState(false);
     const [selectedHospital, setselectedHospital] = useState(hospitalInitialValue);
+    const {treatmentTypeData, treatmentTypesLoader} = useSelector(state => state.treatmentTypes)
 
     //on country change set hospital list based on selected country
     const onCountrySelect = (selectedValue, card)=>{
@@ -89,7 +90,8 @@ function CompareDestinationList() {
                 <h2>Compare Best Medical Destination</h2>
             </div>
             <div className="select-desease">
-                <SelectBox styleTypeDefault={true} defaultSelectText="Select Disease Type"/>
+                {treatmentTypesLoader && <Loader/>}
+                <SelectBox styleTypeDefault={true} options={treatmentTypeData} defaultSelectText="Select Disease Type"/>
             </div>
             <div className="destination-cards">
                 <Row>

@@ -7,12 +7,24 @@ import { useRouter } from 'next/router';
 import {API, ratingUI} from '../../pages/api';
 import {fetchDoctorDetails} from '../../store/reducers/productDetails/productDetails.action';
 
+const doctorInitialValue = [{
+    "name":'',
+    "specialization":'',
+    "qulification":'',
+     "location":'',
+     "about":'',
+     "tratementLists":'',
+     "education":'',
+     "speciality":'',
+     "experience":'',
+     "image":''
+  }];
 
 /**
 * fetchig the doctor details..
  */
 const fetchDoctorDetailsData = (route)=>{
-      const [doctorDetails, setdoctorDetails] = useState([])
+      const [doctorDetails, setdoctorDetails] = useState(doctorInitialValue)
       const [loader, setloader] = useState(true);
       const payload = route.query.id;
 
@@ -44,10 +56,14 @@ function DoctorDetails() {
         {label:doctorName}
     ];
 
+    interface doctor {
+        name:string
+   
+    }
     const doctorDetails = fetchDoctorDetailsData(route);
-    const {data} = doctorDetails;
-    
-
+    const {data}:{data:any} = doctorDetails;   
+     console.log('data', data);
+     
     return (
         <div className="doctor-detail-wrapper">
             <Row className="product-detail-header">
@@ -64,7 +80,7 @@ function DoctorDetails() {
                     <Card>
                         <Card.Img variant="top" src={API.IMAGE_BASE_URL.DOCTORS + data.image} alt={data.name} />
                         <Card.Body>
-                             {ratingUI(data.rating)}
+                             {ratingUI(data?.rating)}
                         </Card.Body>
                         
                     </Card>
@@ -91,7 +107,7 @@ function DoctorDetails() {
                             {makeList(data.tratementLists)}
                         </Tab>
                         <Tab eventKey="education" title="EDUCATION" >
-                            {makeList(data.qulification)}
+                            {makeList(data?.qulification)}
                         </Tab>
                         <Tab eventKey="video" title="VIDEO" >
                         
