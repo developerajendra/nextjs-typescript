@@ -15,7 +15,7 @@ function MedicalButton({type, text, routeLink, disabled, routeOutlineLink, route
     
     return (
             <>
-               {type =='primary' && (routeLink ?  <Link href={routeLink}> 
+               {type =='primary' && (routeLink ?  <Link href={routeLink } as={routeLink}> 
                <Button className={disabled ? "button-primary disabled" : "button-primary"} variant="primary">{text.toUpperCase()}</Button>  
                </Link> : <Button   className={disabled ? "button-primary disabled" : "button-primary"} variant="primary">{text.toUpperCase()}</Button>)}
                {type =='outline' && (routeOutlineLink ? <Link href={routeOutlineLink} as={routeOutlineAs}> 

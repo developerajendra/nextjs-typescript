@@ -1,24 +1,49 @@
-import React from 'react'
-import {
-    Table, 
-    Button, 
-    Tabs,
-    Tab, 
-    Row,
-    Col
-} from 'react-bootstrap';
-import {
-    Breadcrumb,
-} from '../../components/common';
+import React,{useState, useEffect} from 'react'
+import { Table, Row, Col } from 'react-bootstrap';
+import {useDispatch, useSelector} from "react-redux";
+
+//Custom imports
+import {API} from '../../pages/api';
+import {fetchCompareProductList} from '../../store/reducers/productDetails/productDetails.action';
+import {Breadcrumb, Loader} from '../../components/common';
+import { useRouter } from 'next/router';
+
+
+const breadCrumbConfig = [
+    {label:'Hospitals', route:'/hospital/hospitals'},
+    {label:"Comparison Results"}
+];
+
+/**
+ * API data fetching from redux
+ * Fetch the country list if it's not exist on redux store
+ */
+const fetchCompareProductListData = (dispatch, route)=>{
+     const {compareProductListData, compareProductListLoader} = useSelector(state => state.compareProductList);
+     const payload = route.query.hospital;
+
+    useEffect(() => {
+        !compareProductListData && dispatch(fetchCompareProductList(API.COMPARE_PRODUCTS, payload))
+    }, []);
+    return {
+        loader: compareProductListLoader,
+        data: compareProductListData || []
+    };
+
+}
+
 
 function ComparisonResult() {
-    const breadCrumbConfig = [
-        {label:'Hospitals', route:'/hospital/hospitals'},
-        {label:"Comparison Results"}
-    ];
+    const dispatch = useDispatch();
+    const route = useRouter();
+    const compareProductListData = fetchCompareProductListData(dispatch, route);
+    
+    
+console.log(compareProductListData.data);
 
     return (
         <div className="comparisionn-result-wrapper">
+            
            <Row className="product-detail-header">
                 <Col lg={10}>
                     <div>
@@ -29,107 +54,88 @@ function ComparisonResult() {
             </Row>
 
             <section  className="home-section background">
+            {compareProductListData.loader && <Loader/>}
                 <section className="table-wrapper">
                     <Table striped bordered hover variant="dark">
                         <thead>
                             <tr>
-                                <th>HOSPITAL NAME</th>
-                                <th>HCG Multi Specialty Hospital and HCG Cancer Centre</th>
-                                <th>NARAYANA MULTI SPECIALITY HOSPITAL</th>
-                                <th>HOSPITAL NAME</th>
-                                <th>HCG Multi Specialty Hospital and HCG Cancer Centre</th>
-                                <th>NARAYANA MULTI SPECIALITY HOSPITAL</th>
+                                    <th>HOSPITAL NAME</th>
+                                    {
+                                    compareProductListData?.data.map(list=>{
+                                        return <th>HCG Multi Specialty Hospital and HCG Cancer Centre</th>
+                                    })}
+                                        
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>No. Of Beds</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.numberOfBeds}</td>
+                                })}
                             </tr>
+                            
+                           
                             <tr>
                                 <td>No. Of ICU BEDS</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.numberOfICUBeds}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>NO OF OT ROOMS</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.numberOfRooms}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>Year Of Established</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.yearofEstablish}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>Average InternationAL Patient</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.averageInternationalPatient}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>Average Domestic Patient</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.averageDomesticPatient}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>FOOD</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.food}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>TREATMENT RELATED</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.treatment}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>COMFORT DURING STAY</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.comortStay}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>PAYMENT MODE</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.paymentMode}</td>
+                                })}
                             </tr>
                             <tr>
                                 <td>TRANSPOTAION</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>50000 INR</td>
-                                <td>6 Days</td>
-                                <td>6 Days</td>
-                            </tr>
+                                { compareProductListData?.data.map(list=>{
+                                    return <td>{list.transportation}</td>
+                                })}
+                            </tr> 
                         </tbody>
                     </Table>
                 </section>

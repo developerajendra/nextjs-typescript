@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchTreatmentTypes, fetchCountryList, fetchHospialsByCountry} from '../../store/reducers/filters/filters.action';
+import {fetchHospialsByCountry} from '../../store/reducers/filters/filters.action';
 import {CompareDestinationCard, SelectBox, MedicalButton} from '../common';
 
 

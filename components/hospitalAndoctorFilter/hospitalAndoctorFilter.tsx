@@ -7,31 +7,10 @@ import {useRouter} from 'next/router';
 import {API} from '../../pages/api';
 import {fetchTreatmentTypes, fetchCountryList, fetchTopHospialsByCountry} from '../../store/reducers/filters/filters.action';
 
-
-const filterData = [
-    {"name":"Ahmadabad","id":1, "countryCode":"IN"},
-    {"name":"Aluva","id":2, "countryCode":"IN"},
-    {"name":"Ambattur","id":3, "countryCode":"IN"},
-    {"name":"Amritsar","id":4, "countryCode":"IN"},
-    {"name":"Anand","id":5, "countryCode":"IN"},
-    {"name":"Anekal","id":6, "countryCode":"IN"},
-    {"name":"Ballabgarh","id":7, "countryCode":"IN"},
-    {"name":"Banglore","id":8, "countryCode":"IN"},
-    {"name":"Bhubneswar","id":10, "countryCode":"IN"},
-    {"name":"Chandigarh","id":11, "countryCode":"IN"},
-    {"name":"Chennai","id":12, "countryCode":"IN"},
-    {"name":"Delhi","id":13, "countryCode":"IN"},
-    {"name":"Dehradun","id":14, "countryCode":"IN"},
-    {"name":"Dimapur","id":15, "countryCode":"IN"},
-    {"name":"Dhanbad","id":16, "countryCode":"IN"}
-];
- 
 const initialState = {
     country: null,
     treatmentType: null
 };
-
-
 
 
 
@@ -91,6 +70,8 @@ const fetchTopHospialsByCountryData = (selectedCountry:any, dispatch)=>{
 const selectedValue = (country:[], treatment:[])=>{
         const router = useRouter();
         const {query} = router;
+        console.log('router',router);
+        
         const selectedCountry = query['country-of-treatment'];
         const selectedTreatment = query['treatment-type'];  
         const currentCountry =  country?.find((data:any)=>data.value == selectedCountry);
