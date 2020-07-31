@@ -208,3 +208,22 @@ animation-delay: -0.5s;
   border-color: #9c9c9c !important;
   pointer-events: none;
 }
+
+
+
+//RATING
+.rating{
+  display: flex;
+  padding: 0;
+  transform: scale(0.8);
+  margin: 0;
+
+      li {
+          list-style: none;
+          padding: 0 6px 0 0;
+          &.not-rated{
+              -webkit-filter: grayscale(1);
+              filter: grayscale(1);
+          }
+      }
+  }

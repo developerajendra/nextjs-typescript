@@ -70,7 +70,6 @@ const fetchTopHospialsByCountryData = (selectedCountry:any, dispatch)=>{
 const selectedValue = (country:[], treatment:[])=>{
         const router = useRouter();
         const {query} = router;
-        console.log('router',router);
         
         const selectedCountry = query['country-of-treatment'];
         const selectedTreatment = query['treatment-type'];  
