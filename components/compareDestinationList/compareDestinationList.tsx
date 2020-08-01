@@ -91,7 +91,7 @@ function CompareDestinationList() {
             </div>
             <div className="select-desease">
                 {treatmentTypesLoader && <Loader/>}
-                <SelectBox styleTypeDefault={true} options={treatmentTypeData} defaultSelectText="Select Disease Type"/>
+                <SelectBox styleTypeDefault={true} options={treatmentTypeData} placeholder="Select Disease Type"/>
             </div>
             <div className="destination-cards">
                 <Row>

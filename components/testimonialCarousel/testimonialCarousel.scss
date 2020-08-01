@@ -1,6 +1,6 @@
 .testimonial-carousel-wrapper{
     // background: #F8F8F8;
-    // padding: 70px;
+    position: relative;
 
     .carousel-inner{
         padding-top: 33px;
@@ -47,10 +47,26 @@
         opacity: 1;
     }
 
+    .carousel-item{
+        .flex-contentcontent{
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+
+    .select-wrapper{
+        position: absolute;
+        @media (max-width: 991px){
+            position: static;
+           }
+        padding: 0;
+        top: 4%;
+        z-index: 3;
+    }
 
     //Select section
-    .select-wrapper{
-        padding: 0 0 30px;
+    .review-wrapper{
+        padding: 0;
         position: relative;
         z-index: 2;
 
@@ -65,9 +81,9 @@
             font-weight: 100;
             font-size: 0.875rem;
         }
-        article{
-            font-size:1rem;
-            font-family: 'ProximaNova-Semibold';
+        article p{ 
+            font-family: 'ProximaNova-Regular' !important;
+            font-size: 1rem;
         }
     }
     .testimonials{

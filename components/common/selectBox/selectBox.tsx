@@ -12,8 +12,9 @@ interface dropdown{
     isDisable?:boolean;
     groupName?:any;
     clearInputs?:boolean;
+    placeholder?:string;
 }
-function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue, isDisable, groupName, clearInputs }:dropdown) {
+function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelect, selectedValue, isDisable, groupName, placeholder }:dropdown) {
     const handleChange = (selectedOption, index) => {
         onSelect && onSelect(selectedOption, index);
       };
@@ -38,6 +39,7 @@ function SelectBox({label, defaultSelectText, styleTypeDefault, options, onSelec
                     onChange={handleChange}
                     options={options}
                     isDisabled={isDisable}
+                    placeholder={placeholder}
                   />
                 </Form.Group>
                  
