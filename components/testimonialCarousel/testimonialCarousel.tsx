@@ -43,21 +43,27 @@ function TestimonialCarousel() {
         });
     }
 
-    console.log('testimonialData', testimonialData);
-    
+    useEffect(() => {
+        const payload = {value:'IN', label:'India'};
+        fetchStatesListData(payload);
+        fetchTestimonialData(defaultState);
+    }, [])
+    const defaultState = statesList && statesList.length ? statesList[0] : null;
 
 
     return (
         <div className="testimonial-carousel-wrapper">
-             <Col className="select-wrapper" lg={3}>
-                <div className="list-header">
-                    <span>Happy to share</span>
-                    <h2>Patient Stories</h2>
-                </div>
-                {countryListLoader || stateLoader && <Loader/>}
-                <SelectBox label="SELECT COUNTRY" onSelect={fetchStatesListData} options={countryListData}/>
-                <SelectBox label="SELECT STATE" options={statesList} onSelect={fetchTestimonialData}  /> 
-            </Col>
+            <div className="select-container">
+                <Col className="select-wrapper" lg={3}>
+                    <div className="list-header">
+                        <span>Happy to share</span>
+                        <h2>Patient Stories</h2>
+                    </div>
+                    {countryListLoader || stateLoader && <Loader/>}
+                    <SelectBox label="SELECT COUNTRY" selectedValue={{value:'IN', label:'India'}} onSelect={fetchStatesListData} options={countryListData}/>
+                    {defaultState &&  <SelectBox label="SELECT STATE" selectedValue={defaultState} options={statesList} onSelect={fetchTestimonialData}  /> }
+                </Col>
+            </div>
 
             {testimonialLoader && <Loader/>}
             <Carousel>

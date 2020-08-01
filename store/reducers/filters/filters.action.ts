@@ -34,7 +34,7 @@ export const fetchStatesByCountry = async (API_URL, payload)=> {
     const response =  await api.get(API_URL);
         keyMapper(response, STATES_MODEL);
         const data = response.map((list)=>{
-            return {label:list.stateName, value:list.stateCode}
+            return {label:list.stateName, value:list.stateName}
         });
 
         // dispatch({

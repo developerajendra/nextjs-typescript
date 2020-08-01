@@ -1,6 +1,7 @@
 .testimonial-carousel-wrapper{
     // background: #F8F8F8;
     position: relative;
+    min-height: 543px;
 
     .carousel-inner{
         padding-top: 33px;
@@ -54,14 +55,18 @@
         }
     }
 
-    .select-wrapper{
-        position: absolute;
-        @media (max-width: 991px){
-            position: static;
-           }
-        padding: 0;
-        top: 4%;
-        z-index: 3;
+    .select-container{
+        position: relative;
+        top: 26px;
+
+        .select-wrapper{
+            position: absolute;
+            @media (max-width: 991px){
+                position: static;
+            }
+            padding: 0;
+            z-index: 3;
+        }
     }
 
     //Select section
