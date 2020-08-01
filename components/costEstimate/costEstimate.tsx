@@ -11,7 +11,7 @@ function CostEstimate() {
             </div>
 
             <div className="select-desease">
-                <SelectBox styleTypeDefault={true} defaultSelectText="Choose Treatment Name"/>
+                <SelectBox styleTypeDefault={true} placeholder="Choose Treatment Name"/>
             </div>
 
             <section className="treatment-description">
