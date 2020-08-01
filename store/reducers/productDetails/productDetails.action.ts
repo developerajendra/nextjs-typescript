@@ -1,6 +1,6 @@
 import api from '../../../pages/api/api';
 import {TYPE} from './types';
-import {keyMapper} from '../../../pages/api/util';
+import {keyMapper} from '../../../pages/api';
 import {DOCTOR_DETAILS_MODEL} from '../../../components/doctorDetails/model.doctorDetails';
 
 /**

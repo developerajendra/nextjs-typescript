@@ -1,6 +1,7 @@
 import {api, keyMapper} from '../../../pages/api';
 import {TYPE} from '../filters/types';
 import {COMPARE_DESTINATION_MODEL} from '../../../components/compareDestinationList/model.compareDestinationList';
+import {STATES_MODEL} from './model.filters';
 
 /**
  * Country list action
@@ -20,6 +21,30 @@ export const fetchCountryList =(API_URL)=> async dispatch=>{
             data
         })
 }
+
+
+/**
+ * fetching the states based on selected country
+ * @param API_URL 
+ */
+export const fetchStatesByCountry = async (API_URL, payload)=> {
+    // dispatch({
+    //     type:TYPE.COUNTRY_LIST_LOADER
+    // })
+    const response =  await api.get(API_URL);
+        keyMapper(response, STATES_MODEL);
+        const data = response.map((list)=>{
+            return {label:list.stateName, value:list.stateCode}
+        });
+
+        // dispatch({
+        //     type:TYPE.COUNTRY_LIST,
+        //     data
+        // })
+        
+        return data;
+}
+
 
 
 /**
