@@ -34,7 +34,7 @@ export default function Layout({
           />
           <meta name="og:title" content="Karevel.com" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta charset='utf-8' />
+          {/* <meta charset='utf-8' /> */}
           <meta http-equiv='X-UA-Compatible' content='IE=edge' />
           <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
           <meta name='description' content='Description' />
