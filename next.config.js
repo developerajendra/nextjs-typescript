@@ -1,10 +1,10 @@
 const withCSS = require('@zeit/next-css')
 const withPWA = require('next-pwa');
-module.exports = withCSS({
-  cssLoaderOptions: {
-    url: false
-  }
-});
+// module.exports = withCSS({
+//   cssLoaderOptions: {
+//     url: false
+//   }
+// });
 
  
 const isProd = process.env.NODE_ENV === 'production'
@@ -29,6 +29,7 @@ module.exports = {
 module.exports = withPWA({
   pwa: {
       dest: 'public',
-      disable: process.env.NODE_ENV === 'development'
+      // disable: process.env.NODE_ENV === 'development'
+      disable:false
   }
 })
