@@ -127,6 +127,14 @@
     @include icon($icon-arrow-width, $icon-arrow-height, $icon-arrow-offset-x, $icon-arrow-offset-y);
   }
   
+  .icon-close {
+    @include icon($icon-close-width, $icon-close-height, $icon-close-offset-x, $icon-close-offset-y);
+  }
+  
+  .icon-upload {
+    @include icon($icon-upload-width, $icon-upload-height, $icon-upload-offset-x, $icon-upload-offset-y);
+  }
+  
    
 
 

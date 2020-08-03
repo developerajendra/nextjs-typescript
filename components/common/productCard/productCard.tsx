@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import {MedicalButton} from '../../common';
 import {API, ratingUI} from '../../../pages/api/'
-
+import {SendEnquiery} from '../../index';
 
 
 
@@ -27,7 +27,9 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     <a style={{color:' #22222299'}} href="#">{data.buttonText}</a>
                     <Row className="button-wrapper">
                         <MedicalButton text={outlineButtonText} type="outline" routeOutlineLink={`${buttonOutlineRoute}/[id]`} routeOutlineAs={`${buttonOutlineRoute}/${data.productId}`} />
-                        <MedicalButton text={primaryButtonText} type="primary" routeLink="/hospital/compareResult" />
+                        <SendEnquiery id={data.productId} name={data.name}>
+                            <MedicalButton text={primaryButtonText} type="primary"  />
+                        </SendEnquiery>
                     </Row> 
                 </Card.Body>
             </Card>  

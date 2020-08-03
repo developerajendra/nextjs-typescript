@@ -10,6 +10,8 @@ import NewsCard from './newsCard/newsCard';
 import CheckBox from './checkbox/checkBox';
 import Breadcrumb from './breadcrumb/breadcrumb';
 import Loader from './loader/loader';
+import MedicalModal from './medicalModal/medicalModal';
+import Input from './input/input';
 
 export {
     Navigation,
@@ -23,5 +25,7 @@ export {
     NewsCard,
     CheckBox,
     Breadcrumb,
-    Loader
+    Loader,
+    MedicalModal,
+    Input
 }
