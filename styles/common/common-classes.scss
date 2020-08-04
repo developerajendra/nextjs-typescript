@@ -332,7 +332,7 @@ input[type=checkbox], input[type=radio] {
 
 //super
 sup {
-  top: 6px;
+  top: 6px !important;
   color: red;
-  font-size: 26px;
+  font-size: 26px !important;
 }
