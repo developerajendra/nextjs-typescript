@@ -1,4 +1,5 @@
 export const DOCTOR_DETAILS_MODEL = {
+    "DOC_ID":"id",
     "DOC_NAME":"name",
     "DOC_SPECIALIZATION":"specialization",
     "DOC_QULIFICATION":"qulification",

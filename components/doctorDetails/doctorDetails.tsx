@@ -1,11 +1,12 @@
 import React,{useEffect, useState} from 'react'
 import { Card, Button, Tabs, Tab, Row, Col} from 'react-bootstrap';
-import { MedicalButton, Loader, Breadcrumb} from '../../components/common';
+import { MedicalButton, Loader, Breadcrumb, MedicalModal} from '../../components/common';
 import { useRouter } from 'next/router';
 
 //Custom imports
 import {API, ratingUI} from '../../pages/api';
 import {fetchDoctorDetails} from '../../store/reducers/productDetails/productDetails.action';
+import {SendEnquiery} from '../index';
 
 const doctorInitialValue = [{
     "name":'',
@@ -84,7 +85,9 @@ function DoctorDetails() {
                         </Card.Body>
                         
                     </Card>
-                    <MedicalButton text="SEND ENQUIRY" type="primary" />
+                    <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.id}}>
+                        <MedicalButton text="SEND ENQUIRY" type="primary"  />
+                    </MedicalModal>
                 </Col>
                 <Col lg={10} className="detail-right-content">
                     <h4>{data.name}</h4>
