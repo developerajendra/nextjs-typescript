@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
-import {MedicalModal, Input, MedicalButton} from '../common';
+import {Loader, Input, MedicalButton} from '../common';
+import {sendEnquiry} from '../../store/reducers/sendEnquiry/sendEnquiry.action';
+import {API} from '../../pages/api';
 
 interface SendEnquiery {
     id:number;
@@ -8,33 +10,63 @@ interface SendEnquiery {
     closeModal: Function;
 }
 
+
+/**
+ * On submit send enquiry form 
+ * @param formValues 
+ * @param setsendEnquiryLoader 
+ * @param closeModal 
+ */
+const submitSendEnquiryForm = (formValues, setsendEnquiryLoader, closeModal)=>{
+    let formData = new FormData();
+        formData.append('file', formValues.file);
+        
+        const payload = {
+            ...formValues,
+            file:formData
+        }
+        setsendEnquiryLoader(true);
+        sendEnquiry(API.SEND_ENQUIRY, payload).then(data=>{
+            
+            setsendEnquiryLoader(false);
+            closeModal();
+        });
+}
+
 function SendEnquiery({id, name, closeModal}:SendEnquiery) {
     const [cancelModal, setcancelModal] = useState(false);
-    const [formValues, setformValues] = useState({name:'name'})
+    const [formValues, setformValues] = useState({id:id, name:'', email:'', message:'', file:''});
+    const [sendEnquiryLoader, setsendEnquiryLoader] = useState(false);
+
     const onButtonOutlineClick = ()=>{
         closeModal();
     }
      
     const onButtonPrimaryClick = ()=>{
-        console.log('submit clicked...');
-        closeModal();
+        submitSendEnquiryForm(formValues, setsendEnquiryLoader, closeModal)
     }
 
-    const onInputChange = (e)=>{
-        console.log('form values', e);
+    const onInputChange = (e, id)=>{
+        
+        setformValues({
+            ...formValues,
+            [id]: e.target.value
+        })
         
     }
+    const disableButton = formValues.name && formValues.email &&  formValues.email.indexOf('@')>-1 && formValues.email.indexOf('.')>-1;
 
     return (
         <div>
+            {sendEnquiryLoader && <Loader/>}
             <form action="">
-                <Input {...formValues} onInputChange={onInputChange} label="NAME" id="name" placeholder="Enter Name" />
-                <Input label="EMAIL" type="email" id="email" placeholder="Enter Email ID" />
-                <Input label="MESSAGE" type="textarea" id="message" placeholder="Write here…" />
-                <Input label="UPLOAD FILE" type="file" id="file" />
+                <Input values={formValues} onInputChange={onInputChange} label="NAME" id="name" placeholder="Enter Name" />
+                <Input values={formValues} onInputChange={onInputChange}  label="EMAIL" type="email" id="email" placeholder="Enter Email ID" />
+                <Input values={formValues} onInputChange={onInputChange}  label="MESSAGE" type="textarea" id="message" placeholder="Write here…" />
+                <Input values={formValues} onInputChange={onInputChange}  label="UPLOAD FILE" type="file" id="file" />
                 <div className="form-button-wrapper">
                     <MedicalButton text="CANCEL" type="outline" onButtonOutlineClick={onButtonOutlineClick} />
-                    <MedicalButton text="SUBMIT NOW" type="primary" onButtonPrimaryClick={onButtonPrimaryClick}  />
+                    <MedicalButton disabled={!disableButton} text="SUBMIT NOW" type="primary" onButtonPrimaryClick={onButtonPrimaryClick}  />
                 </div>
             </form>
         </div>
@@ -42,3 +74,4 @@ function SendEnquiery({id, name, closeModal}:SendEnquiery) {
 }
 
 export default SendEnquiery
+ 

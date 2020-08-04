@@ -14,6 +14,7 @@ const API = {
     COMPARE_PRODUCTS: '5f21a21dc1edc4661760e1c8',
     DOCTOR_DETAILS: '5f1f1a7fc58dc34bf5dbdb0e',
     TESTIMONIAL: '5f24715a6f8e4e3faf27d0b1',
+    SEND_ENQUIRY: '5f24715a6f8e4e3faf27d0b1',
 }
 
 export default API;
