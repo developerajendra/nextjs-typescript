@@ -60,8 +60,8 @@ function SendEnquiery({id, name, closeModal}:SendEnquiery) {
         <div>
             {sendEnquiryLoader && <Loader/>}
             <form action="">
-                <Input values={formValues} onInputChange={onInputChange} label="NAME" id="name" placeholder="Enter Name" />
-                <Input values={formValues} onInputChange={onInputChange}  label="EMAIL" type="email" id="email" placeholder="Enter Email ID" />
+                <Input values={formValues} onInputChange={onInputChange} mandatory={true} label="NAME" id="name" placeholder="Enter Name" />
+                <Input values={formValues} onInputChange={onInputChange}  mandatory={true} label="EMAIL" type="email" id="email" placeholder="Enter Email ID" />
                 <Input values={formValues} onInputChange={onInputChange}  label="MESSAGE" type="textarea" id="message" placeholder="Write here…" />
                 <Input values={formValues} onInputChange={onInputChange}  label="UPLOAD FILE" type="file" id="file" />
                 <div className="form-button-wrapper">

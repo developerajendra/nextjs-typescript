@@ -1,0 +1,44 @@
+.ReactModalPortal .modal-content-wrapper.doctor-details{
+    padding:0;
+    width: auto;
+}
+
+.write-review-wrapper{
+    .review{
+        border-bottom: solid 1px #e4e7e8;
+        padding: 15px 35px 0;
+        margin: 0;
+        .rating{
+            display: flex;
+            padding: 0;
+            transform: scale(0.8);
+            margin: 0;
+            float: right;
+            padding: 0;
+            margin: 0;
+            margin-right: -20px;
+        }
+        .review-list > li{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 0 12px;
+        }
+    }
+
+    .form{
+        padding: 15px 35px 30px;
+
+        .form-button-wrapper {
+            max-width: 70%;
+        }
+        .terms-condition{
+            .input-wrapper{
+                flex-direction: row;
+            }
+            label{
+                order: 2;
+                padding: 2px 0 0 10px;
+            }
+        }
+    }
+}

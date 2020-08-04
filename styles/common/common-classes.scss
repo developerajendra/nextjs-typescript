@@ -318,3 +318,21 @@ animation-delay: -0.5s;
     }
 }
 
+//CHECKBOX
+input[type=checkbox], input[type=radio] {
+  width: 20px;
+  height: 20px;
+  border: solid 1px #46B469;
+  background: #46B469;
+  &:checked{
+    background: #fff;
+  }
+}
+
+
+//super
+sup {
+  top: 6px;
+  color: red;
+  font-size: 26px;
+}

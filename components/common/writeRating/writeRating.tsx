@@ -7,7 +7,7 @@ const WriteRating = ({value, ratingType, getValues})=>{
     const rateValue = Math.floor(value);
     const tempArray = [1,2,3,4,5];
     const [stReview, setstReview] = useState(0);
-    const [reviewState, setreviewState] = useState({[ratingType]:0})
+    const [reviewState, setreviewState] = useState({[ratingType]:1})
     const [loader, setloader] = useState(false);
   
     const mouseHover = (e, index, ratingType)=>{

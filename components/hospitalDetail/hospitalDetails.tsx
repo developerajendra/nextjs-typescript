@@ -34,7 +34,7 @@ function HospitalDetails() {
                     </div>
                 </Col>
                 <Col lg={2}>
-                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:1}}>
+                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:1}} customClass={'doctor-details'}>
                         <MedicalButton text="WRITE A REVIEW" type="outline"  />
                     </MedicalModal>
                     
