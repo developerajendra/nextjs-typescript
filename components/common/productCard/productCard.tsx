@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, Row} from 'react-bootstrap';
 import Link from 'next/link';
 
-import {MedicalButton} from '../../common';
+import {MedicalButton, MedicalModal} from '../../common';
 import {API, ratingUI} from '../../../pages/api/'
 import {SendEnquiery} from '../../index';
 
@@ -27,9 +27,9 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     <a style={{color:' #22222299'}} href="#">{data.buttonText}</a>
                     <Row className="button-wrapper">
                         <MedicalButton text={outlineButtonText} type="outline" routeOutlineLink={`${buttonOutlineRoute}/[id]`} routeOutlineAs={`${buttonOutlineRoute}/${data.productId}`} />
-                        <SendEnquiery id={data.productId} name={data.name}>
+                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
                             <MedicalButton text={primaryButtonText} type="primary"  />
-                        </SendEnquiery>
+                        </MedicalModal>
                     </Row> 
                 </Card.Body>
             </Card>  

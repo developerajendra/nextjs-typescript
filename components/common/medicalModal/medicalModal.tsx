@@ -16,8 +16,8 @@ const customStyles = {
 Modal.setAppElement('#__next')
  
 
-function MedicalModal({children, openButton, header}){
-    var subtitle;
+function MedicalModal({children, ModalComponent, header, data}){
+   
     const [modalIsOpen,setIsOpen] = React.useState(false);
     function openModal() {
       setIsOpen(true);
@@ -35,7 +35,7 @@ function MedicalModal({children, openButton, header}){
       return (
         <div className="modal-wrapper">
           {/* <button onClick={openModal}>Open Modal</button> */}
-           <div onClick={openModal}>  {openButton} </div>
+           <div onClick={openModal}>{children} </div>
           <Modal
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
@@ -49,7 +49,7 @@ function MedicalModal({children, openButton, header}){
                   <span className="sub-title">{header.subTitle}</span>
              </div>
              <div className="modal-content-wrapper">
-              {children}
+              <ModalComponent {...data} closeModal={closeModal}/>
             </div>
              
           </Modal>

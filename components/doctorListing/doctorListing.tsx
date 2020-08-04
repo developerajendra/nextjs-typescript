@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import {useSelector, useDispatch} from "react-redux";
 
 //Custom imports
@@ -28,14 +28,13 @@ const fetchDoctorListData = ()=>{
 
 function DoctorListing() {
     const tratmentTypeData = fetchDoctorListData();
-    console.log('tratmentTypeData', tratmentTypeData);
     
 
     return (
         <div style={{position:'relative'}}>
            {tratmentTypeData?.loader && <Loader/>}
             {tratmentTypeData?.data?.map((data)=>{
-                return <ProductCard primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/doctors/detail" data={data} />
+                return <ProductCard   primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/doctors/detail" data={data} />
             })}
             
         </div>
