@@ -9,9 +9,11 @@ import {
 } from 'react-bootstrap';
 import {
     MedicalButton,
+    MedicalModal,
     SelectBox,
     Breadcrumb
 } from '../../components/common';
+import {WriteReview} from '../index';
 
 
 
@@ -32,7 +34,10 @@ function HospitalDetails() {
                     </div>
                 </Col>
                 <Col lg={2}>
-                    <MedicalButton text="WRITE A REVIEW" type="outline" />
+                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:1}}>
+                        <MedicalButton text="WRITE A REVIEW" type="outline"  />
+                    </MedicalModal>
+                    
                 </Col>
             </Row>
             <Row className="detail-wrapper">

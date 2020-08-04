@@ -7,5 +7,5 @@ export{
     API,
     keyMapper,
     api,
-    ratingUI
+    ratingUI,
 }

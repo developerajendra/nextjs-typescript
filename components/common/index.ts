@@ -12,6 +12,7 @@ import Breadcrumb from './breadcrumb/breadcrumb';
 import Loader from './loader/loader';
 import MedicalModal from './medicalModal/medicalModal';
 import Input from './input/input';
+import WriteRating from './writeRating/writeRating';
 
 export {
     Navigation,
@@ -27,5 +28,6 @@ export {
     Breadcrumb,
     Loader,
     MedicalModal,
-    Input
+    Input,
+    WriteRating
 }

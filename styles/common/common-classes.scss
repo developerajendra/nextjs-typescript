@@ -218,6 +218,16 @@ animation-delay: -0.5s;
   transform: scale(0.8);
   margin: 0;
 
+  &.write-review{
+    li{
+      cursor: pointer;
+      &:hover{
+        -webkit-filter: grayscale(0);
+              filter: grayscale(0);
+      }
+    }
+  }
+
       li {
           list-style: none;
           padding: 0 6px 0 0;
