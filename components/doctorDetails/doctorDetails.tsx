@@ -4,7 +4,7 @@ import { MedicalButton, Loader, Breadcrumb, MedicalModal} from '../../components
 import { useRouter } from 'next/router';
 
 //Custom imports
-import {API, ratingUI} from '../../pages/api';
+import {API, ratingUI, makeList} from '../../pages/api';
 import {fetchDoctorDetails} from '../../store/reducers/productDetails/productDetails.action';
 import {SendEnquiery} from '../index';
 
@@ -41,13 +41,7 @@ const fetchDoctorDetailsData = (route)=>{
     }
 }
 
-const makeList = (content = '')=>{
-    const list = content.split('#');
-    return list.map(data=>{
-        return data && <li>{data}</li>
-    });
-}
-
+ 
 
 function DoctorDetails() {
     const route = useRouter();

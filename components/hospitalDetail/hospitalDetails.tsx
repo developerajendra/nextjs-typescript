@@ -1,28 +1,60 @@
-import React from 'react'
-import {
-    Card, 
-    Button, 
-    Tabs,
-    Tab, 
-    Row,
-    Col
-} from 'react-bootstrap';
-import {
-    MedicalButton,
-    MedicalModal,
-    SelectBox,
-    Breadcrumb
-} from '../../components/common';
-import {WriteReview} from '../index';
+import React,{useEffect, useState} from 'react'
+import {Card, Button, Tabs, Tab, Row,Col} from 'react-bootstrap';
+import { useRouter } from 'next/router';
 
+//Custom imports
+import {MedicalButton, MedicalModal, SelectBox, Breadcrumb, Loader} from '../../components/common';
+import {WriteReview, SendEnquiery} from '../index';
+import {fetchHospitalDetails} from '../../store/reducers/productDetails/productDetails.action';
+import {API, ratingUI, makeList} from '../../pages/api';
+
+
+const hospitalInitialValue = [{
+    "name":'',
+    "specialization":'',
+    "qulification":'',
+     "location":'',
+     "about":'',
+     "tratementLists":'',
+     "education":'',
+     "speciality":'',
+     "experience":'',
+     "image":''
+  }];
+
+/**
+* fetchig the hospital details..
+ */
+const fetchHospitalDetailsData = (route)=>{
+    const [hospitalDetails, setHospitalDetails] = useState(hospitalInitialValue)
+    const [loader, setloader] = useState(true);
+    const payload = route.query.id;
+
+  useEffect(() => {
+      fetchHospitalDetails(API.HOSPITAL_DETAILS, payload).then(data=>{
+          setHospitalDetails(data);
+          setloader(false);
+      });
+  }, [])
+  return {
+      loader,
+      data:hospitalDetails
+  }
+}
 
 
 function HospitalDetails() {
+    const route = useRouter();
     const hospitalName = "NARAYANA MULTI SPECIALITY HOSPITAL"
     const breadCrumbConfig = [
         {label:'Hospitals', route:'/hospital/hospitals'},
         {label:hospitalName}
     ];
+
+    const hospitalDetails = fetchHospitalDetailsData(route);
+    const {data}:{data:any} = hospitalDetails;   
+     console.log('data', data);
+
 
     return (
         <div className="hospital-detail-wrapper">
@@ -41,9 +73,10 @@ function HospitalDetails() {
                 </Col>
             </Row>
             <Row className="detail-wrapper">
+            {hospitalDetails?.loader && <Loader/>}
                 <Col lg={6}>
                     <Card>
-                        <Card.Img variant="top" src="/images/hospital/hospital-detail.jpg" />
+                    <Card.Img variant="top" src={ API.IMAGE_BASE_URL.HOSPITALS + data.image} />
                         <Card.Body>
                             <Row className="content-row">
                                 <Col lg={4} className="content-column">
@@ -122,12 +155,16 @@ function HospitalDetails() {
                     <h4>NARAYANA MULTI SPECIALITY HOSPITAL</h4>
                     <address>Plot No. 1355, Unit No. 302, Niharika Jubilee one, Road No. 1, Jubilee Hills,Hyderabad Telangana 5</address>
                     <span className="call"> <i className="icon-call-small"></i>91-8980008163 , 8980008381</span> <span><a href="#" className="visit-website">Visit website</a></span>
-                    <Tabs defaultActiveKey="package" id="uncontrolled-tab-example">
+                    <Tabs defaultActiveKey="about" id="uncontrolled-tab-example">
                         <Tab eventKey="about" title="ABOUT">
-                            Thou blind fool, Love, what dost thou to mine eyes, That they behold, and see not what they see? They know what beauty is, see where it lies, Yet what the best is take the worst to be. If eyes, corrupt by over-partial looks, Be anchor'd in the bay where all men ride, Why of eyes' falsehood hast thou forged hooks, Whereto the judgment of my heart is tied? Why should my heart think that a several plot, Which my heart knows the wide world's common place?
+                        <ul>
+                            {data.about}
+                        </ul>
                         </Tab>
                         <Tab eventKey="facilityService" title="FACILITY & SERVICE">
-                            Thou blind fool, Love, what dost thou to mine eyes, That they behold, and see not what they see? They know what beauty is, see where it lies, Yet what the best is take the worst to be. If eyes, corrupt by over-partial looks, Be anchor'd in the bay where all men ride, Why of eyes' falsehood hast thou forged hooks, Whereto the judgment of my heart is tied? Why should my heart think that a several plot, Which my heart knows the wide world's common place?
+                            <ul>
+                                {makeList(data.shortDescription)}
+                            </ul>
                         </Tab>
                         <Tab eventKey="reviewRating" title="REVIEWS & Rating" >
                             Thou blind fool, Love, what dost thou to mine eyes, That they behold, and see not what they see? They know what beauty is, see where it lies, Yet what the best is take the worst to be. If eyes, corrupt by over-partial looks, Be anchor'd in the bay where all men ride, Why of eyes' falsehood hast thou forged hooks, Whereto the judgment of my heart is tied? Why should my heart think that a several plot, Which my heart knows the wide world's common place?

@@ -114,7 +114,10 @@
                 background-position-x: 97%;
                 background-color: #fff;
             }
-
+            ul,li{
+                padding-left: 16px;
+                list-style: disc;
+            }
             .card{
                 max-width: 100%;
                 .card-text{
