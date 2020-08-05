@@ -151,3 +151,23 @@
   .icon-map {
     @include icon($icon-map-width, $icon-map-height, $icon-map-offset-x, $icon-map-offset-y);
   }
+  
+  .icon-bed {
+    @include icon($icon-bed-width, $icon-bed-height, $icon-bed-offset-x, $icon-bed-offset-y);
+  }
+  .icon-domestic-patient {
+    @include icon($icon-domestic-patient-width, $icon-domestic-patient-height, $icon-domestic-patient-offset-x, $icon-domestic-patient-offset-y);
+  }
+  .icon-icu-bed {
+    @include icon($icon-icu-bed-width, $icon-icu-bed-height, $icon-icu-bed-offset-x, $icon-icu-bed-offset-y);
+  }
+  .icon-international-patient {
+    @include icon($icon-international-patient-width, $icon-international-patient-height, $icon-international-patient-offset-x, $icon-international-patient-offset-y);
+  }
+  .icon-operation {
+    @include icon($icon-operation-width, $icon-operation-height, $icon-operation-offset-x, $icon-operation-offset-y);
+  }
+  .icon-plane {
+    @include icon($icon-plane-width, $icon-plane-height, $icon-plane-offset-x, $icon-plane-offset-y);
+  }
+ 

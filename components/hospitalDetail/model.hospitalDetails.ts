@@ -10,5 +10,11 @@ export const HOSPITAL_DETAIL_MODEL = {
     "CITY_NM":"cityName",
     "DISTRICT_NM":"districtName",
     "STATE_NM":"stateName",
-    "ABOUT":"about"
+    "ABOUT":"about",
+    "NO_OF_BED":"numberOfBed",
+    "NO_OF_ICU_BED": "numberOfICUBeds",
+    "NO_OF_OT_ROOM": "numberOfOperationRoom",
+    "AVG_PATIENT_DOMESTIC": "domesticPatients",
+    "AVG_PATIENT_INTERNATIONAL": "internationalPatients",
+    "NEAR_DOMESTIC_AIRPORT_DISTANCE": "domesticAirportDistance"
 }

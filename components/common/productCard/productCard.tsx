@@ -30,7 +30,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                                 <span><i className="icon-call"></i> 91-7933669999,</span>
                                 <span>8033712391</span>
                             </li>
-                            <li><i className="icon-earth"></i><a href="">Visit website</a></li>
+                            <li><i className="icon-earth"></i><a target="blank" href={data.website}>Visit website</a></li>
                         </ul>
                         <ul className="iso">
                             <li><i className="icon-iso1"></i></li>

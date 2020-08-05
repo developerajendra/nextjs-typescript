@@ -80,70 +80,74 @@ function HospitalDetails() {
                         <Card.Body>
                             <Row className="content-row">
                                 <Col lg={4} className="content-column">
-                                    <Card.Title>Card Title</Card.Title>
+                                    <Card.Title>92% Liked</Card.Title>
                                     <Card.Text>
-                                    Some quick example text to build.
+                                    {ratingUI(4)}
                                     </Card.Text>
                                 </Col>
 
                                 <Col lg={4} className="content-column">
-                                    <Card.Title>Card Title</Card.Title>
+                                    <Card.Title>Accreditation</Card.Title>
                                     <Card.Text>
-                                    Some quick example text to build.
+                                    <ul className="iso">
+                                        <li><i className="icon-iso1"></i></li>
+                                        <li><i className="icon-iso2"></i></li>
+                                        <li><i className="icon-iso1"></i></li>
+                                    </ul>
                                     </Card.Text>
                                 </Col>
 
-                                <Col lg={4} className="content-column no-border">
-                                    <Card.Title>Card Title</Card.Title>
+                                <Col lg={4} className="content-column no-border number-of-bed">
+                                    <Card.Title>{data.numberOfBed} <i className="icon-bed"></i> </Card.Title>
                                     <Card.Text>
-                                    Some quick example text to build.
+                                    Total No. of Beds
                                     </Card.Text>
                                 </Col>
                             </Row>
 
                             <Row className="content-row">
-                                <Col lg={4} className="content-column">
-                                    <Card.Title>Card Title</Card.Title>
+                                <Col lg={4} className="content-column number-of-icu-bed">
+                                    <Card.Title >{data.numberOfICUBeds}<i className="icon-icu-bed"></i> </Card.Title>
                                     <Card.Text>
-                                    Some quick example text to build.
+                                    Total No. of ICU Beds
                                     </Card.Text>
                                 </Col>
 
-                                <Col lg={4} className="content-column">
-                                    <Card.Title>Card Title</Card.Title>
+                                <Col lg={4} className="content-column number-of-operation">
+                                    <Card.Title>{data.numberOfOperationRoom}<i className="icon-operation"></i> </Card.Title>
                                     <Card.Text>
-                                    Some quick example text to build.
+                                    No. of Operation Rooms
                                     </Card.Text>
                                 </Col>
 
-                                <Col lg={4} className="content-column no-border">
-                                    <Card.Title>Card Title</Card.Title>
+                                <Col lg={4} className="content-column no-border domestic-patient">
+                                    <Card.Title >{data.domesticPatients}<i className="icon-domestic-patient"></i> </Card.Title>
                                     <Card.Text>
-                                    Some quick example text to build.
+                                    Domestic Patients
                                     </Card.Text>
                                 </Col>
                             </Row>
 
                             <Row className="content-row no-border">
-                                <Col lg={4} className="content-column">
-                                    <Card.Title>Card Title</Card.Title>
+                                <Col lg={4} className="content-column international-patient">
+                                    <Card.Title >{data.internationalPatients}<i className="icon-international-patient"></i> </Card.Title>
                                     <Card.Text>
-                                    Some quick example text to build.
+                                    International Patients
                                     </Card.Text>
                                 </Col>
 
-                                <Col lg={4} className="content-column">
-                                    <Card.Title>Card Title</Card.Title>
+                                <Col lg={4} className="content-column airport-distance">
+                                    <Card.Title>{data.domesticAirportDistance}<i className="icon-plane"></i> </Card.Title>
                                     <Card.Text>
-                                    Some quick example text to build.
+                                    Distance from Airport
                                     </Card.Text>
                                 </Col>
 
                                 <Col lg={4} className="content-column no-border">
-                                    <Card.Title>Card Title</Card.Title>
+                                    {/* <Card.Title>Card Title</Card.Title>
                                     <Card.Text>
                                     Some quick example text to build.
-                                    </Card.Text>
+                                    </Card.Text> */}
                                 </Col>
                             </Row>
 
@@ -154,7 +158,7 @@ function HospitalDetails() {
                 <Col lg={6} className="detail-right-content">
                     <h4>NARAYANA MULTI SPECIALITY HOSPITAL</h4>
                     <address>Plot No. 1355, Unit No. 302, Niharika Jubilee one, Road No. 1, Jubilee Hills,Hyderabad Telangana 5</address>
-                    <span className="call"> <i className="icon-call-small"></i>91-8980008163 , 8980008381</span> <span><a href="#" className="visit-website">Visit website</a></span>
+                    <span className="call"> <i className="icon-call-small"></i>91-8980008163 , 8980008381</span> <span><a  target="blank"  href={data.website} className="visit-website">Visit website</a></span>
                     <Tabs defaultActiveKey="about" id="uncontrolled-tab-example">
                         <Tab eventKey="about" title="ABOUT">
                         <ul>

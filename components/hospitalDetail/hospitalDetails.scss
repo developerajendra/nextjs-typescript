@@ -48,6 +48,41 @@
 
         .card-body {
             padding: 1.25rem 2rem;
+
+            .card-title{
+                font-family: 'ProximaNova-Semibold' !important;
+                font-size: 1.5rem;
+
+                i {
+                    margin: 0 10px;
+                }
+            }
+
+            .card-text {
+                color: #222222;
+                font-size: 0.875rem;
+                font-family: 'ProximaNova-Regular' !important;
+            }
+
+            .number-of-bed{
+                color: #1B86C7;
+            }
+            .number-of-icu-bed{
+                color: #292993;
+            }
+            .number-of-operation {
+                color: #87268B;
+            }
+            .domestic-patient{
+                color: #C7851B;
+            }
+            .international-patient{
+                color:  #1BC0C7;
+            }
+            .airport-distance{
+                color: #424281;
+            }
+             
         }
 
         .card{
@@ -66,7 +101,7 @@
             }
             .content-column{
                 border-right: 1px solid #BBC4C7;
-                padding: 20px;
+                padding: 18px 14px;
                 @media (max-width: 991px){
                    border: none;
                 }
