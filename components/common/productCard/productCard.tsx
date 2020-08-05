@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, Row, Col} from 'react-bootstrap';
-import Link from 'next/link';
+import LazyLoad from 'react-lazyload';
+
 
 import {MedicalButton, MedicalModal} from '../../common';
 import {API, ratingUI} from '../../../pages/api/'
@@ -11,7 +12,7 @@ import {SendEnquiery} from '../../index';
 function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute, isHospital}) {
     return (
         isHospital ? 
-        
+        <LazyLoad height={200}>
                 <Card className="product-card-wrapper hospital">
                     <div className="image-wrapper">
                     <Card.Img variant="top" src={ API.IMAGE_BASE_URL.HOSPITALS + data.image} />
@@ -47,8 +48,8 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     </Row> 
                 </Card.Body>
             </Card>  
-
-        : <Card className="product-card-wrapper doctor">
+            </LazyLoad>
+        :  <LazyLoad height={200}> <Card className="product-card-wrapper doctor">
                  <div className="image-wrapper">
                     <Card.Img variant="top" src={ API.IMAGE_BASE_URL.DOCTORS + data.image} />
                     <div className="rating">
@@ -71,6 +72,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     </Row> 
                 </Card.Body>
             </Card>  
+            </LazyLoad>
     )
 }
 

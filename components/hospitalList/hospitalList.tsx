@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {useSelector, useDispatch} from "react-redux";
 
-
 //Custom imports
 import {API} from '../../pages/api';
 import {fetchHospitalList} from '../../store/reducers/productList/productList.action';
@@ -24,74 +23,7 @@ const fetchHospitalListData = ()=>{
         data:hospitalListData
     };
 }
-
-
-// const hospitalListData = [{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     },{
-//         routes:'/hospital/hospitals/detail',
-//         routesID:'1',
-//         buttonText:'LEARN MORE'
-//     }
-// ];
+ 
 
 function HospitalList() {
     const hospitalListData = fetchHospitalListData();
@@ -102,7 +34,7 @@ function HospitalList() {
         <div style={{position:'relative'}}>
            {hospitalListData?.loader && <Loader/>}
             {hospitalListData?.data?.map((data)=>{
-                return <ProductCard data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/doctors/detail" data={data}  />
+                return <ProductCard data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail" data={data}  />
             })}
             
         </div>
