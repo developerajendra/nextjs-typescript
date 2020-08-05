@@ -15,6 +15,13 @@ const customStyles = {
   };
 Modal.setAppElement('#__next')
  
+interface Modal {
+  children?:string;
+  ModalComponent?:any, 
+  header?:any, 
+  data?:[],
+  customClass?:string;
+}
 
 function MedicalModal({children, ModalComponent, header, data, customClass}){
    

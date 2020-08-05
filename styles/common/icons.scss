@@ -134,8 +134,20 @@
   .icon-upload {
     @include icon($icon-upload-width, $icon-upload-height, $icon-upload-offset-x, $icon-upload-offset-y);
   }
-  
    
-
-
-  
+  .icon-iso1 {
+    @include icon($icon-iso1-width, $icon-iso1-height, $icon-iso1-offset-x, $icon-iso1-offset-y);
+  }
+   
+  .icon-iso2 {
+    @include icon($icon-iso2-width, $icon-iso2-height, $icon-iso2-offset-x, $icon-iso2-offset-y);
+  }
+  .icon-earth {
+    @include icon($icon-earth-width, $icon-earth-height, $icon-earth-offset-x, $icon-earth-offset-y);
+  }
+  .icon-call {
+    @include icon($icon-call-width, $icon-call-height, $icon-call-offset-x, $icon-call-offset-y);
+  }
+  .icon-map {
+    @include icon($icon-map-width, $icon-map-height, $icon-map-offset-x, $icon-map-offset-y);
+  }

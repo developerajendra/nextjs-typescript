@@ -18,3 +18,21 @@ export const doctorListReducer = (state = [], action)=>{
 
 
  
+
+/**
+ * hospital list reducer
+ * @param state 
+ * @param action 
+ */
+export const hospitalListReducer = (state = [], action)=>{
+    switch(action.type){
+       case TYPE.HOSPITAL_LIST:
+           return {...state, hospitalListData:action.data, hospitalListDataLoader: false};
+
+       case TYPE.HOSPITAL_LIST_LOADER:
+           return {...state, hospitalListDataLoader: true};
+   }
+   return state;
+}
+
+

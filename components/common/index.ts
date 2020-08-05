@@ -1,6 +1,5 @@
 import Navigation from './navigation/navigation';
 import ProductCard from './productCard/productCard';
-import HospitalProductCard from './hospitalProductCard/hospitalProductCard';
 import SelectBox from './selectBox/selectBox';
 import MedicalButton from './medicalButton/medicalButton';
 import DeseaseCard from './deseaseCard/deseaseCard';
@@ -17,7 +16,6 @@ import WriteRating from './writeRating/writeRating';
 export {
     Navigation,
     ProductCard,
-    HospitalProductCard,
     SelectBox,
     MedicalButton,
     DeseaseCard,
