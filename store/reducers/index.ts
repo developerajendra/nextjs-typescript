@@ -5,7 +5,7 @@ import {
     topHospitalsByCountryReducer,
     hospitalsByCountryReducer
 } from './filters/filters.reducer';
-import {doctorListReducer, hospitalListReducer} from './productList/productList.reducer';
+import {doctorListReducer, hospitalListReducer, compareProductReducer} from './productList/productList.reducer';
 import {compareProductListReducer} from './productDetails/productDetails.reducer';
 
 
@@ -16,5 +16,6 @@ export default combineReducers({
     hospitalsByCountry:hospitalsByCountryReducer,
     doctorList:doctorListReducer,
     compareProductList:compareProductListReducer,
-    hospitalList:hospitalListReducer
+    hospitalList:hospitalListReducer,
+    compareProduct:compareProductReducer
 });

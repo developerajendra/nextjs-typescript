@@ -1,12 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import { Table, Row, Col } from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
+import { useRouter } from 'next/router';
 
 //Custom imports
 import {API} from '../../pages/api';
 import {fetchCompareProductList} from '../../store/reducers/productDetails/productDetails.action';
 import {Breadcrumb, Loader} from '../../components/common';
-import { useRouter } from 'next/router';
+
 
 
 const breadCrumbConfig = [

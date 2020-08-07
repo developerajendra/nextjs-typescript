@@ -16,14 +16,17 @@ const customStyles = {
 Modal.setAppElement('#__next')
  
 interface Modal {
-  children?:string;
+  children?:any;
   ModalComponent?:any, 
-  header?:any, 
-  data?:[],
-  customClass?:string;
+  header?:{
+    title:string;
+    subTitle:any;
+  }, 
+  data?:any,
+  customClass?:any;
 }
 
-function MedicalModal({children, ModalComponent, header, data, customClass}){
+function MedicalModal({children, ModalComponent, header, data, customClass}:Modal){
    
     const [modalIsOpen,setIsOpen] = React.useState(false);
     function openModal() {

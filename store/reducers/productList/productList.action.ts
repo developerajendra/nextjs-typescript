@@ -38,4 +38,34 @@ export const fetchHospitalList =(API_URL)=> async dispatch=>{
         })
 }
 
+
+/**
+ * comparing the product
+ * @param API_URL 
+ */
+export const compareProduct =(PRODUCT_TYPE, selectedProducts = [])=> dispatch=>{
+    
+    if(!selectedProducts.length){
+        dispatch({
+            type:TYPE.COMPARE_PRODUCT_TYPE+PRODUCT_TYPE
+        });
+        return ;
+    }
+
+    if(PRODUCT_TYPE == 'cleanup'){
+        
+        dispatch({
+            type:TYPE.CLEAN_COMPARE_PRODUCT,
+        }); 
+        return ;
+    }else{
+        dispatch({
+            type:TYPE.COMPARE_PRODUCT_TYPE+PRODUCT_TYPE,
+            data: selectedProducts
+        });
+    }
+
+    
+}
+
  

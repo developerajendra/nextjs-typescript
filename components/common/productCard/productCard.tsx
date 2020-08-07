@@ -9,7 +9,7 @@ import {SendEnquiery} from '../../index';
 
 
 
-function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute, isHospital}) {
+function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute, isHospital, compareProduct, onproductCompareChange, dispatcher}) {
     return (
         isHospital ? 
         <LazyLoad height={200}>
@@ -21,7 +21,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     </div>
                 </div>
                 <Card.Body style={{flex:'2'}}>
-                    <input className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />
+                    {compareProduct && <input onChange={(e)=>onproductCompareChange(e, data.medProviderId, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />}
                     <Card.Title>{data.name}Hospital Name</Card.Title>
                         {/* <span>{data.hospitalName},{data.location}</span> */}
                         <ul className="contact">

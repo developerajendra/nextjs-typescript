@@ -3,9 +3,8 @@ import {useSelector, useDispatch} from "react-redux";
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchHospitalList} from '../../store/reducers/productList/productList.action';
+import {fetchHospitalList, compareProduct} from '../../store/reducers/productList/productList.action';
 import {ProductCard, Loader} from '../common';
- 
 
 /**
  * API data treatment types from redux
@@ -24,17 +23,28 @@ const fetchHospitalListData = ()=>{
     };
 }
  
+const prodcuts = [];
+const onCheckedProduct = (e, productID, dispatcher)=>{
+    if(e.target.checked){
+        !prodcuts.includes(productID) && prodcuts.push(productID);
+    }else{
+        const index = prodcuts.indexOf(productID);
+        prodcuts.splice(index, 1);
+    }
+    dispatcher(compareProduct('HOSPITALS', prodcuts))
+}
 
 function HospitalList() {
     const hospitalListData = fetchHospitalListData();
-    console.log('hospitalListData', hospitalListData);
+    const {compareHospitals} = useSelector(state => state.compareProduct);
+    const dispatch = useDispatch();
     
 
     return (
         <div style={{position:'relative'}}>
            {hospitalListData?.loader && <Loader/>}
             {hospitalListData?.data?.map((data)=>{
-                return <ProductCard data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail" data={data}  />
+                return <ProductCard dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareHospitals} data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail" data={data}  />
             })}
             
         </div>
