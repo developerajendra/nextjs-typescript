@@ -12,6 +12,7 @@ import Loader from './loader/loader';
 import MedicalModal from './medicalModal/medicalModal';
 import Input from './input/input';
 import WriteRating from './writeRating/writeRating';
+import VideoCarousel from './videoCarousel/videoCarousel';
 
 export {
     Navigation,
@@ -27,5 +28,6 @@ export {
     Loader,
     MedicalModal,
     Input,
-    WriteRating
+    WriteRating,
+    VideoCarousel
 }

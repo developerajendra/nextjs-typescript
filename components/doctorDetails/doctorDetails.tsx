@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { Card, Button, Tabs, Tab, Row, Col} from 'react-bootstrap';
-import { MedicalButton, Loader, Breadcrumb, MedicalModal} from '../../components/common';
+import { MedicalButton, Loader, Breadcrumb, MedicalModal, VideoCarousel} from '../../components/common';
 import { useRouter } from 'next/router';
 
 //Custom imports
@@ -106,19 +106,10 @@ function DoctorDetails() {
                         <Tab eventKey="education" title="EDUCATION" >
                             {makeList(data?.qulification)}
                         </Tab>
-                        <Tab eventKey="video" title="VIDEO" >
-                        
-                         <h5>Package details</h5>
-                            <ul>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                            </ul>
+                        <Tab eventKey="video" title="VIDEO"  >
+                            <div className="video">
+                                <VideoCarousel />
+                            </div>
                         </Tab>
                     </Tabs>
                 </Col>

@@ -347,3 +347,22 @@ sup {
       margin: 0 10px 0 0;
   }
 }
+
+
+
+// video carousel
+.video-carousel-wrapper{
+  .carousel-indicators, li{
+    list-style: none !important;
+  }
+  .carousel-item{
+    // display: flex !important;
+    // justify-content: center;
+    // align-items: center;
+  }
+ 
+  iframe{
+    // width: 1000%;
+    // margin: auto;
+  }
+}

@@ -3,7 +3,7 @@ import {Card, Button, Tabs, Tab, Row,Col} from 'react-bootstrap';
 import { useRouter } from 'next/router';
 
 //Custom imports
-import {MedicalButton, MedicalModal, SelectBox, Breadcrumb, Loader} from '../../components/common';
+import {MedicalButton, MedicalModal, SelectBox, Breadcrumb, Loader, VideoCarousel} from '../../components/common';
 import {WriteReview, SendEnquiery} from '../index';
 import {fetchHospitalDetails} from '../../store/reducers/productDetails/productDetails.action';
 import {API, ratingUI, makeList} from '../../pages/api';
@@ -174,7 +174,7 @@ function HospitalDetails() {
                             Thou blind fool, Love, what dost thou to mine eyes, That they behold, and see not what they see? They know what beauty is, see where it lies, Yet what the best is take the worst to be. If eyes, corrupt by over-partial looks, Be anchor'd in the bay where all men ride, Why of eyes' falsehood hast thou forged hooks, Whereto the judgment of my heart is tied? Why should my heart think that a several plot, Which my heart knows the wide world's common place?
                         </Tab>
                         <Tab eventKey="videos" title="VIDEOS" >
-                            Thou blind fool, Love, what dost thou to mine eyes, That they behold, and see not what they see? They know what beauty is, see where it lies, Yet what the best is take the worst to be. If eyes, corrupt by over-partial looks, Be anchor'd in the bay where all men ride, Why of eyes' falsehood hast thou forged hooks, Whereto the judgment of my heart is tied? Why should my heart think that a several plot, Which my heart knows the wide world's common place?
+                        <VideoCarousel />
                         </Tab>
                         <Tab eventKey="package" title="PACKAGE" >
                         
