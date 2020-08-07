@@ -43,7 +43,7 @@ export const hospitalListReducer = (state = [], action)=>{
  * @param action 
  */
 export const compareProductReducer = (state = [], action)=>{
-    console.log('cccc', action.type);
+    // console.log('cccc', action.type);
 
     switch(action.type){
         case TYPE.COMPARE_PRODUCT_TYPE_HOSPITALS:
@@ -52,8 +52,8 @@ export const compareProductReducer = (state = [], action)=>{
         case TYPE.COMPARE_PRODUCT_TYPE_DOCTORS:
            return { compareDoctors: true, selectedDoctors:action.data};
        
-        case TYPE.CLEAN_COMPARE_PRODUCT:
-            return { compareDoctors: false, compareHospitals:false, selectedDoctors:[]};
+        case TYPE.COMPARE_PRODUCT_TYPE_CLEANUP:
+            return [];
    }
    return state;
 }
