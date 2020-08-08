@@ -85,7 +85,7 @@ function DoctorDetails() {
                 </Col>
                 <Col lg={10} className="detail-right-content">
                     <h4>{data.name}</h4>
-                    <address>{data.hospital}, {data.location}</address>
+                    <address><i className="icon-map"></i> {data.hospitalName} {data.location}</address>
                      <ul>
                          <li>{data.speciality}</li>
                          <li>DNB. {data.experience} years of experience. {data.location}</li>

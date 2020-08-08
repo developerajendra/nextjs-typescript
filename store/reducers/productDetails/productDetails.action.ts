@@ -31,12 +31,13 @@ export const fetchDoctorDetails = async(API_URL, payload)=>  {
     //     type:TYPE.COMPARE_PRODUCT_LIST_LOADER
     // })
     const response =  await api.get(API_URL);
-        keyMapper(response, DOCTOR_DETAILS_MODEL);
+        let _response = response[0]
+        keyMapper(_response, DOCTOR_DETAILS_MODEL);
         // dispatch({
         //     type:TYPE.COMPARE_PRODUCT_LIST,
         //     data:response
         // });
-        return response
+        return _response
 }
 
  
