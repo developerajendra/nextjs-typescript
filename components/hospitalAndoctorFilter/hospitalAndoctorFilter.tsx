@@ -69,10 +69,9 @@ const fetchTopHospialsByCountryData = (selectedCountry:any, dispatch)=>{
  * @param country 
  * @param treatment 
  */
-const selectedValue = (country:[], treatment:[])=>{
-        const router = useRouter();
+const selectedValue = (country:[], treatment:[], router)=>{
         const {query} = router;
-        
+ 
         const selectedCountry = query['country-of-treatment'];
         const selectedTreatment = query['treatment-type'] || query.treatmentId;  
          
@@ -86,6 +85,12 @@ const selectedValue = (country:[], treatment:[])=>{
 }
 
 
+/**
+ * Fetch country list based on selected route
+ * Fetch if it's redirected form home
+ * @param dispatch 
+ * @param router 
+ */
 const fetchCountryLisByTreatmentData = (dispatch, router)=>{
     const {query} = router;
     const selectedTreatment = query['treatment-type'] || query.treatmentId;  
@@ -108,7 +113,7 @@ const HospitalAndoctorFilter = () => {
     fetchCountryLisByTreatmentData(dispatch, router);
 
     const loader =  tratmentTypeData.loader;
-    const selctedValue =  selectedValue([], tratmentTypeData.data);
+    const selctedValue =  selectedValue(countryListByTreatmentData, tratmentTypeData.data, router);
 
 
     //on select treatment dropdown
@@ -145,7 +150,7 @@ const HospitalAndoctorFilter = () => {
             <div className="drop-downs">
                  { loader || topHospitalsByCountryLoader ? <Loader /> : null}
                  {tratmentTypeData.data && <SelectBox selectedValue={selctedValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
-                  <SelectBox selectedValue={selctedValue?.country} onSelect={onOriginSelect} options={countryListByTreatmentData} label="SELECT COUNTRY"/>
+                  {countryListByTreatmentData && <SelectBox selectedValue={selctedValue?.country} onSelect={onOriginSelect} options={countryListByTreatmentData} label="SELECT COUNTRY"/>}
             </div>
             <div className="check-boxes">
                 <h3>TOP HOSPITALS BY STATE</h3>

@@ -6,7 +6,7 @@ import useSWR from 'swr'
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchTreatmentTypes, fetchCountryList} from '../../store/reducers/filters/filters.action';
+import {fetchTreatmentTypes, fetchCountryList, fetchCountryLisByTreatment} from '../../store/reducers/filters/filters.action';
 
 
 /**
@@ -53,10 +53,12 @@ const initialState = {
 };
 
 const HealthCarefilter = ()=> {
+    const dispatch = useDispatch();
+    const {countryListByTreatmentData, countryListByTratementLoader} = useSelector(state => state.countryListByTreatment);
     const [dropDownValue, setdropDownValue] = useState(initialState);
     const countryList = fetchCountryListData();
     const tratmentTypeData = fetchTreatmentTypesData();
-    const loader = countryList.loader || tratmentTypeData.loader;
+    const loader = countryList.loader || tratmentTypeData.loader || countryListByTratementLoader;
 
 
     const onOriginSelect = (selectedValue)=>{
@@ -72,6 +74,8 @@ const HealthCarefilter = ()=> {
             isSelcted:true,
             treatmentType: selectedValue.value
         });
+        
+        return dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT, selectedValue.crtdUser))
     };
     const onCountryOfTreatmentSelect = (selectedValue)=>{
         setdropDownValue({
@@ -88,7 +92,6 @@ const HealthCarefilter = ()=> {
      const routesQuery = `/hospital/hospitals?treatment-type=${treatmentType}&country-of-treatment=${countryOfTreatment}`
      
       
-     console.log('dropDownValue', dropDownValue);
      
     
     return (
@@ -99,7 +102,7 @@ const HealthCarefilter = ()=> {
                 <div>
                     {countryList.data && <SelectBox onSelect={onOriginSelect} options={countryList.data} label="COUNTRY OF ORIGIN"/>}
                     {tratmentTypeData.data && <SelectBox onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="TREATMENT TYPE"/> }
-                    {countryList.data && <SelectBox onSelect={onCountryOfTreatmentSelect} options={countryList.data} label="COUNTRY OF TREATMNET"/> }
+                    {countryListByTreatmentData && <SelectBox onSelect={onCountryOfTreatmentSelect} options={countryListByTreatmentData} label="COUNTRY OF TREATMNET"/> }
                     <MedicalButton disabled={loader || !isOneSelected} text="SEARCH NOW" type="primary" routeLink={routesQuery} />
                 </div>
 
