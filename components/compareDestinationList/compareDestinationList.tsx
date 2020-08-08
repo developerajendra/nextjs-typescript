@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchHospialsByCountry} from '../../store/reducers/filters/filters.action';
+import {fetchHospialsByCountry, fetchCountryLisByTreatment} from '../../store/reducers/filters/filters.action';
 import {CompareDestinationCard, SelectBox, MedicalButton, Loader} from '../common';
 
 
@@ -47,11 +47,16 @@ const generateRouteURL = (selectedHospital)=>{
 
 function CompareDestinationList() {
     const dispatch = useDispatch();
-    const {countryListData, countryListLoader} = useSelector(state => state.countryList);
+    const {countryListByTreatmentData, countryListByTratementLoader} = useSelector(state => state.countryListByTreatment);
     const [hospitalList, setHospitalList] = useState(cardsInitialValue);
     const [clearInputs, setclearInputs] = useState(false);
     const [selectedHospital, setselectedHospital] = useState(hospitalInitialValue);
     const {treatmentTypeData, treatmentTypesLoader} = useSelector(state => state.treatmentTypes)
+
+    //on treatement list select
+    const onTreatmentSelect = (selectedValue)=>{
+        return dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT, selectedValue.crtdUser))
+    }
 
     //on country change set hospital list based on selected country
     const onCountrySelect = (selectedValue, card)=>{
@@ -60,25 +65,27 @@ function CompareDestinationList() {
         array[index] = {...array[index], loader:true}
         setHospitalList(array);
 
-        fetchTopHospialsByCountryData(selectedValue.value, dispatch).then(hospitalData=>{
+
+        fetchTopHospialsByCountryData(selectedValue.crtdUser, dispatch).then(hospitalData=>{
             const array = [...hospitalList];
             array[index] = {...array[index], index:index, data:hospitalData, loader:false}
             setHospitalList(array);
         });
     }
+ 
 
+    //clear inputs on select
     const onSelectClearInputs = ()=>{
         setHospitalList(cardsInitialValue);
     }
 
 
+    //on Select hospital
     const onHospitalSelect = (selectedValue, card)=>{
         const index = card.name;
         const array = [...selectedHospital];
         array[index] = {...array[index], id:selectedValue.value}
         setselectedHospital(array);
-
-        
     }
     const routeURL = generateRouteURL(selectedHospital);
       
@@ -91,7 +98,7 @@ function CompareDestinationList() {
             </div>
             <div className="select-desease">
                 {treatmentTypesLoader && <Loader/>}
-                <SelectBox styleTypeDefault={true} options={treatmentTypeData} placeholder="Select Disease Type"/>
+                <SelectBox styleTypeDefault={true} options={treatmentTypeData} placeholder="Select Disease Type" onSelect={onTreatmentSelect}/>
             </div>
             <div className="destination-cards">
                 <Row>
@@ -104,8 +111,8 @@ function CompareDestinationList() {
                                     index={index}
                                     onHospitalSelect={onHospitalSelect}
                                     onDropDownSelect={onCountrySelect} 
-                                    countryList={countryListData} 
-                                    loader={countryListLoader || card.loader}   
+                                    countryList={countryListByTreatmentData} 
+                                    loader={countryListByTratementLoader || card.loader}   
                                     hospitalList={card.data} 
                                     clearInputs={clearInputs}
                                     />

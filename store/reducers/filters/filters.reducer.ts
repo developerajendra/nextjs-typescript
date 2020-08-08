@@ -16,6 +16,22 @@ export const countryReducer = (state = [], action)=>{
     return state;
 }
 
+/**
+ * country list By treatment reducer
+ * @param state 
+ * @param action 
+ */
+export const countryListByTreatmentReducer = (state = [], action)=>{
+     switch(action.type){
+        case TYPE.COUNTRY_LIST_BY_TREATMENT:
+            return {...state, countryListByTreatmentData:action.data, countryListByTratementLoader: false};
+
+        case TYPE.COUNTRY_LIST_BY_TREATMENT_LOADER:
+            return {...state, countryListByTratementLoader: true};
+    }
+    return state;
+}
+
 
 
 

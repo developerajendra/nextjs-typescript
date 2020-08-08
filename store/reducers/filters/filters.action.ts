@@ -24,6 +24,26 @@ export const fetchCountryList =(API_URL)=> async dispatch=>{
 
 
 /**
+ * Country list by treatment action
+ * @param API_URL 
+ */
+export const fetchCountryLisByTreatment =(API_URL, treatmentType)=> async dispatch=>{
+    dispatch({
+        type:TYPE.COUNTRY_LIST_BY_TREATMENT_LOADER
+    })
+    const response =  await api.get(API_URL);
+        const data = response.map((list)=>{
+            return {label:list.COUNTRY_NM, value:list.COUNTRY_CD, crtdUser:list.CRTD_USR}
+        });
+
+        dispatch({
+            type:TYPE.COUNTRY_LIST_BY_TREATMENT,
+            data
+        })
+}
+
+
+/**
  * fetching the states based on selected country
  * @param API_URL 
  */
@@ -57,7 +77,7 @@ export const fetchTreatmentTypes =(API_URL)=> async dispatch=>{
     })
     const response =  await api.get(API_URL);
     const data = response.map((list)=>{
-        return {value:list.id, label:list.name}
+        return {value:list.id, crtUser:list.CRTD_USR, label:list.SPECIALITY_DESC}
     });
 
     dispatch({

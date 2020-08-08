@@ -44,7 +44,7 @@ function HospitalList() {
         <div style={{position:'relative'}}>
            {hospitalListData?.loader && <Loader/>}
             {hospitalListData?.data?.map((data)=>{
-                return <ProductCard dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareHospitals} data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail" data={data}  />
+                return <ProductCard dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareHospitals} data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail"   />
             })}
             
         </div>

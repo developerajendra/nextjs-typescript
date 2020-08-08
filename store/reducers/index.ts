@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import {
     countryReducer, 
+    countryListByTreatmentReducer,
     treatTypeReducer, 
     topHospitalsByCountryReducer,
     hospitalsByCountryReducer
@@ -11,6 +12,7 @@ import {compareProductListReducer} from './productDetails/productDetails.reducer
 
 export default combineReducers({
     countryList: countryReducer,
+    countryListByTreatment:countryListByTreatmentReducer,
     treatmentTypes:treatTypeReducer,
     topHospitalsByCountry:topHospitalsByCountryReducer,
     hospitalsByCountry:hospitalsByCountryReducer,
