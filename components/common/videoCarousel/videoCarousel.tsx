@@ -6,10 +6,10 @@ function VideoCarousel() {
         <div className="video-carousel-wrapper">
                 <Carousel>
                     <Carousel.Item>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gv5WstOox-A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gv5WstOox-A"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/K7pgpYIdd4o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/K7pgpYIdd4o"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
                     </Carousel.Item>
                 </Carousel>
         </div>

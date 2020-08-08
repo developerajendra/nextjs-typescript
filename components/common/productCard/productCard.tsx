@@ -7,9 +7,18 @@ import {MedicalButton, MedicalModal} from '../../common';
 import {API, ratingUI} from '../../../pages/api/'
 import {SendEnquiery} from '../../index';
 
+interface productCard {
+    data:any;
+    primaryButtonText?:string;
+    outlineButtonText?:string;
+    buttonOutlineRoute?:string;
+    isHospital?:boolean;
+    compareProduct?:any;
+    onproductCompareChange?:any;
+    dispatcher?:any;
+}
 
-
-function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute, isHospital, compareProduct, onproductCompareChange, dispatcher}) {
+function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute, isHospital, compareProduct, onproductCompareChange, dispatcher}:productCard) {
     return (
         isHospital ? 
         <LazyLoad height={200}>
@@ -22,13 +31,13 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                 </div>
                 <Card.Body style={{flex:'2'}}>
                     {compareProduct && <input onChange={(e)=>onproductCompareChange(e, data.medProviderId, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />}
-                    <Card.Title>{data.name}Hospital Name</Card.Title>
+                    <Card.Title>{data.hospitalName}</Card.Title>
                         {/* <span>{data.hospitalName},{data.location}</span> */}
                         <ul className="contact">
-                            <li> <i className="icon-map"></i> Mithakhali, Ellis Bridge</li>
+                            <li> <i className="icon-map"></i> {data.cityName}, {data.districtName}, {data.stateName}</li>
                             <li>
-                                <span><i className="icon-call"></i> 91-7933669999,</span>
-                                <span>8033712391</span>
+                                <span><i className="icon-call"></i> {data.phone1},</span>
+                                <span>{data.phone2}</span>
                             </li>
                             <li><i className="icon-earth"></i><a target="blank" href={data.website}>Visit website</a></li>
                         </ul>
@@ -59,7 +68,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                 <Card.Body style={{flex:'2'}}>
                     <input className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />
                     <Card.Title>{data.name}</Card.Title>
-                        <span>{data.hospitalName},{data.location}</span>
+                        <span><i className="icon-map"></i> {data.hospitalName}, {data.location}</span>
                     <Card.Text>
                         {data.education}
                     </Card.Text>

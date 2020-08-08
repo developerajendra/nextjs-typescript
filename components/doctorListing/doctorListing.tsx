@@ -34,7 +34,7 @@ function DoctorListing() {
         <div style={{position:'relative'}}>
            {tratmentTypeData?.loader && <Loader/>}
             {tratmentTypeData?.data?.map((data)=>{
-                return <ProductCard   primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/doctors/detail" data={data} />
+                return <Produc tCard   primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/doctors/detail" data={data} />
             })}
             
         </div>
