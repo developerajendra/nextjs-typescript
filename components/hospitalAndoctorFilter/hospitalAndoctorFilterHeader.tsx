@@ -33,8 +33,6 @@ function HospitalAndoctorFilterHeader() {
     
     const compareNow = ()=>{
         const selectedRoute = route.route.indexOf("doctors")>-1 ? 'DOCTORS' : 'HOSPITALS';
-        console.log('aaaa');
-        
         dispatch(compareProduct(selectedRoute))
     }
 
@@ -45,7 +43,6 @@ function HospitalAndoctorFilterHeader() {
     }
 
     useEffect(() => {
-        console.log('ccccc');
         return ()=>{
             dispatch(compareProduct('CLEANUP')) 
         }
