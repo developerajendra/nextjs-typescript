@@ -1,8 +1,35 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import {Table} from 'react-bootstrap';
-import {SelectBox} from '../common';
+import {SelectBox, Loader} from '../common';
+import {fetchCostEstimatesList, fetchCostEstimatesDetail} from '../../store/reducers/filters/filters.action';
+import {API} from '../../pages/api';
 
 function CostEstimate() {
+    const [loader, setloader] = useState(false);
+    const [dataloader, setDataloader] = useState(false);
+    const [costEstimateList, setcostEstimateList] = useState([]);
+    const [costEstimate, setcostEstimate] = useState([]);
+
+    useEffect(() => {
+        setloader(true);
+        fetchCostEstimatesList(API.COST_ESTIMATE_LIST).then(data=>{
+            setcostEstimateList(data);
+            let payload = {value:data[0].packageId}
+            onSelectPackage(payload);
+            setloader(false);
+        });
+    }, []);
+
+    const onSelectPackage = (value)=>{
+        setDataloader(true);
+        
+        fetchCostEstimatesDetail(API.COST_ESTIMATE_DETAIL, value.value).then(data=>{
+            setcostEstimate(data);
+            setDataloader(false);
+        });
+    }
+    
+
     return (
         <div className="cost-estimate-wrapper">
             <div className="list-header">
@@ -11,7 +38,8 @@ function CostEstimate() {
             </div>
 
             <div className="select-desease">
-                <SelectBox styleTypeDefault={true} placeholder="Choose Treatment Name"/>
+                {loader && <Loader/>}
+                  {costEstimateList.length ? <SelectBox selectedValue={costEstimateList[0]} styleTypeDefault={true} placeholder="Choose Treatment Name" options={costEstimateList} onSelect={onSelectPackage}/> : null}
             </div>
 
             <section className="treatment-description">
@@ -29,106 +57,18 @@ function CostEstimate() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
-                        <tr>
-                            <td>Ahmedabad</td>
-                            <td>50000 INR</td>
-                            <td>6 Days</td>
-                        </tr>
+                    {dataloader && <Loader/>}
+                        {
+                            costEstimate?.map((data)=>{
+                                const cost = data?.averageCost;
+                                
+                                return <tr>
+                                    <td>{data.cityName}</td>
+                                    <td>{cost.toLocaleString()} INR</td>
+                                    <td>{data.numberOfDays} Days</td>
+                                </tr>
+                            })
+                        }
                     </tbody>
                 </Table>
             </section>

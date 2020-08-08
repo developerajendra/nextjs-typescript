@@ -19,6 +19,9 @@ const API = {
     COMPARE_PRODUCTS: '5f21a21dc1edc4661760e1c8',
     TESTIMONIAL: '5f24715a6f8e4e3faf27d0b1',
     SEND_ENQUIRY: '5f24715a6f8e4e3faf27d0b1',
+    COST_ESTIMATE_LIST: '5f2daa756f8e4e3faf2d837b',
+    COST_ESTIMATE_DETAIL: '5f2da9dc1823333f8f1ee5b7',
+    
 }
 
 export default API;

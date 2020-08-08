@@ -2,6 +2,7 @@ import {api, keyMapper} from '../../../pages/api';
 import {TYPE} from '../filters/types';
 import {COMPARE_DESTINATION_MODEL} from '../../../components/compareDestinationList/model.compareDestinationList';
 import {STATES_MODEL} from './model.filters';
+import {COST_ESTIMATE_MODEL} from '../../../components/costEstimate/model.costEstimate';
 
 /**
  * Country list action
@@ -138,4 +139,30 @@ export const fetchHospialsByCountry =(API_URL, selectedCountry)=> async dispatch
         selectedCountry
     })
     return data;
+}
+
+
+
+/**
+ * Fetching the cost estimate
+ * @param API_URL 
+ */
+export const fetchCostEstimatesList = async(API_URL)=>  {
+    const response =  await api.get(API_URL);
+        keyMapper(response, COST_ESTIMATE_MODEL);
+        const data = response.map((list)=>{
+            return {label:list.packageName, value:list.packageId}
+        });
+
+    return data;
+}
+
+/**
+ * Fetch cost estimate details
+ * @param API_URL 
+ */
+export const fetchCostEstimatesDetail = async(API_URL, payload)=>  {
+    const response =  await api.get(API_URL);
+        keyMapper(response, COST_ESTIMATE_MODEL);
+        return response
 }
