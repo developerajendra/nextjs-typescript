@@ -3,7 +3,7 @@ export const DOCTOR_LIST_MODEL = {
     "DOC_NAME":"name",
     "DOC_LOCATION":"location",
     "DOC_EDUCATION":"education",
-    "DOC_HOSPITAL":"hospitalName",
+    "ENT_FULL_NM":"hospitalName",
     "RANKING":'rating',
     'IMG_NAME': "image"
 }
