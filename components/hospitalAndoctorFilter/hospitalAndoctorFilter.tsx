@@ -69,58 +69,58 @@ const fetchCountryLisByTreatmentData = (dispatch, router)=>{
 }
 
 
-/**
- * Fetch country list based on selected route
- * Fetch if it's redirected form home
- * @param dispatch 
- * @param router 
- */
-const fetchStatesListByCountryData = (router, onCountryChange=false)=>{
-    const [statesByCountry, setStatesByCountry] = useState([]);
-    const [loader, setloader] = useState(false);
-
-    if(onCountryChange){
-        setloader(true);
-        fetchStatesByCountry(API.TOP_STATES_BY_COUNTRY, router).then(data=>{
-            setStatesByCountry(data);
-            setloader(false);
-        })
-        return {
-            listData: statesByCountry,
-            statesLoader: loader
-        };;
-    }
-    const {query} = router;
-    const selectedCountry = query['country-of-treatment'];
-    useEffect(() => {
-        setloader(true);
-          fetchStatesByCountry(API.TOP_STATES_BY_COUNTRY, selectedCountry).then(data=>{
-            setStatesByCountry(data);
-            setloader(false);
-        })
-    }, []);
-    return {
-        listData: statesByCountry,
-        statesLoader: loader
-    };
-}
 
 
 const HospitalAndoctorFilter = () => {
     const dispatch = useDispatch();
     const router = useRouter();
 
+    // states by country state
+    const [statesByCountry, setStatesByCountry] = useState([]);
+    const [stateLoader, setStateLoader] = useState(false);
+
+
     //Hooks 
     const {countryListByTreatmentData, countryListByTratementLoader} = useSelector(state => state.countryListByTreatment);
     const {topHospitalsByCountryData, topHospitalsByCountryLoader} = useSelector(state => state.topHospitalsByCountry);
     const [dropDownValue, setdropDownValue] = useState(initialState);
-
+    
+    
     //custom functions and declarationss - on load
     const tratmentTypeData = fetchTreatmentTypesData();
     fetchCountryLisByTreatmentData(dispatch, router);
-    const statesList =  fetchStatesListByCountryData(router);
     const loader =  tratmentTypeData.loader;
     const selctedValue =  selectedValue(countryListByTreatmentData, tratmentTypeData.data, router);
+
+
+    
+
+     /**
+      *  fetching the sates list based on selected country
+      * @param router 
+      * @param onCountryChange 
+      */
+    const fetchStatesListByCountryData = (router, onCountryChange=false)=>{
+        if(onCountryChange){
+            setStateLoader(true);
+            fetchStatesByCountry(API.TOP_STATES_BY_COUNTRY, router).then(data=>{
+                setStatesByCountry(data);
+                setStateLoader(false);
+            })
+            return;
+        }
+        const {query} = router;
+        const selectedCountry = query['country-of-treatment'];
+        useEffect(() => {
+            setStateLoader(true);
+            fetchStatesByCountry(API.TOP_STATES_BY_COUNTRY, selectedCountry).then(data=>{
+                setStatesByCountry(data);
+                setStateLoader(false);
+            })
+        }, []);
+    }
+    fetchStatesListByCountryData(router);
+
 
 
 
@@ -162,9 +162,9 @@ const HospitalAndoctorFilter = () => {
             </div>
             <div className="check-boxes">
                 <h3>TOP HOSPITALS BY STATE</h3>
-                {statesList?.statesLoader ? <Loader /> : null}
+                {stateLoader ? <Loader /> : null}
                 <ul>
-                    {statesList?.listData?.map((data:object, index:number)=><li key={index}><CheckBox {...data}  /></li>)}
+                    {statesByCountry?.map((data:object, index:number)=><li key={index}><CheckBox {...data}  /></li>)}
                 </ul>
             </div>
         </div>
