@@ -14,7 +14,7 @@ const fetchHospitalListData = (dispatch, filters)=>{
     
     const {hospitalListData, hospitalListDataLoader} = useSelector(state => state.hospitalList)
     useEffect(() => {
-        !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
+        // !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
     }, []);
     return {
         loader: hospitalListDataLoader,

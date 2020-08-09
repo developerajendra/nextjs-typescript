@@ -8,7 +8,7 @@ import {HOSPITAL_LIST_MODEL} from '../../../components/hospitalList/model.hospit
  * fetching the doctors list
  * @param API_URL 
  */
-export const fetchDoctorsList =(API_URL, filters)=> async dispatch=>{
+export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
     console.log('filters', filters);
     
     dispatch({

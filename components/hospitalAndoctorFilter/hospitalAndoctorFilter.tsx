@@ -21,7 +21,6 @@ const filtersValue = {
  
 
 
-
 /**
  * API data treatment types from redux
  * Fetch the treatment types if it's not exist on redux store
@@ -45,8 +44,8 @@ const fetchTreatmentTypesData = ()=>{
  * @param country 
  * @param treatment 
  */
-const selectedValue = (country:[], treatment:[], router)=>{
-        const {query} = router;
+const selectedValue = (country:[], treatment:[], router, dispatch , productFilters)=>{
+        const {query, route} = router;
  
         const selectedCountry = query['country-of-treatment'];
         const selectedTreatment = query['treatment-type'] || query.treatmentId;  
@@ -54,6 +53,15 @@ const selectedValue = (country:[], treatment:[], router)=>{
         const currentCountry =  country?.find((data:any)=>data.value == selectedCountry);
         const currentTreatment =  treatment?.find((data:any)=>data.value == selectedTreatment);
 
+
+        //Filtering the product when selecting reloading the page
+        //If query exist in the url filter the product or else send the default products
+        if(!productFilters?.country && !productFilters?.crtdUser && !productFilters?.crtdUser?.length){
+            const selectedTab =  route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
+            dispatch(productFilter({crtdUser:currentTreatment?.crtdUser, country:currentCountry?.value}, selectedTab));
+        }
+        
+        
         return {
             country:currentCountry,
             treatment:currentTreatment
@@ -70,7 +78,7 @@ const selectedValue = (country:[], treatment:[], router)=>{
 const fetchCountryLisByTreatmentData = (dispatch, router)=>{
     const {query} = router;
     const selectedTreatment = query['treatment-type'] || query.treatmentId;  
-     
+
     useEffect(() => {
           dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT,  selectedTreatment))
     }, []);
@@ -100,9 +108,9 @@ const HospitalAndoctorFilter = () => {
     const tratmentTypeData = fetchTreatmentTypesData();
     fetchCountryLisByTreatmentData(dispatch, router);
     const loader =  tratmentTypeData.loader || countryListByTratementLoader;
-    const selctedValue =  selectedValue(countryListByTreatmentData, tratmentTypeData.data, router);
 
-
+    const selctedValueDropdownValue = selectedValue(countryListByTreatmentData, tratmentTypeData.data, router, dispatch, productFilters );    
+ 
     
 
      /**
@@ -139,12 +147,15 @@ const HospitalAndoctorFilter = () => {
      * @param selectedValue 
      */
     const onTreatMentTypeSelect = (selectedValue)=>{
+       //Update query params
+       router.push(`${router.route}?treatment-type=${selectedValue.value}`)
+
         setdropDownValue({
             ...dropDownValue,
             treatmentType: selectedValue.value
         });
          dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT, selectedValue.crtdUser))
-         setproductFilters({...productFilters, crtdUser:selectedValue.crtdUser});
+         setproductFilters({...productFilters, crtdUser:selectedValue.crtdUser, country:''});
     };
 
 
@@ -153,6 +164,10 @@ const HospitalAndoctorFilter = () => {
      * @param selectedValue 
      */
     const onCountrySelect = (selectedValue)=>{
+        
+        //Update query params
+        router.push(`${router.route}?treatment-type=${router.query['treatment-type']}&country-of-treatment=${selectedValue.value}`)
+
         setdropDownValue({
             ...dropDownValue,
             country: selectedValue.value
@@ -160,7 +175,7 @@ const HospitalAndoctorFilter = () => {
 
         //Fetching the top  states
         fetchStatesListByCountryData(selectedValue.value, true);
-        setproductFilters({...productFilters, country:selectedValue.value});
+        setproductFilters({...productFilters, country:selectedValue.value, crtdUser:selctedValueDropdownValue.treatment.crtdUser});
     };  
 
 
@@ -188,8 +203,8 @@ const HospitalAndoctorFilter = () => {
         <div className="filter-wrapper">
             <div className="drop-downs">
                  { loader ? <Loader /> : null}
-                 {tratmentTypeData.data && <SelectBox selectedValue={selctedValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
-                  {countryListByTreatmentData && <SelectBox selectedValue={selctedValue?.country} onSelect={onCountrySelect} options={countryListByTreatmentData} label="SELECT COUNTRY"/>}
+                 {tratmentTypeData.data && <SelectBox selectedValue={selctedValueDropdownValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
+                  {countryListByTreatmentData && <SelectBox selectedValue={selctedValueDropdownValue?.country} onSelect={onCountrySelect} options={countryListByTreatmentData} label="SELECT COUNTRY"/>}
             </div>
             <div className="check-boxes">
                 <h3>TOP HOSPITALS BY STATE</h3>
