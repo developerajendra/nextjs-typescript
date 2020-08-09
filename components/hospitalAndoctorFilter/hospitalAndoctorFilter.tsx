@@ -5,12 +5,20 @@ import {useRouter} from 'next/router';
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchTreatmentTypes, fetchCountryLisByTreatment, fetchStatesByCountry} from '../../store/reducers/filters/filters.action';
+import {fetchTreatmentTypes, fetchCountryLisByTreatment, fetchStatesByCountry, productFilter} from '../../store/reducers/filters/filters.action';
 
 const initialState = {
     country: null,
     treatmentType: null
 };
+
+
+const filtersValue = {
+    states:[],
+    country:'',
+    crtdUser:''
+}
+ 
 
 
 
@@ -75,6 +83,9 @@ const HospitalAndoctorFilter = () => {
     const dispatch = useDispatch();
     const router = useRouter();
 
+    //Product filters
+    const [productFilters, setproductFilters] = useState(filtersValue);
+
     // states by country state
     const [statesByCountry, setStatesByCountry] = useState([]);
     const [stateLoader, setStateLoader] = useState(false);
@@ -133,6 +144,7 @@ const HospitalAndoctorFilter = () => {
             treatmentType: selectedValue.value
         });
          dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT, selectedValue.crtdUser))
+         setproductFilters({...productFilters, crtdUser:selectedValue.crtdUser});
     };
 
 
@@ -148,10 +160,30 @@ const HospitalAndoctorFilter = () => {
 
         //Fetching the top  states
         fetchStatesListByCountryData(selectedValue.value, true);
+        setproductFilters({...productFilters, country:selectedValue.value});
     };  
 
 
+    
+    const onStateValueChanged = (e, state)=>{
+        if(e.target.checked){
+             setproductFilters({...productFilters, states:[...productFilters.states, state]});
+        }else{
+            const array = productFilters.states;
+            const index = array.indexOf(state);
+            array.splice(index, 1);
+            setproductFilters({...productFilters, states:array});
+        }
+    }
+
+
+    //updating the filtered value
+    useEffect(() => {
+        const selectedTab =  router.route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
+        dispatch(productFilter(productFilters, selectedTab));
+    }, [productFilters]);
   
+    
     return (
         <div className="filter-wrapper">
             <div className="drop-downs">
@@ -163,7 +195,7 @@ const HospitalAndoctorFilter = () => {
                 <h3>TOP HOSPITALS BY STATE</h3>
                 {stateLoader ? <Loader /> : null}
                 <ul>
-                    {statesByCountry?.map((data:object, index:number)=><li key={index}><CheckBox {...data}  /></li>)}
+                    {statesByCountry?.map((data:any, index:number)=><li key={index}><CheckBox onChange={onStateValueChanged} {...data} id={data?.stateCode} /></li>)}
                 </ul>
             </div>
         </div>

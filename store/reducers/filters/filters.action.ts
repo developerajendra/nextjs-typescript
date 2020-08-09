@@ -3,6 +3,8 @@ import {TYPE} from '../filters/types';
 import {COMPARE_DESTINATION_MODEL} from '../../../components/compareDestinationList/model.compareDestinationList';
 import {STATES_MODEL} from './model.filters';
 import {COST_ESTIMATE_MODEL} from '../../../components/costEstimate/model.costEstimate';
+import {fetchHospitalList, fetchDoctorsList} from '../productList/productList.action';
+import {API} from '../../../pages/api';
 
 /**
  * Country list action
@@ -52,7 +54,7 @@ export const fetchStatesByCountry = async (API_URL, payload)=> {
     const response =  await api.get(API_URL);
     keyMapper(response, STATES_MODEL);
     const data = response.map((list)=>{
-        return {label:list.stateName, value:list.stateName}
+        return {label:list.stateName, value:list.stateName, stateCode:list.stateCode}
     });
     return data;
 }
@@ -130,4 +132,17 @@ export const fetchCostEstimatesDetail = async(API_URL, payload)=>  {
     const response =  await api.get(API_URL);
         keyMapper(response, COST_ESTIMATE_MODEL);
         return response
+}
+
+
+/**
+ * Filtering the product s
+ * @param filters 
+ * @param selectedTab 
+ */
+export const productFilter = (filters, selectedTab)=> dispatch =>{
+    selectedTab == "HOSPITALS" ? 
+    dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
+    : 
+    dispatch(fetchDoctorsList(API.DOCTORS_LIST, filters));
 }

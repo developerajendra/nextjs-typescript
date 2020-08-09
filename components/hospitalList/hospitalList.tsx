@@ -10,12 +10,11 @@ import {ProductCard, Loader} from '../common';
  * API data treatment types from redux
  * Fetch the treatment types if it's not exist on redux store
  */
-const fetchHospitalListData = ()=>{
-    const dispatch = useDispatch();
+const fetchHospitalListData = (dispatch, filters)=>{
+    
     const {hospitalListData, hospitalListDataLoader} = useSelector(state => state.hospitalList)
-
     useEffect(() => {
-        !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST, 'filters'))
+        !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
     }, []);
     return {
         loader: hospitalListDataLoader,
@@ -49,9 +48,11 @@ const onCheckedProduct = (e, productID, dispatcher)=>{
 
 
 const  HospitalList = ()=> {
-    const hospitalListData = fetchHospitalListData();
-    const {compareHospitals} = useSelector(state => state.compareProduct);
     const dispatch = useDispatch();
+    const {productFilters} = useSelector(state => state.productFitler);
+    const hospitalListData = fetchHospitalListData(dispatch, productFilters);
+    const {compareHospitals} = useSelector(state => state.compareProduct);
+    
 
     return (
         <div style={{position:'relative'}}>

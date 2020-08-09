@@ -53,25 +53,6 @@ export const treatTypeReducer = (state = [], action)=>{
 
 
 
-/**
- * treatment type reducer
- * @param state 
- * @param action 
- */
-export const topHospitalsByCountryReducer = (state = [], action)=>{
-    switch(action.type){
-       case TYPE.TOP_HOSPITALS_BY_COUNTRY:
-           return {...state, topHospitalsByCountryData:action.data, topHospitalsByCountryLoader: false};
-
-       case TYPE.TOP_HOSPITALS_BY_COUNTRY_LOADER:
-           return {...state, topHospitalsByCountryLoader: true};
-   }
-   return state;
-}
-
-
-
-
 
 
 /**
@@ -86,6 +67,21 @@ export const hospitalsByCountryReducer = (state = [], action)=>{
 
        case TYPE.HOSPITALS_BY_COUNTRY_LOADER:
            return {...state, hospitalsByCountryLoader: {[action.selectedCountry]:true}};
+   }
+   return state;
+}
+
+
+
+/**
+ * product filter reducer
+ * @param state 
+ * @param action 
+ */
+export const productFitlerReducer = (state = [], action)=>{
+    switch(action.type){
+       case TYPE.PRODUCT_FILTERS:
+           return {productFilters:action.filters};
    }
    return state;
 }

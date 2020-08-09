@@ -3,7 +3,7 @@ import {
     countryReducer, 
     countryListByTreatmentReducer,
     treatTypeReducer, 
-    topHospitalsByCountryReducer,
+    productFitlerReducer,
     hospitalsByCountryReducer
 } from './filters/filters.reducer';
 import {doctorListReducer, hospitalListReducer, compareProductReducer} from './productList/productList.reducer';
@@ -14,7 +14,7 @@ export default combineReducers({
     countryList: countryReducer,
     countryListByTreatment:countryListByTreatmentReducer,
     treatmentTypes:treatTypeReducer,
-    topHospitalsByCountry:topHospitalsByCountryReducer,
+    productFitler:productFitlerReducer,
     hospitalsByCountry:hospitalsByCountryReducer,
     doctorList:doctorListReducer,
     compareProductList:compareProductListReducer,
