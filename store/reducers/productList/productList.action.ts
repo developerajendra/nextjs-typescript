@@ -25,7 +25,7 @@ export const fetchDoctorsList =(API_URL)=> async dispatch=>{
  * fetching the hospital list
  * @param API_URL 
  */
-export const fetchHospitalList =(API_URL)=> async dispatch=>{
+export const fetchHospitalList =(API_URL, filters)=> async dispatch=>{
     dispatch({
         type:TYPE.HOSPITAL_LIST_LOADER
     })

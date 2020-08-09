@@ -15,15 +15,25 @@ const fetchHospitalListData = ()=>{
     const {hospitalListData, hospitalListDataLoader} = useSelector(state => state.hospitalList)
 
     useEffect(() => {
-        !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST))
+        !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST, 'filters'))
     }, []);
     return {
         loader: hospitalListDataLoader,
         data:hospitalListData
     };
 }
+
+
+
+
  
 const prodcuts = [];
+/**
+ * Product compare
+ * @param e 
+ * @param productID 
+ * @param dispatcher 
+ */
 const onCheckedProduct = (e, productID, dispatcher)=>{
     if(e.target.checked){
         !prodcuts.includes(productID) && prodcuts.push(productID);
@@ -34,11 +44,14 @@ const onCheckedProduct = (e, productID, dispatcher)=>{
     dispatcher(compareProduct('HOSPITALS', prodcuts))
 }
 
-function HospitalList() {
+
+
+
+
+const  HospitalList = ()=> {
     const hospitalListData = fetchHospitalListData();
     const {compareHospitals} = useSelector(state => state.compareProduct);
     const dispatch = useDispatch();
-    
 
     return (
         <div style={{position:'relative'}}>

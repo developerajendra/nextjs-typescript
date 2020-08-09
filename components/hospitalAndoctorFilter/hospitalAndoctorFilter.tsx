@@ -82,14 +82,13 @@ const HospitalAndoctorFilter = () => {
 
     //Hooks 
     const {countryListByTreatmentData, countryListByTratementLoader} = useSelector(state => state.countryListByTreatment);
-    const {topHospitalsByCountryData, topHospitalsByCountryLoader} = useSelector(state => state.topHospitalsByCountry);
     const [dropDownValue, setdropDownValue] = useState(initialState);
     
     
     //custom functions and declarationss - on load
     const tratmentTypeData = fetchTreatmentTypesData();
     fetchCountryLisByTreatmentData(dispatch, router);
-    const loader =  tratmentTypeData.loader;
+    const loader =  tratmentTypeData.loader || countryListByTratementLoader;
     const selctedValue =  selectedValue(countryListByTreatmentData, tratmentTypeData.data, router);
 
 
@@ -156,7 +155,7 @@ const HospitalAndoctorFilter = () => {
     return (
         <div className="filter-wrapper">
             <div className="drop-downs">
-                 { loader || topHospitalsByCountryLoader ? <Loader /> : null}
+                 { loader ? <Loader /> : null}
                  {tratmentTypeData.data && <SelectBox selectedValue={selctedValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
                   {countryListByTreatmentData && <SelectBox selectedValue={selctedValue?.country} onSelect={onCountrySelect} options={countryListByTreatmentData} label="SELECT COUNTRY"/>}
             </div>
