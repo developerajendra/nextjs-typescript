@@ -49,21 +49,12 @@ export const fetchCountryLisByTreatment =(API_URL, treatmentType)=> async dispat
  * @param API_URL 
  */
 export const fetchStatesByCountry = async (API_URL, payload)=> {
-    // dispatch({
-    //     type:TYPE.COUNTRY_LIST_LOADER
-    // })
     const response =  await api.get(API_URL);
-        keyMapper(response, STATES_MODEL);
-        const data = response.map((list)=>{
-            return {label:list.stateName, value:list.stateName}
-        });
-
-        // dispatch({
-        //     type:TYPE.COUNTRY_LIST,
-        //     data
-        // })
-        
-        return data;
+    keyMapper(response, STATES_MODEL);
+    const data = response.map((list)=>{
+        return {label:list.stateName, value:list.stateName}
+    });
+    return data;
 }
 
 
@@ -87,33 +78,6 @@ export const fetchTreatmentTypes =(API_URL)=> async dispatch=>{
     })
     return data;
 }
-
-
-
-
-/**
- * treatment type action
- * @param API_URL 
- */
-export const fetchTopHospialsByCountry =(API_URL, payload)=> async dispatch=>{
-    console.log('payload', payload);
-    
-    dispatch({
-        type:TYPE.TOP_HOSPITALS_BY_COUNTRY_LOADER
-    })
-    const response =  await api.get(API_URL);
-    const data = response.map((list)=>{
-        return {value:list.id, label:list.name}
-    });
-
-    dispatch({
-        type:TYPE.TOP_HOSPITALS_BY_COUNTRY,
-        data
-    })
-}
-
-
-
 
 
 /**

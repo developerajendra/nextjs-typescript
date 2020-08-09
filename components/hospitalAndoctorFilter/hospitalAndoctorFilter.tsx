@@ -5,7 +5,7 @@ import {useRouter} from 'next/router';
 
 //Custom imports
 import {API} from '../../pages/api';
-import {fetchTreatmentTypes, fetchCountryLisByTreatment, fetchTopHospialsByCountry} from '../../store/reducers/filters/filters.action';
+import {fetchTreatmentTypes, fetchCountryLisByTreatment, fetchStatesByCountry} from '../../store/reducers/filters/filters.action';
 
 const initialState = {
     country: null,
@@ -23,9 +23,7 @@ const fetchTreatmentTypesData = ()=>{
     const {treatmentTypeData, treatmentTypesLoader} = useSelector(state => state.treatmentTypes)
 
     useEffect(() => {
-        !treatmentTypeData && dispatch(fetchTreatmentTypes(API.TREATMENT_TYPE)).then(data=>{
-            console.log('...data', data);
-        })
+        !treatmentTypeData && dispatch(fetchTreatmentTypes(API.TREATMENT_TYPE))
     }, []);
     return {
         loader: treatmentTypesLoader,
@@ -34,36 +32,6 @@ const fetchTreatmentTypesData = ()=>{
 }
 
  
-
-/**
- * API data fetching from redux
- * Fetch the country list if it's not exist on redux store
- */
-// const fetchCountryListData = ()=>{
-    // const dispatch = useDispatch();
-    // const {countryListData, countryListLoader} = useSelector(state => state.countryList)
-
-    // useEffect(() => {
-    //     !countryListData && dispatch(fetchCountryList(API.COUNTRY_LIST))
-    // }, []);
-    // return {
-    //     loader: countryListLoader,
-    //     data:countryListData
-    // };
-// }
-
-
-
-/**
- * API data fetching from redux
- * Fetch the country list if it's not exist on redux store
- */
-const fetchTopHospialsByCountryData = (selectedCountry:any, dispatch)=>{
-    dispatch(fetchTopHospialsByCountry(API.TOP_HOSPITALS_BY_COUNTRY, selectedCountry))
-}
-
-
-
 /**
  * placing the default selected valud from homepage to filter
  * @param country 
@@ -101,22 +69,65 @@ const fetchCountryLisByTreatmentData = (dispatch, router)=>{
 }
 
 
+/**
+ * Fetch country list based on selected route
+ * Fetch if it's redirected form home
+ * @param dispatch 
+ * @param router 
+ */
+const fetchStatesListByCountryData = (router, onCountryChange=false)=>{
+    const [statesByCountry, setStatesByCountry] = useState([]);
+    const [loader, setloader] = useState(false);
+
+    if(onCountryChange){
+        setloader(true);
+        fetchStatesByCountry(API.TOP_STATES_BY_COUNTRY, router).then(data=>{
+            setStatesByCountry(data);
+            setloader(false);
+        })
+        return {
+            listData: statesByCountry,
+            statesLoader: loader
+        };;
+    }
+    const {query} = router;
+    const selectedCountry = query['country-of-treatment'];
+    useEffect(() => {
+        setloader(true);
+          fetchStatesByCountry(API.TOP_STATES_BY_COUNTRY, selectedCountry).then(data=>{
+            setStatesByCountry(data);
+            setloader(false);
+        })
+    }, []);
+    return {
+        listData: statesByCountry,
+        statesLoader: loader
+    };
+}
+
+
 const HospitalAndoctorFilter = () => {
     const dispatch = useDispatch();
     const router = useRouter();
 
+    //Hooks 
     const {countryListByTreatmentData, countryListByTratementLoader} = useSelector(state => state.countryListByTreatment);
     const {topHospitalsByCountryData, topHospitalsByCountryLoader} = useSelector(state => state.topHospitalsByCountry);
-
     const [dropDownValue, setdropDownValue] = useState(initialState);
+
+    //custom functions and declarationss - on load
     const tratmentTypeData = fetchTreatmentTypesData();
     fetchCountryLisByTreatmentData(dispatch, router);
-
+    const statesList =  fetchStatesListByCountryData(router);
     const loader =  tratmentTypeData.loader;
     const selctedValue =  selectedValue(countryListByTreatmentData, tratmentTypeData.data, router);
 
 
-    //on select treatment dropdown
+
+    /**
+     * on select treatment dropdown 
+     * @param selectedValue 
+     */
     const onTreatMentTypeSelect = (selectedValue)=>{
         setdropDownValue({
             ...dropDownValue,
@@ -125,37 +136,35 @@ const HospitalAndoctorFilter = () => {
          dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT, selectedValue.crtdUser))
     };
 
-    //On select the country dropdown
-    const onOriginSelect = (selectedValue)=>{
+
+    /**
+     * On select the country dropdown 
+     * @param selectedValue 
+     */
+    const onCountrySelect = (selectedValue)=>{
         setdropDownValue({
             ...dropDownValue,
             country: selectedValue.value
         });
-        //Fetching the top hospitals by country data while changing the country dropdown
-        fetchTopHospialsByCountryData(selectedValue.value, dispatch);
+
+        //Fetching the top  states
+        fetchStatesListByCountryData(selectedValue.value, true);
     };  
 
 
-    //Fetching the top hospitals by country data while reloading the page
-    useEffect(() => {
-        const {query} = router;
-        const selectedCountry = query['country-of-treatment'];
-         !topHospitalsByCountryData && fetchTopHospialsByCountryData(selectedCountry, dispatch);
-    }, []);
-
-
-
+  
     return (
         <div className="filter-wrapper">
             <div className="drop-downs">
                  { loader || topHospitalsByCountryLoader ? <Loader /> : null}
                  {tratmentTypeData.data && <SelectBox selectedValue={selctedValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
-                  {countryListByTreatmentData && <SelectBox selectedValue={selctedValue?.country} onSelect={onOriginSelect} options={countryListByTreatmentData} label="SELECT COUNTRY"/>}
+                  {countryListByTreatmentData && <SelectBox selectedValue={selctedValue?.country} onSelect={onCountrySelect} options={countryListByTreatmentData} label="SELECT COUNTRY"/>}
             </div>
             <div className="check-boxes">
                 <h3>TOP HOSPITALS BY STATE</h3>
+                {statesList?.statesLoader ? <Loader /> : null}
                 <ul>
-                    {topHospitalsByCountryData?.map((data:object, index:number)=><li key={index}><CheckBox {...data}  /></li>)}
+                    {statesList?.listData?.map((data:object, index:number)=><li key={index}><CheckBox {...data}  /></li>)}
                 </ul>
             </div>
         </div>
