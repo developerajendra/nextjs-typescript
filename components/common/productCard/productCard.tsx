@@ -66,7 +66,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     </div>
                 </div>
                 <Card.Body style={{flex:'2'}}>
-                    <input className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />
+                {compareProduct && <input onChange={(e)=>onproductCompareChange(e, data.productId, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />}
                     <Card.Title>{data.name}</Card.Title>
                         <span><i className="icon-map"></i> {data.hospitalName}, {data.location}</span>
                     <Card.Text>

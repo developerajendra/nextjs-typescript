@@ -17,10 +17,10 @@ const headerNavigation = [
  * Compare product route URL
  * @param selectedHospital 
  */
-const generateRouteURL = (selectedHospital)=>{
+const generateRouteURL = (selectedHospital, productType)=>{
     let route = '';
     selectedHospital.map(product=>{
-         route += `&hospital=${product}`
+         route += `&${productType}=${product}`
     });
    return route.lastIndexOf("=")>10 ? `/hospital/compareResult?${route.substring(1)}` : '';
 }
@@ -31,14 +31,15 @@ function HospitalAndoctorFilterHeader() {
     const dispatch = useDispatch();
     const {selectedProduct} = useSelector(state => state.compareProduct)
     
+    
     const compareNow = ()=>{
         const selectedRoute = route.route.indexOf("doctors")>-1 ? 'DOCTORS' : 'HOSPITALS';
         dispatch(compareProduct(selectedRoute))
     }
 
     const onButtonPrimaryClick = ()=>{
-            // dispatch(compareProduct('cleanup')) 
-            const routePath = generateRouteURL(selectedProduct);
+            const productType = route.route.indexOf("doctors")>-1 ? 'doctor' : 'hospital';
+            const routePath = generateRouteURL(selectedProduct, productType);
             route.push(routePath);
     }
 

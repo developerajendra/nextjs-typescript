@@ -50,7 +50,7 @@ export const compareProductReducer = (state = [], action)=>{
            return { compareHospitals:true,  ...state, selectedProduct: action.data};
 
         case TYPE.COMPARE_PRODUCT_TYPE_DOCTORS:
-           return { compareDoctors: true, selectedDoctors:action.data};
+           return { compareDoctors: true, selectedProduct:action.data};
        
         case TYPE.COMPARE_PRODUCT_TYPE_CLEANUP:
             return [];

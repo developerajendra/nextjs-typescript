@@ -10,10 +10,6 @@ import {Breadcrumb, Loader} from '../../components/common';
 
 
 
-const breadCrumbConfig = [
-    {label:'Hospitals', route:'/hospital/hospitals'},
-    {label:"Comparison Results"}
-];
 
 /**
  * API data fetching from redux
@@ -21,7 +17,7 @@ const breadCrumbConfig = [
  */
 const fetchCompareProductListData = (dispatch, route)=>{
      const {compareProductListData, compareProductListLoader} = useSelector(state => state.compareProductList);
-     const payload = route.query.hospital;
+     const payload = route.query;
 
     useEffect(() => {
         !compareProductListData && dispatch(fetchCompareProductList(API.COMPARE_PRODUCTS, payload))
@@ -37,6 +33,18 @@ const fetchCompareProductListData = (dispatch, route)=>{
 function ComparisonResult() {
     const dispatch = useDispatch();
     const route = useRouter();
+
+    //Settign the breadcrumbs based on route
+    const productType = route?.query?.doctor ? {label:'Doctors', route:'/hospital/doctors'} : {label:'Hospitals', route:'/hospital/hospitals'};
+    const breadCrumbConfig = [
+        productType,
+        {label:"Comparison Results"}
+    ];
+
+    
+
+    
+    
     const compareProductListData = fetchCompareProductListData(dispatch, route);
     
     
