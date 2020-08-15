@@ -8,3 +8,13 @@ export const axiosRequestConfiguration: AxiosRequestConfig = {
         'Content-Type': 'application/json',
     },
 };
+
+
+
+export const axiosRequestConfigurationCountryList: AxiosRequestConfig = {
+    baseURL: API.COUNTRY_BASE_URL,
+    responseType: 'json',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+};

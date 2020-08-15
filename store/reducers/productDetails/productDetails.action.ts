@@ -32,7 +32,7 @@ export const fetchDoctorDetails = async(API_URL, payload)=>  {
     // })
     const response =  await api.get(API_URL);
         let _response = response[0]
-        keyMapper(_response, DOCTOR_DETAILS_MODEL);
+        keyMapper(response, DOCTOR_DETAILS_MODEL);
         // dispatch({
         //     type:TYPE.COMPARE_PRODUCT_LIST,
         //     data:response

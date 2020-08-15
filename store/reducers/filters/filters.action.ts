@@ -14,7 +14,7 @@ export const fetchCountryList =(API_URL)=> async dispatch=>{
     dispatch({
         type:TYPE.COUNTRY_LIST_LOADER
     })
-    const response =  await api.get(API_URL);
+    const response =  await api.getCountries(API_URL);
         const data = response.map((list)=>{
             return {label:list.name, value:list.alpha2Code}
         });
