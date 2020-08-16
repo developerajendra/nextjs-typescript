@@ -3,6 +3,7 @@ import {TYPE} from './types';
 import {keyMapper} from '../../../pages/api';
 import {DOCTOR_DETAILS_MODEL} from '../../../components/doctorDetails/model.doctorDetails';
 import {HOSPITAL_DETAIL_MODEL} from '../../../components/hospitalDetail/model.hospitalDetails';
+import {COMPARISON_RESULT_MODEL} from '../../../components/comparisonResult/model.comparisonResult';
 import {API} from '../../../pages/api';
 
 /**
@@ -20,7 +21,7 @@ console.log('payload.doctor',payload);
     })
     
     const response =  await api.post(URL, payload);
-        keyMapper(response, DOCTOR_DETAILS_MODEL);
+        keyMapper(response, COMPARISON_RESULT_MODEL);
         dispatch({
             type:TYPE.COMPARE_PRODUCT_LIST,
             data:response
