@@ -143,7 +143,7 @@ export const fetchCostEstimatesDetail = async(API_URL, payload)=>  {
  * @param selectedTab 
  */
 export const productFilter = (filters, selectedTab)=> dispatch =>{
-    // console.log('filters', filters);
+    // console.log('filters from action', filters);
         
     selectedTab == "HOSPITALS" ? 
     dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))

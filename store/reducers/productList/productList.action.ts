@@ -30,11 +30,13 @@ export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
 export const fetchHospitalList =(API_URL, filters)=> async dispatch=>{
 
     console.log('filters', filters);
+
+    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY":filters.country}
     
     dispatch({
         type:TYPE.HOSPITAL_LIST_LOADER
     })
-    const response =  await api.get(API_URL);
+    const response =  await api.post(API_URL, payloadData);
         keyMapper(response, HOSPITAL_LIST_MODEL);
         
         dispatch({
