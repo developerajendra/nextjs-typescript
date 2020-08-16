@@ -34,9 +34,8 @@ export const fetchCountryLisByTreatment =(API_URL, treatmentType)=> async dispat
     dispatch({
         type:TYPE.COUNTRY_LIST_BY_TREATMENT_LOADER
     })
-    console.log('treatmentType',treatmentType);
     
-    const URL = API_URL+treatmentType;
+    const URL = treatmentType ? API_URL+treatmentType : API_URL;
     const response =  await api.get(URL);
         const data = response.map((list)=>{
             return {label:list.COUNTRY_NM, value:list.COUNTRY_CD, crtdUser:list.CRTD_USR}
@@ -54,7 +53,7 @@ export const fetchCountryLisByTreatment =(API_URL, treatmentType)=> async dispat
  * @param API_URL 
  */
 export const fetchStatesByCountry = async (API_URL, payload)=> {
-    const response =  await api.get(API_URL);
+    const response =  await api.get(API_URL+payload);
     keyMapper(response, STATES_MODEL);
     const data = response.map((list)=>{
         return {label:list.stateName, value:list.stateName, stateCode:list.stateCode}

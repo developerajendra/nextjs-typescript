@@ -10,7 +10,7 @@ const API = {
     COUNTRY_LIST_BY_TREATMENT: 'countrymaster/',
     STATES_LIST_BY_COUNTRY: '5f2455721823333f8f192257',
     TREATMENT_TYPE: 'medproviderspecility',
-    TOP_STATES_BY_COUNTRY: '5f2e64196f8e4e3faf2df3a5',
+    TOP_STATES_BY_COUNTRY: 'STATE_MASTER?countrycode=',
     HOSPITALS_BY_COUNTRY: 'entitydetails/',
     DOCTORS_LIST: 'meddoctor',
     DOCTOR_DETAILS: '5f2db4866f8e4e3faf2d8a46',

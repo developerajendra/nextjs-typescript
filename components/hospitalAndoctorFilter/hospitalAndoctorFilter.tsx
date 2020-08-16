@@ -78,6 +78,8 @@ const selectedValue = (country:[], treatment:[], router, dispatch , productFilte
 const fetchCountryLisByTreatmentData = (dispatch, router)=>{
     const {query} = router;
     const selectedTreatment = query['treatment-type'] || query.treatmentId;  
+    
+console.log('selectedTreatment selectedTreatment', selectedTreatment);
 
     useEffect(() => {
           dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT,  selectedTreatment))
