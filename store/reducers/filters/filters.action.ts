@@ -132,7 +132,7 @@ export const fetchCostEstimatesList = async(API_URL)=>  {
  * @param API_URL 
  */
 export const fetchCostEstimatesDetail = async(API_URL, payload)=>  {
-    const response =  await api.get(API_URL);
+    const response =  await api.get(API_URL+payload);
         keyMapper(response, COST_ESTIMATE_MODEL);
         return response
 }
