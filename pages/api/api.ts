@@ -1,5 +1,5 @@
 import initializeAxios from './axiosSetup';
-import { axiosRequestConfiguration, axiosRequestConfigurationCountryList } from './config';
+import { axiosRequestConfiguration } from './config';
 import Axios from "axios";
 
 const axiosInstance = initializeAxios(axiosRequestConfiguration);
@@ -9,12 +9,7 @@ const get = (url: string, queryParams?: object) => {
 };
 
 
-const axiosInstanceCountryList = initializeAxios(axiosRequestConfigurationCountryList);
-const getCountries = (url: string, queryParams?: object) => {
-    return axiosInstanceCountryList.get(url, { params: queryParams }).then((res:any) => res.data );
-};
-
-
+ 
  
 const post = <T>(url: string, body: object, queryParams?: object) => {
 
@@ -60,4 +55,4 @@ const deleteR = <T>(url: string, id:number): Observable<T | void> => {
 };*/
 /*, post, put, patch, delete: deleteR*/
 
-export default { getCountries, get, post, put, fileUpload };
+export default {get, post, put, fileUpload };

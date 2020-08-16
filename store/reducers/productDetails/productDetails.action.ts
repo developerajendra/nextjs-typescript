@@ -12,7 +12,10 @@ export const fetchCompareProductList =(API_URL, payload)=> async dispatch=>{
     dispatch({
         type:TYPE.COMPARE_PRODUCT_LIST_LOADER
     })
-    const response =  await api.get(API_URL);
+    
+    console.log('hospial compare payload', payload);
+    const payloadData =  {"categoryIds":payload}
+    const response =  await api.post(API_URL, payloadData);
         keyMapper(response, DOCTOR_DETAILS_MODEL);
         dispatch({
             type:TYPE.COMPARE_PRODUCT_LIST,

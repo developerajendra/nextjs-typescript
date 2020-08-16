@@ -9,12 +9,4 @@ export const axiosRequestConfiguration: AxiosRequestConfig = {
     },
 };
 
-
-
-export const axiosRequestConfigurationCountryList: AxiosRequestConfig = {
-    baseURL: API.COUNTRY_BASE_URL,
-    responseType: 'json',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-};
+ 

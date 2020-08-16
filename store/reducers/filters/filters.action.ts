@@ -14,9 +14,9 @@ export const fetchCountryList =(API_URL)=> async dispatch=>{
     dispatch({
         type:TYPE.COUNTRY_LIST_LOADER
     })
-    const response =  await api.getCountries(API_URL);
+    const response =  await api.get(API_URL);
         const data = response.map((list)=>{
-            return {label:list.name, value:list.alpha2Code}
+            return {label:list.COUNTRY_NM, value:list.COUNTRY_CD}
         });
 
         dispatch({
@@ -34,7 +34,10 @@ export const fetchCountryLisByTreatment =(API_URL, treatmentType)=> async dispat
     dispatch({
         type:TYPE.COUNTRY_LIST_BY_TREATMENT_LOADER
     })
-    const response =  await api.get(API_URL);
+    console.log('treatmentType',treatmentType);
+    
+    const URL = API_URL+treatmentType;
+    const response =  await api.get(URL);
         const data = response.map((list)=>{
             return {label:list.COUNTRY_NM, value:list.COUNTRY_CD, crtdUser:list.CRTD_USR}
         });
@@ -91,7 +94,7 @@ export const fetchHospialsByCountry =(API_URL, selectedCountry)=> async dispatch
     dispatch({
         type:TYPE.HOSPITALS_BY_COUNTRY_LOADER
     })
-    const response =  await api.get(API_URL);
+    const response =  await api.get(API_URL+selectedCountry);
     keyMapper(response, COMPARE_DESTINATION_MODEL);
     
     const data = response.map((list)=>{
