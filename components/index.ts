@@ -17,6 +17,8 @@ import HospitalAndoctorFilterHeader from './hospitalAndoctorFilter/hospitalAndoc
 import CostEstimate from './costEstimate/costEstimate';
 import KnowledgeBank from './knowledgeBank/knowledgeBank';
 import ComparisonResult from './comparisonResult/comparisonResult';
+import SendEnquiery from './sendEnquiery/sendEnquiery';
+import WriteReview from './writeReview/writeReview';
 
 export {
     Header,
@@ -37,5 +39,7 @@ export {
     HospitalAndoctorFilterHeader,
     CostEstimate,
     KnowledgeBank,
-    ComparisonResult
+    ComparisonResult,
+    SendEnquiery,
+    WriteReview
 }

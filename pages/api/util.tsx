@@ -74,3 +74,13 @@ export const keyMapper = (data, keyModel, sameReference = true) => {
         }         
     </ul>)
 }
+
+
+export const makeList = (content = '')=>{
+  const list = content.split('#');
+  return list.map(data=>{
+      return data && <li>{data}</li>
+  });
+}
+
+ 

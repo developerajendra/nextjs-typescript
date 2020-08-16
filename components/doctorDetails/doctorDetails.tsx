@@ -1,11 +1,12 @@
 import React,{useEffect, useState} from 'react'
 import { Card, Button, Tabs, Tab, Row, Col} from 'react-bootstrap';
-import { MedicalButton, Loader, Breadcrumb} from '../../components/common';
+import { MedicalButton, Loader, Breadcrumb, MedicalModal, VideoCarousel} from '../../components/common';
 import { useRouter } from 'next/router';
 
 //Custom imports
-import {API, ratingUI} from '../../pages/api';
+import {API, ratingUI, makeList} from '../../pages/api';
 import {fetchDoctorDetails} from '../../store/reducers/productDetails/productDetails.action';
+import {SendEnquiery} from '../index';
 
 const doctorInitialValue = [{
     "name":'',
@@ -29,24 +30,18 @@ const fetchDoctorDetailsData = (route)=>{
       const payload = route.query.id;
 
     useEffect(() => {
-        fetchDoctorDetails(API.DOCTOR_DETAILS, payload).then(data=>{
+        payload && fetchDoctorDetails(API.DOCTOR_DETAILS, payload).then(data=>{
             setdoctorDetails(data);
             setloader(false);
         });
-    }, [])
+    }, [payload])
     return {
         loader,
         data:doctorDetails
     }
 }
 
-const makeList = (content = '')=>{
-    const list = content.split('#');
-    return list.map(data=>{
-        return data && <li>{data}</li>
-    });
-}
-
+ 
 
 function DoctorDetails() {
     const route = useRouter();
@@ -84,11 +79,13 @@ function DoctorDetails() {
                         </Card.Body>
                         
                     </Card>
-                    <MedicalButton text="SEND ENQUIRY" type="primary" />
+                    <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.id}}  >
+                        <MedicalButton text="SEND ENQUIRY" type="primary"  />
+                    </MedicalModal>
                 </Col>
                 <Col lg={10} className="detail-right-content">
                     <h4>{data.name}</h4>
-                    <address>{data.hospital}, {data.location}</address>
+                    <address><i className="icon-map"></i> {data.hospitalName} {data.location}</address>
                      <ul>
                          <li>{data.speciality}</li>
                          <li>DNB. {data.experience} years of experience. {data.location}</li>
@@ -109,19 +106,10 @@ function DoctorDetails() {
                         <Tab eventKey="education" title="EDUCATION" >
                             {makeList(data?.qulification)}
                         </Tab>
-                        <Tab eventKey="video" title="VIDEO" >
-                        
-                         <h5>Package details</h5>
-                            <ul>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                            </ul>
+                        <Tab eventKey="video" title="VIDEO"  >
+                            <div className="video">
+                                <VideoCarousel />
+                            </div>
                         </Tab>
                     </Tabs>
                 </Col>

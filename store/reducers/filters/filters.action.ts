@@ -2,6 +2,9 @@ import {api, keyMapper} from '../../../pages/api';
 import {TYPE} from '../filters/types';
 import {COMPARE_DESTINATION_MODEL} from '../../../components/compareDestinationList/model.compareDestinationList';
 import {STATES_MODEL} from './model.filters';
+import {COST_ESTIMATE_MODEL} from '../../../components/costEstimate/model.costEstimate';
+import {fetchHospitalList, fetchDoctorsList} from '../productList/productList.action';
+import {API} from '../../../pages/api';
 
 /**
  * Country list action
@@ -13,7 +16,7 @@ export const fetchCountryList =(API_URL)=> async dispatch=>{
     })
     const response =  await api.get(API_URL);
         const data = response.map((list)=>{
-            return {label:list.name, value:list.alpha2Code}
+            return {label:list.COUNTRY_NM, value:list.COUNTRY_CD}
         });
 
         dispatch({
@@ -24,25 +27,38 @@ export const fetchCountryList =(API_URL)=> async dispatch=>{
 
 
 /**
+ * Country list by treatment action
+ * @param API_URL 
+ */
+export const fetchCountryLisByTreatment =(API_URL, treatmentType)=> async dispatch=>{
+    dispatch({
+        type:TYPE.COUNTRY_LIST_BY_TREATMENT_LOADER
+    })
+    
+    const URL = treatmentType ? API_URL+treatmentType : API_URL;
+    const response =  await api.get(URL);
+        const data = response.map((list)=>{
+            return {label:list.COUNTRY_NM, value:list.COUNTRY_CD, crtdUser:list.CRTD_USR}
+        });
+
+        dispatch({
+            type:TYPE.COUNTRY_LIST_BY_TREATMENT,
+            data
+        })
+}
+
+
+/**
  * fetching the states based on selected country
  * @param API_URL 
  */
 export const fetchStatesByCountry = async (API_URL, payload)=> {
-    // dispatch({
-    //     type:TYPE.COUNTRY_LIST_LOADER
-    // })
-    const response =  await api.get(API_URL);
-        keyMapper(response, STATES_MODEL);
-        const data = response.map((list)=>{
-            return {label:list.stateName, value:list.stateName}
-        });
-
-        // dispatch({
-        //     type:TYPE.COUNTRY_LIST,
-        //     data
-        // })
-        
-        return data;
+    const response =  await api.get(API_URL+payload);
+    keyMapper(response, STATES_MODEL);
+    const data = response.map((list)=>{
+        return {label:list.stateName, value:list.stateName, stateCode:list.stateCode}
+    });
+    return data;
 }
 
 
@@ -57,41 +73,15 @@ export const fetchTreatmentTypes =(API_URL)=> async dispatch=>{
     })
     const response =  await api.get(API_URL);
     const data = response.map((list)=>{
-        return {value:list.id, label:list.name}
+        return {value:list.id, crtdUser:list.CRTD_USR, label:list.SPECIALITY_DESC}
     });
 
     dispatch({
         type:TYPE.TREATMENT_LIST,
         data
     })
+    return data;
 }
-
-
-
-
-/**
- * treatment type action
- * @param API_URL 
- */
-export const fetchTopHospialsByCountry =(API_URL, payload)=> async dispatch=>{
-    console.log('payload', payload);
-    
-    dispatch({
-        type:TYPE.TOP_HOSPITALS_BY_COUNTRY_LOADER
-    })
-    const response =  await api.get(API_URL);
-    const data = response.map((list)=>{
-        return {value:list.id, label:list.name}
-    });
-
-    dispatch({
-        type:TYPE.TOP_HOSPITALS_BY_COUNTRY,
-        data
-    })
-}
-
-
-
 
 
 /**
@@ -103,7 +93,7 @@ export const fetchHospialsByCountry =(API_URL, selectedCountry)=> async dispatch
     dispatch({
         type:TYPE.HOSPITALS_BY_COUNTRY_LOADER
     })
-    const response =  await api.get(API_URL);
+    const response =  await api.get(API_URL+selectedCountry);
     keyMapper(response, COMPARE_DESTINATION_MODEL);
     
     const data = response.map((list)=>{
@@ -118,4 +108,45 @@ export const fetchHospialsByCountry =(API_URL, selectedCountry)=> async dispatch
         selectedCountry
     })
     return data;
+}
+
+
+
+/**
+ * Fetching the cost estimate
+ * @param API_URL 
+ */
+export const fetchCostEstimatesList = async(API_URL)=>  {
+    const response =  await api.get(API_URL);
+        keyMapper(response, COST_ESTIMATE_MODEL);
+        const data = response.map((list)=>{
+            return {label:list.packageName, value:list.packageId}
+        });
+
+    return data;
+}
+
+/**
+ * Fetch cost estimate details
+ * @param API_URL 
+ */
+export const fetchCostEstimatesDetail = async(API_URL, payload)=>  {
+    const response =  await api.get(API_URL+payload);
+        keyMapper(response, COST_ESTIMATE_MODEL);
+        return response
+}
+
+
+/**
+ * Filtering the product s
+ * @param filters 
+ * @param selectedTab 
+ */
+export const productFilter = (filters, selectedTab)=> dispatch =>{
+    // console.log('filters', filters);
+        
+    selectedTab == "HOSPITALS" ? 
+    dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
+    : 
+    dispatch(fetchDoctorsList(API.DOCTORS_LIST, filters));
 }

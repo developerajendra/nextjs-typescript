@@ -1,19 +1,23 @@
 import { combineReducers } from 'redux';
 import {
     countryReducer, 
+    countryListByTreatmentReducer,
     treatTypeReducer, 
-    topHospitalsByCountryReducer,
+    productFitlerReducer,
     hospitalsByCountryReducer
 } from './filters/filters.reducer';
-import {doctorListReducer} from './productList/productList.reducer';
+import {doctorListReducer, hospitalListReducer, compareProductReducer} from './productList/productList.reducer';
 import {compareProductListReducer} from './productDetails/productDetails.reducer';
 
 
 export default combineReducers({
     countryList: countryReducer,
+    countryListByTreatment:countryListByTreatmentReducer,
     treatmentTypes:treatTypeReducer,
-    topHospitalsByCountry:topHospitalsByCountryReducer,
+    productFitler:productFitlerReducer,
     hospitalsByCountry:hospitalsByCountryReducer,
     doctorList:doctorListReducer,
-    compareProductList:compareProductListReducer
+    compareProductList:compareProductListReducer,
+    hospitalList:hospitalListReducer,
+    compareProduct:compareProductReducer
 });

@@ -127,7 +127,47 @@
     @include icon($icon-arrow-width, $icon-arrow-height, $icon-arrow-offset-x, $icon-arrow-offset-y);
   }
   
-   
-
-
+  .icon-close {
+    @include icon($icon-close-width, $icon-close-height, $icon-close-offset-x, $icon-close-offset-y);
+  }
   
+  .icon-upload {
+    @include icon($icon-upload-width, $icon-upload-height, $icon-upload-offset-x, $icon-upload-offset-y);
+  }
+   
+  .icon-iso1 {
+    @include icon($icon-iso1-width, $icon-iso1-height, $icon-iso1-offset-x, $icon-iso1-offset-y);
+  }
+   
+  .icon-iso2 {
+    @include icon($icon-iso2-width, $icon-iso2-height, $icon-iso2-offset-x, $icon-iso2-offset-y);
+  }
+  .icon-earth {
+    @include icon($icon-earth-width, $icon-earth-height, $icon-earth-offset-x, $icon-earth-offset-y);
+  }
+  .icon-call {
+    @include icon($icon-call-width, $icon-call-height, $icon-call-offset-x, $icon-call-offset-y);
+  }
+  .icon-map {
+    @include icon($icon-map-width, $icon-map-height, $icon-map-offset-x, $icon-map-offset-y);
+  }
+  
+  .icon-bed {
+    @include icon($icon-bed-width, $icon-bed-height, $icon-bed-offset-x, $icon-bed-offset-y);
+  }
+  .icon-domestic-patient {
+    @include icon($icon-domestic-patient-width, $icon-domestic-patient-height, $icon-domestic-patient-offset-x, $icon-domestic-patient-offset-y);
+  }
+  .icon-icu-bed {
+    @include icon($icon-icu-bed-width, $icon-icu-bed-height, $icon-icu-bed-offset-x, $icon-icu-bed-offset-y);
+  }
+  .icon-international-patient {
+    @include icon($icon-international-patient-width, $icon-international-patient-height, $icon-international-patient-offset-x, $icon-international-patient-offset-y);
+  }
+  .icon-operation {
+    @include icon($icon-operation-width, $icon-operation-height, $icon-operation-offset-x, $icon-operation-offset-y);
+  }
+  .icon-plane {
+    @include icon($icon-plane-width, $icon-plane-height, $icon-plane-offset-x, $icon-plane-offset-y);
+  }
+ 
