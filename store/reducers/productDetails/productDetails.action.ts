@@ -3,19 +3,23 @@ import {TYPE} from './types';
 import {keyMapper} from '../../../pages/api';
 import {DOCTOR_DETAILS_MODEL} from '../../../components/doctorDetails/model.doctorDetails';
 import {HOSPITAL_DETAIL_MODEL} from '../../../components/hospitalDetail/model.hospitalDetails';
+import {API} from '../../../pages/api';
 
 /**
  * Compare product details
  * @param API_URL 
  */
 export const fetchCompareProductList =(API_URL, payload)=> async dispatch=>{
+console.log('payload.doctor',payload);
+
+    // let payloadData = payload.doctor ? {"doctorsids": payload.doctor } : {"categoryIds":payload.hospital}
+    let URL =   payload.doctorsids ? API.COMPARE_DOCTOR_PRODUCTS : API_URL
+
     dispatch({
         type:TYPE.COMPARE_PRODUCT_LIST_LOADER
     })
     
-    console.log('hospial compare payload', payload);
-    const payloadData =  {"categoryIds":payload}
-    const response =  await api.post(API_URL, payloadData);
+    const response =  await api.post(URL, payload);
         keyMapper(response, DOCTOR_DETAILS_MODEL);
         dispatch({
             type:TYPE.COMPARE_PRODUCT_LIST,

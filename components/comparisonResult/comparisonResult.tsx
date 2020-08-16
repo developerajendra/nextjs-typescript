@@ -17,11 +17,12 @@ import {Breadcrumb, Loader} from '../../components/common';
  */
 const fetchCompareProductListData = (dispatch, route)=>{
      const {compareProductListData, compareProductListLoader} = useSelector(state => state.compareProductList);
-     const payload = route.query;
+    const payload = route.query.doctor ? {"doctorsids": route.query.doctor } : {"categoryIds":route.query.hospital}
+     
 
     useEffect(() => {
-        !compareProductListData && dispatch(fetchCompareProductList(API.COMPARE_PRODUCTS, payload))
-    }, []);
+          dispatch(fetchCompareProductList(API.COMPARE_HOSPITAL_PRODUCTS, payload))
+    }, [route.query]);
     return {
         loader: compareProductListLoader,
         data: compareProductListData || []

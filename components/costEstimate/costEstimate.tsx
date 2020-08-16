@@ -14,7 +14,9 @@ function CostEstimate() {
         setloader(true);
         fetchCostEstimatesList(API.COST_ESTIMATE_LIST).then(data=>{
             setcostEstimateList(data);
-            let payload = {value:data[0].packageId}
+            let payload = {value:data[0].value}
+             console.log('payload', data);
+             
             onSelectPackage(payload);
             setloader(false);
         });
