@@ -59,7 +59,7 @@ const selectedValue = (country:[], treatment:[], router, dispatch , productFilte
         if(!productFilters?.country && !productFilters?.crtdUser && !productFilters?.crtdUser?.length){
             const selectedTab =  route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
             useEffect(() => {
-                dispatch(productFilter({crtdUser:currentTreatment.crtdUser, country:currentCountry.value}, selectedTab));
+                currentTreatment && dispatch(productFilter({crtdUser:currentTreatment.crtdUser, country:currentCountry.value}, selectedTab));
             }, [route])
             
         }
@@ -81,9 +81,6 @@ const selectedValue = (country:[], treatment:[], router, dispatch , productFilte
 const fetchCountryLisByTreatmentData = (dispatch, router)=>{
     const {query} = router;
     const selectedTreatment = query['treatment-type'] || query.treatmentId;  
-    
-console.log('selectedTreatment selectedTreatment', selectedTreatment);
-
     useEffect(() => {
           dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT,  selectedTreatment))
     }, []);
@@ -200,7 +197,9 @@ const HospitalAndoctorFilter = () => {
     //updating the filtered value
     useEffect(() => {
         const selectedTab =  router.route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
-        dispatch(productFilter(productFilters, selectedTab));
+        // console.log('productFilters', productFilters, "selectedTab", selectedTab);
+        
+        // dispatch(productFilter(productFilters, selectedTab));
     }, [productFilters]);
   
     

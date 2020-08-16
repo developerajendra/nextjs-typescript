@@ -14,7 +14,7 @@ const API = {
     HOSPITALS_BY_COUNTRY: 'entitydetails/',
     DOCTORS_LIST: 'meddoctor',
     DOCTOR_DETAILS: 'meddoctor/',
-    HOSPITAL_LIST: 'medprovider',
+    HOSPITAL_LIST: 'medprovider/post',
     HOSPITAL_DETAILS: 'medprovider/',
     COMPARE_HOSPITAL_PRODUCTS: 'medprovider/categoryids',
     COMPARE_DOCTOR_PRODUCTS: 'meddoctor/doctorsids',
