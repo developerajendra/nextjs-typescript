@@ -33,7 +33,9 @@ export const fetchDoctorDetails = async(API_URL, payload)=>  {
     // dispatch({
     //     type:TYPE.COMPARE_PRODUCT_LIST_LOADER
     // })
-    const response =  await api.get(API_URL);
+    
+    
+    const response =  await api.get(API_URL+payload);
         let _response = response[0]
         keyMapper(response, DOCTOR_DETAILS_MODEL);
         // dispatch({
@@ -53,13 +55,16 @@ export const fetchHospitalDetails = async(API_URL, payload)=>  {
     // dispatch({
     //     type:TYPE.COMPARE_PRODUCT_LIST_LOADER
     // })
-    const response =  await api.get(API_URL);
-        keyMapper(response, HOSPITAL_DETAIL_MODEL);
-        // dispatch({
-        //     type:TYPE.COMPARE_PRODUCT_LIST,
-        //     data:response
-        // });
-        return response
+    
+    const response =  await api.get(API_URL+payload);
+    let _response = response[0];
+    
+    keyMapper(_response, HOSPITAL_DETAIL_MODEL);
+    // dispatch({
+    //     type:TYPE.COMPARE_PRODUCT_LIST,
+    //     data:response
+    // });
+    return _response
 }
 
  

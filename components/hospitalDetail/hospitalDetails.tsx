@@ -53,7 +53,6 @@ function HospitalDetails() {
 
     const hospitalDetails = fetchHospitalDetailsData(route);
     const {data}:{data:any} = hospitalDetails;   
-     console.log('data', data);
 
 
     return (
