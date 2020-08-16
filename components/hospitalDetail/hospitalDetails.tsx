@@ -31,11 +31,11 @@ const fetchHospitalDetailsData = (route)=>{
     const payload = route.query.id;
 
   useEffect(() => {
-      fetchHospitalDetails(API.HOSPITAL_DETAILS, payload).then(data=>{
+    payload && fetchHospitalDetails(API.HOSPITAL_DETAILS, payload).then(data=>{
           setHospitalDetails(data);
           setloader(false);
       });
-  }, [])
+  }, [payload])
   return {
       loader,
       data:hospitalDetails
@@ -45,6 +45,7 @@ const fetchHospitalDetailsData = (route)=>{
 
 function HospitalDetails() {
     const route = useRouter();
+    
     const hospitalName = "NARAYANA MULTI SPECIALITY HOSPITAL"
     const breadCrumbConfig = [
         {label:'Hospitals', route:'/hospital/hospitals'},

@@ -30,11 +30,11 @@ const fetchDoctorDetailsData = (route)=>{
       const payload = route.query.id;
 
     useEffect(() => {
-        fetchDoctorDetails(API.DOCTOR_DETAILS, payload).then(data=>{
+        payload && fetchDoctorDetails(API.DOCTOR_DETAILS, payload).then(data=>{
             setdoctorDetails(data);
             setloader(false);
         });
-    }, [])
+    }, [payload])
     return {
         loader,
         data:doctorDetails

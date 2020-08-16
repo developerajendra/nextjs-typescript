@@ -55,7 +55,7 @@ export const fetchHospitalDetails = async(API_URL, payload)=>  {
     // dispatch({
     //     type:TYPE.COMPARE_PRODUCT_LIST_LOADER
     // })
-    
+    console.log("payload route", payload);
     const response =  await api.get(API_URL+payload);
     let _response = response[0];
     
