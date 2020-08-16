@@ -58,7 +58,10 @@ const selectedValue = (country:[], treatment:[], router, dispatch , productFilte
         //If query exist in the url filter the product or else send the default products
         if(!productFilters?.country && !productFilters?.crtdUser && !productFilters?.crtdUser?.length){
             const selectedTab =  route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
-            dispatch(productFilter({crtdUser:currentTreatment.crtdUser, country:currentCountry.value}, selectedTab));
+            useEffect(() => {
+                dispatch(productFilter({crtdUser:currentTreatment.crtdUser, country:currentCountry.value}, selectedTab));
+            }, [route])
+            
         }
         
         

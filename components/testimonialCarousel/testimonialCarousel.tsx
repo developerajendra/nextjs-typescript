@@ -22,7 +22,7 @@ function TestimonialCarousel() {
     * fetchig the doctor details..
     */
     const fetchStatesListData = (selectedCountry)=>{
-        const payload = selectedCountry;
+        const payload = selectedCountry.value;
         setStateLoader(true);
         fetchStatesByCountry(API.STATES_LIST_BY_COUNTRY, payload).then(data=>{
             setStateList(data);
@@ -45,6 +45,7 @@ function TestimonialCarousel() {
 
     useEffect(() => {
         const payload = {value:'IN', label:'India'};
+        
         fetchStatesListData(payload);
         fetchTestimonialData(defaultState);
     }, [])
@@ -68,7 +69,7 @@ function TestimonialCarousel() {
             {testimonialLoader && <Loader/>}
             <Carousel>
                 {
-                    testimonialData?.map((item, index)=>{
+                    testimonialData.length && testimonialData?.map((item, index)=>{
                         return  <Carousel.Item>
                                 <Row>
                                     <Col className="flex-contentcontent"  lg={5}>
