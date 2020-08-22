@@ -9,12 +9,12 @@ import {HOSPITAL_LIST_MODEL} from '../../../components/hospitalList/model.hospit
  * @param API_URL 
  */
 export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
-    console.log('filters', filters);
-    
+
+    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY": filters.country, "STATE_CD": filters.states};
     dispatch({
         type:TYPE.DOCTORS_LIST_LOADER
     })
-    const response =  await api.get(API_URL);
+    const response =  await api.post(API_URL, payloadData);
         keyMapper(response, DOCTOR_LIST_MODEL);
         dispatch({
             type:TYPE.DOCTORS_LIST,
@@ -29,9 +29,7 @@ export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
  */
 export const fetchHospitalList =(API_URL, filters)=> async dispatch=>{
 
-    console.log('filters', filters);
-
-    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY":filters.country}
+    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY": filters.country, "STATE_CD": filters.states};
     
     dispatch({
         type:TYPE.HOSPITAL_LIST_LOADER

@@ -53,6 +53,7 @@ export const fetchCountryLisByTreatment =(API_URL, treatmentType)=> async dispat
  * @param API_URL 
  */
 export const fetchStatesByCountry = async (API_URL, payload)=> {
+    if(!payload)return;
     const response =  await api.get(API_URL+payload);
     keyMapper(response, STATES_MODEL);
     const data = response.map((list)=>{
@@ -143,8 +144,6 @@ export const fetchCostEstimatesDetail = async(API_URL, payload)=>  {
  * @param selectedTab 
  */
 export const productFilter = (filters, selectedTab)=> dispatch =>{
-    // console.log('filters from action', filters);
-        
     selectedTab == "HOSPITALS" ? 
     dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
     : 
