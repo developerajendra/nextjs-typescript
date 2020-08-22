@@ -53,6 +53,7 @@ export const fetchCountryLisByTreatment =(API_URL, treatmentType)=> async dispat
  * @param API_URL 
  */
 export const fetchStatesByCountry = async (API_URL, payload)=> {
+    if(!payload)return;
     const response =  await api.get(API_URL+payload);
     keyMapper(response, STATES_MODEL);
     const data = response.map((list)=>{

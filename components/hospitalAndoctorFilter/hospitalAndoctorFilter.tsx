@@ -131,13 +131,14 @@ const HospitalAndoctorFilter = () => {
         }
         const {query} = router;
         const selectedCountry = query['country-of-treatment'];
+        
         useEffect(() => {
             setStateLoader(true);
-            fetchStatesByCountry(API.TOP_STATES_BY_COUNTRY, selectedCountry).then(data=>{
+             fetchStatesByCountry(API.TOP_STATES_BY_COUNTRY, selectedCountry).then(data=>{
                 setStatesByCountry(data);
                 setStateLoader(false);
             })
-        }, []);
+        }, [query]);
     }
     fetchStatesListByCountryData(router);
 
