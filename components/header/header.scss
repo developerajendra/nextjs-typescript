@@ -48,6 +48,18 @@
         padding-left: 32px;
         opacity: 1;
        }
+       button{
+        position: absolute;
+        right: 9px;
+        background: none;
+        border: none;
+        /* margin: 0 10px; */
+        font-size: 12px;
+        color: #222;
+        background: #e4e4ea;
+        padding: 8px 14px;
+        border-radius: 0 28px 28px 0;
+       }
 
        @media (max-width: 991px){
         margin-top: 33px;

@@ -29,7 +29,7 @@ export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
  */
 export const fetchHospitalList =(API_URL, filters)=> async dispatch=>{
 
-    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY": filters.country, "STATE_CD": filters.states};
+    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY": filters.country, "STATE_CD": filters.states, search:filters.search};
     
     dispatch({
         type:TYPE.HOSPITAL_LIST_LOADER
