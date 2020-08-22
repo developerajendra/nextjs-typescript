@@ -15,6 +15,9 @@
     h2{
         font-family: 'Georgia-Bold';
         font-size: 1.25rem !important;
+        @media (max-width: 991px){
+           padding: 30px 0;
+          }
     }
     h3{
         font-size: 1rem;
@@ -30,6 +33,9 @@
         font-family: 'ProximaNova-Semibold' !important;
         font-size: .7rem;
         height: 36px;
+        @media (max-width: 991px){
+            margin: 30px 0;
+        }
     }
 
     

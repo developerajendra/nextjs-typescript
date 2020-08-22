@@ -142,6 +142,20 @@ button{
 .sticky{
   position: sticky;
   top: 0;
+
+  @media (max-width: 991px){
+     position: static;
+   }
+ 
+
+  &.row{
+    @media (max-width: 991px){
+      top: 0;
+      z-index: 999;
+      margin-bottom: 100px;
+     }
+   
+  }
 }
 
 
@@ -370,4 +384,18 @@ sup {
 .no-data{
   text-align: center;
   padding: 30px;
+}
+
+.m-hide{
+  display: block;
+  @media (max-width: 991px){
+    display: none;
+  }
+}
+
+.d-hide{
+  display: block;
+  @media (max-width: 991px){
+    display: none;
+  }
 }

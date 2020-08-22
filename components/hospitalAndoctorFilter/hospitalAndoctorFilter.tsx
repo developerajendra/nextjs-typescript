@@ -202,7 +202,9 @@ const HospitalAndoctorFilter = () => {
   
     
     return (
+    
         <div className="filter-wrapper">
+        <h5 className="d-hide">FILTERS</h5>
             <div className="drop-downs">
                  { loader ? <Loader /> : null}
                  {tratmentTypeData.data && <SelectBox selectedValue={selctedValueDropdownValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }
