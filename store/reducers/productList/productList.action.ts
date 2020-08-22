@@ -30,8 +30,11 @@ export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
 export const fetchHospitalList =(API_URL, filters)=> async dispatch=>{
 
     console.log('filters', filters);
+    let statesPayload = filters.country? {
+        "STATE_CD":[]
+    }: {};
 
-    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY":filters.country}
+    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY": filters.country, ...statesPayload};
     
     dispatch({
         type:TYPE.HOSPITAL_LIST_LOADER

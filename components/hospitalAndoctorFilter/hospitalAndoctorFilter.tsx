@@ -59,8 +59,8 @@ const selectedValue = (country:[], treatment:[], router, dispatch , productFilte
         if(!productFilters?.country && !productFilters?.crtdUser && !productFilters?.crtdUser?.length){
             const selectedTab =  route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
             useEffect(() => {
-                currentTreatment && dispatch(productFilter({crtdUser:currentTreatment.crtdUser, country:currentCountry.value}, selectedTab));
-            }, [route])
+                currentTreatment && dispatch(productFilter({crtdUser:currentTreatment.crtdUser || selectedTreatment, country:currentCountry.value || selectedCountry}, selectedTab));
+            }, [route, query])
             
         }
         
