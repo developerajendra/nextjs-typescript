@@ -12,7 +12,7 @@ const API = {
     TREATMENT_TYPE: 'medproviderspecility',
     TOP_STATES_BY_COUNTRY: 'statemaster?countrycode=',
     HOSPITALS_BY_COUNTRY: 'entitydetails/',
-    DOCTORS_LIST: 'meddoctor',
+    DOCTORS_LIST: 'meddoctor/post',
     DOCTOR_DETAILS: 'meddoctor/',
     HOSPITAL_LIST: 'medprovider/post',
     HOSPITAL_DETAILS: 'medprovider/',
