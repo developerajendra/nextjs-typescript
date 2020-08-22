@@ -23,6 +23,7 @@ const Header =()=> {
         setsearch(e.target.value);
     }
     const onSubmitSearch = (e)=>{
+        e.preventDefault();
         // router.query.search = 'hello';
 
 
