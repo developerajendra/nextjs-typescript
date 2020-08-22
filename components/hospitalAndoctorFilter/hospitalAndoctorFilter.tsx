@@ -82,8 +82,8 @@ const fetchCountryLisByTreatmentData = (dispatch, router)=>{
     const {query} = router;
     const selectedTreatment = query['treatment-type'] || query.treatmentId;  
     useEffect(() => {
-          dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT,  selectedTreatment))
-    }, []);
+        selectedTreatment && dispatch(fetchCountryLisByTreatment(API.COUNTRY_LIST_BY_TREATMENT,  selectedTreatment))
+    }, [query]);
 }
 
 
