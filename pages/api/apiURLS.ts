@@ -16,6 +16,7 @@ const API = {
     DOCTOR_DETAILS: 'meddoctor/',
     HOSPITAL_LIST: 'medprovider/post',
     HOSPITAL_DETAILS: 'medprovider/',
+    HOSPITAL_SEARCH: 'medprovider/searchdata',
     COMPARE_HOSPITAL_PRODUCTS: 'medprovider/categoryids',
     COMPARE_DOCTOR_PRODUCTS: 'meddoctor/doctorsids',
     TESTIMONIAL: 'https://api.jsonbin.io/b/5f24715a6f8e4e3faf27d0b1',

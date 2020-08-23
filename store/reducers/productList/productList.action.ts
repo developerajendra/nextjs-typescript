@@ -3,6 +3,7 @@ import {TYPE} from './types';
 import {keyMapper} from '../../../pages/api/util';
 import {DOCTOR_LIST_MODEL} from '../../../components/doctorListing/model.doctorList';
 import {HOSPITAL_LIST_MODEL} from '../../../components/hospitalList/model.hospitalList';
+import {API} from '../../../pages/api';
 
 /**
  * fetching the doctors list
@@ -10,7 +11,11 @@ import {HOSPITAL_LIST_MODEL} from '../../../components/hospitalList/model.hospit
  */
 export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
 
-    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY": filters.country, "STATE_CD": filters.states};
+    let state = filters.states?.length ? {
+        "STATE_CD": filters.states,
+    } : {};
+
+    let payloadData = {"Count":"10000","CRTD_USER":filters.crtdUser,"COUNTRY_CD": filters.country, ...state,};
     dispatch({
         type:TYPE.DOCTORS_LIST_LOADER
     })
@@ -28,13 +33,17 @@ export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
  * @param API_URL 
  */
 export const fetchHospitalList =(API_URL, filters)=> async dispatch=>{
+    let state = filters.states?.length ? {
+        "STATE_CD": filters.states,
+    } : {};
 
-    let payloadData = {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY": filters.country, "STATE_CD": filters.states, search:filters.search};
+    let payloadData = filters.search ?  {searchitem:filters.search} : {"Count":"10","CRTD_USER":filters.crtdUser,"COUNTRY_CD": filters.country, ...state};
+    let URL = filters.search ? API.HOSPITAL_SEARCH : API_URL;
     
     dispatch({
         type:TYPE.HOSPITAL_LIST_LOADER
     })
-    const response =  await api.post(API_URL, payloadData);
+    const response =  await api.post(URL, payloadData);
         keyMapper(response, HOSPITAL_LIST_MODEL);
         
         dispatch({

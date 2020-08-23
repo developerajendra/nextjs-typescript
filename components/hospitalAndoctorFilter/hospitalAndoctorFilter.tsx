@@ -198,7 +198,7 @@ const HospitalAndoctorFilter = () => {
     useEffect(() => {
         let {query, route } = router;
         const selectedTab =  route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
-        productFilters.states.length && dispatch(productFilter({crtdUser:query['treatment-type'], country:query['country-of-treatment'], states:productFilters.states, search:query['search']}, selectedTab))
+          dispatch(productFilter({crtdUser:query['treatment-type'], country:query['country-of-treatment'], states:productFilters.states, search:query['search']}, selectedTab))
     }, [productFilters]);
   
     
