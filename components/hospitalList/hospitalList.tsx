@@ -57,7 +57,7 @@ const  HospitalList = ()=> {
     return (
         <div style={{position:'relative'}}>
            {hospitalListData?.loader && <Loader/>}
-            {hospitalListData?.data.length ? hospitalListData?.data?.map((data)=>{
+            {hospitalListData?.data?.length ? hospitalListData?.data?.map((data)=>{
                 return <ProductCard dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareHospitals} data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail"   />
             }) : <h5 className="no-data">No data found...</h5>}
             

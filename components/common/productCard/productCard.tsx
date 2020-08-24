@@ -31,7 +31,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                             </div>
                         </div>
                     {/* </Col> */}
-                  <Col sm={12} >
+                  {/* <Col sm={12} > */}
 
                 <Card.Body style={{flex:'2'}}>
                     {compareProduct && <input onChange={(e)=>onproductCompareChange(e, data.entID, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />}
@@ -60,7 +60,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                         </MedicalModal>
                     </Row> 
                 </Card.Body>
-                </Col>
+                {/* </Col> */}
 
             </Card>  
             </LazyLoad>
