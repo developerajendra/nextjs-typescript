@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import {Loader, Input, MedicalButton, WriteRating} from '../common';
-import {sendEnquiry} from '../../store/reducers/sendEnquiry/sendEnquiry.action';
+import {writeReview} from '../../store/reducers/sendEnquiry/writeReview.action';
 import {API} from '../../pages/api';
 
 interface WriteReview {
@@ -26,7 +26,7 @@ const submitSendEnquiryForm = (formValues, setsendEnquiryLoader, closeModal)=>{
             file:formData
         }
         setsendEnquiryLoader(true);
-        sendEnquiry(API.SEND_ENQUIRY, payload).then(data=>{
+        writeReview(API.REVIEW_DETAILS, payload).then(data=>{
             
             setsendEnquiryLoader(false);
             closeModal();
@@ -36,7 +36,7 @@ const submitSendEnquiryForm = (formValues, setsendEnquiryLoader, closeModal)=>{
 const initialPayload = {
     id:'',
     name:'',
-    email:'', 
+    title:'', 
     message:'', 
     file:'', 
     agree:true, 
@@ -69,7 +69,7 @@ function WriteReview({id, name, closeModal}:WriteReview) {
         })
         
     }
-    const disableButton = formValues.name && formValues.email &&  formValues.email.indexOf('@')>-1 && formValues.email.indexOf('.')>-1;
+    // const disableButton = formValues.name && formValues.email &&  formValues.email.indexOf('@')>-1 && formValues.email.indexOf('.')>-1;
 
       
      const getValues = (value)=>{
@@ -124,7 +124,7 @@ function WriteReview({id, name, closeModal}:WriteReview) {
                 </div>
                 <div className="form-button-wrapper">
                     <MedicalButton text="CANCEL" type="outline" onButtonOutlineClick={onButtonOutlineClick} />
-                    <MedicalButton disabled={!disableButton} text="SUBMIT NOW" type="primary" onButtonPrimaryClick={onButtonPrimaryClick}  />
+                    <MedicalButton   text="SUBMIT NOW" type="primary" onButtonPrimaryClick={onButtonPrimaryClick}  />
                 </div>
             </form>
         </div>

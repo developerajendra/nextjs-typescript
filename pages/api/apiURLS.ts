@@ -20,10 +20,10 @@ const API = {
     COMPARE_HOSPITAL_PRODUCTS: 'medprovider/categoryids',
     COMPARE_DOCTOR_PRODUCTS: 'meddoctor/doctorsids',
     TESTIMONIAL: 'https://api.jsonbin.io/b/5f24715a6f8e4e3faf27d0b1',
-    SEND_ENQUIRY: '5f24715a6f8e4e3faf27d0b1',
+    SEND_ENQUIRY: 'SEND_ENQUIRY_DETAILS/',
     COST_ESTIMATE_LIST: 'tblmstpackagedetails',
     COST_ESTIMATE_DETAIL: 'packagetreatmentdetails?data=',
-    SEND_ENQUIRY_DETAILS: '/SEND_ENQUIRY_DETAILS/'
+    REVIEW_DETAILS: '/REVIEW_DETAILS'
 }
 
 export default API;
