@@ -27,9 +27,7 @@ const Header =()=> {
     }
    
     const onClearSearch  = (e)=>{
-        let isHospitalDetail = router.route.indexOf('hospitals/detail')>-1;
-        const searchRoute =  router.route.indexOf('hospitals')>-1 && !isHospitalDetail ? `${router.route}` : `/hospital/hospitals`;
-        router.push(searchRoute);
+        router.push(router.route);
         setsearch('');
     }
 
