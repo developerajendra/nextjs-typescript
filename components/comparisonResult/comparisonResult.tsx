@@ -202,7 +202,7 @@ console.log(compareProductListData.data);
                             <tr>
                                 <td>Year Of Established</td>
                                 { compareProductListData?.data.map(list=>{
-                                    return <td>{list.yearofEstablish}</td>
+                                    return <td>{list.yearofEstablish ? list.yearofEstablish : 'NA'}</td>
                                 })}
                             </tr>
                             <tr>
@@ -220,19 +220,19 @@ console.log(compareProductListData.data);
                             <tr>
                                 <td>FOOD</td>
                                 { compareProductListData?.data.map(list=>{
-                                    return <td>{list.food}</td>
+                                    return <td>{list.food ? list.food  : 'NA'}</td>
                                 })}
                             </tr>
                             <tr>
                                 <td>TREATMENT RELATED</td>
                                 { compareProductListData?.data.map(list=>{
-                                    return <td>{list.treatment}</td>
+                                    return <td>{list.treatment ? list.treatment : 'NA'}</td>
                                 })}
                             </tr>
                             <tr>
                                 <td>COMFORT DURING STAY</td>
                                 { compareProductListData?.data.map(list=>{
-                                    return <td>{list.comortStay}</td>
+                                    return <td>{list.comortStay ? list.comortStay : 'NA'}</td>
                                 })}
                             </tr>
                             <tr>

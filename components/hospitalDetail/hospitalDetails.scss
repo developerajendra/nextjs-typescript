@@ -118,7 +118,6 @@
             @media (max-width: 991px){
                 flex-direction: column;
             }
-
             .nav-link{
                 border: none;
                 color: #22222299;
@@ -142,6 +141,11 @@
            
         }
         .tab-content{
+            .tab-about{
+                button{
+                    margin-top: 22px;
+                }
+            }
             .active{
                 padding: 20px 0;
             }

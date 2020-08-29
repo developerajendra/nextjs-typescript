@@ -103,6 +103,9 @@ function DoctorDetails() {
                         <Tab eventKey="treatmentList" title="TREATMENT LIST" >
                             {makeList(data.tratementLists)}
                         </Tab>
+                        <Tab eventKey="workExperience" title="WORK EXPERIENCE" >
+                            {makeList(data.workExperience)}
+                        </Tab>
                         <Tab eventKey="education" title="EDUCATION" >
                             {makeList(data?.qulification)}
                         </Tab>

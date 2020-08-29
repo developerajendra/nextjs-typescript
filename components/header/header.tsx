@@ -34,7 +34,7 @@ const Header =()=> {
     }
 
     useEffect(() => {
-        let search:string = router.query.search;
+        let search:any = router.query.search;
         search && setsearch(search)
     }, [])
     

@@ -16,5 +16,6 @@ export const HOSPITAL_DETAIL_MODEL = {
     "NO_OF_OT_ROOM": "numberOfOperationRoom",
     "AVG_PATIENT_DOMESTIC": "domesticPatients",
     "AVG_PATIENT_INTERNATIONAL": "internationalPatients",
-    "NEAR_DOMESTIC_AIRPORT_DISTANCE": "domesticAirportDistance"
+    "NEAR_DOMESTIC_AIRPORT_DISTANCE": "domesticAirportDistance",
+    "ENT_FULL_NM":"hospitalName",
 }

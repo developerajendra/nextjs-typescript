@@ -8,7 +8,6 @@ import {WriteReview, SendEnquiery} from '../index';
 import {fetchHospitalDetails} from '../../store/reducers/productDetails/productDetails.action';
 import {API, ratingUI, makeList} from '../../pages/api';
 
-
 const hospitalInitialValue = [{
     "name":'',
     "specialization":'',
@@ -55,6 +54,7 @@ function HospitalDetails() {
     const hospitalDetails = fetchHospitalDetailsData(route);
     const {data}:{data:any} = hospitalDetails;   
 
+console.log('data',data);
 
     return (
         <div className="hospital-detail-wrapper">
@@ -156,18 +156,24 @@ function HospitalDetails() {
                     </Card>
                 </Col>
                 <Col lg={6} className="detail-right-content">
-                    <h4>NARAYANA MULTI SPECIALITY HOSPITAL</h4>
-                    <address>Plot No. 1355, Unit No. 302, Niharika Jubilee one, Road No. 1, Jubilee Hills,Hyderabad Telangana 5</address>
-                    <span className="call"> <i className="icon-call-small"></i>91-8980008163 , 8980008381</span> <span><a  target="blank"  href={data.website} className="visit-website">Visit website</a></span>
+                    <h4>{data.hospitalName}</h4>
+                    <address><i className="icon-map"/> Plot No. 1355, Unit No. 302, Niharika Jubilee one, Road No. 1, Jubilee Hills,Hyderabad Telangana 5</address>
+                    <span className="call"> <i className="icon-call"/> {data.phone1} , <i className="icon-call"/> {data.phone2}</span> <span><a  target="blank"  href={data.website} className="visit-website">Visit website</a></span>
                     <Tabs defaultActiveKey="about" id="uncontrolled-tab-example">
                         <Tab eventKey="about" title="ABOUT">
-                        <ul>
+                        <ul className="tab-about">
                             {data.about}
+                            <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
+                                <MedicalButton  text="SEND ENQUIRY" type="primary"  />
+                            </MedicalModal>
                         </ul>
                         </Tab>
                         <Tab eventKey="facilityService" title="FACILITY & SERVICE">
-                            <ul>
+                            <ul className="tab-about">
                                 {makeList(data.shortDescription)}
+                                <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
+                                <MedicalButton  text="SEND ENQUIRY" type="primary"  />
+                            </MedicalModal>
                             </ul>
                         </Tab>
                         <Tab eventKey="reviewRating" title="REVIEWS & Rating" >
