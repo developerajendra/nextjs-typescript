@@ -163,7 +163,7 @@ console.log('data',data);
                         <Tab eventKey="about" title="ABOUT">
                         <ul className="tab-about">
                             {data.about}
-                            <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
+                            <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
                                 <MedicalButton  text="SEND ENQUIRY" type="primary"  />
                             </MedicalModal>
                         </ul>
@@ -171,7 +171,7 @@ console.log('data',data);
                         <Tab eventKey="facilityService" title="FACILITY & SERVICE">
                             <ul className="tab-about">
                                 {makeList(data.shortDescription)}
-                                <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
+                                <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
                                 <MedicalButton  text="SEND ENQUIRY" type="primary"  />
                             </MedicalModal>
                             </ul>

@@ -19,6 +19,7 @@ interface productCard {
 }
 
 function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute, isHospital, compareProduct, onproductCompareChange, dispatcher}:productCard) {
+    
     return (
         isHospital ? 
         <LazyLoad height={200}>
@@ -55,7 +56,8 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     <a style={{color:' #22222299'}} href="#">{data.buttonText}</a>
                     <Row className="button-wrapper">
                         <MedicalButton text={outlineButtonText} type="outline" routeOutlineLink={`${buttonOutlineRoute}/[id]`} routeOutlineAs={`${buttonOutlineRoute}/${data.medProviderId}`} />
-                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
+                        
+                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
                             <MedicalButton text={primaryButtonText} type="primary"  />
                         </MedicalModal>
                     </Row> 
@@ -81,7 +83,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     <a style={{color:' #22222299'}} href="#">{data.buttonText}</a>
                     <Row className="button-wrapper">
                         <MedicalButton text={outlineButtonText} type="outline" routeOutlineLink={`${buttonOutlineRoute}/[id]`} routeOutlineAs={`${buttonOutlineRoute}/${data.productId}`} />
-                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
+                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId, isDoctor:true}}>
                             <MedicalButton text={primaryButtonText} type="primary"  />
                         </MedicalModal>
                     </Row> 

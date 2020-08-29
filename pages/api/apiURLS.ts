@@ -23,6 +23,7 @@ const API = {
     SEND_ENQUIRY: '5f24715a6f8e4e3faf27d0b1',
     COST_ESTIMATE_LIST: 'tblmstpackagedetails',
     COST_ESTIMATE_DETAIL: 'packagetreatmentdetails?data=',
+    SEND_ENQUIRY_DETAILS: '/SEND_ENQUIRY_DETAILS/'
 }
 
 export default API;
