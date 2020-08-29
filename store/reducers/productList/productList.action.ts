@@ -3,6 +3,7 @@ import {TYPE} from './types';
 import {keyMapper} from '../../../pages/api/util';
 import {DOCTOR_LIST_MODEL} from '../../../components/doctorListing/model.doctorList';
 import {HOSPITAL_LIST_MODEL} from '../../../components/hospitalList/model.hospitalList';
+import {FEATURED_HOSPITALS_MOEDEL} from '../../../components/featuredHospitals/model.featuredHospitals';
 import {API} from '../../../pages/api';
 
 /**
@@ -72,4 +73,13 @@ export const compareProduct =(PRODUCT_TYPE, selectedProducts = [])=> dispatch=>{
     });
 }
 
+ 
+
+
+ 
+export const featuredHospitals = async (API_URL)=> {
+    const response =  await api.get(API_URL);
+    keyMapper(response, FEATURED_HOSPITALS_MOEDEL);
+    return response;
+}
  

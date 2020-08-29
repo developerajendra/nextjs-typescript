@@ -11,7 +11,7 @@ export const sendEnquiry = async (API_URL, payload)=> {
     console.log('payload', payload);
     let {name, email, message, id,isDoctor,file} = payload;
 
-    let payloadData = { ENQUIRYID:id,FILE_DATA:file,MESSAGE:message,NAME:name ,ISDOCTOR:isDoctor,"EMAIL":email}	
+    let payloadData = { ENQUIRYID:id,FILE_DATA:"/dummy/file",MESSAGE:message,NAME:name ,ISDOCTOR:isDoctor,"EMAIL":email}	
     
     const response =  await api.fileUpload(API_URL, payloadData);
         

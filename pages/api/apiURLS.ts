@@ -5,6 +5,7 @@ const API = {
         DOCTORS: '/images/dynamic-image/doctors/',
         TESTIMONIAL: '/images/dynamic-image/testimonial/',
         HOSPITALS: '/images/dynamic-image/hospitals/',
+        FEATURED_HOSPITALS:  '/images/dynamic-image/featured-hospitals/',
     },
     COUNTRY_LIST: 'countrymaster',
     COUNTRY_LIST_BY_TREATMENT: 'countrymaster/',
@@ -23,7 +24,8 @@ const API = {
     SEND_ENQUIRY: 'SEND_ENQUIRY_DETAILS/',
     COST_ESTIMATE_LIST: 'tblmstpackagedetails',
     COST_ESTIMATE_DETAIL: 'packagetreatmentdetails?data=',
-    REVIEW_DETAILS: '/REVIEW_DETAILS'
+    REVIEW_DETAILS: 'REVIEW_DETAILS',
+    FEATURE_DETAILS:'featureddetails',
 }
 
 export default API;

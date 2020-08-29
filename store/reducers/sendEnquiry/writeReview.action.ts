@@ -12,7 +12,7 @@ export const writeReview = async (API_URL, payload)=> {
     let {agree, name,  title, message, id, file, rating} = payload;
     let rateValue = Object.values(rating);
 
-    let payloadData = {AGREE:agree, Title:title,FileName:file, Message:message, Name:name,Rating:rateValue, medProviderId: id}
+    let payloadData = {AGREE:agree, Title:title,FileName:"/dummy/file", Message:message, Name:name,Rating:rateValue, medProviderId: id}
     const response =  await api.fileUpload(API_URL, payloadData);
         return response;
 }
