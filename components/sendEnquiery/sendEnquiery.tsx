@@ -34,6 +34,8 @@ const submitSendEnquiryForm = (formValues, setsendEnquiryLoader, closeModal)=>{
 }
 
 function SendEnquiery({id, isDoctor, closeModal}:SendEnquiery) {
+    console.log('idid',id);
+    
     const [cancelModal, setcancelModal] = useState(false);
     const [formValues, setformValues] = useState({id:id, isDoctor, name:'', email:'', message:'', file:''});
     const [sendEnquiryLoader, setsendEnquiryLoader] = useState(false);

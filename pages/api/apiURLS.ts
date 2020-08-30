@@ -27,6 +27,7 @@ const API = {
     PACKAGE_DETAILS_FOR_HOSPITAL:'packagedetails/post', 
     REVIEW_DETAILS: 'REVIEW_DETAILS',
     FEATURE_DETAILS:'featureddetails',
+    RATING:'reviewdetails/'
 }
 
 export default API;

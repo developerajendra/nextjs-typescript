@@ -21,3 +21,17 @@ export const HOSPITAL_DETAIL_MODEL = {
     "ADDRESS_LN_1":"address1",
     "CRTD_USR":"crtdUser"
 }
+
+
+export const HOSPITAL_REVIEW = {
+    "Title": 'title',
+    "FileName": 'filename',
+    "Message": 'message',
+    "Name": 'name',
+    "AdmissionAndDischargeProcess": 'admissionAndDischargeProcess',
+    "CareInHospital": 'careInHospital',
+    "HospitalAmbience": 'hospitalAmbience',
+    "HospitalStaffBehaviour": 'hospitalStaffBehaviour',
+    "SupportFromHospitalStaff": 'supportFromHospitalStaff',
+    "WaitTime": 'waitTime',
+};

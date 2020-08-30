@@ -2,7 +2,7 @@ import api from '../../../pages/api/api';
 import {TYPE} from './types';
 import {keyMapper} from '../../../pages/api';
 import {DOCTOR_DETAILS_MODEL} from '../../../components/doctorDetails/model.doctorDetails';
-import {HOSPITAL_DETAIL_MODEL} from '../../../components/hospitalDetail/model.hospitalDetails';
+import {HOSPITAL_DETAIL_MODEL, HOSPITAL_REVIEW} from '../../../components/hospitalDetail/model.hospitalDetails';
 import {COMPARISON_RESULT_MODEL} from '../../../components/comparisonResult/model.comparisonResult';
 import {API} from '../../../pages/api';
 
@@ -74,4 +74,11 @@ export const fetchHospitalDetails = async(API_URL, payload)=>  {
 
 
 
+ 
+ 
+export const hospitalReviewAndRating = async (API_URL, payload)=> {
+    const response =  await api.get(API_URL+payload);
+    keyMapper(response, HOSPITAL_REVIEW);
+    return response;
+}
  

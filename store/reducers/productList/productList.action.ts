@@ -94,3 +94,4 @@ export const featuredHospitals = async (API_URL)=> {
     return response;
 }
  
+

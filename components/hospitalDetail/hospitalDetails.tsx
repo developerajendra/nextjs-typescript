@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import {MedicalButton, MedicalModal, SelectBox, Breadcrumb, Loader, VideoCarousel} from '../../components/common';
 import {fetchCostEstimatesList, fetchCostEstimatesDetail} from '../../store/reducers/filters/filters.action';
 import {WriteReview, SendEnquiery} from '../index';
-import {fetchHospitalDetails} from '../../store/reducers/productDetails/productDetails.action';
+import {fetchHospitalDetails, hospitalReviewAndRating} from '../../store/reducers/productDetails/productDetails.action';
 import {API, ratingUI, makeList} from '../../pages/api';
 
 const hospitalInitialValue = [{
@@ -49,6 +49,10 @@ function HospitalDetails() {
     const [dataloader, setDataloader] = useState(false);
     const [costEstimateList, setcostEstimateList] = useState([]);
     const [costEstimate, setcostEstimate] = useState([]);
+
+    //revewi and rating
+    const [revieRatingLoader, setrevieRatingLoader] = useState(false);
+    const [reviewRatingData, setreviewRatingData] = useState([]);
     
     const hospitalName = "NARAYANA MULTI SPECIALITY HOSPITAL"
     const breadCrumbConfig = [
@@ -70,6 +74,17 @@ function HospitalDetails() {
         });
     }, [data])
 
+    
+    useEffect(() => {
+        setrevieRatingLoader(true);
+        hospitalReviewAndRating(API.RATING, data.medProviderId).then(data=>{
+            setreviewRatingData(data);
+            setrevieRatingLoader(false);
+        });
+    }, [data])
+
+    
+
 
     const onSelectPackage = (value)=>{
         const payload = {MedProviderId:data.medProviderId, PackageCode:value.value};
@@ -82,8 +97,10 @@ function HospitalDetails() {
         });
     }
 
+
+    console.log('reviewRatingData', reviewRatingData);
+    
  
-console.log('costEstimate',costEstimate);
 
     return (
         <div className="hospital-detail-wrapper">
@@ -95,7 +112,7 @@ console.log('costEstimate',costEstimate);
                     </div>
                 </Col>
                 <Col lg={2}>
-                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:1}} customClass={'doctor-details'}>
+                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:data.medProviderId}} customClass={'doctor-details'}>
                         <MedicalButton text="WRITE A REVIEW" type="outline"  />
                     </MedicalModal>
                     
@@ -206,7 +223,31 @@ console.log('costEstimate',costEstimate);
                             </ul>
                         </Tab>
                         <Tab eventKey="reviewRating" title="REVIEWS & Rating" >
-                            Thou blind fool, Love, what dost thou to mine eyes, That they behold, and see not what they see? They know what beauty is, see where it lies, Yet what the best is take the worst to be. If eyes, corrupt by over-partial looks, Be anchor'd in the bay where all men ride, Why of eyes' falsehood hast thou forged hooks, Whereto the judgment of my heart is tied? Why should my heart think that a several plot, Which my heart knows the wide world's common place?
+                        {revieRatingLoader ? <Loader/> : null}
+                            <Card className="review-rating" >
+                                <Row>
+                                    <Col lg={2}>
+                                    </Col>
+                                    <Col lg={10} >
+                                        <h5>{reviewRatingData?.name}</h5>
+                                        {ratingUI(4)}
+                                        <p>{reviewRatingData?.message}</p>
+                                    </Col>
+                                </Row>
+                            </Card>
+
+                            <Card className="review-rating" >
+                                <Row>
+                                    <Col lg={2}>
+                                    </Col>
+                                    <Col lg={10} >
+                                        <h5>{reviewRatingData?.name}</h5>
+                                        {ratingUI(4)}
+                                        <p>{reviewRatingData?.message}</p>
+                                    </Col>
+                                </Row>
+                            </Card>
+                                
                         </Tab>
                         <Tab eventKey="videos" title="VIDEOS" >
                         <VideoCarousel />
@@ -227,22 +268,9 @@ console.log('costEstimate',costEstimate);
                                         
                                         <h5>Package details</h5>
                                         <p>{costEstimate[0].packageRemarks}</p>
-                                        {/* <ul>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                        </ul> */}
-                                        <MedicalButton text="Send enquirY" type="primary" />
+                                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                                            <MedicalButton  text="SEND ENQUIRY" type="primary"  />
+                                        </MedicalModal>
                                     </Card.Text>
                                      
                                 </Card.Body>
