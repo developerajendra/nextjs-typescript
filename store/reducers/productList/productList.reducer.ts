@@ -10,12 +10,12 @@ export const doctorListReducer = (state = [], action)=>{
      switch(action.type){
         case TYPE.DOCTORS_LIST:
             doctorProducts = [];
-            doctorProducts.push(...action.data);
+            action.data && doctorProducts.push(...action.data);
             return {...state, doctorListData:action.data,filter:action.filter, doctorListDataLoader: false};
 
         case TYPE.DOCTORS_LIST+'LOAD_MORE':
             
-            doctorProducts.push(...action.data);
+             doctorProducts.push(...action.data);
             return {...state, doctorListData:doctorProducts,filter:action.filter, doctorListDataLoader: false};
 
         case TYPE.DOCTORS_LIST_LOADER:
@@ -37,7 +37,7 @@ export const hospitalListReducer = (state = [], action)=>{
     switch(action.type){
        case TYPE.HOSPITAL_LIST:           
        products = [];
-           products.push(...action.data);
+       action.data && products.push(...action.data);
            return {...state, hospitalListData:action.data, filter:action.filter, hospitalListDataLoader: false};
 
         case TYPE.HOSPITAL_LIST+'LOAD_MORE':

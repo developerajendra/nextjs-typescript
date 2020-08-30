@@ -63,7 +63,7 @@ const  HospitalList = ()=> {
            {hospitalListData?.loader && <Loader/>}
             {hospitalListData?.data?.length ? hospitalListData?.data?.map((data)=>{
                 return <ProductCard dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareHospitals} data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail"   />
-            }) : <h5 className="no-data">No data found...</h5>}
+            }) : <h5 className="no-data">Data will available soon...</h5>}
            {hospitalListData?.data?.length && (hospitalListData?.filter?.totalCount > hospitalListData?.data?.length) ? <div style={{textAlign: 'center', padding: '10px 0 30px'}}>
            {hospitalListData?.loader && <Loader/>}
                 <MedicalButton onButtonOutlineClick={(e)=>loadMore()} text="Load More" type="outline" />

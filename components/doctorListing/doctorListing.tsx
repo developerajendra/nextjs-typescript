@@ -64,9 +64,9 @@ function DoctorListing() {
     return (
         <div style={{position:'relative'}}>
            {tratmentTypeData?.loader && <Loader/>}
-            {tratmentTypeData?.data?.map((data)=>{
+            {tratmentTypeData?.data?.length ? tratmentTypeData?.data?.map((data)=>{
                 return <ProductCard   dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareDoctors}  primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/doctors/detail" data={data} />
-            })}
+            }) : <h5 className="no-data">Data will available soon...</h5>}
             
             {tratmentTypeData?.data?.length && (tratmentTypeData?.filter?.totalCount > tratmentTypeData?.data?.length) ? <div style={{textAlign: 'center', padding: '10px 0 30px'}}>
             {tratmentTypeData?.loader && <Loader/>}
