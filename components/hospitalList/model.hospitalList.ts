@@ -10,5 +10,10 @@ export const HOSPITAL_LIST_MODEL = {
     "CITY_NM":"cityName",
     "DISTRICT_NM":"districtName",
     "STATE_NM":"stateName",
-    "TotalCount":'totalCount'
+    "TotalCount":'totalCount',
+    "CRTD_USER": 'crtdUser',
+    "COUNTRY_CD": 'country',
+    "Limit": 'limit',
+    "OffSet": 'offset',
+    
 }

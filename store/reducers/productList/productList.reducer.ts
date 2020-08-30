@@ -24,10 +24,18 @@ export const doctorListReducer = (state = [], action)=>{
  * @param state 
  * @param action 
  */
+let products = [];
 export const hospitalListReducer = (state = [], action)=>{
     switch(action.type){
-       case TYPE.HOSPITAL_LIST:
-           return {...state, hospitalListData:action.data, hospitalListDataLoader: false};
+       case TYPE.HOSPITAL_LIST:           
+       products = [];
+           products.push(...action.data);
+           return {...state, hospitalListData:action.data, filter:action.filter, hospitalListDataLoader: false};
+
+        case TYPE.HOSPITAL_LIST+'LOAD_MORE':
+            
+            products.push(...action.data);
+           return {...state, hospitalListData:products, filter:action.filter, hospitalListDataLoader: false};
 
        case TYPE.HOSPITAL_LIST_LOADER:
            return {...state, hospitalListDataLoader: true};

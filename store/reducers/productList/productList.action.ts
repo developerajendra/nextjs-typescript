@@ -33,24 +33,31 @@ export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
  * fetching the hospital list
  * @param API_URL 
  */
-export const fetchHospitalList =(API_URL, filters)=> async dispatch=>{
+export const fetchHospitalList =(API_URL, filters, loadMore?:string)=> async dispatch=>{
+    
     let state = filters.states?.length ? {
         "STATE_CD": filters.states,
     } : {};
 
-    let payloadData = filters.search ?  {searchitem:filters.search} : {"limit":"2",OffSet:0,"CRTD_USER":filters.crtdUser,"COUNTRY_CD": filters.country, ...state};
+    let payloadData = filters.search ?  {searchitem:filters.search} : {Limit:filters.limit || 2, OffSet:filters.offset || 0, CRTD_USER:filters.crtdUser, COUNTRY_CD: filters.country, ...state};
     let URL = filters.search ? API.HOSPITAL_SEARCH : API_URL;
+
     
     dispatch({
         type:TYPE.HOSPITAL_LIST_LOADER
     })
     const response =  await api.post(URL, payloadData);
-        keyMapper(response, HOSPITAL_LIST_MODEL);
+    
+    
+        keyMapper(response.Data, HOSPITAL_LIST_MODEL);
+        keyMapper(response.Filter, HOSPITAL_LIST_MODEL);
         
         dispatch({
-            type:TYPE.HOSPITAL_LIST,
-            data:response
-        })
+            type:loadMore ? TYPE.HOSPITAL_LIST+loadMore : TYPE.HOSPITAL_LIST,
+            data:response.Data,
+            filter:response.Filter
+        });
+        
 }
 
 

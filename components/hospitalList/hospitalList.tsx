@@ -12,13 +12,17 @@ import {ProductCard, Loader, MedicalButton} from '../common';
  */
 const fetchHospitalListData = (dispatch, filters)=>{
     
-    const {hospitalListData, hospitalListDataLoader} = useSelector(state => state.hospitalList)
+    const {hospitalListData, hospitalListDataLoader, filter} = useSelector(state => state.hospitalList)
+    
     useEffect(() => {
         // !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
-    }, []);
+    console.log('lookup..', hospitalListData);
+
+    }, [hospitalListData]);
     return {
         loader: hospitalListDataLoader,
-        data:hospitalListData
+        data:hospitalListData,
+        filter
     };
 }
 
@@ -52,11 +56,12 @@ const  HospitalList = ()=> {
     const {productFilters} = useSelector(state => state.productFitler);
     const hospitalListData = fetchHospitalListData(dispatch, productFilters);
     const {compareHospitals} = useSelector(state => state.compareProduct);
+    const [loadMoreData, setloadMoreData] = useState([]);
 
     const loadMore = (currentItems, totalItems)=>{
-        
+        const filters = {...hospitalListData.filter, offset:hospitalListData.filter.offset + hospitalListData.filter.limit}
+        dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters, 'LOAD_MORE'))
     }
-    
 
     return (
         <div style={{position:'relative'}}>
@@ -64,8 +69,8 @@ const  HospitalList = ()=> {
             {hospitalListData?.data?.length ? hospitalListData?.data?.map((data)=>{
                 return <ProductCard dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareHospitals} data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail"   />
             }) : <h5 className="no-data">No data found...</h5>}
-            {/* ccc{console.log('ddd',hospitalListData?.data[0])} */}
-           {hospitalListData?.data?.length && (hospitalListData?.data[0]?.totalCount > hospitalListData?.data?.length) ? <div style={{textAlign: 'center', padding: '10px 0 30px'}}>
+           {hospitalListData?.data?.length && (hospitalListData?.filter?.totalCount > hospitalListData?.data?.length) ? <div style={{textAlign: 'center', padding: '10px 0 30px'}}>
+           {hospitalListData?.loader && <Loader/>}
                 <MedicalButton onButtonOutlineClick={(e)=>loadMore(hospitalListData?.data?.length, hospitalListData?.data[0]?.totalCount)} text="Load More" type="outline" />
             </div> : null}
         </div>
