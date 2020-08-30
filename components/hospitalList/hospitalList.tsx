@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from "react-redux";
 //Custom imports
 import {API} from '../../pages/api';
 import {fetchHospitalList, compareProduct} from '../../store/reducers/productList/productList.action';
-import {ProductCard, Loader} from '../common';
+import {ProductCard, Loader, MedicalButton} from '../common';
 
 /**
  * API data treatment types from redux
@@ -52,6 +52,10 @@ const  HospitalList = ()=> {
     const {productFilters} = useSelector(state => state.productFitler);
     const hospitalListData = fetchHospitalListData(dispatch, productFilters);
     const {compareHospitals} = useSelector(state => state.compareProduct);
+
+    const loadMore = (currentItems, totalItems)=>{
+        
+    }
     
 
     return (
@@ -60,7 +64,10 @@ const  HospitalList = ()=> {
             {hospitalListData?.data?.length ? hospitalListData?.data?.map((data)=>{
                 return <ProductCard dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareHospitals} data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail"   />
             }) : <h5 className="no-data">No data found...</h5>}
-            
+            {/* ccc{console.log('ddd',hospitalListData?.data[0])} */}
+           {hospitalListData?.data?.length && (hospitalListData?.data[0]?.totalCount > hospitalListData?.data?.length) ? <div style={{textAlign: 'center', padding: '10px 0 30px'}}>
+                <MedicalButton onButtonOutlineClick={(e)=>loadMore(hospitalListData?.data?.length, hospitalListData?.data[0]?.totalCount)} text="Load More" type="outline" />
+            </div> : null}
         </div>
     )
 }

@@ -62,7 +62,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                         </MedicalModal>
                     </Row> 
                 </Card.Body>
-                {/* </Col> */}
+                
 
             </Card>  
             </LazyLoad>
