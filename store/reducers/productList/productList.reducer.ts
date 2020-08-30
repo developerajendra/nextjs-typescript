@@ -5,10 +5,18 @@ import {TYPE} from './types';
  * @param state 
  * @param action 
  */
+let doctorProducts = [];
 export const doctorListReducer = (state = [], action)=>{
      switch(action.type){
         case TYPE.DOCTORS_LIST:
-            return {...state, doctorListData:action.data, doctorListDataLoader: false};
+            doctorProducts = [];
+            doctorProducts.push(...action.data);
+            return {...state, doctorListData:action.data,filter:action.filter, doctorListDataLoader: false};
+
+        case TYPE.DOCTORS_LIST+'LOAD_MORE':
+            
+            doctorProducts.push(...action.data);
+            return {...state, doctorListData:doctorProducts,filter:action.filter, doctorListDataLoader: false};
 
         case TYPE.DOCTORS_LIST_LOADER:
             return {...state, doctorListDataLoader: true};

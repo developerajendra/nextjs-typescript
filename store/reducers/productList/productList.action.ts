@@ -10,21 +10,25 @@ import {API} from '../../../pages/api';
  * fetching the doctors list
  * @param API_URL 
  */
-export const fetchDoctorsList =(API_URL, filters?)=> async dispatch=>{
+export const fetchDoctorsList =(API_URL, filters?, loadMore?:string)=> async dispatch=>{
 
     let state = filters.states?.length ? {
         "STATE_CD": filters.states,
     } : {};
 
-    let payloadData = {"limit":"2",OffSet:0,"CRTD_USER":filters.crtdUser,"COUNTRY_CD": filters.country, ...state,};
+    let payloadData = {Limit:filters.limit || 2, OffSet:filters.offset || 0, CRTD_USER:filters.crtdUser, COUNTRY_CD: filters.country, ...state,};
+
     dispatch({
         type:TYPE.DOCTORS_LIST_LOADER
     })
     const response =  await api.post(API_URL, payloadData);
-        keyMapper(response, DOCTOR_LIST_MODEL);
+        keyMapper(response.Data, DOCTOR_LIST_MODEL);
+        keyMapper(response.Filter, DOCTOR_LIST_MODEL);
+        
         dispatch({
-            type:TYPE.DOCTORS_LIST,
-            data:response
+            type:loadMore ? TYPE.DOCTORS_LIST + loadMore : TYPE.DOCTORS_LIST,
+            data:response.Data,
+            filter:response.Filter
         })
 }
 

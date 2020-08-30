@@ -14,11 +14,6 @@ const fetchHospitalListData = (dispatch, filters)=>{
     
     const {hospitalListData, hospitalListDataLoader, filter} = useSelector(state => state.hospitalList)
     
-    useEffect(() => {
-        // !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
-    console.log('lookup..', hospitalListData);
-
-    }, [hospitalListData]);
     return {
         loader: hospitalListDataLoader,
         data:hospitalListData,
@@ -58,7 +53,7 @@ const  HospitalList = ()=> {
     const {compareHospitals} = useSelector(state => state.compareProduct);
     const [loadMoreData, setloadMoreData] = useState([]);
 
-    const loadMore = (currentItems, totalItems)=>{
+    const loadMore = ()=>{
         const filters = {...hospitalListData.filter, offset:hospitalListData.filter.offset + hospitalListData.filter.limit}
         dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters, 'LOAD_MORE'))
     }
@@ -71,7 +66,7 @@ const  HospitalList = ()=> {
             }) : <h5 className="no-data">No data found...</h5>}
            {hospitalListData?.data?.length && (hospitalListData?.filter?.totalCount > hospitalListData?.data?.length) ? <div style={{textAlign: 'center', padding: '10px 0 30px'}}>
            {hospitalListData?.loader && <Loader/>}
-                <MedicalButton onButtonOutlineClick={(e)=>loadMore(hospitalListData?.data?.length, hospitalListData?.data[0]?.totalCount)} text="Load More" type="outline" />
+                <MedicalButton onButtonOutlineClick={(e)=>loadMore()} text="Load More" type="outline" />
             </div> : null}
         </div>
     )
