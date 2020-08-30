@@ -72,4 +72,6 @@ export const fetchHospitalDetails = async(API_URL, payload)=>  {
     return _response
 }
 
+
+
  

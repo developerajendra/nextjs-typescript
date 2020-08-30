@@ -4,4 +4,5 @@ export const COST_ESTIMATE_MODEL = {
     "CITY_NM":"cityName",
     "AVG_COST":"averageCost",
     "NO_OF_DAYS":"numberOfDays",
+    "PACKAGE_REMARKS":"packageRemarks"
 }

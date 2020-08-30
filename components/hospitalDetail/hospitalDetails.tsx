@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 //Custom imports
 import {MedicalButton, MedicalModal, SelectBox, Breadcrumb, Loader, VideoCarousel} from '../../components/common';
+import {fetchCostEstimatesList, fetchCostEstimatesDetail} from '../../store/reducers/filters/filters.action';
 import {WriteReview, SendEnquiery} from '../index';
 import {fetchHospitalDetails} from '../../store/reducers/productDetails/productDetails.action';
 import {API, ratingUI, makeList} from '../../pages/api';
@@ -44,6 +45,10 @@ const fetchHospitalDetailsData = (route)=>{
 
 function HospitalDetails() {
     const route = useRouter();
+    const [packageLoader, setpackageLoader] = useState(false);
+    const [dataloader, setDataloader] = useState(false);
+    const [costEstimateList, setcostEstimateList] = useState([]);
+    const [costEstimate, setcostEstimate] = useState([]);
     
     const hospitalName = "NARAYANA MULTI SPECIALITY HOSPITAL"
     const breadCrumbConfig = [
@@ -53,8 +58,32 @@ function HospitalDetails() {
 
     const hospitalDetails = fetchHospitalDetailsData(route);
     const {data}:{data:any} = hospitalDetails;   
+    
 
-console.log('data',data);
+    useEffect(() => {
+        setpackageLoader(true);
+        fetchCostEstimatesList(API.COST_ESTIMATE_LIST, data.crtdUser).then(data=>{
+            setcostEstimateList(data);
+            let payload = {value:data[0].value}
+            onSelectPackage(payload);
+            setpackageLoader(false);
+        });
+    }, [data])
+
+
+    const onSelectPackage = (value)=>{
+        const payload = {MedProviderId:data.medProviderId, PackageCode:value.value};
+        
+        setpackageLoader(true);
+        
+        fetchCostEstimatesDetail(API.PACKAGE_DETAILS_FOR_HOSPITAL, payload, true).then(data=>{
+            setcostEstimate(data);
+            setpackageLoader(false);
+        });
+    }
+
+ 
+console.log('costEstimate',costEstimate);
 
     return (
         <div className="hospital-detail-wrapper">
@@ -157,7 +186,7 @@ console.log('data',data);
                 </Col>
                 <Col lg={6} className="detail-right-content">
                     <h4>{data.hospitalName}</h4>
-                    <address><i className="icon-map"/> Plot No. 1355, Unit No. 302, Niharika Jubilee one, Road No. 1, Jubilee Hills,Hyderabad Telangana 5</address>
+                    <address><i className="icon-map"/> {data.address1}</address>
                     <span className="call"> <i className="icon-call"/> {data.phone1} , <i className="icon-call"/> {data.phone2}</span> <span><a  target="blank"  href={data.website} className="visit-website">Visit website</a></span>
                     <Tabs defaultActiveKey="about" id="uncontrolled-tab-example">
                         <Tab eventKey="about" title="ABOUT">
@@ -184,15 +213,21 @@ console.log('data',data);
                         </Tab>
                         <Tab eventKey="package" title="PACKAGE" >
                         
-                            <SelectBox styleTypeDefault={true} defaultSelectText="Select Disease Type"/>
+                        {packageLoader ? <Loader/> : null}
+                        {costEstimateList.length ?<SelectBox selectedValue={costEstimateList[0]} styleTypeDefault={true} defaultSelectText="Select Disease Type" options={costEstimateList} onSelect={onSelectPackage}/> : null}
 
-                            <Card>
+                            
+                            {costEstimate.length ? <Card className="package-card">
+                                <i className="icon-package-name" /> 
+                                
                                 <Card.Body>
-                                    <Card.Title>Disease or Treatment Name</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">6100 INR Avg. Cost</Card.Subtitle>
+                                    <Card.Title>{costEstimate[0].packageName}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">{costEstimate[0].averageCost } INR Avg. Cost</Card.Subtitle>
                                     <Card.Text>
+                                        
                                         <h5>Package details</h5>
-                                        <ul>
+                                        <p>{costEstimate[0].packageRemarks}</p>
+                                        {/* <ul>
                                             <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
                                             <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
                                             <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
@@ -206,12 +241,12 @@ console.log('data',data);
                                             <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
                                             <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
                                             <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                        </ul>
+                                        </ul> */}
                                         <MedicalButton text="Send enquirY" type="primary" />
                                     </Card.Text>
                                      
                                 </Card.Body>
-                                </Card>
+                                </Card> : null}
                         </Tab>
                     </Tabs>
                 </Col>

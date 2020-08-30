@@ -158,6 +158,9 @@
                 list-style: disc;
             }
             .card{
+                &.package-card{
+                    padding-top: 18px;
+                }
                 max-width: 100%;
                 .card-text{
                     border-top: solid 1px #BBC4C7;

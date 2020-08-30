@@ -18,4 +18,6 @@ export const HOSPITAL_DETAIL_MODEL = {
     "AVG_PATIENT_INTERNATIONAL": "internationalPatients",
     "NEAR_DOMESTIC_AIRPORT_DISTANCE": "domesticAirportDistance",
     "ENT_FULL_NM":"hospitalName",
+    "ADDRESS_LN_1":"address1",
+    "CRTD_USR":"crtdUser"
 }
