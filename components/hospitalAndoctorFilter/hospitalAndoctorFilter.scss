@@ -6,6 +6,10 @@
     border-left: none;
     max-height: 160vh;
     background: #fff;
+    @media (max-width: 991px){
+        border: solid 1px #BBC4C7;
+        margin: 40px 0 0;
+      }
     
     h3{
         font-size: 1rem;

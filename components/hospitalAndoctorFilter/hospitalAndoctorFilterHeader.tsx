@@ -56,7 +56,7 @@ function HospitalAndoctorFilterHeader() {
                     <Col lg={3}>
                         <div>
                             <h2>Hospitals & Doctors (387)</h2>
-                            <h3>FILTERS</h3>
+                            <h3 className="m-hide">FILTERS</h3>
                         </div> 
                     </Col>
                     <Col lg={7}>

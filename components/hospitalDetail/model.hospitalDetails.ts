@@ -16,5 +16,22 @@ export const HOSPITAL_DETAIL_MODEL = {
     "NO_OF_OT_ROOM": "numberOfOperationRoom",
     "AVG_PATIENT_DOMESTIC": "domesticPatients",
     "AVG_PATIENT_INTERNATIONAL": "internationalPatients",
-    "NEAR_DOMESTIC_AIRPORT_DISTANCE": "domesticAirportDistance"
+    "NEAR_DOMESTIC_AIRPORT_DISTANCE": "domesticAirportDistance",
+    "ENT_FULL_NM":"hospitalName",
+    "ADDRESS_LN_1":"address1",
+    "CRTD_USR":"crtdUser"
 }
+
+
+export const HOSPITAL_REVIEW = {
+    "Title": 'title',
+    "FileName": 'filename',
+    "Message": 'message',
+    "Name": 'name',
+    "AdmissionAndDischargeProcess": 'admissionAndDischargeProcess',
+    "CareInHospital": 'careInHospital',
+    "HospitalAmbience": 'hospitalAmbience',
+    "HospitalStaffBehaviour": 'hospitalStaffBehaviour',
+    "SupportFromHospitalStaff": 'supportFromHospitalStaff',
+    "WaitTime": 'waitTime',
+};

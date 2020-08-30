@@ -19,16 +19,21 @@ interface productCard {
 }
 
 function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineRoute, isHospital, compareProduct, onproductCompareChange, dispatcher}:productCard) {
+    
     return (
         isHospital ? 
         <LazyLoad height={200}>
                 <Card className="product-card-wrapper hospital">
-                    <div className="image-wrapper">
-                    <Card.Img variant="top" src={ API.IMAGE_BASE_URL.HOSPITALS + data.image} />
-                    <div className="rating">
-                        {ratingUI(data.rating)}
-                    </div>
-                </div>
+                  {/* <Col sm={12} > */}
+                        <div className="image-wrapper">
+                            <Card.Img variant="top" src={ API.IMAGE_BASE_URL.HOSPITALS + data.image} />
+                            <div className="rating">
+                                {ratingUI(data.rating)}
+                            </div>
+                        </div>
+                    {/* </Col> */}
+                  {/* <Col sm={12} > */}
+
                 <Card.Body style={{flex:'2'}}>
                     {compareProduct && <input onChange={(e)=>onproductCompareChange(e, data.entID, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />}
                     <Card.Title>{data.hospitalName}</Card.Title>
@@ -51,11 +56,14 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     <a style={{color:' #22222299'}} href="#">{data.buttonText}</a>
                     <Row className="button-wrapper">
                         <MedicalButton text={outlineButtonText} type="outline" routeOutlineLink={`${buttonOutlineRoute}/[id]`} routeOutlineAs={`${buttonOutlineRoute}/${data.medProviderId}`} />
-                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
+                        
+                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
                             <MedicalButton text={primaryButtonText} type="primary"  />
                         </MedicalModal>
                     </Row> 
                 </Card.Body>
+                
+
             </Card>  
             </LazyLoad>
         :  <LazyLoad height={200}> <Card className="product-card-wrapper doctor">
@@ -75,7 +83,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     <a style={{color:' #22222299'}} href="#">{data.buttonText}</a>
                     <Row className="button-wrapper">
                         <MedicalButton text={outlineButtonText} type="outline" routeOutlineLink={`${buttonOutlineRoute}/[id]`} routeOutlineAs={`${buttonOutlineRoute}/${data.productId}`} />
-                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId}}>
+                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.productId, isDoctor:true}}>
                             <MedicalButton text={primaryButtonText} type="primary"  />
                         </MedicalModal>
                     </Row> 

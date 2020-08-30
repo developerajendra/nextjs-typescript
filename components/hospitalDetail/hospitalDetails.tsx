@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 
 //Custom imports
 import {MedicalButton, MedicalModal, SelectBox, Breadcrumb, Loader, VideoCarousel} from '../../components/common';
+import {fetchCostEstimatesList, fetchCostEstimatesDetail} from '../../store/reducers/filters/filters.action';
 import {WriteReview, SendEnquiery} from '../index';
-import {fetchHospitalDetails} from '../../store/reducers/productDetails/productDetails.action';
+import {fetchHospitalDetails, hospitalReviewAndRating} from '../../store/reducers/productDetails/productDetails.action';
 import {API, ratingUI, makeList} from '../../pages/api';
-
 
 const hospitalInitialValue = [{
     "name":'',
@@ -45,6 +45,14 @@ const fetchHospitalDetailsData = (route)=>{
 
 function HospitalDetails() {
     const route = useRouter();
+    const [packageLoader, setpackageLoader] = useState(false);
+    const [dataloader, setDataloader] = useState(false);
+    const [costEstimateList, setcostEstimateList] = useState([]);
+    const [costEstimate, setcostEstimate] = useState([]);
+
+    //revewi and rating
+    const [revieRatingLoader, setrevieRatingLoader] = useState(false);
+    const [reviewRatingData, setreviewRatingData] = useState([]);
     
     const hospitalName = "NARAYANA MULTI SPECIALITY HOSPITAL"
     const breadCrumbConfig = [
@@ -54,7 +62,45 @@ function HospitalDetails() {
 
     const hospitalDetails = fetchHospitalDetailsData(route);
     const {data}:{data:any} = hospitalDetails;   
+    
 
+    useEffect(() => {
+        setpackageLoader(true);
+        fetchCostEstimatesList(API.COST_ESTIMATE_LIST, data.crtdUser).then(data=>{
+            setcostEstimateList(data);
+            let payload = {value:data[0].value}
+            onSelectPackage(payload);
+            setpackageLoader(false);
+        });
+    }, [data])
+
+    
+    useEffect(() => {
+        setrevieRatingLoader(true);
+        hospitalReviewAndRating(API.RATING, data.medProviderId).then(data=>{
+            setreviewRatingData(data);
+            setrevieRatingLoader(false);
+        });
+    }, [data])
+
+    
+
+
+    const onSelectPackage = (value)=>{
+        const payload = {MedProviderId:data.medProviderId, PackageCode:value.value};
+        
+        setpackageLoader(true);
+        
+        fetchCostEstimatesDetail(API.PACKAGE_DETAILS_FOR_HOSPITAL, payload, true).then(data=>{
+            setcostEstimate(data);
+            setpackageLoader(false);
+        });
+    }
+
+
+    console.log('reviewRatingData', reviewRatingData);
+    
+ 
 
     return (
         <div className="hospital-detail-wrapper">
@@ -66,7 +112,7 @@ function HospitalDetails() {
                     </div>
                 </Col>
                 <Col lg={2}>
-                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:1}} customClass={'doctor-details'}>
+                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:data.medProviderId}} customClass={'doctor-details'}>
                         <MedicalButton text="WRITE A REVIEW" type="outline"  />
                     </MedicalModal>
                     
@@ -156,56 +202,79 @@ function HospitalDetails() {
                     </Card>
                 </Col>
                 <Col lg={6} className="detail-right-content">
-                    <h4>NARAYANA MULTI SPECIALITY HOSPITAL</h4>
-                    <address>Plot No. 1355, Unit No. 302, Niharika Jubilee one, Road No. 1, Jubilee Hills,Hyderabad Telangana 5</address>
-                    <span className="call"> <i className="icon-call-small"></i>91-8980008163 , 8980008381</span> <span><a  target="blank"  href={data.website} className="visit-website">Visit website</a></span>
+                    <h4>{data.hospitalName}</h4>
+                    <address><i className="icon-map"/> {data.address1}</address>
+                    <span className="call"> <i className="icon-call"/> {data.phone1} , <i className="icon-call"/> {data.phone2}</span> <span><a  target="blank"  href={data.website} className="visit-website">Visit website</a></span>
                     <Tabs defaultActiveKey="about" id="uncontrolled-tab-example">
                         <Tab eventKey="about" title="ABOUT">
-                        <ul>
+                        <ul className="tab-about">
                             {data.about}
+                            <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                                <MedicalButton  text="SEND ENQUIRY" type="primary"  />
+                            </MedicalModal>
                         </ul>
                         </Tab>
                         <Tab eventKey="facilityService" title="FACILITY & SERVICE">
-                            <ul>
+                            <ul className="tab-about">
                                 {makeList(data.shortDescription)}
+                                <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                                <MedicalButton  text="SEND ENQUIRY" type="primary"  />
+                            </MedicalModal>
                             </ul>
                         </Tab>
                         <Tab eventKey="reviewRating" title="REVIEWS & Rating" >
-                            Thou blind fool, Love, what dost thou to mine eyes, That they behold, and see not what they see? They know what beauty is, see where it lies, Yet what the best is take the worst to be. If eyes, corrupt by over-partial looks, Be anchor'd in the bay where all men ride, Why of eyes' falsehood hast thou forged hooks, Whereto the judgment of my heart is tied? Why should my heart think that a several plot, Which my heart knows the wide world's common place?
+                        {revieRatingLoader ? <Loader/> : null}
+                            <Card className="review-rating" >
+                                <Row>
+                                    <Col lg={2}>
+                                    </Col>
+                                    <Col lg={10} >
+                                        <h5>{reviewRatingData?.name}</h5>
+                                        {ratingUI(4)}
+                                        <p>{reviewRatingData?.message}</p>
+                                    </Col>
+                                </Row>
+                            </Card>
+
+                            <Card className="review-rating" >
+                                <Row>
+                                    <Col lg={2}>
+                                    </Col>
+                                    <Col lg={10} >
+                                        <h5>{reviewRatingData?.name}</h5>
+                                        {ratingUI(4)}
+                                        <p>{reviewRatingData?.message}</p>
+                                    </Col>
+                                </Row>
+                            </Card>
+                                
                         </Tab>
                         <Tab eventKey="videos" title="VIDEOS" >
                         <VideoCarousel />
                         </Tab>
                         <Tab eventKey="package" title="PACKAGE" >
                         
-                            <SelectBox styleTypeDefault={true} defaultSelectText="Select Disease Type"/>
+                        {packageLoader ? <Loader/> : null}
+                        {costEstimateList.length ?<SelectBox selectedValue={costEstimateList[0]} styleTypeDefault={true} defaultSelectText="Select Disease Type" options={costEstimateList} onSelect={onSelectPackage}/> : null}
 
-                            <Card>
+                            
+                            {costEstimate.length ? <Card className="package-card">
+                                <i className="icon-package-name" /> 
+                                
                                 <Card.Body>
-                                    <Card.Title>Disease or Treatment Name</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">6100 INR Avg. Cost</Card.Subtitle>
+                                    <Card.Title>{costEstimate[0].packageName}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">{costEstimate[0].averageCost } INR Avg. Cost</Card.Subtitle>
                                     <Card.Text>
+                                        
                                         <h5>Package details</h5>
-                                        <ul>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                            <li>Thou blind fool,ost and see not what they see? They know what beaut</li>
-                                        </ul>
-                                        <MedicalButton text="Send enquirY" type="primary" />
+                                        <p>{costEstimate[0].packageRemarks}</p>
+                                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                                            <MedicalButton  text="SEND ENQUIRY" type="primary"  />
+                                        </MedicalModal>
                                     </Card.Text>
                                      
                                 </Card.Body>
-                                </Card>
+                                </Card> : null}
                         </Tab>
                     </Tabs>
                 </Col>

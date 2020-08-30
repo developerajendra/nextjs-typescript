@@ -171,3 +171,7 @@
     @include icon($icon-plane-width, $icon-plane-height, $icon-plane-offset-x, $icon-plane-offset-y);
   }
  
+  .icon-package-name {
+    @include icon($icon-package-name-width, $icon-package-name-height, $icon-package-name-offset-x, $icon-package-name-offset-y);
+  }
+ 

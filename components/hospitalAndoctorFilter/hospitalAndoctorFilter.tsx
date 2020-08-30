@@ -47,6 +47,7 @@ const fetchTreatmentTypesData = ()=>{
 const selectedValue = (country:[], treatment:[], router, dispatch , productFilters)=>{
         const {query, route} = router;
  
+        const search = query['search'];
         const selectedCountry = query['country-of-treatment'];
         const selectedTreatment = query['treatment-type'] || query.treatmentId;  
          
@@ -59,9 +60,8 @@ const selectedValue = (country:[], treatment:[], router, dispatch , productFilte
         if(!productFilters?.country && !productFilters?.crtdUser && !productFilters?.crtdUser?.length){
             const selectedTab =  route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
             useEffect(() => {
-                currentTreatment && dispatch(productFilter({crtdUser:currentTreatment.crtdUser || selectedTreatment, country:currentCountry.value || selectedCountry}, selectedTab));
+                currentTreatment && dispatch(productFilter({crtdUser:currentTreatment.crtdUser || selectedTreatment, country:currentCountry.value || selectedCountry, search}, selectedTab));
             }, [route, query])
-            
         }
         
         
@@ -95,10 +95,12 @@ const HospitalAndoctorFilter = () => {
 
     //Product filters
     const [productFilters, setproductFilters] = useState(filtersValue);
+    const [isChangedFromDropdown, setisChangedFromDropdown] = useState(false);
 
     // states by country state
     const [statesByCountry, setStatesByCountry] = useState([]);
     const [stateLoader, setStateLoader] = useState(false);
+    const [isStateFiltrChanges, setisStateFiltrChanges] = useState(false);
 
 
     //Hooks 
@@ -190,6 +192,7 @@ const HospitalAndoctorFilter = () => {
             array.splice(index, 1);
             setproductFilters({...productFilters, states:array});
         }
+        setisStateFiltrChanges(true);
     }
 
 
@@ -197,12 +200,15 @@ const HospitalAndoctorFilter = () => {
     useEffect(() => {
         let {query, route } = router;
         const selectedTab =  route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
-        dispatch(productFilter({crtdUser:query['treatment-type'], country:query['country-of-treatment'], states:productFilters.states}, selectedTab))
+        isStateFiltrChanges && dispatch(productFilter({crtdUser:query['treatment-type'], country:query['country-of-treatment'], states:productFilters.states, search:query['search']}, selectedTab))
+        setisStateFiltrChanges(false);
     }, [productFilters]);
   
     
     return (
+    
         <div className="filter-wrapper">
+        <h5 className="d-hide">FILTERS</h5>
             <div className="drop-downs">
                  { loader ? <Loader /> : null}
                  {tratmentTypeData.data && <SelectBox selectedValue={selctedValueDropdownValue?.treatment} onSelect={onTreatMentTypeSelect} options={tratmentTypeData.data} label="SELECT DESEASE"/> }

@@ -79,7 +79,7 @@ function DoctorDetails() {
                         </Card.Body>
                         
                     </Card>
-                    <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.id}}  >
+                    <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.id, isDoctor:true}}  >
                         <MedicalButton text="SEND ENQUIRY" type="primary"  />
                     </MedicalModal>
                 </Col>
@@ -102,6 +102,9 @@ function DoctorDetails() {
                         </Tab>
                         <Tab eventKey="treatmentList" title="TREATMENT LIST" >
                             {makeList(data.tratementLists)}
+                        </Tab>
+                        <Tab eventKey="workExperience" title="WORK EXPERIENCE" >
+                            {makeList(data.workExperience)}
                         </Tab>
                         <Tab eventKey="education" title="EDUCATION" >
                             {makeList(data?.qulification)}

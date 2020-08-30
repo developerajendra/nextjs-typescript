@@ -8,6 +8,7 @@ interface SendEnquiery {
     id:number;
     name:string;
     closeModal: Function;
+    isDoctor?:boolean;
 }
 
 
@@ -19,8 +20,7 @@ interface SendEnquiery {
  */
 const submitSendEnquiryForm = (formValues, setsendEnquiryLoader, closeModal)=>{
     let formData = new FormData();
-        formData.append('file', formValues.file);
-        
+        formData.append('file', formValues.file[0]);
         const payload = {
             ...formValues,
             file:formData
@@ -33,9 +33,11 @@ const submitSendEnquiryForm = (formValues, setsendEnquiryLoader, closeModal)=>{
         });
 }
 
-function SendEnquiery({id, name, closeModal}:SendEnquiery) {
+function SendEnquiery({id, isDoctor, closeModal}:SendEnquiery) {
+    console.log('idid',id);
+    
     const [cancelModal, setcancelModal] = useState(false);
-    const [formValues, setformValues] = useState({id:id, name:'', email:'', message:'', file:''});
+    const [formValues, setformValues] = useState({id:id, isDoctor, name:'', email:'', message:'', file:''});
     const [sendEnquiryLoader, setsendEnquiryLoader] = useState(false);
 
     const onButtonOutlineClick = ()=>{

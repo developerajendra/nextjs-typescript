@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from "react-redux";
 //Custom imports
 import {API} from '../../pages/api';
 import {fetchHospitalList, compareProduct} from '../../store/reducers/productList/productList.action';
-import {ProductCard, Loader} from '../common';
+import {ProductCard, Loader, MedicalButton} from '../common';
 
 /**
  * API data treatment types from redux
@@ -12,13 +12,12 @@ import {ProductCard, Loader} from '../common';
  */
 const fetchHospitalListData = (dispatch, filters)=>{
     
-    const {hospitalListData, hospitalListDataLoader} = useSelector(state => state.hospitalList)
-    useEffect(() => {
-        // !hospitalListData && dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
-    }, []);
+    const {hospitalListData, hospitalListDataLoader, filter} = useSelector(state => state.hospitalList)
+    
     return {
         loader: hospitalListDataLoader,
-        data:hospitalListData
+        data:hospitalListData,
+        filter
     };
 }
 
@@ -52,15 +51,23 @@ const  HospitalList = ()=> {
     const {productFilters} = useSelector(state => state.productFitler);
     const hospitalListData = fetchHospitalListData(dispatch, productFilters);
     const {compareHospitals} = useSelector(state => state.compareProduct);
-    
+    const [loadMoreData, setloadMoreData] = useState([]);
+
+    const loadMore = ()=>{
+        const filters = {...hospitalListData.filter, offset:hospitalListData.filter.offset + hospitalListData.filter.limit}
+        dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters, 'LOAD_MORE'))
+    }
 
     return (
         <div style={{position:'relative'}}>
            {hospitalListData?.loader && <Loader/>}
-            {hospitalListData?.data?.map((data)=>{
+            {hospitalListData?.data?.length ? hospitalListData?.data?.map((data)=>{
                 return <ProductCard dispatcher={dispatch} onproductCompareChange={onCheckedProduct} compareProduct={compareHospitals} data={data} isHospital={true} primaryButtonText="SEND ENQUIRY" outlineButtonText="LEARN MORE" buttonOutlineRoute="/hospital/hospitals/detail"   />
-            })}
-            
+            }) : <h5 className="no-data">Data will available soon...</h5>}
+           {hospitalListData?.data?.length && (hospitalListData?.filter?.totalCount > hospitalListData?.data?.length) ? <div style={{textAlign: 'center', padding: '10px 0 30px'}}>
+           {hospitalListData?.loader && <Loader/>}
+                <MedicalButton onButtonOutlineClick={(e)=>loadMore()} text="Load More" type="outline" />
+            </div> : null}
         </div>
     )
 }

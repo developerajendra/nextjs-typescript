@@ -7,17 +7,13 @@ import {TESTIMONIAL_MODEL} from '../../../components/testimonialCarousel/model.t
  * Sending the enquiry for doctor and hospital
  * @param API_URL 
  */
-export const sendEnquiry = async (API_URL, payload)=> {
+export const writeReview = async (API_URL, payload)=> {
     console.log('payload', payload);
-    let {name, email, message, id,isDoctor,file} = payload;
+    let {agree, name,  title, message, id, file, rating} = payload;
+    let rateValue = Object.values(rating);
 
-    let payloadData = { ENQUIRYID:id,FILE_DATA:"/dummy/file",MESSAGE:message,NAME:name ,ISDOCTOR:isDoctor,"EMAIL":email}	
-    
+    let payloadData = {AGREE:agree, Title:title,FileName:"/dummy/file", Message:message, Name:name,Rating:rateValue, medProviderId: id}
     const response =  await api.fileUpload(API_URL, payloadData);
-        
-        console.log('response', response);
-        
-        
         return response;
 }
  

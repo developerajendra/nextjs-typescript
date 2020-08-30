@@ -10,5 +10,6 @@ export const DOCTOR_DETAILS_MODEL = {
     "SPECIALITY_1": "speciality",
     "NO_OF_YEAR_EXPERIENCE": "experience",
     "IMG_NAME": "image",
-    "ENT_FULL_NM": "hospitalName"
+    "ENT_FULL_NM": "hospitalName",
+    "DOC_WORK_EXPERIENCE":"workExperience",
 }

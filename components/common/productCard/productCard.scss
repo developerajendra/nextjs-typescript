@@ -2,6 +2,10 @@
     &.card{
         flex-direction: row;
         margin: 20px 0px;
+        @media (max-width: 991px){
+                flex-direction: column;
+           }
+
         .card-title{ 
             font-size: 1.125rem;
             text-transform: uppercase;
@@ -12,6 +16,7 @@
             padding: 20px 0;
             font-size: 0.875rem;
             margin: 5px 0;
+            max-width: 70%;
         }
 
         button {
@@ -64,6 +69,13 @@
             justify-content: space-between;
             max-width: 80%;
             font-size: .7rem;
+            @media (max-width: 1100px){
+                max-width: 70%;
+           }
+            @media (max-width: 991px){
+                flex-direction: column;
+           }
+
             i{
                 top: 3px;
                 position: relative;

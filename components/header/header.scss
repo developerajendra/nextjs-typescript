@@ -34,6 +34,16 @@
       i{
         position: absolute;
         left: 12px;
+
+        &.icon-close{
+          position: absolute;
+            right: 114px;
+            left: initial;
+            z-index: 33;
+            zoom: .7;
+            opacity: 0.6;
+            cursor: pointer;
+        }
       }
       .search{
         width: 100%;
@@ -48,6 +58,18 @@
         padding-left: 32px;
         opacity: 1;
        }
+       button{
+        position: absolute;
+        right: 9px;
+        background: none;
+        border: none;
+        /* margin: 0 10px; */
+        font-size: 12px;
+        color: #222;
+        background: #e4e4ea;
+        padding: 8px 14px;
+        border-radius: 0 28px 28px 0;
+       }
 
        @media (max-width: 991px){
         margin-top: 33px;
@@ -61,4 +83,5 @@
     right: 0;
     top: -50px;
 }
+
 }

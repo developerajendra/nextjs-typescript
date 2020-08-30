@@ -5,6 +5,7 @@ const API = {
         DOCTORS: '/images/dynamic-image/doctors/',
         TESTIMONIAL: '/images/dynamic-image/testimonial/',
         HOSPITALS: '/images/dynamic-image/hospitals/',
+        FEATURED_HOSPITALS:  '/images/dynamic-image/featured-hospitals/',
     },
     COUNTRY_LIST: 'countrymaster',
     COUNTRY_LIST_BY_TREATMENT: 'countrymaster/',
@@ -16,12 +17,17 @@ const API = {
     DOCTOR_DETAILS: 'meddoctor/',
     HOSPITAL_LIST: 'medprovider/post',
     HOSPITAL_DETAILS: 'medprovider/',
+    HOSPITAL_SEARCH: 'medprovider/searchdata',
     COMPARE_HOSPITAL_PRODUCTS: 'medprovider/categoryids',
     COMPARE_DOCTOR_PRODUCTS: 'meddoctor/doctorsids',
     TESTIMONIAL: 'https://api.jsonbin.io/b/5f24715a6f8e4e3faf27d0b1',
-    SEND_ENQUIRY: '5f24715a6f8e4e3faf27d0b1',
+    SEND_ENQUIRY: 'SEND_ENQUIRY_DETAILS/',
     COST_ESTIMATE_LIST: 'tblmstpackagedetails',
-    COST_ESTIMATE_DETAIL: 'packagetreatmentdetails?data=',
+    COST_ESTIMATE_DETAIL: 'packagetreatmentdetails/GetbyPackage?data=',
+    PACKAGE_DETAILS_FOR_HOSPITAL:'packagedetails/post', 
+    REVIEW_DETAILS: 'REVIEW_DETAILS',
+    FEATURE_DETAILS:'featureddetails',
+    RATING:'reviewdetails/'
 }
 
 export default API;
