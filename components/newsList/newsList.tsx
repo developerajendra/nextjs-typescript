@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Row, Col} from 'react-bootstrap';
 import {NewsCard} from '../common';
 
-const news = [
-    {readMoreLink:'', title:'Headline will goes here. Replace it as per need.', date:'12 MAY, 2020',image:"news-image.jpg", news:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry’s standard."},
-    {readMoreLink:'', title:'Headline will goes here. Replace it as per need.', date:'12 MAY, 2020',image:"news-image.jpg", news:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry’s standard."},
-    {readMoreLink:'', title:'Headline will goes here. Replace it as per need.', date:'12 MAY, 2020',image:"news-image.jpg", news:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry’s standard."},
-    {readMoreLink:'', title:'Headline will goes here. Replace it as per need.', date:'12 MAY, 2020',image:"news-image.jpg", news:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry’s standard."},
-];
+
+
+//Custom imports
+import {API} from '../../pages/api';
+import { fetchNews} from '../../store/reducers/filters/filters.action';
+import {ProductCard, Loader, MedicalButton} from '../common';
+ 
 
 function NewsList() {
+    const [news, setnews] = useState([]);
+    const [newsLoader, setnewsLoader] = useState(false);
+     
+
+    useEffect(() => {
+        setnewsLoader(true);
+        fetchNews(API.NEWS_AND_MEDIA).then(news=>{
+            setnews(news);
+            setnewsLoader(false);
+        })
+    }, [])
     return (
         <div className="news-list-wrapper">
+            {newsLoader ? <Loader/> : null}
              <div className="list-header">
                 <span>Featured in</span>
                 <h2>News and Media</h2>

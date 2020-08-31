@@ -1,6 +1,8 @@
 import {api, keyMapper} from '../../../pages/api';
 import {TYPE} from '../filters/types';
 import {COMPARE_DESTINATION_MODEL} from '../../../components/compareDestinationList/model.compareDestinationList';
+import {NeWS_MODEL} from '../../../components/newsList/model.newsList';
+
 import {STATES_MODEL} from './model.filters';
 import {COST_ESTIMATE_MODEL} from '../../../components/costEstimate/model.costEstimate';
 import {fetchHospitalList, fetchDoctorsList} from '../productList/productList.action';
@@ -151,4 +153,15 @@ export const productFilter = (filters, selectedTab)=> dispatch =>{
     dispatch(fetchHospitalList(API.HOSPITAL_LIST, filters))
     : 
     dispatch(fetchDoctorsList(API.DOCTORS_LIST, filters));
+}
+
+
+/**
+ * Fetch cost estimate details
+ * @param API_URL 
+ */
+export const fetchNews = async(API_URL)=>  {
+    const response =  await api.get(API_URL);
+    keyMapper(response, NeWS_MODEL);
+    return response
 }

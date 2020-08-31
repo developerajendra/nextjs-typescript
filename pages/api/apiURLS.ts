@@ -6,6 +6,7 @@ const API = {
         TESTIMONIAL: '/images/dynamic-image/testimonial/',
         HOSPITALS: '/images/dynamic-image/hospitals/',
         FEATURED_HOSPITALS:  '/images/dynamic-image/featured-hospitals/',
+        NEWS:  '/images/dynamic-image/news/',
     },
     COUNTRY_LIST: 'countrymaster',
     COUNTRY_LIST_BY_TREATMENT: 'countrymaster/',
@@ -27,7 +28,8 @@ const API = {
     PACKAGE_DETAILS_FOR_HOSPITAL:'packagedetails/post', 
     REVIEW_DETAILS: 'reviewdetails',
     FEATURE_DETAILS:'featureddetails',
-    RATING:'reviewdetails/'
+    RATING:'reviewdetails/',
+    NEWS_AND_MEDIA:'NEWS_AND_MEDIA',
 }
 
 export default API;
