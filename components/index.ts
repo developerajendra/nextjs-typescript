@@ -19,6 +19,7 @@ import KnowledgeBank from './knowledgeBank/knowledgeBank';
 import ComparisonResult from './comparisonResult/comparisonResult';
 import SendEnquiery from './sendEnquiery/sendEnquiery';
 import WriteReview from './writeReview/writeReview';
+import NewsDetails from './newsDetails/newsDetails';
 
 export {
     Header,
@@ -41,5 +42,6 @@ export {
     KnowledgeBank,
     ComparisonResult,
     SendEnquiery,
-    WriteReview
+    WriteReview,
+    NewsDetails
 }

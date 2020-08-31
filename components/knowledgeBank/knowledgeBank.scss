@@ -50,3 +50,15 @@
         }
     }
 }
+
+
+ 
+#floated{
+    float: left;
+    width: 40%;
+    padding: 30px;
+
+    @media (max-width: 991px){
+        width: 100%;
+    }
+}
