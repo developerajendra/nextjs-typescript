@@ -77,7 +77,7 @@ function HospitalDetails() {
     
     useEffect(() => {
         setrevieRatingLoader(true);
-        hospitalReviewAndRating(API.RATING, data.medProviderId).then(data=>{
+        hospitalReviewAndRating(API.RATING, data?.medProviderId).then(data=>{
             setreviewRatingData(data);
             setrevieRatingLoader(false);
         });
@@ -87,7 +87,7 @@ function HospitalDetails() {
 
 
     const onSelectPackage = (value)=>{
-        const payload = {MedProviderId:data.medProviderId, PackageCode:value.value};
+        const payload = {MedProviderId:data?.medProviderId, PackageCode:value.value};
         
         setpackageLoader(true);
         
@@ -112,7 +112,7 @@ function HospitalDetails() {
                     </div>
                 </Col>
                 <Col lg={2}>
-                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:data.medProviderId}} customClass={'doctor-details'}>
+                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:data?.medProviderId}} customClass={'doctor-details'}>
                         <MedicalButton text="WRITE A REVIEW" type="outline"  />
                     </MedicalModal>
                     
@@ -209,7 +209,7 @@ function HospitalDetails() {
                         <Tab eventKey="about" title="ABOUT">
                         <ul className="tab-about">
                             {data.about}
-                            <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                            <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data?.medProviderId}}>
                                 <MedicalButton  text="SEND ENQUIRY" type="primary"  />
                             </MedicalModal>
                         </ul>
@@ -217,7 +217,7 @@ function HospitalDetails() {
                         <Tab eventKey="facilityService" title="FACILITY & SERVICE">
                             <ul className="tab-about">
                                 {makeList(data.shortDescription)}
-                                <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                                <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data?.medProviderId}}>
                                 <MedicalButton  text="SEND ENQUIRY" type="primary"  />
                             </MedicalModal>
                             </ul>
@@ -268,7 +268,7 @@ function HospitalDetails() {
                                         
                                         <h5>Package details</h5>
                                         <p>{costEstimate[0].packageRemarks}</p>
-                                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data?.medProviderId}}>
                                             <MedicalButton  text="SEND ENQUIRY" type="primary"  />
                                         </MedicalModal>
                                     </Card.Text>

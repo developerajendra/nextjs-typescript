@@ -117,7 +117,7 @@ export const fetchHospialsByCountry =(API_URL, selectedCountry)=> async dispatch
  * Fetching the cost estimate
  * @param API_URL 
  */
-export const fetchCostEstimatesList = async(API_URL, crtdUser)=>  {
+export const fetchCostEstimatesList = async(API_URL, crtdUser?)=>  {
     console.log('crtd user', crtdUser);
     
     const URL = crtdUser ? `${API_URL}?crtdUser=${crtdUser}` : API_URL
@@ -134,7 +134,7 @@ export const fetchCostEstimatesList = async(API_URL, crtdUser)=>  {
  * Fetch cost estimate details
  * @param API_URL 
  */
-export const fetchCostEstimatesDetail = async(API_URL, payload, isHospital)=>  {
+export const fetchCostEstimatesDetail = async(API_URL, payload?, isHospital?)=>  {
     const response =  isHospital ? await api.post(API_URL, payload) : await api.get(API_URL+payload);
         keyMapper(response, COST_ESTIMATE_MODEL);
         return response
