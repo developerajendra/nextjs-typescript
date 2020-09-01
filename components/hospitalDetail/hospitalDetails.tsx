@@ -126,9 +126,9 @@ function HospitalDetails() {
                         <Card.Body>
                             <Row className="content-row">
                                 <Col lg={4} className="content-column">
-                                    <Card.Title>92% Liked</Card.Title>
+                                    <Card.Title>{data.like}% Liked</Card.Title>
                                     <Card.Text>
-                                    {ratingUI(4)}
+                                    {ratingUI(data.rating)}
                                     </Card.Text>
                                 </Col>
 
