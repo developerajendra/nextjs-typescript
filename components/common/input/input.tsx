@@ -17,7 +17,7 @@ function Input({label, placeholder, id, type, onInputChange, values, mandatory}:
             <label htmlFor={id}>{label}{mandatory ? <sup>*</sup> : ''}</label>
             {type == 'textarea' ? <textarea value={values[id]}  onChange={(e)=>{onInputChange(e, id)}}  name={id} id={id} placeholder={placeholder} />  :(type=='file' ? 
              <div className="file-wrapper"> 
-                 <input value={values[id]}  onChange={(e)=>{onInputChange(e, id)}} type={type ? type : 'text'} id={id} name={id} placeholder={placeholder}/>  <i className="icon-upload"></i>
+                 <input accept=".pdf,.doc,.xls,.csv" onChange={(e)=>{onInputChange(e, id)}} type={type ? type : 'text'} id={id} name={id} placeholder={placeholder}/>  <i className="icon-upload"></i>
                  <span>Supported File Format: <a href="#">pdf,</a>  <a href="#">.doc,</a> <a href="#">.csv,</a>  <a href="#">.xls</a> <span className="max-limit">(Max 10mb/file)</span></span>
             </div>: type == 'checkbox' ? <input checked={values[id]}  onChange={(e)=>{onInputChange(e, id)}}  type={type ? type : 'text'} id={id} name={id} placeholder={placeholder}/> : <input value={values[id]} onChange={(e)=>{onInputChange(e, id)}}  type={type ? type : 'text'} id={id} name='inputName' placeholder={placeholder}/>)    }
         </div>

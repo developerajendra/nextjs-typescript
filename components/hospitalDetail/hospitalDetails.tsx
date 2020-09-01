@@ -67,7 +67,7 @@ function HospitalDetails() {
 
     useEffect(() => {
         setpackageLoader(true);
-        fetchCostEstimatesList(API.COST_ESTIMATE_LIST, data.crtdUser).then(data=>{
+        fetchCostEstimatesList(API.COST_ESTIMATE_LIST, data?.crtdUser).then(data=>{
             setcostEstimateList(data);
             let payload = {value:data[0].value}
             onSelectPackage(payload);
@@ -135,7 +135,7 @@ function HospitalDetails() {
             </Row>
             <Row className="detail-wrapper">
             {hospitalDetails?.loader && <Loader/>}
-                <Col lg={6}>
+               { data && <Col lg={6}>
                     <Card>
                     <Card.Img variant="top" src={ API.IMAGE_BASE_URL.HOSPITALS + data.image} />
                         <Card.Body>
@@ -215,8 +215,8 @@ function HospitalDetails() {
                             
                         </Card.Body>
                     </Card>
-                </Col>
-                <Col lg={6} className="detail-right-content">
+                </Col>}
+                { data && <Col lg={6} className="detail-right-content">
                     <h4>{data.hospitalName}</h4>
                     <address><i className="icon-map"/> {data.address1}</address>
                     <span className="call"> <i className="icon-call"/> {data.phone1} , <i className="icon-call"/> {data.phone2}</span> <span><a  target="blank"  href={data.website} className="visit-website">Visit website</a></span>
@@ -296,7 +296,8 @@ function HospitalDetails() {
                                 </Card> : null}
                         </Tab>
                     </Tabs>
-                </Col>
+                </Col>}
+           
             </Row>
         </div>
     )

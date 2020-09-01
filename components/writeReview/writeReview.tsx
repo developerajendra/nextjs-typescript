@@ -19,7 +19,7 @@ interface WriteReview {
  */
 const submitSendEnquiryForm = (formValues, setsendEnquiryLoader, closeModal)=>{
     let formData = new FormData();
-        formData.append('file', formValues.file);
+        formData.append('file', formValues.file[0]);
         
         const payload = {
             ...formValues,
@@ -63,9 +63,10 @@ function WriteReview({id, name, closeModal}:WriteReview) {
     }
 
     const onInputChange = (e, id)=>{
+    
         setformValues({
             ...formValues,
-            [id]: e.target.type == 'checkbox' ? e.target.checked : e.target.value
+            [id]:e.target.type === 'file' ? e.target.files :( e.target.type == 'checkbox' ? e.target.checked : e.target.value)
         })
         
     }
