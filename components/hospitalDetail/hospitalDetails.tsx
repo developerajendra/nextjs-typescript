@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import {Card, Button, Tabs, Tab, Row,Col} from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import moment from 'moment';
 
 //Custom imports
 import {MedicalButton, MedicalModal, SelectBox, Breadcrumb, Loader, VideoCarousel} from '../../components/common';
@@ -66,7 +67,7 @@ function HospitalDetails() {
 
     useEffect(() => {
         setpackageLoader(true);
-        fetchCostEstimatesList(API.COST_ESTIMATE_LIST, data.crtdUser).then(data=>{
+        fetchCostEstimatesList(API.COST_ESTIMATE_LIST, data?.crtdUser).then(data=>{
             setcostEstimateList(data);
             let payload = {value:data[0].value}
             onSelectPackage(payload);
@@ -77,7 +78,8 @@ function HospitalDetails() {
     
     useEffect(() => {
         setrevieRatingLoader(true);
-        hospitalReviewAndRating(API.RATING, data.medProviderId).then(data=>{
+        // hospitalReviewAndRating(API.RATING, 504).then(data=>{
+        hospitalReviewAndRating(API.RATING, data?.medProviderId).then(data=>{
             setreviewRatingData(data);
             setrevieRatingLoader(false);
         });
@@ -87,7 +89,7 @@ function HospitalDetails() {
 
 
     const onSelectPackage = (value)=>{
-        const payload = {MedProviderId:data.medProviderId, PackageCode:value.value};
+        const payload = {MedProviderId:data?.medProviderId, PackageCode:value.value};
         
         setpackageLoader(true);
         
@@ -96,7 +98,20 @@ function HospitalDetails() {
             setpackageLoader(false);
         });
     }
-
+    let ratingAverage = {
+        rating: 0,
+        average:0
+    };
+    const totalRating = (reviewRatingData)=>{
+        reviewRatingData.length && reviewRatingData.map(data=>{
+            let rating =  Math.ceil((data.admissionAndDischargeProcess + data.careInHospital + data.hospitalAmbience + data.hospitalStaffBehaviour + data.supportFromHospitalStaff + data.waitTime) /6);           
+            ratingAverage.rating += rating
+        });
+        ratingAverage.rating = ratingAverage.rating/reviewRatingData.length;
+        ratingAverage.average =  Math.ceil(ratingAverage.rating);
+      return  ratingAverage;
+    }
+    totalRating(reviewRatingData)
 
     console.log('reviewRatingData', reviewRatingData);
     
@@ -112,7 +127,7 @@ function HospitalDetails() {
                     </div>
                 </Col>
                 <Col lg={2}>
-                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:data.medProviderId}} customClass={'doctor-details'}>
+                    <MedicalModal header={{title:'Write Review', subTitle:'(1450 Votes)'}} ModalComponent={WriteReview} data={{id:data?.medProviderId}} customClass={'doctor-details'}>
                         <MedicalButton text="WRITE A REVIEW" type="outline"  />
                     </MedicalModal>
                     
@@ -120,15 +135,15 @@ function HospitalDetails() {
             </Row>
             <Row className="detail-wrapper">
             {hospitalDetails?.loader && <Loader/>}
-                <Col lg={6}>
+               { data && <Col lg={6}>
                     <Card>
                     <Card.Img variant="top" src={ API.IMAGE_BASE_URL.HOSPITALS + data.image} />
                         <Card.Body>
                             <Row className="content-row">
                                 <Col lg={4} className="content-column">
-                                    <Card.Title>92% Liked</Card.Title>
+                                    <Card.Title>{data.like}% Liked</Card.Title>
                                     <Card.Text>
-                                    {ratingUI(4)}
+                                    {ratingUI(data.rating)}
                                     </Card.Text>
                                 </Col>
 
@@ -200,8 +215,8 @@ function HospitalDetails() {
                             
                         </Card.Body>
                     </Card>
-                </Col>
-                <Col lg={6} className="detail-right-content">
+                </Col>}
+                { data && <Col lg={6} className="detail-right-content">
                     <h4>{data.hospitalName}</h4>
                     <address><i className="icon-map"/> {data.address1}</address>
                     <span className="call"> <i className="icon-call"/> {data.phone1} , <i className="icon-call"/> {data.phone2}</span> <span><a  target="blank"  href={data.website} className="visit-website">Visit website</a></span>
@@ -209,7 +224,7 @@ function HospitalDetails() {
                         <Tab eventKey="about" title="ABOUT">
                         <ul className="tab-about">
                             {data.about}
-                            <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                            <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data?.medProviderId}}>
                                 <MedicalButton  text="SEND ENQUIRY" type="primary"  />
                             </MedicalModal>
                         </ul>
@@ -217,37 +232,41 @@ function HospitalDetails() {
                         <Tab eventKey="facilityService" title="FACILITY & SERVICE">
                             <ul className="tab-about">
                                 {makeList(data.shortDescription)}
-                                <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                                <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data?.medProviderId}}>
                                 <MedicalButton  text="SEND ENQUIRY" type="primary"  />
                             </MedicalModal>
                             </ul>
                         </Tab>
                         <Tab eventKey="reviewRating" title="REVIEWS & Rating" >
+                            <div className="rating-header">
+                           <h4> Rating  { ratingAverage.rating }</h4> {ratingUI(ratingAverage.average) }
+                            </div>
                         {revieRatingLoader ? <Loader/> : null}
-                            <Card className="review-rating" >
-                                <Row>
-                                    <Col lg={2}>
-                                    </Col>
-                                    <Col lg={10} >
-                                        <h5>{reviewRatingData?.name}</h5>
-                                        {ratingUI(4)}
-                                        <p>{reviewRatingData?.message}</p>
-                                    </Col>
-                                </Row>
-                            </Card>
+                        {
+                        reviewRatingData.length && reviewRatingData.map(data=>{
+                            let rating =  Math.ceil((data.admissionAndDischargeProcess + data.careInHospital + data.hospitalAmbience + data.hospitalStaffBehaviour + data.supportFromHospitalStaff + data.waitTime) /6);
 
-                            <Card className="review-rating" >
-                                <Row>
-                                    <Col lg={2}>
-                                    </Col>
-                                    <Col lg={10} >
-                                        <h5>{reviewRatingData?.name}</h5>
-                                        {ratingUI(4)}
-                                        <p>{reviewRatingData?.message}</p>
-                                    </Col>
-                                </Row>
-                            </Card>
-                                
+                            var a = moment(new Date());
+                                var b = moment(data?.reviewTime);
+                                let days = a.diff(b, 'days') 
+
+                            return <Card className="review-rating" >
+                                    <Row>
+                                        <Col lg={2}>
+                                        <img className="logo" src="/images/rating.png" alt="karevel.com" title="rating" />
+                                        </Col>
+                                        <Col lg={10} className="rating-content" >
+                                            <h6>{data?.name}</h6>
+                                            
+                                            {ratingUI(rating)}
+                                            <p>{data?.message}</p>
+                                            <p>{days ? days + ' day ago' : 'today'}</p>
+                                        </Col>
+                                    </Row>
+                                </Card>
+                        })}
+
+                            
                         </Tab>
                         <Tab eventKey="videos" title="VIDEOS" >
                         <VideoCarousel />
@@ -268,7 +287,7 @@ function HospitalDetails() {
                                         
                                         <h5>Package details</h5>
                                         <p>{costEstimate[0].packageRemarks}</p>
-                                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data.medProviderId}}>
+                                        <MedicalModal header={{title:'Send Enquiry', subTitle:data.name}} ModalComponent={SendEnquiery} data={{id:data?.medProviderId}}>
                                             <MedicalButton  text="SEND ENQUIRY" type="primary"  />
                                         </MedicalModal>
                                     </Card.Text>
@@ -277,7 +296,8 @@ function HospitalDetails() {
                                 </Card> : null}
                         </Tab>
                     </Tabs>
-                </Col>
+                </Col>}
+           
             </Row>
         </div>
     )

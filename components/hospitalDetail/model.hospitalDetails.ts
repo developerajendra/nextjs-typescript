@@ -19,7 +19,9 @@ export const HOSPITAL_DETAIL_MODEL = {
     "NEAR_DOMESTIC_AIRPORT_DISTANCE": "domesticAirportDistance",
     "ENT_FULL_NM":"hospitalName",
     "ADDRESS_LN_1":"address1",
-    "CRTD_USR":"crtdUser"
+    "CRTD_USR":"crtdUser",
+    "NO_OF_LIKES":'like',
+    "RATING":'rating'
 }
 
 
@@ -34,4 +36,5 @@ export const HOSPITAL_REVIEW = {
     "HospitalStaffBehaviour": 'hospitalStaffBehaviour',
     "SupportFromHospitalStaff": 'supportFromHospitalStaff',
     "WaitTime": 'waitTime',
+    "Reviewtime":'reviewTime',
 };
