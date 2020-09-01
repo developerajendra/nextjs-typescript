@@ -158,15 +158,41 @@
                 padding-left: 16px;
                 list-style: disc;
             }
+            .rating-header{
+                display: flex;
+                padding: 10px 0 20px;
+                h4{
+                    font-family: 'ProximaNova-Semibold' !important;
+                }
+
+                li{
+                    list-style: none;
+                }
+            }
             .card{
+               
                 &.review-rating{
                     margin: 0 0 10px;
                     padding: 23px 0;
+
+                    .rating-content{
+                        padding: 0 30px;
+                        @media (max-width: 991px){
+                            padding: 40px;
+                        }
+                    }
+
+                    img{
+                        padding-left: 15px;
+                    }
+                    
                     ul{
+                        zoom:.5;
                         all: unset;
                         padding: 0;
                         margin-left: -17px;
                         display: flex;
+                        zoom: .5;
                     }
                     li{
                         list-style: none;

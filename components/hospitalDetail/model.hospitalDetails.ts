@@ -36,4 +36,5 @@ export const HOSPITAL_REVIEW = {
     "HospitalStaffBehaviour": 'hospitalStaffBehaviour',
     "SupportFromHospitalStaff": 'supportFromHospitalStaff',
     "WaitTime": 'waitTime',
+    "Reviewtime":'reviewTime',
 };

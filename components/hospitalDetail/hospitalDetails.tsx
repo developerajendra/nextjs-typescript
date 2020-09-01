@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import {Card, Button, Tabs, Tab, Row,Col} from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import moment from 'moment';
 
 //Custom imports
 import {MedicalButton, MedicalModal, SelectBox, Breadcrumb, Loader, VideoCarousel} from '../../components/common';
@@ -77,6 +78,7 @@ function HospitalDetails() {
     
     useEffect(() => {
         setrevieRatingLoader(true);
+        // hospitalReviewAndRating(API.RATING, 504).then(data=>{
         hospitalReviewAndRating(API.RATING, data?.medProviderId).then(data=>{
             setreviewRatingData(data);
             setrevieRatingLoader(false);
@@ -96,7 +98,20 @@ function HospitalDetails() {
             setpackageLoader(false);
         });
     }
-
+    let ratingAverage = {
+        rating: 0,
+        average:0
+    };
+    const totalRating = (reviewRatingData)=>{
+        reviewRatingData.length && reviewRatingData.map(data=>{
+            let rating =  Math.ceil((data.admissionAndDischargeProcess + data.careInHospital + data.hospitalAmbience + data.hospitalStaffBehaviour + data.supportFromHospitalStaff + data.waitTime) /6);           
+            ratingAverage.rating += rating
+        });
+        ratingAverage.rating = ratingAverage.rating/reviewRatingData.length;
+        ratingAverage.average =  Math.ceil(ratingAverage.rating);
+      return  ratingAverage;
+    }
+    totalRating(reviewRatingData)
 
     console.log('reviewRatingData', reviewRatingData);
     
@@ -223,31 +238,35 @@ function HospitalDetails() {
                             </ul>
                         </Tab>
                         <Tab eventKey="reviewRating" title="REVIEWS & Rating" >
+                            <div className="rating-header">
+                           <h4> Rating  { ratingAverage.rating }</h4> {ratingUI(ratingAverage.average) }
+                            </div>
                         {revieRatingLoader ? <Loader/> : null}
-                            <Card className="review-rating" >
-                                <Row>
-                                    <Col lg={2}>
-                                    </Col>
-                                    <Col lg={10} >
-                                        <h5>{reviewRatingData?.name}</h5>
-                                        {ratingUI(4)}
-                                        <p>{reviewRatingData?.message}</p>
-                                    </Col>
-                                </Row>
-                            </Card>
+                        {
+                        reviewRatingData.length && reviewRatingData.map(data=>{
+                            let rating =  Math.ceil((data.admissionAndDischargeProcess + data.careInHospital + data.hospitalAmbience + data.hospitalStaffBehaviour + data.supportFromHospitalStaff + data.waitTime) /6);
 
-                            <Card className="review-rating" >
-                                <Row>
-                                    <Col lg={2}>
-                                    </Col>
-                                    <Col lg={10} >
-                                        <h5>{reviewRatingData?.name}</h5>
-                                        {ratingUI(4)}
-                                        <p>{reviewRatingData?.message}</p>
-                                    </Col>
-                                </Row>
-                            </Card>
-                                
+                            var a = moment(new Date());
+                                var b = moment(data?.reviewTime);
+                                let days = a.diff(b, 'days') 
+
+                            return <Card className="review-rating" >
+                                    <Row>
+                                        <Col lg={2}>
+                                        <img className="logo" src="/images/rating.png" alt="karevel.com" title="rating" />
+                                        </Col>
+                                        <Col lg={10} className="rating-content" >
+                                            <h6>{data?.name}</h6>
+                                            
+                                            {ratingUI(rating)}
+                                            <p>{data?.message}</p>
+                                            <p>{days ? days + ' day ago' : 'today'}</p>
+                                        </Col>
+                                    </Row>
+                                </Card>
+                        })}
+
+                            
                         </Tab>
                         <Tab eventKey="videos" title="VIDEOS" >
                         <VideoCarousel />
