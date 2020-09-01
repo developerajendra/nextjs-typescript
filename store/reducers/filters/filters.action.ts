@@ -160,8 +160,8 @@ export const productFilter = (filters, selectedTab)=> dispatch =>{
  * Fetch cost estimate details
  * @param API_URL 
  */
-export const fetchNews = async(API_URL)=>  {
-    const response =  await api.get(API_URL);
+export const fetchNews = async(API_URL, payload?)=>  {
+    const response =  payload ? await api.get(`${API_URL}/${payload}`) : await api.get(API_URL);
     keyMapper(response, NeWS_MODEL);
     return response
 }

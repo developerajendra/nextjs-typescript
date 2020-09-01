@@ -29,7 +29,7 @@ const API = {
     REVIEW_DETAILS: 'reviewdetails',
     FEATURE_DETAILS:'featureddetails',
     RATING:'reviewdetails/',
-    NEWS_AND_MEDIA:'NEWS_AND_MEDIA',
+    NEWS_AND_MEDIA:'newsandmedia',
 }
 
 export default API;
