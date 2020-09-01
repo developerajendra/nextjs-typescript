@@ -18,13 +18,24 @@ function TestimonialCarousel() {
     const [testimonialData, settestimonialData] = useState([]);
     const [testimonialLoader, setTestimonialLoader] = useState(false);
 
+    const [apiPayload, setapiPayload] = useState({
+        country:'',
+        state:''
+    });
+
     /**
     * fetchig the doctor details..
     */
-    const fetchStatesListData = (selectedCountry)=>{
+    const onCountrySelect = (selectedCountry)=>{
         const payload = selectedCountry.value;
         setStateLoader(true);
         fetchStatesByCountry(API.STATES_LIST_BY_COUNTRY, payload).then(data=>{
+            console.log('...', data);
+            
+            setapiPayload({
+                country:payload,
+                state: data.length ? data[0].stateCode : ''
+            });
             setStateList(data);
             setStateLoader(false);
         });
@@ -34,21 +45,29 @@ function TestimonialCarousel() {
      /**
     * fetchig the testimonial data
     */
-   const fetchTestimonialData = (selectedState)=>{
-        const payload = selectedState;
-        setTestimonialLoader(true);
-        fetchTestimonial(API.TESTIMONIAL, payload).then(data=>{
-            settestimonialData(data);
-            setTestimonialLoader(false);
+   const onStateSelect = (selectedState)=>{
+        setapiPayload({
+        ...apiPayload,
+            state: selectedState.stateCode
         });
+        setTestimonialLoader(true);
     }
 
     useEffect(() => {
         const payload = {value:'IN', label:'India'};
-        
-        fetchStatesListData(payload);
-        fetchTestimonialData(defaultState);
+        onCountrySelect(payload);
     }, [])
+
+
+
+    useEffect(() => {
+        console.log('apiPayload',apiPayload);
+        (apiPayload.country || apiPayload.state) && fetchTestimonial(API.TESTIMONIAL, apiPayload).then(data=>{
+            settestimonialData(data);
+            setTestimonialLoader(false);
+        });
+    }, [apiPayload]);
+    
     const defaultState = statesList && statesList.length ? statesList[0] : null;
 
 
@@ -61,8 +80,8 @@ function TestimonialCarousel() {
                         <h2>Patient Stories</h2>
                     </div>
                     {countryListLoader || stateLoader && <Loader/>}
-                    <SelectBox label="SELECT COUNTRY" selectedValue={{value:'IN', label:'India'}} onSelect={fetchStatesListData} options={countryListData}/>
-                    {defaultState &&  <SelectBox label="SELECT STATE" selectedValue={defaultState} options={statesList} onSelect={fetchTestimonialData}  /> }
+                    <SelectBox label="SELECT COUNTRY" selectedValue={{value:'IN', label:'India'}} onSelect={onCountrySelect} options={countryListData}/>
+                    {defaultState &&  <SelectBox label="SELECT STATE" selectedValue={defaultState} options={statesList} onSelect={onStateSelect}  /> }
                 </Col>
             </div>
 
@@ -77,8 +96,10 @@ function TestimonialCarousel() {
                                         <Col className="review-wrapper" lg={10}>
                                             <div className="testimonials">
                                                 <h3>{item.userName}</h3>
-                                                <address>  -----, {item.state}</address>
-                                                 {ratingUI(item.rating)}
+                                                <address>  {item.city}, {item.state}</address>
+                                                <div className="rating">
+                                                {ratingUI(item.rating)}
+                                                </div>
                                                 <article><p>“ {item.quotes} “</p></article>
                                             </div>
                                         </Col>

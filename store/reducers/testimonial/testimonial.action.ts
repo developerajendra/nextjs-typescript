@@ -8,7 +8,7 @@ import {TESTIMONIAL_MODEL} from '../../../components/testimonialCarousel/model.t
  * @param API_URL 
  */
 export const fetchTestimonial = async (API_URL, payload)=> {
-    const response =  await api.get(API_URL);
+    const response =  await api.post(API_URL, {"COUNTRY_CD":payload.country,"STATE_CD":'DL'});
     keyMapper(response, TESTIMONIAL_MODEL);
     return response;
 }

@@ -21,7 +21,7 @@ const API = {
     HOSPITAL_SEARCH: 'medprovider/searchdata',
     COMPARE_HOSPITAL_PRODUCTS: 'medprovider/categoryids',
     COMPARE_DOCTOR_PRODUCTS: 'meddoctor/doctorsids',
-    TESTIMONIAL: 'TESTOMONIALS_ENTRY',
+    TESTIMONIAL: 'testomonialsentry',
     SEND_ENQUIRY: 'sendenquierydetails/',
     COST_ESTIMATE_LIST: 'tblmstpackagedetails',
     COST_ESTIMATE_DETAIL: 'packagetreatmentdetails/GetbyPackage?data=',

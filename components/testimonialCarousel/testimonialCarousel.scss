@@ -74,6 +74,10 @@
         padding: 0;
         position: relative;
         z-index: 2;
+        .rating{
+            float: left;
+            margin-left: -12px;
+        }
 
         h3{
             font-family: 'ProximaNova-Semibold';
@@ -85,6 +89,9 @@
             font-family: 'ProximaNovaS-Light', sans-serif !important;
             font-weight: 100;
             font-size: 0.875rem;
+        }
+        article{
+            clear: both;
         }
         article p{ 
             font-family: 'ProximaNova-Regular' !important;

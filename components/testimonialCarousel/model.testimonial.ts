@@ -3,5 +3,6 @@ export const TESTIMONIAL_MODEL = {
     "RATING": 'rating',
     "USER_NAME": 'userName',
     "DESCRIPTION": 'quotes',
-    "STATE_NAME": "state"
+    "STATE_NAME": "state",
+    "CITY": 'city'
 }
