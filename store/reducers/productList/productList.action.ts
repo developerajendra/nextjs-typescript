@@ -53,12 +53,12 @@ export const fetchHospitalList =(API_URL, filters, loadMore?:string)=> async dis
     const response =  await api.post(URL, payloadData);
     
     
-        keyMapper(response.Data, HOSPITAL_LIST_MODEL);
+        keyMapper(response.Data || response, HOSPITAL_LIST_MODEL);
         keyMapper(response.Filter, HOSPITAL_LIST_MODEL);
         
         dispatch({
             type:loadMore ? TYPE.HOSPITAL_LIST+loadMore : TYPE.HOSPITAL_LIST,
-            data:response.Data,
+            data:response.Data || response,
             filter:response.Filter
         });
         
