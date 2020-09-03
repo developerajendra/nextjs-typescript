@@ -14,7 +14,7 @@ function FeaturedHospital({image, countryName, numberOfHospitals, numberOfDoctor
             <h3 className="country-name">{countryName}</h3>
             <div className="content">
                 <div>No. Of Hospitals: <span>{numberOfHospitals}</span></div>
-                <div>No. Of Hospitals: <span>{numberOfDoctors}</span></div>
+                <div>No. Of Doctors: <span>{numberOfDoctors}</span></div>
             </div>
             
         </div>
