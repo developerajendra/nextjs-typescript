@@ -55,13 +55,14 @@ const selectedValue = (country:[], treatment:[], router, dispatch , productFilte
         const currentTreatment:any =  treatment?.find((data:any)=>data.value == selectedTreatment) || {};
 
 
+
         //Filtering the product when selecting reloading the page
         //If query exist in the url filter the product or else send the default products
         if(!productFilters?.country && !productFilters?.crtdUser && !productFilters?.crtdUser?.length){
             const selectedTab =  route.indexOf('doctors')>-1 ? 'DOCTORS' : 'HOSPITALS';
             useEffect(() => {
-                currentTreatment && dispatch(productFilter({crtdUser:currentTreatment.crtdUser || selectedTreatment, country:currentCountry.value || selectedCountry, search}, selectedTab));
-            }, [route, query])
+                currentTreatment && dispatch(productFilter({crtdUser:currentTreatment.crtdUser, country:currentCountry.value || selectedCountry, search}, selectedTab));
+            }, [route, query, currentTreatment.crtdUser])
         }
         
         

@@ -35,7 +35,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                   {/* <Col sm={12} > */}
 
                 <Card.Body style={{flex:'2'}}>
-                    {compareProduct && <input onChange={(e)=>onproductCompareChange(e, data.entID, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />}
+                      <input onChange={(e)=>onproductCompareChange(e, data.entID, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />
                     <Card.Title>{data.hospitalName}</Card.Title>
                         {/* <span>{data.hospitalName},{data.location}</span> */}
                         <ul className="contact">
@@ -74,7 +74,7 @@ function ProductCard({data, primaryButtonText, outlineButtonText, buttonOutlineR
                     </div>
                 </div>
                 <Card.Body style={{flex:'2'}}>
-                {compareProduct && <input onChange={(e)=>onproductCompareChange(e, data.productId, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />}
+                 <input onChange={(e)=>onproductCompareChange(e, data.productId, dispatcher)} className="product-compare-checkbox" type="checkbox" id="test" name="test" value="Bike" />
                     <Card.Title>{data.name}</Card.Title>
                         <span><i className="icon-map"></i> {data.hospitalName}, {data.location}</span>
                     <Card.Text>

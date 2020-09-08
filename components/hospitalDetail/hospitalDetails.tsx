@@ -239,7 +239,7 @@ function HospitalDetails() {
                         </Tab>
                         <Tab eventKey="reviewRating" title="REVIEWS & Rating" >
                             <div className="rating-header">
-                           <h4> Rating  { ratingAverage.rating }</h4> {ratingUI(ratingAverage.average) }
+                           <h4> Rating  { ratingAverage.rating.toFixed(2) }</h4> {ratingUI(ratingAverage.average) }
                             </div>
                         {revieRatingLoader ? <Loader/> : null}
                         {

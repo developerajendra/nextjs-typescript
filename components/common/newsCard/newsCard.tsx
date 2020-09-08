@@ -5,6 +5,7 @@ import moment from 'moment';
 
 import {API} from '../../../pages/api';
 interface news{
+    id?:any;
     readMoreLink?:string;
     title?: string;
     date?:string;
