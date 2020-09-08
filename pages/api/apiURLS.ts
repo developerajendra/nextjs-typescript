@@ -1,6 +1,6 @@
 
 const API = {
-    BASE_URL: 'http://nayabichar.com/api/',
+    BASE_URL: 'https://nayabichar.com/api/',
     IMAGE_BASE_URL:{
         DOCTORS: '/images/dynamic-image/doctors/',
         TESTIMONIAL: '/images/dynamic-image/testimonial/',

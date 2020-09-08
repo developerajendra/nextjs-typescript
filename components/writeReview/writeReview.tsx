@@ -24,7 +24,7 @@ const submitSendEnquiryForm = (formValues, setsendEnquiryLoader, closeModal)=>{
         const payload = {
             ...formValues,
             file:formData
-        }
+        };
         setsendEnquiryLoader(true);
         writeReview(API.REVIEW_DETAILS, payload).then(data=>{
             
@@ -119,9 +119,9 @@ function WriteReview({id, name, closeModal}:WriteReview) {
                 <Input values={formValues} onInputChange={onInputChange}  mandatory={true} label="YOUR NAME" id="name" placeholder="Enter Name" />
                 <Input values={formValues} onInputChange={onInputChange} mandatory={true} label="Title of your review" type="text" id="title" placeholder="Summarise your visit" />
                 <Input values={formValues} onInputChange={onInputChange}  label="PLEASE WRITE THE REVIEW" type="textarea" id="message" placeholder="Tell people about your experience…" />
-                <Input values={formValues} onInputChange={onInputChange}  label="UPLOAD FILE" type="file" id="file" />
+                <Input isWriteReviwe={true} values={formValues} onInputChange={onInputChange}  label="UPLOAD FILE" type="file" id="file" />
                 <div className="terms-condition">
-                    <Input values={formValues} onInputChange={onInputChange} checked={true} label="I agree with the Terms and Conditions." type="checkbox" id="agree" />
+                    <Input  values={formValues} onInputChange={onInputChange} checked={true} label="I agree with the Terms and Conditions." type="checkbox" id="agree" />
                 </div>
                 <div className="form-button-wrapper">
                     <MedicalButton text="CANCEL" type="outline" onButtonOutlineClick={onButtonOutlineClick} />
