@@ -15,5 +15,6 @@ export const HOSPITAL_LIST_MODEL = {
     "COUNTRY_CD": 'country',
     "Limit": 'limit',
     "OffSet": 'offset',
+    "RATING":'rating'
     
 }

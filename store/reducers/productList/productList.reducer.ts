@@ -37,8 +37,8 @@ export const hospitalListReducer = (state = [], action)=>{
     switch(action.type){
        case TYPE.HOSPITAL_LIST:           
        products = [];
-       action.data && products.push(...action.data);
-           return {...state, hospitalListData:action.data, filter:action.filter, hospitalListDataLoader: false};
+        action && Object.keys(action.data).length && products.push(...action.data);
+        return {...state, hospitalListData:action.data, filter:action.filter, hospitalListDataLoader: false};
 
         case TYPE.HOSPITAL_LIST+'LOAD_MORE':
             

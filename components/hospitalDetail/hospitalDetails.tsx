@@ -238,12 +238,12 @@ function HospitalDetails() {
                             </ul>
                         </Tab>
                         <Tab eventKey="reviewRating" title="REVIEWS & Rating" >
-                            <div className="rating-header">
-                           <h4> Rating  { ratingAverage.rating.toFixed(2) }</h4> {ratingUI(ratingAverage.average) }
-                            </div>
+                            {ratingAverage.rating ? <div className="rating-header">
+                                <h4> Rating  { ratingAverage.rating.toFixed(2) }</h4> {ratingUI(ratingAverage.average) }
+                            </div> : null}
                         {revieRatingLoader ? <Loader/> : null}
                         {
-                        reviewRatingData.length && reviewRatingData.map(data=>{
+                        reviewRatingData.length ? reviewRatingData.map(data=>{
                             let rating =  Math.ceil((data.admissionAndDischargeProcess + data.careInHospital + data.hospitalAmbience + data.hospitalStaffBehaviour + data.supportFromHospitalStaff + data.waitTime) /6);
 
                             var a = moment(new Date());
@@ -264,7 +264,7 @@ function HospitalDetails() {
                                         </Col>
                                     </Row>
                                 </Card>
-                        })}
+                        }) : null}
 
                             
                         </Tab>
